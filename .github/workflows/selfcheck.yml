@@ -32,3 +32,8 @@ jobs:
         run: python evals/harness/erdo_eval.py selftest
       - name: Recorded runs earn their recorded grades
         run: python evals/harness/erdo_eval.py regrade --runs recorded-runs
+      - name: The audit of passing grades follows from its files
+        run: |
+          python audits/pass-audit-2026-11-27/sample.py --check
+          python audits/pass-audit-2026-11-27/analyze.py --check
+          cmp audits/pass-audit-2026-11-27/result.json evals/results/pass-audit-2026-11-27.json

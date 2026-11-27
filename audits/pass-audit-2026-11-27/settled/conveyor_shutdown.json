@@ -1,0 +1,12 @@
+{
+ "already_cut_off_with_nothing_down": [],
+ "inputs": 20,
+ "agree": 20,
+ "differ": [],
+ "graded_inputs": [
+  2,
+  9,
+  16,
+  6
+ ]
+}
