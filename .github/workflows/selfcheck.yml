@@ -37,3 +37,7 @@ jobs:
           python audits/pass-audit-2026-11-27/sample.py --check
           python audits/pass-audit-2026-11-27/analyze.py --check
           cmp audits/pass-audit-2026-11-27/result.json evals/results/pass-audit-2026-11-27.json
+      - name: The report on run conditions follows from its files
+        run: |
+          python audits/run-conditions-2026-11-27/analyze.py --check
+          cmp audits/run-conditions-2026-11-27/result.json evals/results/run-conditions-2026-11-27.json

@@ -1,0 +1,13 @@
+{
+ "checked_at": 1795785720.7776883,
+ "paths": 7,
+ "gone": 0,
+ "moved": [
+  {
+   "path": "<notes>/probe/selftest4/q/deep/run.py",
+   "atime": 1795785720.7534244,
+   "mtime": 1795785698.385423,
+   "dir": false
+  }
+ ]
+}

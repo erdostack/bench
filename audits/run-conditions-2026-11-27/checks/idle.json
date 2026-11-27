@@ -1,0 +1,12 @@
+{
+ "checked_at": 1795779507.4684951,
+ "paths": 850699,
+ "gone": 0,
+ "moved": [
+  {
+   "path": "<host-tmp>/<session>/tasks/<task>.output",
+   "atime": 1795779504.794597,
+   "dir": false
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+{
+ "checked_at": 1795779200.7522292,
+ "paths": 8,
+ "gone": 0,
+ "moved": [
+  {
+   "path": "<notes>/probe/selftest/b",
+   "atime": 1795779200.7225788,
+   "dir": true
+  },
+  {
+   "path": "<notes>/probe/selftest/b/z.txt",
+   "atime": 1795779200.7225788,
+   "dir": false
+  }
+ ]
+}

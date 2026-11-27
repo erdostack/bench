@@ -1,0 +1,13 @@
+{
+ "checked_at": 1795784506.5835328,
+ "paths": 7,
+ "gone": 0,
+ "moved": [
+  {
+   "path": "<notes>/probe/selftest2/q",
+   "atime": 1795784506.546894,
+   "mtime": 1795784498.9548938,
+   "dir": true
+  }
+ ]
+}

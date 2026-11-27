@@ -1,0 +1,12 @@
+{
+ "checked_at": 1795779200.6910746,
+ "paths": 8,
+ "gone": 0,
+ "moved": [
+  {
+   "path": "<notes>/probe/selftest/a/y.txt",
+   "atime": 1795779198.1585786,
+   "dir": false
+  }
+ ]
+}

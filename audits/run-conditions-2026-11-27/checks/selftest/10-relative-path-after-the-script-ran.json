@@ -1,0 +1,19 @@
+{
+ "checked_at": 1795785708.7622187,
+ "paths": 7,
+ "gone": 0,
+ "moved": [
+  {
+   "path": "<notes>/probe/selftest4/p",
+   "atime": 1795785708.7334237,
+   "mtime": 1795785698.385423,
+   "dir": true
+  },
+  {
+   "path": "<notes>/probe/selftest4/p/gen.py",
+   "atime": 1795785708.7334237,
+   "mtime": 1795785698.385423,
+   "dir": false
+  }
+ ]
+}

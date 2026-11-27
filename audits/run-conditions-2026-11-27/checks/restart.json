@@ -1,0 +1,127 @@
+{
+ "checked_at": 1795779525.178939,
+ "paths": 850699,
+ "gone": 1,
+ "moved": [
+  {
+   "path": "<host-skills>",
+   "atime": 1795779509.8505971,
+   "dir": true
+  },
+  {
+   "path": "<host-skills>/synced/<sync>",
+   "atime": 1795779509.8505971,
+   "dir": true
+  },
+  {
+   "path": "<host-skills>/synced/<sync>/<host-skill-04>/SKILL.md",
+   "atime": 1795779509.854597,
+   "dir": false
+  },
+  {
+   "path": "<host-skills>/synced/<sync>/<host-skill-07>/SKILL.md",
+   "atime": 1795779509.854597,
+   "dir": false
+  },
+  {
+   "path": "<host-skills>/synced/<sync>/<host-skill-10>/SKILL.md",
+   "atime": 1795779509.854597,
+   "dir": false
+  },
+  {
+   "path": "<host-skills>/synced/<sync>/<host-skill-02>/SKILL.md",
+   "atime": 1795779509.8585973,
+   "dir": false
+  },
+  {
+   "path": "<host-skills>/synced/<sync>/<host-skill-08>/SKILL.md",
+   "atime": 1795779509.8585973,
+   "dir": false
+  },
+  {
+   "path": "<host-skills>/synced/<sync>/<host-skill-09>/SKILL.md",
+   "atime": 1795779509.8585973,
+   "dir": false
+  },
+  {
+   "path": "<host-skills>/synced/<sync>/<host-skill-16>/SKILL.md",
+   "atime": 1795779509.8585973,
+   "dir": false
+  },
+  {
+   "path": "<host-skills>/synced/<sync>/<host-skill-01>/SKILL.md",
+   "atime": 1795779509.8625972,
+   "dir": false
+  },
+  {
+   "path": "<host-skills>/synced/<sync>/<host-skill-03>/SKILL.md",
+   "atime": 1795779509.8625972,
+   "dir": false
+  },
+  {
+   "path": "<host-skills>/synced/<sync>/<host-skill-05>/SKILL.md",
+   "atime": 1795779509.8625972,
+   "dir": false
+  },
+  {
+   "path": "<host-skills>/synced/<sync>/<host-skill-06>/SKILL.md",
+   "atime": 1795779509.8625972,
+   "dir": false
+  },
+  {
+   "path": "<host-skills>/synced/<sync>/<host-skill-11>/SKILL.md",
+   "atime": 1795779509.8625972,
+   "dir": false
+  },
+  {
+   "path": "<host-skills>/synced/<sync>/<host-skill-13>/SKILL.md",
+   "atime": 1795779509.8625972,
+   "dir": false
+  },
+  {
+   "path": "<host-skills>/synced/<sync>/<host-skill-15>/SKILL.md",
+   "atime": 1795779509.8625972,
+   "dir": false
+  },
+  {
+   "path": "<host-skills>/synced/<sync>/<host-skill-17>/SKILL.md",
+   "atime": 1795779509.8625972,
+   "dir": false
+  },
+  {
+   "path": "<host-skills>/synced/<sync>/manifest.json",
+   "atime": 1795779509.8665972,
+   "dir": false
+  },
+  {
+   "path": "<host-skills>/synced/<sync>/<host-skill-12>/SKILL.md",
+   "atime": 1795779509.8665972,
+   "dir": false
+  },
+  {
+   "path": "<host-skills>/synced/<sync>/<host-skill-14>/SKILL.md",
+   "atime": 1795779509.8665972,
+   "dir": false
+  },
+  {
+   "path": "<skills-repo>/AGENTS.md",
+   "atime": 1795779510.1385972,
+   "dir": false
+  },
+  {
+   "path": "<skills-repo>/CLAUDE.md",
+   "atime": 1795779510.1385972,
+   "dir": false
+  },
+  {
+   "path": "<home>",
+   "atime": 1795779521.950598,
+   "dir": true
+  },
+  {
+   "path": "<host-tmp>/tool-container-runs.json",
+   "atime": 1795779522.0745978,
+   "dir": false
+  }
+ ]
+}
