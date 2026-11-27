@@ -2,8 +2,7 @@ name: Eval self-check
 
 # Proves that every grader in evals/ passes its known-good output and fails its known-bad ones, and that the
 # recorded runs still earn the grades recorded with them. It runs no model and costs nothing. Started by hand:
-# this workflow has not been tried on a hosted runner yet, so it does not gate anything. A few graders replay
-# a job under a time budget and can fail their own grader-ran check on a slow or busy runner.
+# this workflow has not been tried on a hosted runner yet, so it does not gate anything.
 
 on:
   workflow_dispatch:

@@ -98,6 +98,22 @@ class Execution(unittest.TestCase):
         self.assertTrue(sg.is_plan_request("explain query plan select 1"))
 
 
+class FreshWork(unittest.TestCase):
+    def test_listed_empty_directories_exist_before_setup_runs(self):
+        """A clone has no empty directories: a setup.py that writes into one must still find it."""
+        with tempfile.TemporaryDirectory() as raw:
+            case = Path(raw) / "case"
+            (case / "files").mkdir(parents=True)
+            (case / "files" / "README.md").write_text("x\n")
+            (case / "empty-dirs.txt").write_text("data\nvar/tmp\n")
+            (case / "setup.py").write_text("import sys, pathlib\npathlib.Path(sys.argv[1], 'data', 'rows.csv').write_text('a,b\\n')\n")
+            handle = sg.fresh_work(case)
+            work = Path(handle.name) / "work"
+            self.assertEqual((work / "data" / "rows.csv").read_text(), "a,b\n")
+            self.assertTrue((work / "var" / "tmp").is_dir())
+            handle.cleanup()
+
+
 class History(unittest.TestCase):
     def write(self, records):
         tmp = tempfile.NamedTemporaryFile("w", suffix=".log", delete=False)
