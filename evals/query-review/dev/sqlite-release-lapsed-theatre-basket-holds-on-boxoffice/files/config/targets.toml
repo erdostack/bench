@@ -1,0 +1,5 @@
+[boxoffice]
+path = "data/boxoffice.sqlite"
+
+[practice]
+path = "data/practice.sqlite"

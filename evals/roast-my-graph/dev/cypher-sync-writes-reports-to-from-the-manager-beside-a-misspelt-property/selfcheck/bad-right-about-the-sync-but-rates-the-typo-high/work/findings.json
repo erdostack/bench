@@ -1,0 +1,14 @@
+[
+  {
+    "element": "sync_reporting_lines",
+    "severity": "critical",
+    "problem": "Writes REPORTS_TO from manager to employee; docs/model.md and all the queries expect employee to manager, so approver_for returns someone below the claimant and chain_of_command lists subordinates.",
+    "fix": "MERGE (e)-[:REPORTS_TO]->(m), then delete the existing REPORTS_TO relationships and rerun the sync."
+  },
+  {
+    "element": "managment_level",
+    "severity": "high",
+    "problem": "Misspelt property used by the approval rule.",
+    "fix": "Rename everywhere now."
+  }
+]

@@ -1,0 +1,3 @@
+It would not have finished cleanly. The log shows batch 6401-6800 committed and then the progress write failed, so `job_progress` still says 6400 and the retry would insert that batch's legs again (about 770 duplicates; `leg` has no unique key to stop it).
+
+I changed the insert in `jobs/backfill_legs.py` to skip parcels that already have legs (`NOT EXISTS` on `leg.parcel_id`). Each batch commits a parcel's legs together, so a parcel either has all its legs or none, and tonight's run (or any later retry) can't double anything. Check after: `SELECT parcel_id, leg_no, count(*) FROM leg GROUP BY 1, 2 HAVING count(*) > 1` returns nothing.

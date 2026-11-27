@@ -1,0 +1,5 @@
+[nightly]
+path = "data/nightly.sqlite"
+
+[hydra]
+path = "data/hydra.sqlite"

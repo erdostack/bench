@@ -1,0 +1,26 @@
+[
+  {
+    "element": "account.handle",
+    "severity": "critical",
+    "problem": "handle is declared TEXT NOT NULL UNIQUE with BINARY collation, but db/queries/resolve_mention.sql and db/queries/handle_taken.sql filter handle = :handle COLLATE NOCASE, so the unique index is never used. Both plan as SCAN account USING COVERING INDEX sqlite_autoindex_account_1. README gives peak 300 posts/s with two mentions each (600 lookups/s) and 1.2M accounts; app/mentions.py runs the lookup in the single writer's path. One lookup took about 8.8 ms on the 120,000-row sample (roughly 90 ms at 1.2M rows, linear estimate), so the write path cannot finish at the stated peak. The same column accepts 'Ada' and 'ada' as two accounts, which README says are one; only app/signup.py prevents it.",
+    "fix": "Declare the column with the collation the lookups use: handle TEXT NOT NULL COLLATE NOCASE UNIQUE. SQLite cannot change collation in place, so rebuild account in one transaction. Before the rebuild, run SELECT LOWER(handle) FROM account GROUP BY 1 HAVING COUNT(*) > 1 on production and resolve any rows. Tested in memory on SQLite 3.53.1: both queries plan as SEARCH account USING COVERING INDEX (handle=?), 'ADA' is rejected against 'Ada', and the stored spelling is kept. Plan on SQLite 3.45 not run."
+  },
+  {
+    "element": "post.posted_at",
+    "severity": "medium",
+    "problem": "All 60,000 posted_at values in chirp.db are dates only (length 10, e.g. 2026-11-21). db/queries/timeline.sql orders by p.posted_at DESC LIMIT 50, so posts from the same day tie and the 50 shown are an arbitrary subset of that day's posts, not the latest 50. Only bites when followed accounts post more than 50 times a day; the volume is not stated, so capped at medium.",
+    "fix": "Store the full timestamp in ISO 8601 with time and offset, and change the query to ORDER BY p.posted_at DESC, p.id DESC. Backfill existing rows from the source that has the time of day."
+  },
+  {
+    "element": "HANDLE",
+    "severity": "low",
+    "problem": "The regex in app/mentions.py matches any @word, including the part after @ in an email address, so ada@example.com resolves 'example' if such an account exists. Whether emails should count is not stated in the files; this is a question to confirm.",
+    "fix": "Confirm the product rule. If emails should be ignored, use a lookbehind such as (?<![A-Za-z0-9_])@([A-Za-z0-9_]{2,30}) and test it on a sample email."
+  },
+  {
+    "element": "db/schema.sql",
+    "severity": "low",
+    "problem": "follow, post and mention declare REFERENCES clauses, but PRAGMA foreign_keys is off on a new connection and no file in the repo sets it. chirp.db has no orphan rows, but the post and account write paths and any deletes are not in the repo, so this cannot be checked. A question to confirm.",
+    "fix": "Confirm every writing connection runs PRAGMA foreign_keys = ON. If not, add it and check with PRAGMA foreign_key_check before enabling."
+  }
+]

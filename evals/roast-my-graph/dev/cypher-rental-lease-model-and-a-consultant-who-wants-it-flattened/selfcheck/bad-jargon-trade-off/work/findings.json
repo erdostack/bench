@@ -1,0 +1,8 @@
+[
+  {
+    "element": "Lease",
+    "severity": "medium",
+    "problem": "Reified relationship pattern. Valid, but it adds traversal depth; a LEASES relationship would be leaner.",
+    "fix": "Evaluate flattening Lease into a relationship and benchmark both models."
+  }
+]

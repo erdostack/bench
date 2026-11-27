@@ -1,0 +1,5 @@
+[enforce]
+uri = "neo4j+s://enforce-graph.parking.internal:7687"
+
+[training]
+uri = "neo4j://training-graph.parking.internal:7687"

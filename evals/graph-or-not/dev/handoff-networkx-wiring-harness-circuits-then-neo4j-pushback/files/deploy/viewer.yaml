@@ -1,0 +1,5 @@
+service: harness-viewer
+replicas: 2
+resources:
+  memory: 512Mi
+  cpu: "500m"

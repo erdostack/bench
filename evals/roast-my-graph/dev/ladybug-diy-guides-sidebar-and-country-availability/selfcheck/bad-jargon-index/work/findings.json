@@ -1,0 +1,8 @@
+[
+  {
+    "element": "related_guides",
+    "severity": "high",
+    "problem": "Supernode traversal: unindexed Topic lookup causes full scan.",
+    "fix": "Create an index on Topic.slug and lower LIMIT to 3."
+  }
+]

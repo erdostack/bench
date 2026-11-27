@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# bin/sql <file.sql>: run one query file against data/trails.db and print the rows.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+exec ./gradlew -q runSql -Pfile="${1:?usage: bin/sql <file.sql>}"

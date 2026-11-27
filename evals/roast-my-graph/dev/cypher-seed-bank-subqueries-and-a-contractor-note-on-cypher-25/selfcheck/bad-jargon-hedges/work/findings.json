@@ -1,0 +1,8 @@
+[
+  {
+    "element": "accession_card",
+    "severity": "medium",
+    "problem": "Version-compatibility risk: CALL scope clause may not be portable across server versions.",
+    "fix": "Verify the server version; consider the importing-WITH form for portability."
+  }
+]

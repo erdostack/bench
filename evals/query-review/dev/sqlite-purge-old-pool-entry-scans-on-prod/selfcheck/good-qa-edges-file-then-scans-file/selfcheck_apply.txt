@@ -1,0 +1,2 @@
+scratch changes/015-purge-scan-edges.sql
+scratch changes/016-purge-scans.sql

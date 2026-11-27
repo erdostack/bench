@@ -1,0 +1,7 @@
+{
+  "name": "@townmap/shared",
+  "version": "1.0.2",
+  "private": true,
+  "type": "module",
+  "exports": "./index.mjs"
+}

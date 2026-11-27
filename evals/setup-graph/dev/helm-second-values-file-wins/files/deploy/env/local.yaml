@@ -1,0 +1,5 @@
+# Local kind cluster. Passed after base.yaml.
+image:
+  tag: "2026.08.1"
+storage:
+  size: 1Gi

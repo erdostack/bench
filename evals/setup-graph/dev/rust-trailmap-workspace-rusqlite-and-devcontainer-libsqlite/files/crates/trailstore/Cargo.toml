@@ -1,0 +1,9 @@
+[package]
+name = "trailstore"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+rusqlite = { workspace = true }
+csv = { workspace = true }
+anyhow = { workspace = true }

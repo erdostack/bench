@@ -1,0 +1,38 @@
+[
+  {
+    "element": "person_by_email.sql",
+    "severity": "critical",
+    "problem": "WHERE lower(email) = lower(:email) cannot use the UNIQUE index on person.email, because that index is on the raw column and the query applies lower() to it. SQLite's plan is SCAN person, so every sidebar open reads the whole person table. On the 60,000-person sample it takes about 15 ms for one lookup against about 0.03 ms for an exact match. The scan grows linearly, so at 1.2 million people it is about 20 times worse and on its own can use the 80 ms p95 budget. This is the slow step, not the graph query.",
+    "fix": "Add an index that matches the expression: CREATE INDEX person_email_lower ON person (lower(email)); and keep the query as written. Emails cannot just be compared exactly, since 17,846 of the 60,000 sample emails contain upper case. Alternatively declare the column email TEXT NOT NULL COLLATE NOCASE UNIQUE and query WHERE email = :email. Check EXPLAIN QUERY PLAN shows SEARCH, not SCAN."
+  },
+  {
+    "element": "person_email_lower",
+    "severity": "high",
+    "problem": "There is no index on lower(email), so the case-insensitive lookup has nothing to use. UNIQUE on email only prevents exact duplicates, so two rows that differ only in case are allowed. The sample has none today, but the loader or CRM can add them and the sidebar would then pick an arbitrary one (fetchone).",
+    "fix": "Create CREATE UNIQUE INDEX person_email_lower ON person (lower(email)); this both serves the lookup and stops case-variant duplicates."
+  },
+  {
+    "element": "intro_candidates",
+    "severity": "medium",
+    "problem": "Makes two sequential queries per sidebar request, and the first one is the slow scan. fetchone() on lower(email) silently takes an arbitrary row if duplicates ever exist. There is no timing or plan check in the code, so a regression like this one is only visible in prod.",
+    "fix": "Fix the lookup index first. Optionally join the lookup into the mutual query so there is one round trip. Add a test that asserts the plan for the email lookup uses an index."
+  },
+  {
+    "element": "mutual_connections.sql",
+    "severity": "low",
+    "problem": "This is the part that looks fine, and it is. k1 is searched by the primary key prefix (a=:me), k2 by the full primary key (a, b), and person by rowid. Because knows is stored in both directions the join needs no extra index. The remaining cost is a temp b-tree for ORDER BY score over all of the rep's connections (average 8 per person in prod, but hubs will be larger), then LIMIT 10.",
+    "fix": "No schema change needed. If hub accounts show up in profiling, cap the candidates or precompute scores for them. Do not spend time here before fixing the email lookup."
+  },
+  {
+    "element": "knows",
+    "severity": "low",
+    "problem": "Stored in both directions by the loader, which doubles the 9 million rows, and nothing in the schema checks that the reverse row exists or that its strength matches. It works for the current query but depends on the loader staying correct. The sample is consistent today.",
+    "fix": "Add a loader check or a trigger that writes both directions in one transaction, or store one row per pair and query with UNION. Document the invariant next to the table."
+  },
+  {
+    "element": "team_by_name.sql",
+    "severity": "low",
+    "problem": "lower(name) = lower(:name) also scans team, and the UNIQUE index on name cannot be used. With only 30 teams on an admin settings page this is harmless and is not part of the sidebar path.",
+    "fix": "Leave it, or declare name with COLLATE NOCASE if you want it to stay consistent with the email fix."
+  }
+]

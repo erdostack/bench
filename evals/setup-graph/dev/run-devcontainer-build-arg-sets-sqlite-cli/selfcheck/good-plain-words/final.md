@@ -1,0 +1,1 @@
+Done. Beware: the README's promise that every copied_from row points at a real manuscript isn't true. Nobody asks SQLite to check it, and three rows already point at witness ids that aren't in the table.

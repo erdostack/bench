@@ -1,0 +1,7 @@
+# Local experiments with the 2026 calendar line. Plain `docker compose up` merges this file;
+# remove it from your checkout if you don't want it.
+services:
+  graph:
+    image: neo4j:2026.05.0-enterprise
+    environment:
+      NEO4J_ACCEPT_LICENSE_AGREEMENT: "eval"

@@ -1,0 +1,9 @@
+# Review: sopgraph
+
+Verdict: false positives. The NEXT subgraph is a set of disjoint simple paths of length <= 39 (one per procedure version), built only by load.py; an anchored expansion over it is linear and tiny. Suppress W012 for these two files or add a numeric bound; no functional change needed.
+
+## Findings
+
+Nothing to report.
+
+Roasted with erdostack: npx skills add usergraphtheory/erdostack

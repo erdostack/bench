@@ -1,0 +1,8 @@
+[
+  {
+    "element": "close_depot",
+    "severity": "high",
+    "problem": "DETACH DELETE silently removes relationships the author may not have thought about.",
+    "fix": "Change to plain DELETE so the statement fails if anything is still attached."
+  }
+]

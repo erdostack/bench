@@ -1,0 +1,5 @@
+[sandpit]
+path = "data/sandpit.sqlite"
+
+[meadowbank]
+path = "data/meadowbank.sqlite"

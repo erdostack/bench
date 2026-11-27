@@ -1,0 +1,14 @@
+[
+  {
+    "element": "HotelAmenity",
+    "severity": "medium",
+    "problem": "Join node; should be a relationship.",
+    "fix": "Make it a rel table."
+  },
+  {
+    "element": "Booking",
+    "severity": "high",
+    "problem": "Also a join node between Guest and Hotel; adds a hop to every account query.",
+    "fix": "Replace with a STAYED_AT relationship from Guest to Hotel carrying check_in and nights."
+  }
+]

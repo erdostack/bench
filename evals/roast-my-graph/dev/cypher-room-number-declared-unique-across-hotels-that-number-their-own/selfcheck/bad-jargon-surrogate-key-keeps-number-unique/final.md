@@ -1,0 +1,1 @@
+See docs/graph/ROAST.md. Top finding: Room.number is a natural key under a uniqueness constraint, and natural keys are brittle; it should be a surrogate UUID with number demoted to an indexed attribute so renumbering after a refurbishment does not cascade.

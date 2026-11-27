@@ -1,0 +1,1 @@
+Review written to docs/graph/ROAST.md and findings.json. Nothing isolation-related: every query filters on $ws. The main issue is performance: duplicates_of expands a dense Blob node (a supernode for popular templates) and File.ws is a denormalised tenant discriminator.

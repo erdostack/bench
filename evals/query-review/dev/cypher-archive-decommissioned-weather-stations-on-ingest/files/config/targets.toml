@@ -1,0 +1,5 @@
+[ingest]
+uri = "neo4j+s://sg-core-1.metnet.internal:7687"
+
+[snapshot]
+uri = "neo4j://localhost:7687"

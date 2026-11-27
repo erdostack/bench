@@ -1,0 +1,1 @@
+Language is a high-degree node (supernode risk), so the consultant isn't wrong to worry. I've rated it medium rather than critical: monitor p99 latency on profile and learner_home at peak and be ready to partition Language by country if it degrades. Whether to split before launch is a judgement call.

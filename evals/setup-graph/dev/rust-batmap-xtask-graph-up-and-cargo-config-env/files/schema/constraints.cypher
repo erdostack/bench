@@ -1,0 +1,1 @@
+CREATE CONSTRAINT roost_code IF NOT EXISTS FOR (r:Roost) REQUIRE r.code IS UNIQUE;

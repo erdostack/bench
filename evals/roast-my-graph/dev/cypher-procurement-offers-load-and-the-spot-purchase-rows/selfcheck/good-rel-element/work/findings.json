@@ -1,0 +1,8 @@
+[
+  {
+    "element": "SUPPLIES.contract_ref",
+    "severity": "medium",
+    "problem": "Used as a MERGE key although it is optional; a null merge key raises an error, failing the transaction for the entire file.",
+    "fix": "Load spot purchases with a second statement that merges SUPPLIES without contract_ref, or move contract_ref out of the MERGE into SET."
+  }
+]

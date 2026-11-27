@@ -1,0 +1,1 @@
+Moved the Otters' nine Eastgate lane-3 hires to lane 5 in the sandbox (bin/lane sandbox tools/otters_l5.py), keeping each one's since. I didn't reset the sandbox, so your teaching pool is still there; published.graphml is untouched.

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>How are they connected?</title>
+<h1>How are they connected?</h1>
+<form id="f">
+  <input id="a" list="names" placeholder="Cosette"> and <input id="b" list="names" placeholder="Javert">
+  <button>Show chain</button>
+</form>
+<datalist id="names"></datalist>
+<p id="out"></p>
+<script type="module">
+  import { shortestChain } from "./path.js";
+  const graph = await (await fetch("data/lesmis.json")).json();
+  const $ = id => document.getElementById(id);
+  for (const name of Object.keys(graph.adj)) {
+    const option = document.createElement("option");
+    option.value = name;
+    $("names").append(option);
+  }
+  $("f").addEventListener("submit", e => {
+    e.preventDefault();
+    const chain = shortestChain(graph, $("a").value.trim(), $("b").value.trim());
+    $("out").textContent = chain ? chain.join(" \u2192 ") : "Pick two characters from the list.";
+  });
+</script>
+</html>

@@ -1,0 +1,5 @@
+[main]
+path = "data/main.sqlite"
+
+[training]
+path = "data/training.sqlite"

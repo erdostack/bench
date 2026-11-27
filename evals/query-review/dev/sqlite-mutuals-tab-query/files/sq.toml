@@ -1,0 +1,9 @@
+default = "dev"
+statement_timeout_s = 30
+history = ".sq_log"
+
+[databases.dev]
+path = "var/dev.db"
+
+[databases.replica]
+path = "var/replica.db"

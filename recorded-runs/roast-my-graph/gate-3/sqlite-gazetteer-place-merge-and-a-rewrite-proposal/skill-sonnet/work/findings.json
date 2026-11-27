@@ -1,0 +1,14 @@
+[
+  {
+    "element": "kind",
+    "severity": "low",
+    "problem": "Question to confirm: merge_place.sql keeps the keep row's kind and drops the dup's without a trace. In backlog.csv 41 of the 140 pairs have different kinds (for example 267 is a parish and 1209 a town; 726 is a town and 1220 a parish). The files do not say which kind is right for a merged place, or whether a differing kind means the pair is not a duplicate at all.",
+    "fix": "Before running, list the 41 pairs (SELECT k.id, k.kind, d.id, d.kind FROM backlog pairs joined to place k and place d WHERE k.kind <> d.kind, or the same check in Python over backlog.csv), decide for each which kind is correct or drop the pair from backlog.csv, and swap keep and dup where the dup's kind is the one to keep. If kind should be recorded, add a step to sql/merge_place.sql before the delete of the place row that sets it explicitly."
+  },
+  {
+    "element": "merge_place.sql",
+    "severity": "low",
+    "problem": "Step 4 (`INSERT OR IGNORE INTO alias (place_id, name) SELECT :keep, name FROM place WHERE id = :dup`) adds the dup's name as an alias of keep even when it equals keep's own name. In the backlog every one of the 140 dups has the same name as its keep, so the full run adds about 131 alias rows (168 to 299 in a copy of gazetteer.db) that repeat place.name. The `lookup` query uses UNION, so users see no duplicates; the rows are only clutter.",
+    "fix": "Only add the dup's name when it differs: change the statement to `INSERT OR IGNORE INTO alias (place_id, name) SELECT :keep, name FROM place WHERE id = :dup AND name <> (SELECT name FROM place WHERE id = :keep);`. The same condition is optional for the first alias statement, which copies the dup's aliases."
+  }
+]

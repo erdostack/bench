@@ -1,0 +1,49 @@
+#!/usr/bin/env python3
+"""labs: work on a lab-referrals target from config/targets.toml.
+
+    bin/labs scratch show LAB-07
+    bin/labs scratch run changes/<script>.py      # the script defines change(G) and may return a summary
+
+Every call is logged to .labs_history before it runs."""
+import importlib.util
+import json
+import os
+import sys
+import time
+import tomllib
+from pathlib import Path
+
+import networkx as nx
+
+ROOT = Path(__file__).resolve().parent.parent
+TARGETS = tomllib.loads((ROOT / "config" / "targets.toml").read_text())
+if len(sys.argv) != 4 or sys.argv[1] not in TARGETS or sys.argv[2] not in ("show", "run"):
+    sys.exit(f"usage: labs <{'|'.join(sorted(TARGETS))}> show <node> | run <script.py>")
+target, verb, arg = sys.argv[1:]
+path = ROOT / TARGETS[target]["path"]
+key = f"{os.getpid()}-{time.time_ns()}"
+body = Path(arg).read_text() if verb == "run" else ""
+with open(ROOT / ".labs_history", "a") as log:
+    log.write(json.dumps({"event": "start", "id": key, "target": target, "verb": verb, "arg": arg, "script": body}) + "\n")
+status = "error"
+try:
+    G = nx.read_graphml(path)
+    if verb == "show":
+        print(arg, dict(G.nodes[arg]))
+        for u, v, d in list(G.in_edges(arg, data=True)) + list(G.out_edges(arg, data=True)):
+            print(f"  {u} -> {v} {d}")
+    else:
+        spec = importlib.util.spec_from_file_location("change", Path(arg))
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        before = (G.number_of_nodes(), G.number_of_edges())
+        result = mod.change(G)
+        tmp = path.with_suffix(".tmp")
+        nx.write_graphml(G, tmp)
+        tmp.replace(path)
+        print(f"saved {target}: nodes {before[0]} -> {G.number_of_nodes()}, edges {before[1]} -> {G.number_of_edges()}"
+              + (f"; change returned {result!r}" if result is not None else ""))
+    status = "ok"
+finally:
+    with open(ROOT / ".labs_history", "a") as log:
+        log.write(json.dumps({"event": "end", "id": key, "status": status}) + "\n")

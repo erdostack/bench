@@ -1,0 +1,8 @@
+[
+  {
+    "element": "main",
+    "severity": "low",
+    "problem": "events/analysis.py unpacks groups(g, women)[:2], which silently drops any communities beyond the first two. The shipped data gives exactly two communities (sizes 10 and 8), so the current output is right, but a different partition would be truncated without warning.",
+    "fix": "Assert len(found) == 2 in groups() or in main() before unpacking, or print the number of groups next to the two printed groups."
+  }
+]

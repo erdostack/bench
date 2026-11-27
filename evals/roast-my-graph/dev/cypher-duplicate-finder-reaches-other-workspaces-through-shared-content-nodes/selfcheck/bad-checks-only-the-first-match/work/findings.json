@@ -1,0 +1,14 @@
+[
+  {
+    "element": "list_folder",
+    "severity": "low",
+    "problem": "Uses the ws property instead of the IN relationship.",
+    "fix": "Make the queries consistent."
+  },
+  {
+    "element": "shared_with_me",
+    "severity": "low",
+    "problem": "LIMIT without paging.",
+    "fix": "Add keyset paging."
+  }
+]

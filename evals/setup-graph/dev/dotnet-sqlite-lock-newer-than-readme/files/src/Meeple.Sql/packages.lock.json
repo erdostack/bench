@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net9.0": {
+      "Microsoft.Data.Sqlite": {
+        "type": "Direct",
+        "requested": "[9.0.*, )",
+        "resolved": "9.0.10",
+        "contentHash": "4d6963726f736f66742e446174612e53716c6974=="
+      },
+      "Microsoft.Data.Sqlite.Core": {
+        "type": "Transitive",
+        "resolved": "9.0.10",
+        "contentHash": "4d6963726f736f66742e446174612e53716c6974=="
+      },
+      "SQLitePCLRaw.bundle_e_sqlite3": {
+        "type": "Transitive",
+        "resolved": "2.1.10",
+        "contentHash": "53514c69746550434c5261772e62756e646c655f=="
+      },
+      "SQLitePCLRaw.core": {
+        "type": "Transitive",
+        "resolved": "2.1.10",
+        "contentHash": "53514c69746550434c5261772e636f7265322e31=="
+      },
+      "SQLitePCLRaw.lib.e_sqlite3": {
+        "type": "Transitive",
+        "resolved": "2.1.10",
+        "contentHash": "53514c69746550434c5261772e6c69622e655f73=="
+      },
+      "SQLitePCLRaw.provider.e_sqlite3": {
+        "type": "Transitive",
+        "resolved": "2.1.10",
+        "contentHash": "53514c69746550434c5261772e70726f76696465=="
+      }
+    }
+  }
+}

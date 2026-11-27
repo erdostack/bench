@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. Expect a syntax error at `CYCLE id SET looped USING path` when you run either file in queries/: PG 13 doesn't have SEARCH/CYCLE for recursive CTEs (added in 14, as your CHANGELOG notes).

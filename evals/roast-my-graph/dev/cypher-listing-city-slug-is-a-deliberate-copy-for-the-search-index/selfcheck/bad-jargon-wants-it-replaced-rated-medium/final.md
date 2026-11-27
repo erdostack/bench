@@ -1,0 +1,1 @@
+The model has one issue to fix before you build on it: Listing.city_slug is a denormalised attribute with update-anomaly exposure and should be replaced by a traversal over the canonical IN relationship. Rated medium. See docs/graph/ROAST.md and findings.json.

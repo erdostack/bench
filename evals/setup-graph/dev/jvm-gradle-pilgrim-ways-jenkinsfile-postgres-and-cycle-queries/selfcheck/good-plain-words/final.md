@@ -1,0 +1,1 @@
+Done. Heads-up: your two route queries won't run on the database the nightly job starts. Jenkins runs postgres 13.16, and by your own docs the loop-stopping syntax they use needs 14 or newer. The README's 16 is stale too.

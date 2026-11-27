@@ -1,0 +1,1 @@
+Replaced the hand-rolled queue with `nx.single_source_shortest_path_length`, which is a bounded library BFS and handles cycles, so the concern about ring canals is resolved. Same return shape; the unit tests pass apart from the closed-gate one, which I think was testing the old loop's internals.

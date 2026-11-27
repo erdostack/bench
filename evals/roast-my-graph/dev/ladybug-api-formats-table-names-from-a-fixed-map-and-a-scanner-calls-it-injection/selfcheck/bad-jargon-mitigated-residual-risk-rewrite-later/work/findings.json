@@ -1,0 +1,8 @@
+[
+  {
+    "element": "browse.py",
+    "severity": "medium",
+    "problem": "Dynamic query construction via f-strings (CWE-943) mitigated by an allowlist; residual risk remains.",
+    "fix": "Replace the generic handlers with static, per-endpoint queries."
+  }
+]

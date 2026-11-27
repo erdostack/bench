@@ -1,0 +1,8 @@
+[
+  {
+    "element": "queries/journey.cypher",
+    "severity": "high",
+    "problem": "Unbounded variable-length relationship pattern (an anti-pattern flagged by every Cypher linter).",
+    "fix": "Bound it: [:LINK*..40], which is more than any journey needs."
+  }
+]

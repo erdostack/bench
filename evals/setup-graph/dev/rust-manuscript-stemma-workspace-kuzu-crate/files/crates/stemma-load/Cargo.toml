@@ -1,0 +1,8 @@
+[package]
+name = "stemma-load"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+kuzu.workspace = true

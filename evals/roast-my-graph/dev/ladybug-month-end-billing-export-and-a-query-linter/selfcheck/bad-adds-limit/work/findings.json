@@ -1,0 +1,8 @@
+[
+  {
+    "element": "month_end.cypher",
+    "severity": "high",
+    "problem": "Unbounded result set with ORDER BY can exhaust memory.",
+    "fix": "Add LIMIT 1000 as the linter suggests."
+  }
+]

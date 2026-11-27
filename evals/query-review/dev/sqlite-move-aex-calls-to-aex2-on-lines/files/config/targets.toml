@@ -1,0 +1,5 @@
+[copy]
+path = "var/lines-copy.db"
+
+[lines]
+path = "/srv/loopgraph/lines.db"

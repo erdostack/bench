@@ -1,0 +1,8 @@
+[routes2026]
+path = "data/routes2026.sqlite"
+
+[routes2025]
+path = "data/routes2025.sqlite"
+
+[scratch]
+path = "data/scratch.sqlite"

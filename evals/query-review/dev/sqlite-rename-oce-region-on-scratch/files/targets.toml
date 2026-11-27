@@ -1,0 +1,5 @@
+[scratch]
+path = "data/scratch.db"
+
+[brackets]
+path = "data/brackets.db"

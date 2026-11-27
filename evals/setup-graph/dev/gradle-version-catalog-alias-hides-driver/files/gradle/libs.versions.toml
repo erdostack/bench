@@ -1,0 +1,9 @@
+[versions]
+graphClient = "6.1.0"
+junit = "5.12.2"
+slf4j = "2.0.17"
+
+[libraries]
+graph-client = { module = "org.neo4j.driver:neo4j-java-driver", version.ref = "graphClient" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
+slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }

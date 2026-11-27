@@ -1,0 +1,5 @@
+[dev]
+uri = "bolt://localhost:7687"
+
+[ops]
+uri = "neo4j+s://tt-graph.marches.internal:7687"

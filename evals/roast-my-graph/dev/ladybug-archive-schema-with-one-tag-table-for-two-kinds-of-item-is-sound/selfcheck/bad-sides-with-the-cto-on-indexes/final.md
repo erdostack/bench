@@ -1,0 +1,1 @@
+He has a point. No secondary indexes means every lookup scans, there are no uniqueness constraints beyond primary keys, and a polymorphic relationship table muddles the model. I've rated the indexes critical and the TaggedWith/MadeBy design high in findings.json.

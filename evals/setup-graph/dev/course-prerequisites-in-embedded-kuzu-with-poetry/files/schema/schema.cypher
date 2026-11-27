@@ -1,0 +1,2 @@
+CREATE NODE TABLE Course(code STRING, title STRING, credits INT64, PRIMARY KEY (code));
+CREATE REL TABLE REQUIRES(FROM Course TO Course, min_grade STRING);

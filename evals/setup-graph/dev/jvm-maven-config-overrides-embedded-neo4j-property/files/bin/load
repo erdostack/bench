@@ -1,0 +1,4 @@
+#!/bin/sh
+# Rebuild data/store/ from data/corpus/.
+set -eu
+exec ./mvnw -q exec:java -Dexec.mainClass=org.citeweave.Load -Dexec.args="data/corpus data/store"

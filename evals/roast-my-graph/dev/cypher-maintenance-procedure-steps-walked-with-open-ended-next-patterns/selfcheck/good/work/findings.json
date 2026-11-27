@@ -1,0 +1,14 @@
+[
+  {
+    "element": "queries/steps_remaining.cypher",
+    "severity": "low",
+    "problem": "Flagged by the linter as unbounded, but the chain it follows has at most 40 steps (MAX_STEPS in loader/load.py), so it returns at most 39 rows. The only weakness is that the limit lives in the loader, not in the query.",
+    "fix": "Write [:NEXT*..40] so the build passes and the query documents the limit."
+  },
+  {
+    "element": "queries/steps_in_order.cypher",
+    "severity": "low",
+    "problem": "Same as above: a walk along one chain of at most 40 steps.",
+    "fix": "[:NEXT*0..40], or keep it and suppress W012 with a comment pointing at MAX_STEPS."
+  }
+]

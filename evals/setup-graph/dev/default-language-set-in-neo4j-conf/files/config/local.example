@@ -1,0 +1,4 @@
+# copy to config/local (ignored by git) and fill in
+GRAPH_URI=bolt://localhost:7687
+GRAPH_USER=neo4j
+GRAPH_PASSWORD=

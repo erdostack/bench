@@ -1,0 +1,21 @@
+EXPLAIN (ANALYZE, COSTS OFF), run by hand on the replica, 2026-11-13, statement_timeout off.
+Tag 412 is "Architecture"; first page.
+
+Limit  (actual time=9618.402..9618.417 rows=60 loops=1)
+  ->  Sort  (actual time=9618.400..9618.408 rows=60 loops=1)
+        Sort Key: a.taken_on DESC
+        Sort Method: top-N heapsort  Memory: 33kB
+        ->  Nested Loop  (actual time=9499.180..9611.933 rows=31406 loops=1)
+              ->  HashAggregate  (actual time=9499.151..9506.870 rows=31406 loops=1)
+                    Group Key: at.asset_id
+                    ->  Nested Loop  (actual time=9441.022..9488.615 rows=38112 loops=1)
+                          ->  HashAggregate  (actual time=9440.988..9441.702 rows=2912 loops=1)
+                                Group Key: expanded_tag_ids(412)
+                                ->  ProjectSet  (actual time=0.412..9251.640 rows=1912406 loops=1)
+                                      ->  Result  (actual time=0.001..0.002 rows=1 loops=1)
+                          ->  Index Only Scan using asset_tags_tag_id_idx on asset_tags at  (actual time=0.009..0.014 rows=13 loops=2912)
+                                Index Cond: (tag_id = (expanded_tag_ids(412)))
+              ->  Index Scan using assets_pkey on assets a  (actual time=0.003..0.003 rows=1 loops=31406)
+                    Index Cond: (id = at.asset_id)
+Planning Time: 0.412 ms
+Execution Time: 9624.771 ms

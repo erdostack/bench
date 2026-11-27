@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/parcelhub
+    username: parcelhub
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false

@@ -1,0 +1,8 @@
+[
+  {
+    "element": "retired_on",
+    "severity": "medium",
+    "problem": "Soft-delete flag: filter-omission risk on every read, and the active set is a minority of the label (18,000 of 64,000), so queries scan mostly dead rows.",
+    "fix": "Evaluate hard delete or an archive database for retired products, subject to auditor sign-off."
+  }
+]

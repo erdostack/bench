@@ -1,0 +1,10 @@
+id: brake-pad-replacement
+version: 3
+title: Replace bogie brake pads
+steps:
+  - Isolate the vehicle and apply the parking brake.
+  - Fit the isolation tags to both cab desks.
+  - Release the brake caliper retaining pins.
+  - Remove the worn pads and measure the disc.
+  - Fit new pads and refit the retaining pins.
+  - Run the brake test and record the result.

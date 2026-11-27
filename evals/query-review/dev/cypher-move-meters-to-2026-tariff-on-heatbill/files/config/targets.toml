@@ -1,0 +1,3 @@
+[heatbill]
+uri = "neo4j+s://heatbill.billing.example:7687"
+database = "heatbill"

@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. Two problems: README.md says SQLite 3.40.1, but the Makefile builds docker/cli.Dockerfile (3.46.1); and the foreign keys docs/model.md relies on are never switched on, so canal.db already holds locks pointing at pounds that don't exist.

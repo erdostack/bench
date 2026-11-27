@@ -1,0 +1,9 @@
+CREATE TABLE routes (id INTEGER PRIMARY KEY, name TEXT NOT NULL UNIQUE);
+CREATE TABLE points (id INTEGER PRIMARY KEY, code TEXT NOT NULL UNIQUE, lat REAL, lon REAL);
+CREATE TABLE stops (
+    route  INTEGER NOT NULL REFERENCES routes(id),
+    point  INTEGER NOT NULL REFERENCES points(id),
+    seq    INTEGER NOT NULL,
+    PRIMARY KEY (route, point)
+) WITHOUT ROWID;
+CREATE INDEX stops_point ON stops (point);

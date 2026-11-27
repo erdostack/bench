@@ -1,0 +1,60 @@
+version = 1
+revision = 2
+requires-python = ">=3.12"
+
+[[package]]
+name = "tidepool-accounts"
+version = "2.4.1"
+source = { virtual = "." }
+dependencies = [
+    { name = "fastapi" },
+    { name = "psycopg", extra = ["binary"] },
+]
+
+[[package]]
+name = "fastapi"
+version = "0.115.12"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/7e/a3/07515737b96e2f2727d0e9049cf9e69444136b81c59403fbbd256d19/fastapi-0.115.12-py3-none-any.whl", hash = "sha256:7ea307515737b96e2f2727d0e9049cf9e69444136b81c59403fbbd256d193c9c", size = 32026 },
+]
+
+[[package]]
+name = "psycopg"
+version = "3.2.9"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b9/71/7b2f7f66d923e83bd18103fb90c99b5956361fd4cb18d764d634ca6f/psycopg-3.2.9-py3-none-any.whl", hash = "sha256:b9717b2f7f66d923e83bd18103fb90c99b5956361fd4cb18d764d634ca6ffc60", size = 32967 },
+]
+
+[[package]]
+name = "psycopg-binary"
+version = "3.2.9"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1c/51/6ca04db48503677db333439a3c49b1249f46b5001946a3a3110811af/psycopg_binary-3.2.9-py3-none-any.whl", hash = "sha256:1c516ca04db48503677db333439a3c49b1249f46b5001946a3a3110811afd649", size = 30453 },
+]
+
+[[package]]
+name = "pydantic"
+version = "2.11.4"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d9/48/67d001d26443573b334ed1dd8173995adf3a07cd918df6fe65ff5859/pydantic-2.11.4-py3-none-any.whl", hash = "sha256:d94867d001d26443573b334ed1dd8173995adf3a07cd918df6fe65ff5859c5a1", size = 33476 },
+]
+
+[[package]]
+name = "pytest"
+version = "8.3.5"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/17/bb/ed241765177c55895636ab638dfa6441506fe9f8d2241a2094b9625b/pytest-8.3.5-py3-none-any.whl", hash = "sha256:17bbed241765177c55895636ab638dfa6441506fe9f8d2241a2094b9625b23f6", size = 30379 },
+]
+
+[[package]]
+name = "starlette"
+version = "0.46.2"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/9b/42/fbdb16e2cdf1eacd4540689bc12131d51454d9134c46cc0ee9e08b79/starlette-0.46.2-py3-none-any.whl", hash = "sha256:9b42fbdb16e2cdf1eacd4540689bc12131d51454d9134c46cc0ee9e08b79a747", size = 32484 },
+]

@@ -1,0 +1,7 @@
+[gis]
+uri = "neo4j+s://gis-graph.ops.riverbend-water.example.net:7687"
+database = "assets"
+
+[scratch]
+uri = "neo4j://scratch-graph.dev.riverbend-water.example.net:7687"
+database = "assets"

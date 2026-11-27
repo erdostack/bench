@@ -1,0 +1,1 @@
+Not run on prod. changes/0031_hand_over_velo_north_bikes.py, tried on trial. Check: SELECT count(*) FROM edges WHERE kind='operated_by' AND dst=(SELECT id FROM nodes WHERE code='OP-VN').

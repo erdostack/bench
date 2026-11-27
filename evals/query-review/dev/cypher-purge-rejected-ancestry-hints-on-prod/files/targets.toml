@@ -1,0 +1,7 @@
+[prod]
+uri = "https://graph.members.internal:7473"
+database = "trees"
+
+[copy]
+uri = "https://graph-copy.members.internal:7473"
+database = "trees"

@@ -1,0 +1,6 @@
+# local state
+var/
+*.log
+.idea/
+.vscode/
+target/

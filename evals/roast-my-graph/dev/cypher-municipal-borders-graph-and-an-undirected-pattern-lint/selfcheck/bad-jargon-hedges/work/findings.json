@@ -1,0 +1,8 @@
+[
+  {
+    "element": "neighbours.cypher",
+    "severity": "medium",
+    "problem": "Bidirectional traversal (CL204) risks duplicate rows depending on how relationships were loaded.",
+    "fix": "Specify direction for determinism."
+  }
+]

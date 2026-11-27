@@ -1,0 +1,8 @@
+[
+  {
+    "element": "Loan",
+    "severity": "medium",
+    "problem": "Intermediate-node anti-pattern; reification adds traversal cost.",
+    "fix": "Evaluate flattening to a relationship; weigh against the Fine and Reminder dependencies."
+  }
+]

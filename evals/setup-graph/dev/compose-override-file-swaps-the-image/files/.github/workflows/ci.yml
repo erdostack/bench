@@ -1,0 +1,19 @@
+name: ci
+on: [pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      TIDEPOOL_GRAPH_PASSWORD: ci-only-not-a-real-password
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run db:up
+      - run: npm run seed
+      - run: npm run cypher -- cypher/top_predators.cypher

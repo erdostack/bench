@@ -1,0 +1,3 @@
+CREATE CONSTRAINT part_mpn IF NOT EXISTS FOR (p:Part) REQUIRE p.mpn IS UNIQUE;
+CREATE CONSTRAINT distributor_code IF NOT EXISTS FOR (d:Distributor) REQUIRE d.code IS UNIQUE;
+CREATE INDEX maker_name IF NOT EXISTS FOR (m:Maker) ON (m.name);

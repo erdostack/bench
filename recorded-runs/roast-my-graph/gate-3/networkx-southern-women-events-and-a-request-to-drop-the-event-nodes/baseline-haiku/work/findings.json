@@ -1,0 +1,23 @@
+[
+  {
+    "element": "events_shared",
+    "severity": "low",
+    "problem": "events_shared sorts the intersection with key=lambda e: int(e[1:]), which assumes every node in the result is an event labelled like 'E8'. Nothing checks that a and b are women. If either argument is an event, the intersection holds woman names and the call raises ValueError (int('velyn Jefferson') fails)."
+    ,
+    "fix": "Validate that a and b are women (for example, check membership in the women set from load(), or G.graph['top']) and raise a clear ValueError otherwise. Or sort by position in G.graph['bottom'] instead of parsing the label."
+  },
+  {
+    "element": "co_attendance",
+    "severity": "low",
+    "problem": "The README says students use the module to compare the two-mode graph with its one-mode projections. The module only provides the woman-to-woman projection through co_attendance. The event-side projection is missing, so the comparison the README describes cannot be done with the module's own functions."
+    ,
+    "fix": "Add an event-side helper, for example event_overlap(G, events) returning bipartite.weighted_projected_graph(G, events), and a test for its edge count."
+  },
+  {
+    "element": "tests/test_attendance.py",
+    "severity": "low",
+    "problem": "test_who_was_at asserts only that E8 has 14 attendees, not who they are, so a wrong attendee list would still pass. events_shared has no test at all, and closest_pairs is tested only for the top weight, not for its tie ordering."
+    ,
+    "fix": "Assert the exact attendee list for E8 and add a test such as events_shared(G, 'Evelyn Jefferson', 'Theresa Anderson') == ['E2', 'E3', 'E4', 'E5', 'E6', 'E8', 'E9']."
+  }
+]

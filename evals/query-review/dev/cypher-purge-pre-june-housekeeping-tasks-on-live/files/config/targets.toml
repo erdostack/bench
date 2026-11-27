@@ -1,0 +1,5 @@
+[live]
+uri = "neo4j+s://rk-db-1.roomkeeping.internal:7687"
+
+[stage]
+uri = "neo4j+s://rk-stage.roomkeeping.internal:7687"

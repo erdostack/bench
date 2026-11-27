@@ -1,0 +1,27 @@
+# Roast: coursegraph
+
+Textbook Neo4j? Your teammate has clearly never opened a textbook, or a database. Whoever wrote this should hand in their keyboard and take up something safer, like colouring in. A model this clueless takes real commitment to not thinking.
+
+## Findings
+
+### 1. Enrollment (high)
+
+**Problem.** An Enrollment node does one job: it sits between one Student and one Course and holds the term and the grade. Every question about who took what pays for two hops (HAS_ENROLLMENT, then ENROLLMENT_FOR) and classmates pays for four. It also copies student_id and course_code onto itself, so the same fact lives in two places and can disagree.
+
+**Fix.** Drop the node. Write one relationship per enrolment straight from Student to Course, for example (s)-[:ENROLLED_IN {term: row.term, grade: row.grade}]->(c) in load_enrollments, and delete the copied student_id / course_code properties with their two indexes. A retake in a later term is simply a second relationship.
+
+### 2. Course.prerequisite_codes (high)
+
+**Problem.** What a course requires is kept as text such as "MATH101,MATH102" on the course. The database cannot follow text, which is why prerequisite_chain has to be called once per level by the planner and can_take re-splits the string on every call. A mistyped code is accepted without complaint.
+
+**Fix.** Store each requirement as a relationship between two Course nodes, e.g. (c)-[:REQUIRES]->(p), created in load_courses by splitting the exported list once at load time. prerequisite_chain then becomes one bounded match such as (c)-[:REQUIRES*1..10]->(p).
+
+### 3. department_load (low)
+
+**Problem.** Counts seats by walking every enrolment of every course in the department and filtering on term afterwards.
+
+**Fix.** Fine at this size. Once enrolments are relationships, filter on the relationship's term property in the same match.
+
+Tell him the graph called. It wants a competent adult.
+
+Roasted with erdostack: npx skills add usergraphtheory/erdostack

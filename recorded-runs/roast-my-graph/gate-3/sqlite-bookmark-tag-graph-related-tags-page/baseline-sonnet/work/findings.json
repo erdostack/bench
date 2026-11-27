@@ -1,0 +1,32 @@
+[
+  {
+    "element": "tag.name",
+    "severity": "critical",
+    "problem": "name is declared `TEXT NOT NULL UNIQUE`, so its implicit index (sqlite_autoindex_tag_1) uses BINARY collation. Every lookup the app does is `name = :tag COLLATE NOCASE`, which cannot use that index. EXPLAIN QUERY PLAN shows SCAN tag, so each tag page reads all tags (about 450,000 in production) and the cost grows linearly with tag count. UNIQUE is also case-sensitive, so the sample has 'BIRDS', 'Birds' and 'birds' as three separate tags.",
+    "fix": "Make the collation part of the column: `name TEXT NOT NULL COLLATE NOCASE UNIQUE`. Lookups then become an index SEARCH and duplicates that differ only by case are rejected. Merge existing case variants first, by repointing bookmark_tag rows to one surviving id. Alternatively, store a normalized lowercase `name_key` column with a UNIQUE index and look up by that."
+  },
+  {
+    "element": "queries/tag_id.sql",
+    "severity": "high",
+    "problem": "`WHERE name = :tag COLLATE NOCASE ORDER BY id LIMIT 1` is a full SCAN of tag because the unique index on name is BINARY (plan: SCAN tag). It runs on every tag page request, since the API resolves the id first. It also silently picks only the lowest id among case variants, so /tag/Python shows one variant's bookmarks and not the others.",
+    "fix": "After the tag.name collation fix, keep the query as is, and it becomes an index SEARCH. The plain `ORDER BY id LIMIT 1` can then go, because names are unique per case-insensitive value. Verify with EXPLAIN QUERY PLAN that it shows SEARCH tag USING INDEX sqlite_autoindex_tag_1."
+  },
+  {
+    "element": "queries/related_tags.sql",
+    "severity": "critical",
+    "problem": "The CTE `t` is flattened into the join. The plan starts with `SCAN bt USING COVERING INDEX bookmark_tag_by_tag`, which walks the whole 30 million row bookmark_tag index and then checks tag.id and name for each row, instead of starting from the one tag. This runs on every tag page. Its work grows with total table size and not with the size of the tag. After that, the self-join expands the tag's bookmarks (up to 40,000 for the largest tag) into bt2 rows, plus a temp B-tree for GROUP BY and another for ORDER BY. Because of the case-insensitive match, case variants of the same tag are also counted as 'related' to themselves (searching 'birds' returns 'BIRDS' and 'Birds' as related tags).",
+    "fix": "Resolve the tag id first and drive from `bookmark_tag_by_tag (tag_id=?)`. For example, use `WITH t AS MATERIALIZED (SELECT id FROM tag WHERE name = :tag COLLATE NOCASE)` and `WHERE bt.tag_id IN (SELECT id FROM t)`, or take :tag_id from the already-resolved id. On the sample this plan shows SEARCH bt USING COVERING INDEX bookmark_tag_by_tag (tag_id=?) and ran about 2.5x faster. With the collation fix in place, exclude variants of the same tag. For the biggest tags, precompute the top 20 related tags into a cache table refreshed offline, because the self-join still touches every co-tagged row."
+  },
+  {
+    "element": "queries/bookmarks_for_tag.sql",
+    "severity": "low",
+    "problem": "This query is fine: SEARCH bt USING COVERING INDEX bookmark_tag_by_tag (tag_id=?), then SEARCH b by primary key, with no sort step because the index returns bookmark_id in order and it stops after 50 rows. It is not a cause of the slowdown. The only weakness is that it is exact-match on one id, so it ignores case variants of the tag that related_tags.sql counts.",
+    "fix": "Leave the query as is. Once tag names are unique case-insensitively, one id covers the whole tag and it stays consistent with related_tags.sql. If you ever page deeper than 50, use keyset paging (`AND bt.bookmark_id < :last_id`) instead of OFFSET."
+  },
+  {
+    "element": "bookmark_tag_by_tag",
+    "severity": "low",
+    "problem": "The index on (tag_id, bookmark_id) is needed for tag lookups and for the DESC order, so it is not redundant with the primary key (bookmark_id, tag_id). It is the only thing keeping bookmarks_for_tag.sql fast, and related_tags.sql currently bypasses it by scanning it from the start.",
+    "fix": "Keep it. No change required beyond making related_tags.sql actually seek into it."
+  }
+]

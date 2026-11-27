@@ -1,0 +1,26 @@
+[
+  {
+    "element": "staging_edge",
+    "severity": "critical",
+    "problem": "All three region loads run at 01:00 (ops/crontab) and share one staging_edge table. load_region() clears it with an unfiltered DELETE FROM staging_edge (loader/load_region.py line 26), so when south starts it wipes north's staged rows before north validates. North's validate() then finds nothing for north, passes, and the swap deletes north's edge rows and inserts zero rows. Reproduced in a scratch SQLite database (SQLite 3.53.1): north ends with 0 edges. The gritting planner at 03:00 then has no north network.",
+    "fix": "Scope the clear to the region: change line 26 to DELETE FROM staging_edge WHERE region = ? and pass region as the parameter. Remove the '# lint: ignore SQL-DEL-001' comment, because the reason given ('staging is scratch space, ours to clear') is false for a table shared by three loaders. Each region then only touches its own staged rows."
+  },
+  {
+    "element": "load_region",
+    "severity": "high",
+    "problem": "When validate() returns problems, load_region() raises SystemExit before the swap, so edge keeps the previous night's rows for that region. Nothing in the repo records the failed load or marks the region stale, and the planner reads edge at 03:00 as if it were current. A failed validation therefore routes gritting crews on yesterday's network, which can include roads closed since.",
+    "fix": "Add a load_status table (region, loaded_at, ok) and write the row in the same transaction as the DELETE/INSERT swap, and write a failed row when validation fails. The planner refuses or flags any region whose latest status is not a successful load from the current night. Have the cron entries alert on a non-zero exit as well."
+  },
+  {
+    "element": "validate",
+    "severity": "medium",
+    "problem": "validate() runs two SELECTs against node for every staged edge, in Python, and the README says validation is most of the 20 to 40 minute load. Node and edge rows are checked one at a time, so the database's join is not used. This is the application doing the database's job, and it lengthens the window in which staging_edge is in use (see the critical finding).",
+    "fix": "Replace the loop with one set-based query for the region: SELECT s.src, s.dst, s.km FROM staging_edge s WHERE s.region = ? AND (s.km <= 0 OR NOT EXISTS (SELECT 1 FROM node n WHERE n.id = s.src AND n.region = s.region) OR NOT EXISTS (SELECT 1 FROM node n WHERE n.id = s.dst AND n.region = s.region)). Keep the error text by formatting the returned rows. Confirm the timing on the real export; the repo does not state the engine version or row counts."
+  },
+  {
+    "element": "node",
+    "severity": "low",
+    "problem": "Nothing in sql/schema.sql, loader/ or ops/ writes to node. The validator and the edge foreign keys depend on it, so if node is empty every load fails validation. The populating step is not in these files. Question to confirm: where is node loaded, and is it refreshed before the 01:00 loads?",
+    "fix": "Confirm the process that fills node, and document it in the README next to the nightly load. If it lives elsewhere, add a check that node has rows for each region before validation starts."
+  }
+]

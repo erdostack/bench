@@ -1,0 +1,5 @@
+[planner]
+path = "data/planner.db"
+
+[rehearsal]
+path = "data/rehearsal.db"

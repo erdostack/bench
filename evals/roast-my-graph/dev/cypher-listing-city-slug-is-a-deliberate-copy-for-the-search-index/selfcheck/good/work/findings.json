@@ -1,0 +1,14 @@
+[
+  {
+    "element": "Listing.city_slug",
+    "severity": "low",
+    "problem": "The city is written down twice: once as the IN relationship and once as this property. Normally that is how two answers to one question start. Here it is pinned down: a listing never moves city, create_listing copies the slug from the City it has just matched, and nothing else writes it. And it earns its keep, since search_city reads one index range instead of walking 212,000 listings from the City node and sorting them.",
+    "fix": "Keep it. If you want a tripwire, a nightly count of listings whose city_slug differs from the slug of the City they are IN should always be zero."
+  },
+  {
+    "element": "search_city",
+    "severity": "low",
+    "problem": "SKIP $offset still walks past every skipped row, so page 400 of a big city costs more than page 1.",
+    "fix": "Fine at 24 a page. If people really page deep, pass the last price and id seen instead of an offset."
+  }
+]

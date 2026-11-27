@@ -1,0 +1,8 @@
+image:
+  repository: neo4j
+  tag: "2026.08.1-community"
+neo4jConfig:
+  server.memory.heap.max_size: 2G
+  server.memory.pagecache.size: 1G
+storage:
+  size: 10Gi

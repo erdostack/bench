@@ -1,0 +1,62 @@
+[
+  {
+    "element": "connect",
+    "severity": "critical",
+    "problem": "Foreign keys are never actually enabled in production. db.connect opens the connection with autocommit=False, which starts a transaction immediately, and PRAGMA foreign_keys = ON is a silent no-op inside a transaction. Checked: db.connect(':memory:') reports PRAGMA foreign_keys = 0 and in_transaction = True. So the ON DELETE RESTRICT guarantee in the README does not hold: on the real connection 'svc-catalog decommission auth' deleted 'auth' while 'billing' still depended on it, and add_dependency accepted a provider id 99 that does not exist. The 'refused: still used by' path can never trigger.",
+    "fix": "Execute PRAGMA foreign_keys = ON before a transaction begins, which with autocommit=False means opening with sqlite3.connect(path, autocommit=True), running the PRAGMA, then setting con.autocommit = False. Verify with PRAGMA foreign_keys and fail loudly in connect() if the value is not 1. Do not let other teams run decommission until this is fixed."
+  },
+  {
+    "element": "depends_on",
+    "severity": "critical",
+    "problem": "The data is already damaged by the bug above. In catalog.db (last Friday's copy) PRAGMA foreign_key_check reports 162 violations: 9 service ids in 1..1800 no longer exist (33, 44, 76, 81, 111, 206, 211, 216, 395), and 124 depends_on rows still point to them as provider_id, 38 more as consumer_id. Services that depended on the removed providers are listed as healthy, and the catalogue has been giving wrong answers to blast-radius.",
+    "fix": "Take a backup. Find out who should own the 9 removed services and whether their removal was intended. Then delete or restore the orphan rows deliberately, rerun PRAGMA foreign_key_check until empty, and add that check to CI and to a nightly job."
+  },
+  {
+    "element": "tests/test_graph.py",
+    "severity": "high",
+    "problem": "The tests are green only because they never use the code under test for the connection. The 'con' fixture opens its own sqlite3.connect(':memory:') in legacy mode and turns foreign keys on there, instead of calling catalog.db.connect. So the four tests pass while the real CLI path enforces nothing. There is no test of catalog/__main__.py, of db.connect, or of the shipped catalog.db schema.",
+    "fix": "Make the fixture call db.connect(':memory:') (or a temp file) and load schema.sql through it. Add a test that asserts PRAGMA foreign_keys returns 1 on connect(), and an end-to-end test of main(['decommission', ...]) that checks the exit code and message."
+  },
+  {
+    "element": "decommission",
+    "severity": "high",
+    "problem": "Safety rests on one mechanism (the database raising IntegrityError) and the only check of the result is catching that error. There is no explicit dependents check before the DELETE, no dry run, no confirmation, no audit record of who removed what, no ownership check (any team can remove any service), and no way to undo a removal besides the weekly copy. With foreign keys off, the DELETE just succeeds. Also, ON DELETE CASCADE on depends_on.consumer_id silently deletes a removed service's own outgoing edges, with nothing recorded.",
+    "fix": "Check dependents(con, name) before deleting and refuse in code. Add --dry-run, a log table recording the service row, its edges, the caller and the time, and an owner_team check or approval step. Decide whether the cascade is wanted, and if so, print how many edges were removed."
+  },
+  {
+    "element": "add_dependency",
+    "severity": "medium",
+    "problem": "Every sqlite3.IntegrityError is reported as UnknownService with ids, e.g. 'UnknownService: 3 -> 2'. A duplicate edge (primary key), a self-dependency (CHECK consumer_id <> provider_id) and a bad 'kind' are all misreported as an unknown service. With foreign keys off, even a genuinely unknown provider gets through (see connect). Cycles are not rejected, so a dependency loop can be added without any warning.",
+    "fix": "Distinguish the cases: check both ids exist, then catch duplicate and CHECK failures and report them with their own messages. Decide whether cycles should be refused and test it."
+  },
+  {
+    "element": "main",
+    "severity": "medium",
+    "problem": "The CLI does not handle UnknownService. 'svc-catalog decommission nosuch', 'add-dep' with a typo and 'blast-radius nosuch' all end in a Python traceback and exit code 1, which is the same code as a refusal. Only InUse is caught. The add-dep and blast-radius branches also print nothing on success, and the decommission branch gives no hint of what the removal did to dependencies.",
+    "fix": "Catch UnknownService in main and print 'unknown service: <name>' with a distinct non-zero exit code. Print a confirmation for add-dep. Cover these paths in the tests."
+  },
+  {
+    "element": "BLAST_RADIUS",
+    "severity": "medium",
+    "problem": "The recursive query terminates on cycles because it uses UNION, which is good, but it treats 'async' and 'sync' dependencies as the same, so an async consumer (which may keep working during an outage) is listed as 'broken'. It also keeps walking through ids that no longer exist in service, and the final JOIN then hides those rows, so after the damage above a chain that passed through a removed service is cut off silently. If the start service is in a cycle it is listed as affected by itself.",
+    "fix": "Add the dependency kind to the output or a --sync-only option, and fail or warn when the walk hits an id missing from service. Exclude the start id explicitly and document the cycle behaviour."
+  },
+  {
+    "element": "README.md",
+    "severity": "medium",
+    "problem": "The README states guarantees ('refuses to remove a service that anything still depends on', 'cannot point at a service that does not exist') that are false as shipped, as shown above, and that incident commanders rely on during outages. 'catalog.db here is last Friday's copy' also means the repo carries a binary snapshot with no note on how it is refreshed or checked.",
+    "fix": "Correct the README once connect() is fixed and tested. Add a section on integrity checks, backups and who may decommission. Do not keep the database file in the repo, or say how it is produced."
+  },
+  {
+    "element": "depends_on_provider",
+    "severity": "low",
+    "problem": "The index depends_on_provider(provider_id, consumer_id) is right for 'who depends on X' and the recursive walk, and is not a problem. But there is no index or constraint covering service.owner_team, and no created_at, removed_at or soft-delete column, so the history of services is not kept anywhere.",
+    "fix": "If decommission is going to be self-service, consider a status or removed_at column instead of hard DELETE, so removal can be reversed and audited."
+  },
+  {
+    "element": "pyproject.toml",
+    "severity": "low",
+    "problem": "requires-python is '>=3.12' because db.connect uses the autocommit= parameter, which is new in 3.12. pytest is used by the tests and by [tool.pytest.ini_options] but is not declared as a test dependency, and there is no CI definition in the repo to run the tests or any foreign_key_check.",
+    "fix": "Add a [project.optional-dependencies] test extra with pytest, and a CI job that runs the tests and 'PRAGMA foreign_key_check' against a copy of the database."
+  }
+]

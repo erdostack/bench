@@ -1,0 +1,2 @@
+[registry]
+uri = "neo4j+s://registry.assets.internal:7687"

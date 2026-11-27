@@ -1,0 +1,1 @@
+Not run on prod. changes/20261125-archive-leavers.cypher relabels in batches of 500 and skips members still holding shares. Check first with MATCH (m:Member {status: 'withdrawn'}) ... RETURN count(m).

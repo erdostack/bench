@@ -1,0 +1,3 @@
+[hivebook]
+uri = "neo4j+s://register.calder-moor-bees.example:7687"
+database = "hivebook"

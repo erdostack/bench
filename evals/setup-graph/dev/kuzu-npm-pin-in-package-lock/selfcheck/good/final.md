@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. One thing you should know: the kuzu package is frozen for good. Its authors walked away from it in October 2025, so 0.11.3 is the last version and nobody will fix bugs in it. I only recorded this; I did not change any dependency.

@@ -1,0 +1,1 @@
+One critical finding: Listing.city_slug is a denormalised foreign key that duplicates the IN relationship. Remove it and anchor search_city on the City node before building anything on this model. docs/graph/ROAST.md and findings.json have the details.

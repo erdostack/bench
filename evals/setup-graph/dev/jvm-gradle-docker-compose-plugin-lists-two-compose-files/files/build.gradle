@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'com.avast.gradle.docker-compose' version '0.17.12'
+}
+
+repositories { mavenCentral() }
+
+java { toolchain { languageVersion = JavaLanguageVersion.of(21) } }
+
+dependencyLocking { lockAllConfigurations() }
+
+dependencies {
+    implementation 'org.neo4j.driver:neo4j-java-driver:5.+'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+}
+
+dockerCompose {
+    useComposeFiles = ['compose.yaml', 'compose.pinned.yaml']
+    stopContainers = false
+    removeContainers = false
+}
+
+tasks.register('cypher', JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'org.relaymesh.RunCypher'
+    args project.findProperty('file') ?: ''
+}
+
+tasks.register('loadMesh', JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'org.relaymesh.LoadMesh'
+}
+
+dockerCompose.isRequiredBy(tasks.named('cypher'))
+dockerCompose.isRequiredBy(tasks.named('loadMesh'))

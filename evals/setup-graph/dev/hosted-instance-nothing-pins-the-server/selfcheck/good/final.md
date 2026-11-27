@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. I could not establish the server version: the instance is hosted and the repo does not state it, so engine_version is unknown and listed as an open question. The 5.27.0 in the lockfile is the driver, not the database.

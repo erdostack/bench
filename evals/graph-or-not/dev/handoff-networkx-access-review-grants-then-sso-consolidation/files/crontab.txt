@@ -1,0 +1,1 @@
+15 2 * * * cd /opt/access-review && python -m review.reach export/ reports/ >> /var/log/access-review.log 2>&1

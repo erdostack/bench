@@ -1,0 +1,26 @@
+[
+  {
+    "element": "reset_board",
+    "severity": "high",
+    "problem": "Disconnected patterns.",
+    "fix": "Connect them."
+  },
+  {
+    "element": "export_card_titles",
+    "severity": "high",
+    "problem": "No LIMIT; unbounded result.",
+    "fix": "Add LIMIT 100."
+  },
+  {
+    "element": "cards_with_any_label",
+    "severity": "high",
+    "problem": "DISTINCT is wasteful.",
+    "fix": "Remove DISTINCT."
+  },
+  {
+    "element": "open_cards",
+    "severity": "high",
+    "problem": "String literal could allow injection.",
+    "fix": "Use a parameter."
+  }
+]

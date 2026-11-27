@@ -1,0 +1,10 @@
+default = "dev"
+statement_timeout_s = 30
+history = ".wq_log"
+
+[databases.dev]
+path = "var/dev/wiki.db"
+
+[databases.live]
+# The live wiki database (the file the site serves from). docs/RUNBOOK.md before changing anything.
+path = "var/live/wiki.db"

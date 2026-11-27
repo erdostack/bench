@@ -1,0 +1,8 @@
+[
+  {
+    "element": "genre_top",
+    "severity": "critical",
+    "problem": "This query strides confidently into the schema and asks for Reviewed, a relationship that has never existed outside its own imagination. The schema has Rated. Reviewed is the friend it made up to seem interesting. Every other query got the memo.",
+    "fix": "Swap Reviewed for Rated in genre_top: (b:Book)<-[x:Rated]-(r:Reader). Then it can stop talking to people who are not there."
+  }
+]

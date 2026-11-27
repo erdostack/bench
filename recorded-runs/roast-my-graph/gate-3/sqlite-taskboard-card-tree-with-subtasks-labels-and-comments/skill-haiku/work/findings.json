@@ -1,0 +1,14 @@
+[
+  {
+    "element": "card.parent_id",
+    "severity": "critical",
+    "problem": "Deleting a card (delete_card) or clearing a done column (clear_done_column) cascades to subtasks through the parent_id foreign key. The only index touching parent_id is card_board_parent (board_id, parent_id), which leads with board_id, so SQLite scans the whole card table once per deleted row (EXPLAIN QUERY PLAN for WHERE parent_id = ? shows SCAN card USING COVERING INDEX card_board_parent). Measured on an in-memory copy of the 200,000-card sample: clearing one column of board 1 (343 rows with cascades) took 5.13 s without a parent_id index and 0.010 s with one. At the 2.1 million cards the README states, the cost is expected to be about ten times higher per scan (estimate, not measured).",
+    "fix": "CREATE INDEX card_parent ON card (parent_id); add it to db/schema.sql and run it once on each existing workspace file. Keep card_board_parent for the top-level and subtask reads. Confirmed on SQLite 3.53.1: the cascade lookup plan becomes SEARCH card USING COVERING INDEX card_parent (parent_id=?)."
+  },
+  {
+    "element": "card_board_column",
+    "severity": "low",
+    "problem": "column() and clear_done_column search card_board_column (board_id, column_no), which also contains every subtask in that column; the parent_id IS NULL filter discards the subtasks after they are read. On sample board 1, column 2: 205 indexed cards, 60 top-level, so about 3.4 times the index entries are read per column view. Board sizes are not stated in the README, so the cost is low until boards grow.",
+    "fix": "DROP INDEX card_board_column; CREATE INDEX card_board_column ON card (board_id, column_no, parent_id); Confirmed on SQLite 3.53.1 on an in-memory copy: the plan becomes SEARCH card USING INDEX card_board_column (board_id=? AND column_no=? AND parent_id=?)."
+  }
+]

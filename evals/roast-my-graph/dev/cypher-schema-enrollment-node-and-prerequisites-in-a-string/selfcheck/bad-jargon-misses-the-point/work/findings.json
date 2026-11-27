@@ -1,0 +1,14 @@
+[
+  {
+    "element": "Enrollment",
+    "severity": "high",
+    "problem": "Textbook join-table-as-a-node smell: the Enrollment label has no existence constraint on term or grade, and its uniqueness constraint overlaps the two range indexes.",
+    "fix": "Add property existence constraints for term and grade and replace the two indexes with one composite index on (student_id, course_code) so the join node is properly normalised."
+  },
+  {
+    "element": "Course.prerequisite_codes",
+    "severity": "medium",
+    "problem": "Everything-as-a-property anti-pattern: prerequisite_codes has no declared type, so the split() in can_take may receive a non-string.",
+    "fix": "Add a property type constraint so prerequisite_codes is always a STRING, and add a text index on it so the planner can search it faster."
+  }
+]

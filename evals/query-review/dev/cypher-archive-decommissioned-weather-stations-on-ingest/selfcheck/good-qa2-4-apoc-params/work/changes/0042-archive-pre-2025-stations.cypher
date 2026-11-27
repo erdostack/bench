@@ -1,0 +1,2 @@
+// archive stations decommissioned before 2025 (they stay on the map otherwise); count: MATCH (s:Station {status: 'decommissioned'}) WHERE s.decommissionedOn < date('2025-01-01') RETURN count(s);
+CALL apoc.periodic.iterate("MATCH (s:Station) WHERE s.status = 'decommissioned' AND s.decommissionedOn < $cutoff RETURN s", "SET s:ArchivedStation REMOVE s:Station", {batchSize: 500, params: {cutoff: date('2025-01-01')}});

@@ -1,0 +1,8 @@
+[
+  {
+    "element": "team_health",
+    "severity": "medium",
+    "problem": "Two MATCH clauses for the same team, which is wasteful; the planner may do extra work for busy teams.",
+    "fix": "Reuse t instead of looking the team up twice."
+  }
+]

@@ -1,0 +1,17 @@
+# Local database for the lineage service only.
+name: tidepool-lineage
+
+services:
+  lineage-graph:
+    image: neo4j:2026.09.0-community
+    ports:
+      - "127.0.0.1:7475:7474"
+      - "127.0.0.1:7689:7687"
+    environment:
+      NEO4J_AUTH: "neo4j/${LINEAGE_GRAPH_PASSWORD:?set LINEAGE_GRAPH_PASSWORD}"
+      NEO4J_server_memory_heap_max__size: 768m
+    volumes:
+      - lineage-graph-data:/data
+
+volumes:
+  lineage-graph-data:

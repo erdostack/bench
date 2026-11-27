@@ -1,0 +1,5 @@
+[prod]
+path = "data/prod.sqlite"
+
+[rehearsal]
+path = "data/rehearsal.sqlite"

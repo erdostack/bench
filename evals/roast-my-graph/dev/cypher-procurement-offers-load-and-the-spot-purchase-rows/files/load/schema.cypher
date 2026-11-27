@@ -1,0 +1,2 @@
+CREATE CONSTRAINT supplier_vat IF NOT EXISTS FOR (s:Supplier) REQUIRE s.vat_no IS UNIQUE;
+CREATE CONSTRAINT product_gtin IF NOT EXISTS FOR (p:Product) REQUIRE p.gtin IS UNIQUE;

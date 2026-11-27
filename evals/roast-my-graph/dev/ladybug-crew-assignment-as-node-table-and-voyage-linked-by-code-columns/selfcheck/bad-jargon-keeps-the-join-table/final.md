@@ -1,0 +1,1 @@
+docs/graph/ROAST.md and findings.json are written. Both the join-table-as-node and FK-as-property anti-patterns are present. Recommended secondary indexes on the join columns and integer surrogate keys for the port codes.

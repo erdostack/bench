@@ -1,0 +1,1 @@
+threads.py shows REPLY_OF edges between 'm' nodes, but nothing in the repo says how a message links to its author or how friendships are stored, and the export isn't here. Could you send the export, or the edge types it uses?

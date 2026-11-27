@@ -1,0 +1,26 @@
+# Generated 2026-09-14 from the shared development database with:
+#   CALL db.schema.nodeTypeProperties(); CALL db.schema.relTypeProperties(); SHOW CONSTRAINTS; SHOW INDEXES;
+
+NODE TYPES
+:Object        accession STRING (mandatory), title STRING, date_made STRING, medium STRING
+:Maker         name STRING (mandatory), born INTEGER, died INTEGER
+:Institution   code STRING (mandatory), name STRING, city STRING
+:Loan          id STRING (mandatory), starts DATE, ends DATE, purpose STRING
+
+RELATIONSHIP TYPES
+(:Maker)-[:MADE]->(:Object)                 role STRING
+(:Maker)-[:TRAINED_UNDER]->(:Maker)
+(:Object)-[:HELD_BY]->(:Institution)        from DATE, to DATE, how STRING
+(:Object)-[:PART_OF]->(:Loan)
+(:Loan)-[:TO]->(:Institution)
+(:Loan)-[:FROM]->(:Institution)
+
+CONSTRAINTS
+object_accession      UNIQUENESS   (:Object {accession})
+maker_name            UNIQUENESS   (:Maker {name})
+institution_code      UNIQUENESS   (:Institution {code})
+loan_id               UNIQUENESS   (:Loan {id})
+
+INDEXES
+loan_ends             RANGE        (:Loan {ends})
+held_by_to            RANGE        ()-[:HELD_BY {to}]-()

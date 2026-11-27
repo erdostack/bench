@@ -1,0 +1,2 @@
+work/data/trails.db
+work/data/

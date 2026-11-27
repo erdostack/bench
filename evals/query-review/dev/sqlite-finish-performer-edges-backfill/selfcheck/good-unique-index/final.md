@@ -1,0 +1,1 @@
+Made the job idempotent with a partial unique index on the sessions edges plus INSERT OR IGNORE, so tonight's run fills in rows 18,001+ and skips the ones already there. 11,380 added on a copy; second run adds 0.

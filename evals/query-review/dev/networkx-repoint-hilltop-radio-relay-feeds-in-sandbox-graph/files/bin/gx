@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+"""gx: change or inspect a txplan graph.
+
+    bin/gx <target> <change.py>      load the target, call change(G) from the file, save it
+    bin/gx <target> --show <node>    print a node and its in and out links
+"""
+import importlib.util
+import json
+import sys
+from pathlib import Path
+
+import networkx as nx
+
+ROOT = Path(__file__).resolve().parent.parent
+TARGETS = {"live": ROOT / "graphs" / "live.json", "sandbox": ROOT / "graphs" / "sandbox.json"}
+if len(sys.argv) < 3 or sys.argv[1] not in TARGETS:
+    sys.exit("usage: gx <live|sandbox> <change.py> | gx <live|sandbox> --show <node>")
+path = TARGETS[sys.argv[1]]
+G = nx.node_link_graph(json.loads(path.read_text()), directed=True, multigraph=False)
+if sys.argv[2] == "--show":
+    n = sys.argv[3]
+    print(n, G.nodes[n])
+    for u, _v, d in G.in_edges(n, data=True):
+        print(f"  <- {u} {d}")
+    for _u, v, d in G.out_edges(n, data=True):
+        print(f"  -> {v} {d}")
+    sys.exit(0)
+spec = importlib.util.spec_from_file_location("change", sys.argv[2])
+mod = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(mod)
+before = (G.number_of_nodes(), G.number_of_edges())
+mod.change(G)
+tmp = path.with_suffix(".tmp")
+tmp.write_text(json.dumps(nx.node_link_data(G), indent=1))
+tmp.replace(path)
+print(f"{sys.argv[1]}: nodes {before[0]} -> {G.number_of_nodes()}, edges {before[1]} -> {G.number_of_edges()}")

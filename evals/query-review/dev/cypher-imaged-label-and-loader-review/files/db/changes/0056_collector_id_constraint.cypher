@@ -1,0 +1,1 @@
+CREATE CONSTRAINT collector_id IF NOT EXISTS FOR (c:Collector) REQUIRE c.id IS UNIQUE;

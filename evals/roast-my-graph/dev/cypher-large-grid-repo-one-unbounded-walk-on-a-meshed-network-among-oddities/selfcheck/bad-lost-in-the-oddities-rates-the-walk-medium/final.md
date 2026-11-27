@@ -1,0 +1,1 @@
+Nothing alarming: a handful of medium and low housekeeping items (a TODO, a commented-out query, an unbounded pattern in downstream_meters that could be slow). See docs/graph/ROAST.md and findings.json.

@@ -1,0 +1,5 @@
+[prod]
+path = "data/prod.db"
+
+[scratch]
+path = "data/scratch.db"

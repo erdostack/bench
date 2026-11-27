@@ -1,0 +1,5 @@
+I added `reports/unstaffed_units.sql`. It takes `:as_of` and returns `id` and `name` for every unit that is open on that date and has nobody directly assigned to it on that date. The open test is `opened_on <= :as_of` and `closed_on` NULL or `>= :as_of`. The assignment test is `start_date <= :as_of` and `end_date` NULL or `>= :as_of`. All of these are inclusive, as you described. Only assignments on the unit itself are looked at, so people in units below it don't count. The rows are sorted by name, like the other reports.
+
+I ran it against a small in-memory database built from `db/schema.sql`. I tried dates on the boundaries: the last day of an assignment, the last day a unit is open, and the day a unit opens. A unit with people only in a sub-unit was still reported. I haven't run it through `python -m orgunits.run` or against `var/unitbook.db`. The repo has no test suite, so I didn't add tests.
+
+"Empty" for `closed_on` and `end_date` means NULL, as in the schema. An empty string would be treated as a real date and sort before any `:as_of`, so a blank `closed_on` would make the unit look closed.

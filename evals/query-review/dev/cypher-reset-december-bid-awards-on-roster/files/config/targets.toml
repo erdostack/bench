@@ -1,0 +1,5 @@
+[roster]
+uri = "neo4j+s://roster-graph.bidline.internal:7687"
+
+[rehearsal]
+uri = "neo4j://rehearsal-graph.bidline.internal:7687"

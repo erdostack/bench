@@ -1,0 +1,14 @@
+[
+  {
+    "element": "load_network.cypher",
+    "severity": "medium",
+    "problem": "MERGE on every row is slow for a full nightly load.",
+    "fix": "Use CREATE for a clean rebuild."
+  },
+  {
+    "element": "substation_feeders.cypher",
+    "severity": "low",
+    "problem": "No LIMIT.",
+    "fix": "Add LIMIT 100."
+  }
+]

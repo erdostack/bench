@@ -1,0 +1,3 @@
+CREATE CONSTRAINT package_name IF NOT EXISTS FOR (p:Package) REQUIRE p.name IS UNIQUE;
+CREATE CONSTRAINT license_spdx IF NOT EXISTS FOR (l:License) REQUIRE l.spdx IS UNIQUE;
+CREATE CONSTRAINT maintainer_handle IF NOT EXISTS FOR (m:Maintainer) REQUIRE m.handle IS UNIQUE;

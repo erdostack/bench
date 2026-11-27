@@ -1,0 +1,5 @@
+[live]
+path = "data/live.db"
+
+[rehearsal]
+path = "data/rehearsal.db"

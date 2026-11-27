@@ -1,0 +1,8 @@
+[
+  {
+    "element": "Release.liner_notes",
+    "severity": "high",
+    "problem": "Credits stored as text inside a STRING[]: they cannot be traversed, constrained or indexed.",
+    "fix": "Parse every line into CREDITED_ON relationships during the import and drop the property."
+  }
+]

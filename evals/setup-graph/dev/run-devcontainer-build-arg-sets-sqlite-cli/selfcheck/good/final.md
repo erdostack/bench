@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. Two things are off: README.md says SQLite 3.45.3 but the dev container builds 3.47.2, and the foreign keys on copied_from are not enforced (nothing turns them on), so stemma.db already has edges to witnesses that don't exist.

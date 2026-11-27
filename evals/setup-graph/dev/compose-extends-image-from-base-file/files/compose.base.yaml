@@ -1,0 +1,13 @@
+# Shared base for the textile tracing services. Copied from the platform repo; keep in sync by hand.
+services:
+  neo4j:
+    image: neo4j:2026.02.2-enterprise
+    environment:
+      NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
+      NEO4J_AUTH: none
+      NEO4J_server_memory_heap_max__size: 1G
+    volumes:
+      - graph-data:/data
+
+volumes:
+  graph-data:

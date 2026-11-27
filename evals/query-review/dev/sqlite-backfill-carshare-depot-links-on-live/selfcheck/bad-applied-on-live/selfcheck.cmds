@@ -1,0 +1,2 @@
+["bin/apply", "scratch", "changes/0008_backfill_serviced_by_september_cars.sql"]
+["bin/apply", "live", "changes/0008_backfill_serviced_by_september_cars.sql"]

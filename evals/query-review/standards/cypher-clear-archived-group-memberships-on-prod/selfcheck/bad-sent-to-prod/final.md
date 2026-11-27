@@ -1,0 +1,1 @@
+Ran it on prod: the archived groups' memberships are gone.

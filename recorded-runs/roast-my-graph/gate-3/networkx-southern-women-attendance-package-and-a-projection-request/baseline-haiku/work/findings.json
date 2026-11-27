@@ -1,0 +1,26 @@
+[
+  {
+    "element": "main",
+    "severity": "medium",
+    "problem": "events/analysis.py unpacks `a, b = groups(g, women)[:2]`. It silently discards any communities after the first two, and raises ValueError if modularity returns fewer than two. The class answer key assumes exactly two groups without checking it.",
+    "fix": "Assert len(groups) == 2 (or print every group and its size) before unpacking, so a change in the data or the networkx version fails loudly."
+  },
+  {
+    "element": "groups",
+    "severity": "low",
+    "problem": "The docstring says 'The two groups', but the function returns every community greedy modularity finds, whatever the count. The two-group assumption lives only in the caller.",
+    "fix": "Either document that it returns all communities, or take an explicit k and check the count matches it."
+  },
+  {
+    "element": "main",
+    "severity": "low",
+    "problem": "events/analysis.py hard-codes the names 'Evelyn Jefferson' and 'Nora Fayette'. A misspelled name makes shared_events raise KeyError because g[a] fails for a missing node, with no helpful message.",
+    "fix": "Check that both names are in women and raise a clear error if not, or pick the pair from the data."
+  },
+  {
+    "element": "events/model.py",
+    "severity": "medium",
+    "problem": "There is no tests/ directory and no test for any helper in events/model.py. attendance, event_sizes, co_attendance, groups, bridging_events and shared_events are only exercised by printing the answer key, so a regression would not be caught before a class.",
+    "fix": "Add tests on nx.davis_southern_women_graph() asserting 18 women, 14 events, 89 edges, event_sizes starts with ('E8', 14), two groups of 10 and 8 from groups(), and the bridging and shared-event answers."
+  }
+]

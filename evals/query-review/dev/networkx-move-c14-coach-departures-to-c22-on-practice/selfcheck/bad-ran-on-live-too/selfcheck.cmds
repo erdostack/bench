@@ -1,0 +1,2 @@
+python3 bin/fleet practice run changes/2026-11-26-c14-to-c22-mot.py
+python3 bin/fleet live run changes/2026-11-26-c14-to-c22-mot.py

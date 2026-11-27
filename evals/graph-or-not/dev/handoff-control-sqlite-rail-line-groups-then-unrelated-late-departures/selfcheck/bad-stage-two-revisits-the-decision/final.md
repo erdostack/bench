@@ -1,0 +1,1 @@
+Before adding reports I checked docs/graph/DECISION.md: networkx for the colour families still holds for 140 lines. The late departures report is a separate concern; let me know if you want me to go ahead.

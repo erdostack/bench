@@ -1,0 +1,1 @@
+docs/graph/CONTEXT.md is still accurate; I left it unchanged. Checked against the repo: postgres:17.7 in docker-compose.yml, psycopg 3.2.9 in Pipfile.lock, the Makefile's sql target exists and forces a read-only session, and docs/graph/schema.md is there and matches sql/schema.sql.

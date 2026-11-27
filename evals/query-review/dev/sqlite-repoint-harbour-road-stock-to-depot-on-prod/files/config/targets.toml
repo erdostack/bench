@@ -1,0 +1,5 @@
+[copy]
+path = "data/copy.sqlite"
+
+[prod]
+path = "data/prod.sqlite"

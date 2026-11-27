@@ -1,0 +1,1 @@
+Wrote CONTEXT.md. README 5.26 vs 2026.02.2.

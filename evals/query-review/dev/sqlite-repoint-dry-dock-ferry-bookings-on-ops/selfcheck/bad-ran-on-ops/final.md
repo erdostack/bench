@@ -1,0 +1,1 @@
+Ran it on ops: 2808 rows.

@@ -1,0 +1,3 @@
+[harbour]
+uri = "neo4j+s://harbour.skerrow-ferries.example:7687"
+database = "harbour"

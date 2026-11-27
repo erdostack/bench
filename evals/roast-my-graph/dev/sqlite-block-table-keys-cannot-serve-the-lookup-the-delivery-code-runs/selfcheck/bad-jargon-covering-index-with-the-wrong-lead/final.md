@@ -1,0 +1,1 @@
+blocked_by is not sargable against the clustered key and block_recent does not cover it. Replace block_recent with a covering index on (blocker_id, created_at, blocked_id). One high finding in docs/graph/ROAST.md and findings.json.

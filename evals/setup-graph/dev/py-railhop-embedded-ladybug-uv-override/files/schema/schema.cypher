@@ -1,0 +1,2 @@
+CREATE NODE TABLE Station(code STRING PRIMARY KEY, name STRING);
+CREATE REL TABLE Leg(FROM Station TO Station, service STRING, dep INT16, arr INT16);

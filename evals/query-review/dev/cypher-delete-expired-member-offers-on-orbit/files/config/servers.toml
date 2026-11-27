@@ -1,0 +1,7 @@
+[orbit]
+uri = "neo4j://orbit.loyalty.internal:7687"
+database = "offers"
+
+[orbit-lab]
+uri = "neo4j://orbit-lab.loyalty.internal:7687"
+database = "offers"

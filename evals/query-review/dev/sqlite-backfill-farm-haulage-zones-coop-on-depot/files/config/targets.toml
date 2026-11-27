@@ -1,0 +1,5 @@
+[depot]
+path = "data/depot.sqlite"
+
+[shadow]
+path = "data/shadow.sqlite"

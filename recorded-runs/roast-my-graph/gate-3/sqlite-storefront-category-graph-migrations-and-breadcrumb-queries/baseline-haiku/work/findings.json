@@ -1,0 +1,37 @@
+[
+  {
+    "element": "ancestors.sql",
+    "severity": "high",
+    "problem": "The recursive CTE up(id, depth) has no termination guard of its own. UNION removes duplicates on the whole tuple, and depth changes on every step, so no row ever repeats and a cycle makes the recursion run forever. I confirmed this on a copy of shop.db with the cycle triggers dropped: after one cycle was inserted, the query was still running when a progress guard aborted it. Breadcrumbs run on every product page, so one cycle would stall every product page. Today the cycle triggers in migrations/003_no_cycles.sql prevent this."
+    ,
+    "fix": "Add a cap to the recursive step, for example WHERE u.depth < 10 in the recursive SELECT, so the query always ends. Also make the cap visible: have a check or test fail when a result reaches depth 10, since the data currently tops out at 6 levels up. Keep the trigger as the primary guarantee."
+  },
+  {
+    "element": "descendants.sql",
+    "severity": "high",
+    "problem": "The recursive CTE down(id, depth) has the same unbounded shape as ancestors.sql: UNION over (id, depth) never deduplicates across a cycle. On a simulated cycle the query did not finish and was stopped by the guard. The category page depends on it for every product listing."
+    ,
+    "fix": "Add the same cap to the recursive step, WHERE d.depth < 10, and report or fail when the cap is reached. The trigger in migrations/003_no_cycles.sql remains the main protection."
+  },
+  {
+    "element": "migrations/003_no_cycles.sql",
+    "severity": "medium",
+    "problem": "The only protection against cycles is two triggers, and nothing in the repo tests that they fire. The triggers are also the only thing standing between a bad write and an endless recursive query. Dropping or recreating the table without these triggers, or restoring a dump that omits them, would remove the protection silently."
+    ,
+    "fix": "Add a test that inserts a cycle through category_parent and expects the ABORT, for both INSERT and UPDATE. Add a check that the triggers exist in every database that serves the storefront, for example in the make db target."
+  },
+  {
+    "element": "descendants.sql",
+    "severity": "low",
+    "problem": "The page query orders by p.name only and paginates with LIMIT :page_size OFFSET :offset. Products that share a name have no defined order, so a product can appear on two pages or on none when a user moves between pages."
+    ,
+    "fix": "Add a unique tiebreaker, ORDER BY p.name, p.id, so the pages are stable."
+  },
+  {
+    "element": "db",
+    "severity": "medium",
+    "problem": "The db target starts with rm -f shop.db and then rebuilds the database from the migrations. The README says merchandising edits categories through SQL against this same database, so running make db on a live copy deletes all their edits and all product rows with no prompt."
+    ,
+    "fix": "Refuse to run when shop.db exists, or write to a new file and rename it only after the migrations succeed. Keep the destructive path behind an explicit target such as make db-reset."
+  }
+]

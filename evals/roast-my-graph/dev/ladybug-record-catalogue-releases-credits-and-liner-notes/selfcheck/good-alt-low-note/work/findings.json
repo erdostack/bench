@@ -1,0 +1,8 @@
+[
+  {
+    "element": "Release.liner_notes",
+    "severity": "low",
+    "problem": "Fine to keep: it is display-only source text, and the credits it describes exist as CREDITED_ON relationships. It does take space on 1.4 million releases.",
+    "fix": "Keep it; if size matters, move it to a separate node table read only by release_page."
+  }
+]

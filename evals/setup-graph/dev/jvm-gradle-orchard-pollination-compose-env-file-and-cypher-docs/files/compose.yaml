@@ -1,0 +1,12 @@
+services:
+  graph:
+    image: neo4j:2026.08.1-community
+    env_file: graph.env
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - graph-data:/data
+
+volumes:
+  graph-data:

@@ -1,0 +1,62 @@
+[
+  {
+    "element": "queries/resolve_mention.sql",
+    "severity": "critical",
+    "problem": "This is almost certainly why ingest has been falling behind since last month. The 2026-10-14 CHANGELOG entry changed the filter to `lower(trim(alias_text)) = lower(trim($1))`, but the only matching index is `alias_norm` on `lower(alias_text)`. PostgreSQL can use an expression index only when the query contains exactly the indexed expression, so `lower(trim(alias_text))` cannot use it and the planner has no index for that filter. Every mention lookup now scans the 31 million row alias table, at about 50 thousand mentions a minute. I could not run PostgreSQL here, so this is from reading the schema and the query, but the timing (change on 2026-10-14, falling behind since last month) matches. It is easy to confirm with `EXPLAIN (ANALYZE, BUFFERS)` on a sample alias.",
+    "fix": "Build the index the query needs: `CREATE INDEX CONCURRENTLY alias_norm_trim ON alias (lower(trim(alias_text)));` (CONCURRENTLY so writes are not blocked on a 31M row table), run ANALYZE alias, and check the plan uses it. Longer term, store a normalised column (`alias_norm text`, filled on write) with a plain index and clean the old rows once, so the trim does not have to be repeated in every query."
+  },
+  {
+    "element": "alias_norm",
+    "severity": "medium",
+    "problem": "After the 2026-10-14 query change, nothing uses this index any more (no query filters on `lower(alias_text)`), yet every alias insert and update still has to maintain it on a 31 million row table, and it takes space. Its name also suggests it serves lookup, which is now false.",
+    "fix": "Once the replacement index on `lower(trim(alias_text))` is in place and the plan is confirmed, `DROP INDEX CONCURRENTLY alias_norm;`."
+  },
+  {
+    "element": "CHANGELOG.md",
+    "severity": "medium",
+    "problem": "The 2026-10-14 entry fixed bad data (trailing spaces in some aliases from the 2025 bulk import) by changing the query, not by cleaning the data or adding the matching index, so every future lookup pays for the old import's mess, and the change shipped without a check of the query plan. The entry records no index change alongside it.",
+    "fix": "Clean the stored aliases once (`UPDATE alias SET alias_text = trim(alias_text) WHERE alias_text <> trim(alias_text)`, in batches) and normalise on write in add_alias. Add 'EXPLAIN on production-sized data' to the checklist for any change to a hot query."
+  },
+  {
+    "element": "queries/resolve_mention.sql",
+    "severity": "high",
+    "problem": "The query ranks candidates by `count(*)` over alias rows, so it is a count of how many alias rows an entity has with this text, not how often it was seen or how many sources agree. Because alias has no uniqueness on (entity_id, alias_text) and add_alias.sql does a plain INSERT, the same alias loaded twice (or from two sources) counts twice, and an entity with duplicated rows outranks the right one. The query also returns up to five candidates with no confidence or tie handling, so ambiguous mentions (two entities with equal counts) are decided by arbitrary order.",
+    "fix": "Make the ranking meaningful: count distinct sources, or store a usage counter, and add a deterministic tie-break (for example `ORDER BY seen DESC, entity_id`). Decide what the caller does when the top two are close."
+  },
+  {
+    "element": "queries/add_alias.sql",
+    "severity": "medium",
+    "problem": "A plain `INSERT` with no conflict handling. With no unique constraint on alias, repeated ingest of the same document or feed inserts the same (entity_id, alias_text, source) again and again, growing the 31 million row table and skewing the counts in resolve_mention. Whitespace and case variants are stored as separate rows.",
+    "fix": "Add `CREATE UNIQUE INDEX alias_entity_text_source ON alias (entity_id, lower(trim(alias_text)), source)` and use `INSERT ... ON CONFLICT DO NOTHING`. Normalise text on write."
+  },
+  {
+    "element": "relation_by_dst",
+    "severity": "medium",
+    "problem": "The index is on (dst_id, predicate) but queries/incoming.sql also needs src_id to join to entity, so each incoming relation needs a heap fetch of the 120 million row relation table; the primary key (src_id, predicate, dst_id) cannot serve it either since dst_id is its last column. The sort by predicate is covered by the index order, but the lookup is not index-only. For well-known entities with many incoming relations this is many random reads.",
+    "fix": "Recreate it as `(dst_id, predicate) INCLUDE (src_id)` or `(dst_id, predicate, src_id)` so incoming.sql can be an index-only scan (keep the vacuum schedule current so the visibility map is set)."
+  },
+  {
+    "element": "queries/incoming.sql",
+    "severity": "medium",
+    "problem": "No LIMIT or pagination, and `ORDER BY r.predicate` has no tie-breaker. The entity page loads every incoming relation for an entity; a hub entity in a 120 million row relation table can have hundreds of thousands, which is a slow page and a big result for the app to hold. Rows with the same predicate come back in unstable order.",
+    "fix": "Paginate with keyset pagination on (predicate, id) and add the tie-breaker, or show counts per predicate with a 'show more' link."
+  },
+  {
+    "element": "queries/outgoing.sql",
+    "severity": "medium",
+    "problem": "Same as incoming.sql: unbounded result and unstable order within a predicate. The primary key (src_id, predicate, dst_id) serves the lookup and the order, so the cost is mainly the unbounded fetch and the join to entity for every row.",
+    "fix": "Keyset pagination on (predicate, dst_id) with a LIMIT, plus per-predicate counts for the page header."
+  },
+  {
+    "element": "queries/entity_aliases.sql",
+    "severity": "low",
+    "problem": "Filters on entity_id and orders by alias_text, but the only alias index for the filter is `alias_entity` on (entity_id), so each call fetches the rows and sorts them. Unbounded as well: an entity with thousands of aliases returns them all.",
+    "fix": "Replace `alias_entity` with an index on (entity_id, alias_text) (it still serves the foreign key and cascade deletes) and add a LIMIT or pagination on the page."
+  },
+  {
+    "element": "schema.sql",
+    "severity": "low",
+    "problem": "`entity.kind` and `relation.predicate` are free text with no check or lookup table, so typos and case variants create new kinds and predicates, repeated as strings across 120 million relation rows. `entity.id` is a bare bigint with no default or sequence. `relation` and `alias` carry no created-at or provenance, so a bad ingest cannot be traced or rolled back. Nothing indexes `entity.canonical_name`, if the app ever needs to look an entity up by name.",
+    "fix": "Add lookup tables or CHECK constraints for kind and predicate (or at least a documented list), and add `created_at` and a source/ingest id to alias and relation. Add a canonical_name index only when a query needs it."
+  }
+]

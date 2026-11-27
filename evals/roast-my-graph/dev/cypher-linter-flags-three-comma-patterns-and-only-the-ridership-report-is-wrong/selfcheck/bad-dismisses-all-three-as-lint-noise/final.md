@@ -1,0 +1,1 @@
+The "disconnected patterns" warning is a style lint; in all three queries it is safe to ignore because the patterns are filtered afterwards. Only medium and low notes in findings.json: line_ridership would benefit from an index hint on Tap.day.

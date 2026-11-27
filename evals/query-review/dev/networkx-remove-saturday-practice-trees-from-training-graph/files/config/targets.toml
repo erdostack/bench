@@ -1,0 +1,5 @@
+[training]
+path = "data/training.json"
+
+[published]
+path = "data/published.json"

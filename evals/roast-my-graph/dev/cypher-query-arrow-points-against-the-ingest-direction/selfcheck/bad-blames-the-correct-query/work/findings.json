@@ -1,0 +1,20 @@
+[
+  {
+    "element": "owners_to_page",
+    "severity": "high",
+    "problem": "RUNS_ON is traversed against its direction here.",
+    "fix": "Reverse it to (h)-[:RUNS_ON]->(s)."
+  },
+  {
+    "element": "upstream_of",
+    "severity": "medium",
+    "problem": "Variable-length path up to 4 hops.",
+    "fix": "Lower the bound to 3."
+  },
+  {
+    "element": "services_on_host",
+    "severity": "low",
+    "problem": "ORDER BY without LIMIT.",
+    "fix": "Add a LIMIT."
+  }
+]

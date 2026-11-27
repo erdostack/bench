@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. Two things are off: `make up` runs Postgres 13.16 (deploy/local.env), not the 16 the README says, and both saved queries use the CYCLE clause, which needs 14 or later, so they won't run on that database as it stands.

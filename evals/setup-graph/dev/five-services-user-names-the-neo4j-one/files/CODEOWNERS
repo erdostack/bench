@@ -1,0 +1,6 @@
+/services/gateway/    @tidepool/edge
+/services/accounts/   @tidepool/billing
+/services/routing/    @tidepool/network
+/services/lineage/    @tidepool/reporting
+/services/notifier/   @tidepool/edge
+/docs/                @tidepool/architecture

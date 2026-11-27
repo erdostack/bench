@@ -1,0 +1,1 @@
+{"target": {"uri": "https://graph.fenwick-carclub.example:7473", "database": "neo4j"}, "statement": "EXPLAIN MATCH (:Member)-[w:WAITLISTED]->(:Zone) WHERE w.since < date('2026-05-01') RETURN count(w)"}

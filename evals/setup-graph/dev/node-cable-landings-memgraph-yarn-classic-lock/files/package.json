@@ -1,0 +1,13 @@
+{
+  "name": "cablemap",
+  "version": "1.2.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "yarn@1.22.22",
+  "scripts": {
+    "q": "node bin/q.mjs"
+  },
+  "dependencies": {
+    "neo4j-driver": "^5.12.0"
+  }
+}

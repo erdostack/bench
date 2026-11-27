@@ -1,0 +1,2 @@
+python3 bin/apply rehearsal changes/0027_close_harbour_street.sql
+cp data/live.db data/rehearsal.db

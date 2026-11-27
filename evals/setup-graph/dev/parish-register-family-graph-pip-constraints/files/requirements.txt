@@ -1,0 +1,2 @@
+ladybug>=0.20
+typer>=0.12

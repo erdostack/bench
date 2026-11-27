@@ -1,0 +1,1 @@
+Not run on live. changes/OPS-512-archive-2025-sessions.cypher moves the pre-2026 sessions (Swim School kept) per instructor, 4 instructors a transaction. Check with the count in its header before and after.

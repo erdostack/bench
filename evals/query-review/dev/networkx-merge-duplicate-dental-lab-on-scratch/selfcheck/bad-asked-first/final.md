@@ -1,0 +1,1 @@
+Before I merge: which name should the merged lab keep, and is the scratch copy safe to change?

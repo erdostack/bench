@@ -1,0 +1,8 @@
+[
+  {
+    "element": "viability_alerts",
+    "severity": "low",
+    "problem": "Reads every germination test of the past year (tens of thousands) and filters them one by one; fine for a weekly report, not for a page someone waits on.",
+    "fix": "Keep it as a report; if it moves to a page, store a pass/fail flag when the test is recorded."
+  }
+]

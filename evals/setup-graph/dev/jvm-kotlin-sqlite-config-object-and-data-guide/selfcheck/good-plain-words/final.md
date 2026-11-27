@@ -1,0 +1,1 @@
+Done. Please don't trust docs/DATA.md on consistency: nothing stops a leg from pointing at a centre that's been removed, because the settings object in Db.kt that would switch that check on is never used when the connection is opened. There are already a few such legs in the data. Also, README's driver version (3.47.0.0) is behind the catalog (3.49.1.0).

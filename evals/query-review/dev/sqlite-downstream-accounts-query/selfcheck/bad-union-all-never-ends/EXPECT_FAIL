@@ -1,0 +1,4 @@
+finishes-on-cyclic-ledger
+returns-reachable-set
+plan-inspected-before-run
+no-runaway-execution

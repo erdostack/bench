@@ -1,0 +1,5 @@
+[ops]
+path = "data/ops.db"
+
+[rehearsal]
+path = "data/rehearsal.db"

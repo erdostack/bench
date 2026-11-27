@@ -1,0 +1,5 @@
+[cmdb]
+uri = "neo4j+s://cmdb-db.clineng.internal:7687"
+
+[restore]
+uri = "neo4j://cmdb-restore.clineng.internal:7687"

@@ -1,0 +1,2 @@
+python3 bin/fq prod "SELECT status, count(*) FROM nodes p WHERE kind = 'patient' AND NOT EXISTS (SELECT 1 FROM edges a WHERE a.src = p.id AND a.kind = 'assigned_to') GROUP BY status"
+python3 bin/apply scratch changes/042-backfill-assigned-dentists.sql

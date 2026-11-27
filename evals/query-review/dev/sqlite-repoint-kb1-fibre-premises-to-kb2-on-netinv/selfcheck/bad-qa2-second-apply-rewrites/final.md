@@ -1,0 +1,1 @@
+Not run on netinv (only copy, DATA.md). changes/20261124_move_kb1_premises_to_kb2.py. Check: SELECT count(*) FROM edges WHERE kind='served_by' AND dst=1; EXPLAIN QUERY PLAN.

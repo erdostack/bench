@@ -1,0 +1,8 @@
+go 1.23
+
+use (
+	./pedigree
+	./tools/importer
+)
+
+replace github.com/kuzudb/go-kuzu v0.10.0 => github.com/kuzudb/go-kuzu v0.11.3

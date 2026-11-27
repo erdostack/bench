@@ -1,0 +1,56 @@
+[
+  {
+    "element": "tools/import_gedcom.py",
+    "severity": "high",
+    "problem": "The importer discards every date. parse() only reads NAME, HUSB, WIFE and CHIL, and load() inserts only given and surname, so BIRT and DEAT are never read. In family.db 5,960 of 6,000 people have born = NULL and nobody has a died value. A family tree with no dates cannot tell two people with the same name apart, which makes the hand merging in the README harder.",
+    "fix": "Parse the level-1 BIRT and DEAT records and their level-2 DATE lines (and optionally PLAC and SEX), store them in person.born and person.died, and add a test using a small .ged file."
+  },
+  {
+    "element": "load",
+    "severity": "high",
+    "problem": "Nothing records where a person came from. person has no source file or GEDCOM xref column, and load() inserts a new row for every INDI each time it runs, so importing the same file twice doubles every person and every parent_of link, and a person who appears in two relatives' files becomes two rows that can only be found again by name. The README says these are merged by hand afterwards, but there is nothing in the schema or tools to make that safe: family.db has 6,000 people but only 96 distinct given/surname pairs, and 64 same-named pairs share a child as its two parents.",
+    "fix": "Add `source TEXT` and `xref TEXT` columns with `UNIQUE (source, xref)` to person, make the importer skip or update rows that already exist, and add a merge tool that repoints parent_of rows to the surviving person in one transaction."
+  },
+  {
+    "element": "parse",
+    "severity": "medium",
+    "problem": "`cur` is only reset when a new INDI or FAM record starts. A level-0 record of any other type (SOUR, REPO, NOTE, SUBM, TRLR) leaves `cur` pointing at the previous person, so its level-1 NAME lines overwrite that person's name. Names are also split badly: `1 NAME John /Smith/ Jr` gives the surname `Smith/ Jr`, a NAME with no slashes gives an empty surname (the '?' default in load() is never used because the key exists), and a second NAME line (an alias) replaces the first.",
+    "fix": "Set `cur = None` on any level-0 line that is not INDI or FAM, split NAME with a regex such as `^(.*?)\\s*/(.*?)/\\s*(.*)$`, keep the first NAME as the primary, and test each case."
+  },
+  {
+    "element": "load",
+    "severity": "medium",
+    "problem": "Every parent link is inserted as `kind = 'birth'` (the column default) because GEDCOM relationship types (PEDI, ADOP and similar) are never read. In family.db all 11,920 parent_of rows are 'birth', so the 'adoptive' and 'step' values the schema allows are never used by the importer and any adoptive parent coming from a file is recorded as a birth parent. The file is also opened with `open(path)` and never closed, and a non-UTF-8 GEDCOM (ANSEL is common) crashes with UnicodeDecodeError halfway through.",
+    "fix": "Read PEDI under CHIL, pass `kind` into the INSERT, use `with open(...)`, and accept an encoding argument or detect the CHAR header."
+  },
+  {
+    "element": "parent_of",
+    "severity": "low",
+    "problem": "The table only blocks a person being their own parent (`CHECK (parent_id <> child_id)`). It does not stop A being a parent of B and B a parent of A, or a person having more than two birth parents. Currently there are no cycles and no child has more than two parents, and ancestors.sql and descendants.sql use UNION so a cycle would not hang the queries, but a bad merge could introduce one without any error.",
+    "fix": "Check for a cycle in add_parent() before inserting (walk the child's descendants for parent_id) and limit birth parents per child to two in code or with a trigger."
+  },
+  {
+    "element": "person",
+    "severity": "low",
+    "problem": "born and died are free TEXT with no format check, and nothing checks that born is not after died or after a child's birth. There are no such errors now (only 40 people have a born value), but the importer fix above will start filling the columns with whatever strings GEDCOM contains ('ABT 1850', 'BEF 1900').",
+    "fix": "Decide on a format (ISO date or year plus a separate qualifier) and add a CHECK constraint or validate in the app."
+  },
+  {
+    "element": "db/ancestors.sql",
+    "severity": "low",
+    "problem": "Returns every ancestor with no generation number and no ORDER BY, so a page that shows 'parents, grandparents, ...' has to work out the generation itself, and the order is whatever SQLite chooses. descendants.sql has the same limitation.",
+    "fix": "Carry a depth column in the recursive CTE (`SELECT :person_id, 0 ... SELECT p.parent_id, up.depth + 1 ...`, taking MIN depth per person) and ORDER BY depth, then surname and given."
+  },
+  {
+    "element": "tests/test_people.py",
+    "severity": "low",
+    "problem": "The tests are good as far as they go (they prove the cascade and the rejection of a missing parent), but fresh() opens 'db/schema.sql' relative to the current directory so the tests fail when run from anywhere but the repo root, connections are never closed, and nothing tests ancestors, descendants, delete_person on a person with children, or tools/import_gedcom.py.",
+    "fix": "Build the schema path from `Path(__file__)`, close connections in a fixture, and add tests for the queries and the importer (including a file imported twice)."
+  },
+  {
+    "element": "app/people.py",
+    "severity": "low",
+    "problem": "When no `con` is passed each function calls connect() and never closes the connection, and the deleted person is not reported: delete_person returns None whether it removed a person or the id did not exist. The cascade itself is fine (see the verdict on foreign keys), but note that it is only guaranteed for connections opened by app.db.connect(). The Flask front end is not in this repo, so if it opens its own sqlite3 connection without the PRAGMA, deletes from there would leave dangling parent_of rows exactly as your friend describes.",
+    "fix": "Close connections you open, return cursor.rowcount from delete_person, and make sure the front end (and any script or DB browser you use for edits) goes through app.db.connect() or sets `PRAGMA foreign_keys = ON`."
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "element": "follower_reach",
+    "severity": "critical",
+    "problem": "Unbounded variable-length path anti-pattern! The direction of the arrow is also suspicious and count(DISTINCT) is an eager aggregation.",
+    "fix": "Flip the arrow so it reads (me)-[:FOLLOWS*]->(fan) and use count(*) instead of count(DISTINCT fan) to avoid the eager operator."
+  },
+  {
+    "element": "listener_stats",
+    "severity": "high",
+    "problem": "Cartesian product alert: the planner will warn about this query. Also, the Genre lookup has no index anchor.",
+    "fix": "Add a range index on Genre.slug and a USING INDEX hint so the second MATCH is anchored; the Cartesian product warning can then be ignored."
+  }
+]

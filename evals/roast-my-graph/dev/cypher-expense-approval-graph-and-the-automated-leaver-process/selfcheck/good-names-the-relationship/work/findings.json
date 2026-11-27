@@ -1,0 +1,14 @@
+[
+  {
+    "element": "APPROVED",
+    "severity": "high",
+    "problem": "remove_leaver detach-deletes the employee, so their APPROVED relationships (and SUBMITTED, AWAITS) go too; approvals are no longer attributable and pending claims are orphaned.",
+    "fix": "Soft-retire the Employee (left_on property) instead of deleting; hand AWAITS over to the manager first."
+  },
+  {
+    "element": "cost_center",
+    "severity": "low",
+    "problem": "Alias spelled differently from the CostCentre label.",
+    "fix": "Rename to cost_centre."
+  }
+]

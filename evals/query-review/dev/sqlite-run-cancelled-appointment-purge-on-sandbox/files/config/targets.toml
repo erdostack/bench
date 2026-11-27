@@ -1,0 +1,5 @@
+[sandbox]
+path = "var/sandbox.db"
+
+[yard]
+path = "var/yard.db"

@@ -1,0 +1,23 @@
+pipeline {
+  agent any
+  triggers { cron('H 3 * * *') }
+  environment {
+    PGHOST = 'localhost'
+    PGPORT = '5432'
+    PGDATABASE = 'ways'
+    PGUSER = 'postgres'
+  }
+  stages {
+    stage('nightly routes') {
+      steps {
+        script {
+          docker.image('postgres:13.16').withRun('-e POSTGRES_HOST_AUTH_METHOD=trust -e POSTGRES_DB=ways -p 5432:5432') { db ->
+            sh 'for i in $(seq 1 30); do docker exec ' + db.id + ' pg_isready -U postgres && break; sleep 2; done'
+            sh './gradlew -q load'
+            sh 'for f in sql/route_options.sql sql/loops.sql; do ./gradlew -q sql -Pfile=$f; done'
+          }
+        }
+      }
+    }
+  }
+}

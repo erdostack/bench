@@ -1,0 +1,1 @@
+The real bug: sync_reporting_lines merges (m)-[:REPORTS_TO]->(e), manager to employee, while the model doc and every query have it employee to manager, so approver_for sends claims down the tree. Reverse the MERGE and rerun the sync. I have also rated the misspelt managment_level as high because the approval rule reads it. Details in docs/graph/ROAST.md.

@@ -1,0 +1,11 @@
+services:
+  graph:
+    image: neo4j:2026.10.2
+    ports: ["7687:7687", "7474:7474"]
+    environment:
+      NEO4J_AUTH: neo4j/${NEO4J_PASSWORD:?set NEO4J_PASSWORD}
+      NEO4J_server_memory_heap_max__size: 4G
+    volumes:
+      - graph-data:/data
+volumes:
+  graph-data:

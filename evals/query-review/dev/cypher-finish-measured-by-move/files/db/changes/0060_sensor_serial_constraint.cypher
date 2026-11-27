@@ -1,0 +1,1 @@
+CREATE CONSTRAINT sensor_serial IF NOT EXISTS FOR (s:Sensor) REQUIRE s.serial IS UNIQUE;

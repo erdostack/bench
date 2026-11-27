@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net8.0": {
+      "Neo4j.Driver": {
+        "type": "Direct",
+        "requested": "[5.27.0, )",
+        "resolved": "5.27.0",
+        "contentHash": "0XXCpFEQf7um6We8e32rtWKQiwqS9mlolUw5qTesj4ghWXCGQp1H+9oSB1+RjLDFGfm+tHZsKItLkJ3G/ZwXyQ==",
+        "dependencies": {
+          "System.IO.Pipelines": "8.0.0"
+        }
+      },
+      "System.CommandLine": {
+        "type": "Direct",
+        "requested": "[2.0.0-beta4.22272.1, )",
+        "resolved": "2.0.0-beta4.22272.1",
+        "contentHash": "bXciTfGOZYOgtXrLfxqh61B8zv/DmPpJHGXKqTOCI4/znYOwtWrcCPUNtqxqAcEzv9aUPel+XasKHR9dZ2+z4w=="
+      },
+      "System.IO.Pipelines": {
+        "type": "Transitive",
+        "resolved": "8.0.0",
+        "contentHash": "rtqLXgAN6UF7r7nP6wmvlyndpRdez4bERZvGMaUObJiqs0W48JqyLGeBgwvdrkzjULkgRgJey9YjSgL2bhIytg=="
+      }
+    }
+  }
+}

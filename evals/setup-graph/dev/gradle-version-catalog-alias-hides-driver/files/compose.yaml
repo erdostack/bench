@@ -1,0 +1,8 @@
+services:
+  graph:
+    image: neo4j:2026.08.1-community
+    environment:
+      NEO4J_AUTH: none
+    ports:
+      - "7474:7474"
+      - "7687:7687"

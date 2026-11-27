@@ -1,0 +1,4 @@
+cypher-lint 2.3.0
+queries/steps_in_order.cypher:3:14  W012 unbounded variable-length pattern [:NEXT*0..]
+queries/steps_remaining.cypher:2:28  W012 unbounded variable-length pattern [:NEXT*]
+2 warnings (warnings fail the build: --strict)

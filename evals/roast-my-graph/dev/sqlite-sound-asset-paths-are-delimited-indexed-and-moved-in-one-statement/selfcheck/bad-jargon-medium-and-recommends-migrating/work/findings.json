@@ -1,0 +1,14 @@
+[
+  {
+    "element": "asset.path",
+    "severity": "medium",
+    "problem": "Materialized path pattern: denormalised hierarchy with update anomalies; GLOB predicates are not sargable.",
+    "fix": "Migrate to an adjacency list with a closure table."
+  },
+  {
+    "element": "children",
+    "severity": "low",
+    "problem": "Temp B-tree for ORDER BY.",
+    "fix": "Add an index on (depth, name)."
+  }
+]

@@ -1,0 +1,1 @@
+I wrote changes/009-remove-training-memberships.sql; run it with bin/apply scratch.

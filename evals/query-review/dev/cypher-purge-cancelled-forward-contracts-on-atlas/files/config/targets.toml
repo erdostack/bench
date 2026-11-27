@@ -1,0 +1,7 @@
+[sandbox]
+uri = "neo4j://localhost:7687"
+database = "neo4j"
+
+[atlas]
+uri = "neo4j+s://atlas.hb-graph.example:7687"
+database = "contracts"

@@ -1,0 +1,14 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  queries:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+      - run: echo "NEO4J_AUTH=neo4j/ci-password-1" > .env
+      - run: make up
+      - run: dotnet restore tools/FerryQuery --locked-mode
+      - run: for f in queries/*.cypher; do make q F=$f; done

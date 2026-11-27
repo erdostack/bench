@@ -1,0 +1,4 @@
+services:
+  memgraph:
+    image: memgraph/memgraph-mage
+    ports: ["7687:7687"]

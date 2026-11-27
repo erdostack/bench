@@ -1,0 +1,8 @@
+[
+  {
+    "element": "carrier_month",
+    "severity": "medium",
+    "problem": "The one statement that starts at a Carrier: it reads all of the carrier's shipments (14.2 million for the largest) to keep one month. It is a monthly batch of about 25 s, so it is not urgent.",
+    "fix": "If the batch window gets tight, keep a month column on SHIPPED_BY or load a per-month summary table; not needed before peak."
+  }
+]

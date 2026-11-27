@@ -1,0 +1,50 @@
+[
+  {
+    "element": "queries/resolve_mention.sql",
+    "severity": "critical",
+    "problem": "The WHERE clause compares lower(trim(alias_text)) with lower(trim($1)). The only index that could serve it, alias_norm, is an expression index on lower(alias_text) with no trim. The 2026-10-14 CHANGELOG entry added trim here, which makes the predicate an expression the index does not match, so the planner falls back to scanning the alias table. The table has 31 million rows and resolve_mention runs about 50,000 times a minute, which fits the ingest falling behind since last month.",
+    "fix": "Store a normalised column, alias_norm text GENERATED ALWAYS AS (lower(trim(alias_text))) STORED, index that column, and have resolve_mention compare against it. Backfill the 2025 aliases with trailing spaces once, then confirm with EXPLAIN (ANALYZE, BUFFERS) that the query uses an index scan."
+  },
+  {
+    "element": "schema.sql: alias_norm",
+    "severity": "high",
+    "problem": "alias_norm is an index on lower(alias_text). It does not match the trim-and-lower expression in resolve_mention.sql, so it serves no query. It is still maintained on every insert and update of the 31 million alias rows, which slows writes.",
+    "fix": "Replace it with the index on the generated normalised column described above, and drop the old index in the same migration."
+  },
+  {
+    "element": "schema.sql: alias",
+    "severity": "high",
+    "problem": "alias has no uniqueness rule, so the same (entity_id, alias_text, source) can be inserted many times. resolve_mention counts alias rows per entity (count(*) ... GROUP BY entity_id), so duplicates inflate the 'seen' count and can make the wrong entity win a match. The schema allows this, and add_alias.sql uses a plain INSERT with no ON CONFLICT.",
+    "fix": "Add a unique constraint on (entity_id, alias_norm, source), and change add_alias.sql to INSERT ... ON CONFLICT DO NOTHING. Check for existing duplicates from the bulk import before adding the constraint."
+  },
+  {
+    "element": "queries/add_alias.sql",
+    "severity": "high",
+    "problem": "add_alias.sql stores alias_text exactly as given, with no trim. That is how the trailing-space aliases from the 2025 bulk import got in, and new ones will keep arriving the same way. The 2026-10-14 fix only trims on the query side, so the stored data is still inconsistent.",
+    "fix": "Trim alias_text at write time, either in add_alias.sql or in the application layer that calls it, and reject empty values. The generated normalised column then keeps the stored and matched forms consistent."
+  },
+  {
+    "element": "queries/resolve_mention.sql",
+    "severity": "medium",
+    "problem": "The query returns up to five entities ranked only by how many alias rows match. It has no tie-breaker, so when two entities share the same count, the order (and so the entity the ingest picks) is not defined. Nothing ranks by a confidence measure or by how the alias was learned.",
+    "fix": "Add a deterministic tie-breaker, for example ORDER BY seen DESC, entity_id, and return a clear result when there is more than one candidate, so ingest can flag ambiguous mentions rather than guessing."
+  },
+  {
+    "element": "queries/outgoing.sql",
+    "severity": "medium",
+    "problem": "outgoing.sql and incoming.sql return every relation for an entity with no LIMIT and no paging. The entity page therefore loads the full set for a hub entity, and the ORDER BY predicate does not order the rows within a predicate, so the order can change between requests.",
+    "fix": "Add paging on (predicate, other_entity_id) with a LIMIT and a cursor, and keep the order fully deterministic."
+  },
+  {
+    "element": "schema.sql: relation",
+    "severity": "low",
+    "problem": "The relation table has no column recording where a relation came from, when it was added, or how confident it is, and no check that src_id and dst_id differ. These are not needed for the current queries, but they are hard to add once 120 million rows exist.",
+    "fix": "Add source, created_at and an optional confidence column now, and a CHECK (src_id <> dst_id) if self-relations are not meaningful for the data."
+  },
+  {
+    "element": "queries/entity_aliases.sql",
+    "severity": "low",
+    "problem": "entity_aliases.sql filters on entity_id and sorts by alias_text. The index alias_entity covers only entity_id, so each entity's aliases are sorted in memory after the lookup. This is cheap for a few aliases per entity but would be better served by a composite index.",
+    "fix": "Replace alias_entity with a composite index on (entity_id, alias_text), which serves both the filter and the sort."
+  }
+]

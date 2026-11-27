@@ -1,0 +1,8 @@
+[
+  {
+    "element": "SITE_SUMMARY",
+    "severity": "medium",
+    "problem": "CY-DEP-017 deprecated syntax: technical debt that should be paid down early to stay forward compatible.",
+    "fix": "Plan the migration to the scope clause soon; consider doing it this sprint."
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "element": "TaggedWith",
+    "severity": "medium",
+    "problem": "Polymorphic relationship table (two FROM/TO pairs): a design smell that couples two node types.",
+    "fix": "Consider splitting it per source table; discuss with the CTO."
+  },
+  {
+    "element": "Article",
+    "severity": "medium",
+    "problem": "No secondary indexes on published or section.",
+    "fix": "Consider adding secondary indexes."
+  }
+]

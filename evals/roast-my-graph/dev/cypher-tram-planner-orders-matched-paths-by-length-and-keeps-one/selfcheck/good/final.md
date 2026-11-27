@@ -1,0 +1,1 @@
+What breaks first is the journey search, and it is already broken at today's size. journey.cypher asks Neo4j for every route of any length between two stops and only then keeps the shortest. On a network full of loops that is an astronomical number of routes; it will not finish. Use shortestPath. The nearby panel's two-stop pattern is fine.

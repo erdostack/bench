@@ -1,0 +1,1 @@
+CREATE CONSTRAINT closure_id IF NOT EXISTS FOR (c:Closure) REQUIRE c.closureId IS UNIQUE;

@@ -1,0 +1,5 @@
+[nightly]
+path = "var/nightly.db"
+
+[quay]
+path = "/srv/holdgraph/quay.db"

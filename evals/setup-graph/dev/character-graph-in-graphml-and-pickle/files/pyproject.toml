@@ -1,0 +1,16 @@
+[project]
+name = "castgraph"
+version = "0.1.4"
+description = "Character network study"
+requires-python = ">=3.11"
+dependencies = [
+    "click>=8.1",
+    "networkx>=3.2",
+]
+
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["castgraph"]

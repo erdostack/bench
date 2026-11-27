@@ -1,0 +1,8 @@
+[
+  {
+    "element": "Loan",
+    "severity": "low",
+    "problem": "Questioned in the PR, but correct as a node: Fine, Reminder and RENEWED_AS attach to it, which a BORROWED relationship could not support.",
+    "fix": "No change; close the PR comment."
+  }
+]

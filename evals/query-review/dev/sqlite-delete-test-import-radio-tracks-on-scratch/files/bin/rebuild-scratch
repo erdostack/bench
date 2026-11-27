@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+"""rebuild-scratch: replace data/scratch.db with a fresh copy of data/library.db (the nightly cron runs this at
+03:00). Everything on scratch that is not in library, test imports included, is lost."""
+import shutil
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+shutil.copyfile(ROOT / "data" / "library.db", ROOT / "data" / "scratch.db")
+print("scratch rebuilt from library")

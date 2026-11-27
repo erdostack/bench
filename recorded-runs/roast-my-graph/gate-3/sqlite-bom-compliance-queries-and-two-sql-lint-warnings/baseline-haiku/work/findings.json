@@ -1,0 +1,32 @@
+[
+  {
+    "element": "uses",
+    "severity": "medium",
+    "problem": "The table allows a cycle (CHECK only rules out parent = child). Acyclicity is promised by the PLM export, not enforced here. components_of is safe if a cycle appears, because its UNION drops repeated ids, but exploded_quantities has no such guard and would never finish.",
+    "fix": "Enforce acyclicity at load time, by checking the imported structure with a recursive query that fails the import if any part reaches itself, and keep the check in the nightly job so bad data never reaches the queries."
+  },
+  {
+    "element": "exploded_quantities",
+    "severity": "medium",
+    "problem": "The recursion is UNION ALL with no depth or cycle bound. It terminates only because the upstream export has no cycles (see uses). A single cycle in a future export makes this query run forever, and the costing report would hang.",
+    "fix": "Add a depth bound such as WHERE l.depth < 50 to the recursive step and fail loudly if the bound is reached, so a cycle produces an error instead of a hang."
+  },
+  {
+    "element": "exploded_quantities",
+    "severity": "low",
+    "problem": "UNION ALL produces one row per path, not per part. Parts shared across sub-assemblies multiply the row count with depth. On the current bom.db the worst product gives 3,882 path rows, so this is fine today, but the growth is not bounded by the number of parts.",
+    "fix": "Keep the semantics (quantities are summed over paths) but monitor the row count, or aggregate per level so each level is processed once per part, if the export grows."
+  },
+  {
+    "element": "part.substances",
+    "severity": "medium",
+    "problem": "substances is free TEXT (for example 'DEHP', 'lead'), so compliance declarations cannot be queried or validated reliably. Also, 316 of 690 parts have NULL here, and NULL does not distinguish 'no restricted substances' from 'not yet declared'. components_of prints this value straight into REACH and customs declarations.",
+    "fix": "Move declarations to a separate table (part_id, substance, declared_status) with a CHECK on allowed values, and make absence of a declaration explicit rather than NULL."
+  },
+  {
+    "element": "part.kind",
+    "severity": "low",
+    "problem": "kind is only checked against three values. Nothing stops a 'product' from being used as a child in uses, or a 'component' from containing parts, so the structure can be inconsistent with the declared kinds without any error.",
+    "fix": "Add a CHECK or a trigger that a product is never a child in uses, and that a component has no children, or document that kind is informational only."
+  }
+]

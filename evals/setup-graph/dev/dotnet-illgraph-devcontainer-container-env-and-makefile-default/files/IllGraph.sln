@@ -1,0 +1,6 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IllGraph.Query", "src\IllGraph.Query\IllGraph.Query.csproj", "{6C1D2B0E-4F7A-4B4E-9D63-0B1F0E1A7C21}"
+EndProject
+Global
+EndGlobal

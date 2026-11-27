@@ -1,0 +1,3 @@
+Added `lanenet/merge.py`. `merge_aliases` builds a new DiGraph: alias hubs are dropped, each lane goes to the canonical names, and where a lane exists under both names the weekly loads are added (km is the same road, kept). The alias-to-canonical yard shuttles are skipped, since they would become hub-to-itself lanes that `planner.check` rejects. I didn't use `nx.contracted_nodes`: it keeps those as self-loops and overwrites the canonical lane's loads instead of adding them.
+
+Check: `nx.number_of_selfloops(H)` is 0, and the load count(s) should agree: `sum(d['weekly_loads'] for *_, d in H.edges(data=True))` equals the same sum over G minus the shuttles.

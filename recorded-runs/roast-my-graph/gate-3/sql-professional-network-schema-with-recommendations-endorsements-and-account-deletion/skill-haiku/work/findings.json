@@ -1,0 +1,38 @@
+[
+  {
+    "element": "recommendation",
+    "severity": "critical",
+    "problem": "recommendation.author_id REFERENCES account ON DELETE CASCADE, but the table has no index whose first column is author_id (the only index is recommendation_subject on (subject_id, written_at DESC)). PostgreSQL does not index referencing columns, so each account delete runs the cascade as a sequential scan of recommendation, about 140 million rows at 1.2 KB of body text on average. delete_account.sql runs inside the request, the gateway cuts requests at 10 seconds, and about 20 thousand accounts are deleted per day, more after news stories. The cascade cannot finish in that time at the stated size.",
+    "fix": "CREATE INDEX CONCURRENTLY recommendation_author ON recommendation (author_id); (PostgreSQL 16 syntax). Then move the delete off the request path: in delete_account.sql mark the account deleted and return, and let a background job delete the rows in batches. Check the plan with EXPLAIN (ANALYZE, BUFFERS) on a staging copy before and after."
+  },
+  {
+    "element": "recommendation",
+    "severity": "high",
+    "problem": "recommendation.subject_id REFERENCES account ON DELETE CASCADE. README says 'Everything the member created goes with the account', but a recommendation written by someone else about the member is deleted when the member's account is deleted. That removes text other members wrote, on a path that runs about 20 thousand times a day. Trigger: any member who has received a recommendation, which the README's 140 million recommendations make routine.",
+    "fix": "Decide what happens to recommendations about a deleted member. If they must survive, make subject_id nullable and change the constraint to ON DELETE SET NULL, and hide them in recommendations_for_profile.sql. If they must go, say so in the README. This is a product decision, so confirm it with the owner before the launch review."
+  },
+  {
+    "element": "endorsement",
+    "severity": "high",
+    "problem": "endorsement.receiver_id REFERENCES account ON DELETE CASCADE. An endorsement that giver_id created for the member is deleted when the member's account is deleted, although the README's rule is that the cascades remove what the member created. Trigger: any member who has received an endorsement, which the README's 305 million endorsements make routine. The endorsement counts also feed the analytics warehouse, so the removal changes those figures too.",
+    "fix": "Decide with the product owner whether an endorsement of a deleted member should survive. If not, keep the cascade and document it. If it should, make receiver_id nullable with ON DELETE SET NULL and filter those rows out in endorsements_for_profile.sql. Either way, tell the analytics warehouse what the change stream will show."
+  },
+  {
+    "element": "follows",
+    "severity": "medium",
+    "problem": "followers.sql filters on followee_id and sorts by since DESC with LIMIT 50. The only index on follows is follows_followee (followee_id, follower_id), which does not include since. Postgres must read every follower row of the account and fetch each heap tuple to sort it, then keep 50. For an account with millions of followers, each followers page view does that work. The shipped data is not known to contain such an account, so this is a medium.",
+    "fix": "CREATE INDEX CONCURRENTLY follows_followee_since ON follows (followee_id, since DESC) INCLUDE (follower_id); (PostgreSQL 11 or later). Then the query reads the first 50 entries in index order."
+  },
+  {
+    "element": "following.sql",
+    "severity": "low",
+    "problem": "following.sql filters on follower_id and sorts by f.since DESC with LIMIT 50. The primary key (follower_id, followee_id) does not include since, so Postgres sorts every followee row for the member. The cost is bounded by how many accounts one member follows, which the README does not give.",
+    "fix": "CREATE INDEX CONCURRENTLY follows_follower_since ON follows (follower_id, since DESC) INCLUDE (followee_id); This is cheap insurance; skip it if no member follows more than a few thousand accounts."
+  },
+  {
+    "element": "block_blocked",
+    "severity": "low",
+    "problem": "block_blocked on block (blocked_id) is not used by any statement in db/queries/. The API is not in this repo, so it may use it. If nothing does, every block insert and delete maintains an unused index on a 6-million-row table. Separately, is_blocked.sql checks only one direction (blocker_id to blocked_id), so a block does not stop the blocked member seeing the blocker unless the API checks both directions.",
+    "fix": "Check the API for lookups by blocked_id. If none, drop block_blocked. Confirm with product whether a block should hide each party from the other, and if so, check both directions in is_blocked.sql."
+  }
+]

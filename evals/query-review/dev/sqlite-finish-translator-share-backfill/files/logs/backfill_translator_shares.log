@@ -1,0 +1,8 @@
+2026-11-23 23:10:02 INFO starting backfill_translator_shares
+2026-11-23 23:10:03 INFO committed batch 1/6
+2026-11-23 23:10:03 INFO committed batch 2/6
+2026-11-23 23:10:35 ERROR job failed
+Traceback (most recent call last):
+  File "jobs/backfill_translator_shares.py", line 19, in run
+    conn.executemany("INSERT INTO edges (src, dst, kind, role, share_bp, contract_id) "
+sqlite3.OperationalError: database is locked

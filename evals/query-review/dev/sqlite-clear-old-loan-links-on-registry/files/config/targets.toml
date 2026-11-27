@@ -1,0 +1,5 @@
+[scratch]
+path = "data/scratch.sqlite"
+
+[registry]
+path = "data/registry.sqlite"

@@ -1,0 +1,5 @@
+[dev]
+path = "data/dev.sqlite"
+
+[register]
+path = "data/register.sqlite"

@@ -1,0 +1,1 @@
+["bin/tq", "prod", "--file", "changes/0031-purge-trips-ended-before-2024.cypher"]

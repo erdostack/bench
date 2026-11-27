@@ -1,0 +1,38 @@
+[
+  {
+    "element": "load",
+    "severity": "critical",
+    "problem": "load() builds an nx.Graph and calls add_edge once per CSV row. A Graph keeps one edge per pair, so the 820 rows collapse to 254 edges and every repeated chapter is lost. Every bond becomes 1, so the 'strongest bonds' page is a list of ties. Running the code shows 254 pairs all at 1, sorted alphabetically (Anzelma-Eponine, Anzelma-MmeThenardier, ...). Cosette-Valjean, which shares 31 chapters, shows as 1.",
+    "fix": "Count the rows per pair and store the count on the edge. For example: counts = Counter(tuple(sorted((r['character_a'], r['character_b']))) for r in rows); then for (a, b), n in counts.items(): G.add_edge(a, b, bonds=n). Read the bond from that attribute."
+  },
+  {
+    "element": "bond",
+    "severity": "high",
+    "problem": "bond() returns G.number_of_edges(a, b). On the nx.Graph that load() builds this is 0 or 1, so it cannot return a chapter count. Cosette and Valjean return 1 when the log shows 31 shared chapters.",
+    "fix": "Return the stored count, for example G[a][b]['bonds'] if G.has_edge(a, b) else 0, after load() stores it."
+  },
+  {
+    "element": "screen_partners",
+    "severity": "high",
+    "problem": "screen_partners() is documented as the total bond with everyone a character shares a chapter with. It sums bond() over G[name], which is the list of distinct neighbours, so it returns a head count of people, not chapters. Valjean returns 36 on the page, but the log has 158 rows that pair Valjean with another character, one per shared chapter. The number is wrong and the page does not say so.",
+    "fix": "After bond() reads the stored count, the sum over neighbours gives the right total. Check the result against a hand count from the CSV for Valjean, Marius and Javert before publishing."
+  },
+  {
+    "element": "strongest_bonds",
+    "severity": "medium",
+    "problem": "strongest_bonds() sorts pairs from G.edges(). It breaks ties by name only, so with every bond equal to 1 the top ten are the first names alphabetically, which says nothing about the story. If load() is changed to a MultiGraph without changing this function, each pair appears once per shared chapter and the list repeats.",
+    "fix": "Read the bond count from the edge attribute and sort on it, with each pair listed once. Keep the k argument and add a test that the top pair is Cosette and Valjean with 31."
+  },
+  {
+    "element": "tests/test_bonds.py",
+    "severity": "medium",
+    "problem": "The tests build a three-edge nx.Graph with one row per pair and check values of 1 and 2. Repeated rows never appear, so the three tests pass with the collapse bug in place. The test file runs OK on the current code, which is why the bug is not visible.",
+    "fix": "Add a test that feeds load() a CSV with a pair repeated three times and asserts bond() is 3. Add a test that screen_partners() sums chapters, not neighbours. Use the real CSV for a check against the NetworkX reference weights."
+  },
+  {
+    "element": "data/shared_chapters.csv",
+    "severity": "low",
+    "problem": "The file has no chapter column, so its one-row-per-chapter claim in README.md cannot be audited from the file alone. The data does match the NetworkX les_miserables_graph weights: 820 rows, 254 pairs, 77 characters, and no pair differs from the reference weight. So the counts are sound, but the file cannot show which chapter each row comes from.",
+    "fix": "Add a chapter number column so each shared chapter can be checked against the book. Keep the 'as shipped with NetworkX' note, and record that the counts match the reference."
+  }
+]

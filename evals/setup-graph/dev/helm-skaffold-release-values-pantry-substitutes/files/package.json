@@ -1,0 +1,19 @@
+{
+  "name": "pantry-pairs",
+  "version": "0.9.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "skaffold dev --port-forward",
+    "cypher": "tsx scripts/cypher.ts",
+    "seed": "tsx scripts/seed.ts"
+  },
+  "dependencies": {
+    "neo4j-driver": "^5.27.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

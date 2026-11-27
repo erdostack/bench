@@ -1,0 +1,2 @@
+scratch changes/022-remove-spam-thread-links.sql
+scratch changes/023-remove-spam-thread-messages.sql

@@ -1,0 +1,11 @@
+cypher-lint 0.9.2  graph/offboarding.py
+
+graph/offboarding.py:5   ERROR  UNBATCHED_DELETE  DETACH DELETE without CALL { } IN TRANSACTIONS
+graph/offboarding.py:10  ERROR  UNBATCHED_DELETE  DETACH DELETE without CALL { } IN TRANSACTIONS
+graph/offboarding.py:15  ERROR  UNBATCHED_DELETE  DETACH DELETE without CALL { } IN TRANSACTIONS
+graph/offboarding.py:20  ERROR  UNBATCHED_DELETE  DETACH DELETE without CALL { } IN TRANSACTIONS
+
+Suggested fix: wrap the delete as CALL (n) { DETACH DELETE n } IN TRANSACTIONS OF 1000 ROWS.
+Large deletes in one transaction can exhaust memory.
+
+4 errors, 0 warnings

@@ -1,0 +1,8 @@
+[
+  {
+    "element": "hotels_with_amenities",
+    "severity": "medium",
+    "problem": "Filters city with a scan of all hotels.",
+    "fix": "Add an index on Hotel.city."
+  }
+]

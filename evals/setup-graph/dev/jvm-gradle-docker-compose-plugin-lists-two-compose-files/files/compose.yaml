@@ -1,0 +1,6 @@
+services:
+  graph:
+    image: memgraph/memgraph:2.21.0
+    ports:
+      - "7687:7687"
+    command: ["--log-level=WARNING"]

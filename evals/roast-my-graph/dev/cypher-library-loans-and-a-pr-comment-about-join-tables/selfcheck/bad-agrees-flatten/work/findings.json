@@ -1,0 +1,8 @@
+[
+  {
+    "element": "Loan",
+    "severity": "high",
+    "problem": "Join-table node; costs a hop on every loan query.",
+    "fix": "Replace with (:Member)-[:BORROWED {out, due, returned}]->(:Copy); move fines onto the member."
+  }
+]

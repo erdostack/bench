@@ -1,0 +1,16 @@
+{
+  "name": "skilltree",
+  "version": "0.5.2",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "cypher": "node --env-file=.env scripts/cypher.mjs",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "neo4j-driver": "^5.27.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

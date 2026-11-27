@@ -1,0 +1,20 @@
+[
+  {
+    "element": "shortestChain",
+    "severity": "medium",
+    "problem": "The guard `from in graph.adj` uses the in operator on a plain object, which also matches inherited property names such as constructor, toString, hasOwnProperty and __proto__. If a visitor types one of those into the first box, the guard passes, graph.adj[name] is not an array, and the loop throws \"graph.adj[name] is not iterable\". Inside the submit handler in index.html that is an uncaught error, so the result line is left unchanged. The same names in the second box return null correctly, so the behaviour is also inconsistent. The tests only cover \"Nobody\".",
+    "fix": "Use Object.hasOwn(graph.adj, from) and Object.hasOwn(graph.adj, to) (or load the adjacency into a Map). Add a test that calls shortestChain with \"constructor\" and \"__proto__\" as either name and expects null."
+  },
+  {
+    "element": "site/index.html",
+    "severity": "low",
+    "problem": "shortestChain returns null for several different cases (empty field, misspelled or differently capitalised name, unknown name) and the page answers all of them with \"Pick two characters from the list.\" There is no message when data/lesmis.json fails to load: the top-level await in the module script rejects and the page is left as an inert form. Names in the picker are raw dataset identifiers (Woman1, Child1, OldMan, MmeDeR, CountessDeLo), which is awkward for exhibition visitors.",
+    "fix": "Return or show a specific message per case, match names case-insensitively, catch the fetch failure and show a retry message, and map identifiers to display names in the export step."
+  },
+  {
+    "element": "scripts/export.py",
+    "severity": "low",
+    "problem": "The exported pairs in check.json always use two different characters, so the tests only exercise unique-pair paths. There is no pair with equal endpoints in the export (the same-character case is only covered by one hand-written test), and the output has no note of the data source: the page does not credit Knuth's Stanford GraphBase data, which the README says the network comes from.",
+    "fix": "Keep check.json as is, since it is the right independent check, but add a credit line for the dataset to index.html or the README."
+  }
+]

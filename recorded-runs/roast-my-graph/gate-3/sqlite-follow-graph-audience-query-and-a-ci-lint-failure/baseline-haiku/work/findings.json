@@ -1,0 +1,26 @@
+[
+  {
+    "element": "main",
+    "severity": "medium",
+    "problem": "All 30 brand accounts are computed in one transaction (with con:) and there is no per-account error handling. A single failure, such as a timeout or a bad row, raises out of main() and rolls back the whole night's audience_report rows. The job runs at 02:00 with nobody waiting on it, so the failure goes unnoticed.",
+    "fix": "Catch exceptions per account, log which account failed, and commit each account's row separately. Exit non-zero at the end if any account failed so the scheduler reports it."
+  },
+  {
+    "element": "queries/extended_audience.sql",
+    "severity": "low",
+    "problem": "The recursion terminates only because UNION (not UNION ALL) discards ids already seen, which breaks the cycles that mutual follows create. Nothing in the file or the repo says so, so a later edit to UNION ALL, or a change that adds a depth column, would either loop or overcount without any test catching it.",
+    "fix": "Add a comment in the SQL saying that UNION must stay (it is the cycle guard), and add a test that compares the query output for a few brand accounts with a BFS count over the same follows."
+  },
+  {
+    "element": "queries/mutuals.sql",
+    "severity": "low",
+    "problem": "The file is not used anywhere. jobs/nightly_audience.py only reads extended_audience.sql and direct_followers.sql, and nothing else references mutuals.sql, so it is dead code that a reader could mistake for part of the report.",
+    "fix": "Delete the file, or wire it into the job or the README if it is meant to be used."
+  },
+  {
+    "element": "jobs/nightly_audience.py",
+    "severity": "low",
+    "problem": "The default db_path is the relative string 'audience.db', resolved against the current working directory. Running the job from another directory makes sqlite3.connect create an empty file there, so the job fails later with 'no such table' instead of pointing at the real database.",
+    "fix": "Require the path as an argument, or resolve the default relative to the script or repo root, and fail early if the file does not exist (open it with mode=rw instead of letting sqlite3 create it)."
+  }
+]

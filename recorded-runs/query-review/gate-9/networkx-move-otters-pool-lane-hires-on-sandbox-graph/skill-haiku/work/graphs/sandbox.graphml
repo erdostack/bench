@@ -1,0 +1,1714 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d8" for="edge" attr.name="since" attr.type="string"/>
+<key id="d7" for="edge" attr.name="kind" attr.type="string"/>
+<key id="d6" for="node" attr.name="minutes" attr.type="long"/>
+<key id="d5" for="node" attr.name="start" attr.type="string"/>
+<key id="d4" for="node" attr.name="day" attr.type="string"/>
+<key id="d3" for="node" attr.name="length_m" attr.type="long"/>
+<key id="d2" for="node" attr.name="number" attr.type="long"/>
+<key id="d1" for="node" attr.name="name" attr.type="string"/>
+<key id="d0" for="node" attr.name="kind" attr.type="string"/>
+<graph edgedefault="directed"><node id="POOL-EAST">
+  <data key="d0">pool</data>
+  <data key="d1">Eastgate</data>
+</node>
+<node id="POOL-RIV">
+  <data key="d0">pool</data>
+  <data key="d1">Riverside</data>
+</node>
+<node id="POOL-EAST-L1">
+  <data key="d0">lane</data>
+  <data key="d2">1</data>
+  <data key="d3">25</data>
+</node>
+<node id="POOL-EAST-L2">
+  <data key="d0">lane</data>
+  <data key="d2">2</data>
+  <data key="d3">25</data>
+</node>
+<node id="POOL-EAST-L3">
+  <data key="d0">lane</data>
+  <data key="d2">3</data>
+  <data key="d3">25</data>
+</node>
+<node id="POOL-EAST-L4">
+  <data key="d0">lane</data>
+  <data key="d2">4</data>
+  <data key="d3">25</data>
+</node>
+<node id="POOL-EAST-L5">
+  <data key="d0">lane</data>
+  <data key="d2">5</data>
+  <data key="d3">25</data>
+</node>
+<node id="POOL-EAST-L6">
+  <data key="d0">lane</data>
+  <data key="d2">6</data>
+  <data key="d3">25</data>
+</node>
+<node id="POOL-EAST-L7">
+  <data key="d0">lane</data>
+  <data key="d2">7</data>
+  <data key="d3">25</data>
+</node>
+<node id="POOL-EAST-L8">
+  <data key="d0">lane</data>
+  <data key="d2">8</data>
+  <data key="d3">25</data>
+</node>
+<node id="POOL-RIV-L1">
+  <data key="d0">lane</data>
+  <data key="d2">1</data>
+  <data key="d3">33</data>
+</node>
+<node id="POOL-RIV-L2">
+  <data key="d0">lane</data>
+  <data key="d2">2</data>
+  <data key="d3">33</data>
+</node>
+<node id="POOL-RIV-L3">
+  <data key="d0">lane</data>
+  <data key="d2">3</data>
+  <data key="d3">33</data>
+</node>
+<node id="POOL-RIV-L4">
+  <data key="d0">lane</data>
+  <data key="d2">4</data>
+  <data key="d3">33</data>
+</node>
+<node id="POOL-RIV-L5">
+  <data key="d0">lane</data>
+  <data key="d2">5</data>
+  <data key="d3">33</data>
+</node>
+<node id="POOL-RIV-L6">
+  <data key="d0">lane</data>
+  <data key="d2">6</data>
+  <data key="d3">33</data>
+</node>
+<node id="CLUB-OTTERS">
+  <data key="d0">club</data>
+  <data key="d1">Brackwater Otters</data>
+</node>
+<node id="CLUB-SEALS">
+  <data key="d0">club</data>
+  <data key="d1">Seals SC</data>
+</node>
+<node id="CLUB-MASTERS">
+  <data key="d0">club</data>
+  <data key="d1">Brackwater Masters</data>
+</node>
+<node id="CLUB-TRI">
+  <data key="d0">club</data>
+  <data key="d1">Vale Triathlon</data>
+</node>
+<node id="HIRE-0401">
+  <data key="d0">hire</data>
+  <data key="d4">Sat</data>
+  <data key="d5">19:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0402">
+  <data key="d0">hire</data>
+  <data key="d4">Tue</data>
+  <data key="d5">06:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0403">
+  <data key="d0">hire</data>
+  <data key="d4">Fri</data>
+  <data key="d5">17:30</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0404">
+  <data key="d0">hire</data>
+  <data key="d4">Mon</data>
+  <data key="d5">20:00</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0405">
+  <data key="d0">hire</data>
+  <data key="d4">Sun</data>
+  <data key="d5">06:00</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0406">
+  <data key="d0">hire</data>
+  <data key="d4">Thu</data>
+  <data key="d5">20:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0407">
+  <data key="d0">hire</data>
+  <data key="d4">Mon</data>
+  <data key="d5">11:30</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0408">
+  <data key="d0">hire</data>
+  <data key="d4">Thu</data>
+  <data key="d5">10:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0409">
+  <data key="d0">hire</data>
+  <data key="d4">Mon</data>
+  <data key="d5">19:30</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0410">
+  <data key="d0">hire</data>
+  <data key="d4">Thu</data>
+  <data key="d5">13:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0411">
+  <data key="d0">hire</data>
+  <data key="d4">Tue</data>
+  <data key="d5">07:00</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0412">
+  <data key="d0">hire</data>
+  <data key="d4">Thu</data>
+  <data key="d5">13:30</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0413">
+  <data key="d0">hire</data>
+  <data key="d4">Tue</data>
+  <data key="d5">20:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0414">
+  <data key="d0">hire</data>
+  <data key="d4">Sat</data>
+  <data key="d5">06:30</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0415">
+  <data key="d0">hire</data>
+  <data key="d4">Tue</data>
+  <data key="d5">15:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0416">
+  <data key="d0">hire</data>
+  <data key="d4">Sun</data>
+  <data key="d5">10:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0417">
+  <data key="d0">hire</data>
+  <data key="d4">Sun</data>
+  <data key="d5">13:00</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0418">
+  <data key="d0">hire</data>
+  <data key="d4">Wed</data>
+  <data key="d5">06:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0419">
+  <data key="d0">hire</data>
+  <data key="d4">Wed</data>
+  <data key="d5">10:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0420">
+  <data key="d0">hire</data>
+  <data key="d4">Sat</data>
+  <data key="d5">20:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0421">
+  <data key="d0">hire</data>
+  <data key="d4">Fri</data>
+  <data key="d5">16:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0422">
+  <data key="d0">hire</data>
+  <data key="d4">Sat</data>
+  <data key="d5">13:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0423">
+  <data key="d0">hire</data>
+  <data key="d4">Sat</data>
+  <data key="d5">15:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0424">
+  <data key="d0">hire</data>
+  <data key="d4">Sat</data>
+  <data key="d5">19:00</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0425">
+  <data key="d0">hire</data>
+  <data key="d4">Fri</data>
+  <data key="d5">12:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0426">
+  <data key="d0">hire</data>
+  <data key="d4">Wed</data>
+  <data key="d5">19:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0427">
+  <data key="d0">hire</data>
+  <data key="d4">Fri</data>
+  <data key="d5">20:00</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0428">
+  <data key="d0">hire</data>
+  <data key="d4">Sat</data>
+  <data key="d5">17:00</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0429">
+  <data key="d0">hire</data>
+  <data key="d4">Sat</data>
+  <data key="d5">19:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0430">
+  <data key="d0">hire</data>
+  <data key="d4">Thu</data>
+  <data key="d5">13:30</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0431">
+  <data key="d0">hire</data>
+  <data key="d4">Thu</data>
+  <data key="d5">13:00</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0432">
+  <data key="d0">hire</data>
+  <data key="d4">Mon</data>
+  <data key="d5">13:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0433">
+  <data key="d0">hire</data>
+  <data key="d4">Sat</data>
+  <data key="d5">19:00</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0434">
+  <data key="d0">hire</data>
+  <data key="d4">Tue</data>
+  <data key="d5">16:00</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0435">
+  <data key="d0">hire</data>
+  <data key="d4">Wed</data>
+  <data key="d5">15:30</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0436">
+  <data key="d0">hire</data>
+  <data key="d4">Thu</data>
+  <data key="d5">07:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0437">
+  <data key="d0">hire</data>
+  <data key="d4">Fri</data>
+  <data key="d5">15:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0438">
+  <data key="d0">hire</data>
+  <data key="d4">Wed</data>
+  <data key="d5">20:00</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0439">
+  <data key="d0">hire</data>
+  <data key="d4">Sun</data>
+  <data key="d5">12:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0440">
+  <data key="d0">hire</data>
+  <data key="d4">Tue</data>
+  <data key="d5">16:00</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0441">
+  <data key="d0">hire</data>
+  <data key="d4">Tue</data>
+  <data key="d5">08:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0442">
+  <data key="d0">hire</data>
+  <data key="d4">Mon</data>
+  <data key="d5">09:30</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0443">
+  <data key="d0">hire</data>
+  <data key="d4">Fri</data>
+  <data key="d5">14:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0444">
+  <data key="d0">hire</data>
+  <data key="d4">Tue</data>
+  <data key="d5">08:00</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0445">
+  <data key="d0">hire</data>
+  <data key="d4">Sun</data>
+  <data key="d5">08:00</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0446">
+  <data key="d0">hire</data>
+  <data key="d4">Tue</data>
+  <data key="d5">13:30</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0447">
+  <data key="d0">hire</data>
+  <data key="d4">Tue</data>
+  <data key="d5">09:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0448">
+  <data key="d0">hire</data>
+  <data key="d4">Tue</data>
+  <data key="d5">09:00</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0449">
+  <data key="d0">hire</data>
+  <data key="d4">Sat</data>
+  <data key="d5">12:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0450">
+  <data key="d0">hire</data>
+  <data key="d4">Sat</data>
+  <data key="d5">09:00</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0451">
+  <data key="d0">hire</data>
+  <data key="d4">Wed</data>
+  <data key="d5">20:00</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0452">
+  <data key="d0">hire</data>
+  <data key="d4">Tue</data>
+  <data key="d5">13:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0453">
+  <data key="d0">hire</data>
+  <data key="d4">Sun</data>
+  <data key="d5">15:00</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0454">
+  <data key="d0">hire</data>
+  <data key="d4">Sun</data>
+  <data key="d5">16:00</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0455">
+  <data key="d0">hire</data>
+  <data key="d4">Wed</data>
+  <data key="d5">16:30</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0456">
+  <data key="d0">hire</data>
+  <data key="d4">Sat</data>
+  <data key="d5">07:00</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0457">
+  <data key="d0">hire</data>
+  <data key="d4">Wed</data>
+  <data key="d5">07:30</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0458">
+  <data key="d0">hire</data>
+  <data key="d4">Fri</data>
+  <data key="d5">07:00</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0459">
+  <data key="d0">hire</data>
+  <data key="d4">Mon</data>
+  <data key="d5">12:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0460">
+  <data key="d0">hire</data>
+  <data key="d4">Thu</data>
+  <data key="d5">10:00</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0461">
+  <data key="d0">hire</data>
+  <data key="d4">Sat</data>
+  <data key="d5">17:00</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0462">
+  <data key="d0">hire</data>
+  <data key="d4">Fri</data>
+  <data key="d5">16:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0463">
+  <data key="d0">hire</data>
+  <data key="d4">Thu</data>
+  <data key="d5">12:00</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0464">
+  <data key="d0">hire</data>
+  <data key="d4">Wed</data>
+  <data key="d5">20:30</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0465">
+  <data key="d0">hire</data>
+  <data key="d4">Fri</data>
+  <data key="d5">17:30</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0466">
+  <data key="d0">hire</data>
+  <data key="d4">Sun</data>
+  <data key="d5">14:00</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0467">
+  <data key="d0">hire</data>
+  <data key="d4">Thu</data>
+  <data key="d5">09:00</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0468">
+  <data key="d0">hire</data>
+  <data key="d4">Tue</data>
+  <data key="d5">06:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0469">
+  <data key="d0">hire</data>
+  <data key="d4">Sun</data>
+  <data key="d5">15:00</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0470">
+  <data key="d0">hire</data>
+  <data key="d4">Thu</data>
+  <data key="d5">13:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0471">
+  <data key="d0">hire</data>
+  <data key="d4">Thu</data>
+  <data key="d5">16:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0472">
+  <data key="d0">hire</data>
+  <data key="d4">Sat</data>
+  <data key="d5">16:00</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0473">
+  <data key="d0">hire</data>
+  <data key="d4">Mon</data>
+  <data key="d5">12:30</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0474">
+  <data key="d0">hire</data>
+  <data key="d4">Mon</data>
+  <data key="d5">19:00</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0475">
+  <data key="d0">hire</data>
+  <data key="d4">Wed</data>
+  <data key="d5">08:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0476">
+  <data key="d0">hire</data>
+  <data key="d4">Tue</data>
+  <data key="d5">10:00</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0477">
+  <data key="d0">hire</data>
+  <data key="d4">Fri</data>
+  <data key="d5">17:00</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0478">
+  <data key="d0">hire</data>
+  <data key="d4">Sat</data>
+  <data key="d5">13:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0479">
+  <data key="d0">hire</data>
+  <data key="d4">Fri</data>
+  <data key="d5">08:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0480">
+  <data key="d0">hire</data>
+  <data key="d4">Mon</data>
+  <data key="d5">13:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0481">
+  <data key="d0">hire</data>
+  <data key="d4">Sat</data>
+  <data key="d5">19:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0482">
+  <data key="d0">hire</data>
+  <data key="d4">Mon</data>
+  <data key="d5">15:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0483">
+  <data key="d0">hire</data>
+  <data key="d4">Wed</data>
+  <data key="d5">19:00</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0484">
+  <data key="d0">hire</data>
+  <data key="d4">Thu</data>
+  <data key="d5">19:00</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0485">
+  <data key="d0">hire</data>
+  <data key="d4">Mon</data>
+  <data key="d5">20:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0486">
+  <data key="d0">hire</data>
+  <data key="d4">Thu</data>
+  <data key="d5">10:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0487">
+  <data key="d0">hire</data>
+  <data key="d4">Thu</data>
+  <data key="d5">08:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0488">
+  <data key="d0">hire</data>
+  <data key="d4">Sun</data>
+  <data key="d5">12:00</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0489">
+  <data key="d0">hire</data>
+  <data key="d4">Sat</data>
+  <data key="d5">11:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0490">
+  <data key="d0">hire</data>
+  <data key="d4">Mon</data>
+  <data key="d5">10:00</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0491">
+  <data key="d0">hire</data>
+  <data key="d4">Mon</data>
+  <data key="d5">16:00</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0492">
+  <data key="d0">hire</data>
+  <data key="d4">Wed</data>
+  <data key="d5">20:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0493">
+  <data key="d0">hire</data>
+  <data key="d4">Thu</data>
+  <data key="d5">10:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0494">
+  <data key="d0">hire</data>
+  <data key="d4">Sat</data>
+  <data key="d5">13:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0495">
+  <data key="d0">hire</data>
+  <data key="d4">Wed</data>
+  <data key="d5">07:00</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0496">
+  <data key="d0">hire</data>
+  <data key="d4">Fri</data>
+  <data key="d5">11:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0497">
+  <data key="d0">hire</data>
+  <data key="d4">Fri</data>
+  <data key="d5">09:00</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0498">
+  <data key="d0">hire</data>
+  <data key="d4">Sat</data>
+  <data key="d5">14:00</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0499">
+  <data key="d0">hire</data>
+  <data key="d4">Sun</data>
+  <data key="d5">09:00</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0500">
+  <data key="d0">hire</data>
+  <data key="d4">Sat</data>
+  <data key="d5">18:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0501">
+  <data key="d0">hire</data>
+  <data key="d4">Tue</data>
+  <data key="d5">16:00</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0502">
+  <data key="d0">hire</data>
+  <data key="d4">Thu</data>
+  <data key="d5">16:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0503">
+  <data key="d0">hire</data>
+  <data key="d4">Thu</data>
+  <data key="d5">17:00</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0504">
+  <data key="d0">hire</data>
+  <data key="d4">Tue</data>
+  <data key="d5">07:00</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0505">
+  <data key="d0">hire</data>
+  <data key="d4">Mon</data>
+  <data key="d5">15:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0506">
+  <data key="d0">hire</data>
+  <data key="d4">Sat</data>
+  <data key="d5">12:00</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0507">
+  <data key="d0">hire</data>
+  <data key="d4">Mon</data>
+  <data key="d5">10:00</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0508">
+  <data key="d0">hire</data>
+  <data key="d4">Wed</data>
+  <data key="d5">07:00</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0509">
+  <data key="d0">hire</data>
+  <data key="d4">Tue</data>
+  <data key="d5">15:00</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0510">
+  <data key="d0">hire</data>
+  <data key="d4">Thu</data>
+  <data key="d5">13:00</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0511">
+  <data key="d0">hire</data>
+  <data key="d4">Wed</data>
+  <data key="d5">12:00</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0512">
+  <data key="d0">hire</data>
+  <data key="d4">Fri</data>
+  <data key="d5">06:00</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0513">
+  <data key="d0">hire</data>
+  <data key="d4">Tue</data>
+  <data key="d5">16:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0514">
+  <data key="d0">hire</data>
+  <data key="d4">Mon</data>
+  <data key="d5">11:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="HIRE-0515">
+  <data key="d0">hire</data>
+  <data key="d4">Mon</data>
+  <data key="d5">10:00</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0516">
+  <data key="d0">hire</data>
+  <data key="d4">Wed</data>
+  <data key="d5">11:30</data>
+  <data key="d6">60</data>
+</node>
+<node id="POOL-EASTTP">
+  <data key="d0">pool</data>
+  <data key="d1">Eastgate teaching pool</data>
+</node>
+<node id="POOL-EASTTP-L1">
+  <data key="d0">lane</data>
+  <data key="d2">1</data>
+  <data key="d3">12</data>
+</node>
+<node id="POOL-EASTTP-L2">
+  <data key="d0">lane</data>
+  <data key="d2">2</data>
+  <data key="d3">12</data>
+</node>
+<node id="HIRE-0517">
+  <data key="d0">hire</data>
+  <data key="d4">Thu</data>
+  <data key="d5">20:30</data>
+  <data key="d6">90</data>
+</node>
+<node id="HIRE-0518">
+  <data key="d0">hire</data>
+  <data key="d4">Tue</data>
+  <data key="d5">10:30</data>
+  <data key="d6">45</data>
+</node>
+<node id="HIRE-0519">
+  <data key="d0">hire</data>
+  <data key="d4">Tue</data>
+  <data key="d5">08:30</data>
+  <data key="d6">45</data>
+</node>
+<edge source="POOL-EAST-L1" target="POOL-EAST">
+  <data key="d7">in_pool</data>
+</edge>
+<edge source="POOL-EAST-L2" target="POOL-EAST">
+  <data key="d7">in_pool</data>
+</edge>
+<edge source="POOL-EAST-L3" target="POOL-EAST">
+  <data key="d7">in_pool</data>
+</edge>
+<edge source="POOL-EAST-L4" target="POOL-EAST">
+  <data key="d7">in_pool</data>
+</edge>
+<edge source="POOL-EAST-L5" target="POOL-EAST">
+  <data key="d7">in_pool</data>
+</edge>
+<edge source="POOL-EAST-L6" target="POOL-EAST">
+  <data key="d7">in_pool</data>
+</edge>
+<edge source="POOL-EAST-L7" target="POOL-EAST">
+  <data key="d7">in_pool</data>
+</edge>
+<edge source="POOL-EAST-L8" target="POOL-EAST">
+  <data key="d7">in_pool</data>
+</edge>
+<edge source="POOL-RIV-L1" target="POOL-RIV">
+  <data key="d7">in_pool</data>
+</edge>
+<edge source="POOL-RIV-L2" target="POOL-RIV">
+  <data key="d7">in_pool</data>
+</edge>
+<edge source="POOL-RIV-L3" target="POOL-RIV">
+  <data key="d7">in_pool</data>
+</edge>
+<edge source="POOL-RIV-L4" target="POOL-RIV">
+  <data key="d7">in_pool</data>
+</edge>
+<edge source="POOL-RIV-L5" target="POOL-RIV">
+  <data key="d7">in_pool</data>
+</edge>
+<edge source="POOL-RIV-L6" target="POOL-RIV">
+  <data key="d7">in_pool</data>
+</edge>
+<edge source="CLUB-OTTERS" target="HIRE-0401">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-OTTERS" target="HIRE-0402">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-OTTERS" target="HIRE-0403">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-OTTERS" target="HIRE-0404">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-OTTERS" target="HIRE-0405">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-OTTERS" target="HIRE-0406">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-OTTERS" target="HIRE-0407">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-OTTERS" target="HIRE-0408">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-OTTERS" target="HIRE-0409">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-OTTERS" target="HIRE-0410">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-OTTERS" target="HIRE-0411">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-OTTERS" target="HIRE-0412">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-OTTERS" target="HIRE-0413">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-OTTERS" target="HIRE-0414">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-OTTERS" target="HIRE-0415">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-OTTERS" target="HIRE-0517">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-OTTERS" target="HIRE-0518">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0416">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0417">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0418">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0419">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0420">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0421">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0422">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0425">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0430">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0434">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0436">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0439">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0445">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0447">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0453">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0458">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0462">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0463">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0464">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0477">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0483">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0486">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0487">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0492">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0493">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0503">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0515">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-SEALS" target="HIRE-0519">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0424">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0426">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0428">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0432">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0433">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0437">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0442">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0446">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0448">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0451">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0454">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0455">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0457">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0467">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0468">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0469">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0472">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0473">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0474">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0481">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0482">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0484">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0495">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0499">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0500">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0501">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0507">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0509">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0512">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0513">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-MASTERS" target="HIRE-0516">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0423">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0427">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0429">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0431">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0435">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0438">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0440">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0441">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0443">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0444">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0449">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0450">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0452">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0456">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0459">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0460">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0461">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0465">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0466">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0470">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0471">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0475">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0476">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0478">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0479">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0480">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0485">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0488">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0489">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0490">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0491">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0494">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0496">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0497">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0498">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0502">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0504">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0505">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0506">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0508">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0510">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0511">
+  <data key="d7">booked</data>
+</edge>
+<edge source="CLUB-TRI" target="HIRE-0514">
+  <data key="d7">booked</data>
+</edge>
+<edge source="HIRE-0401" target="POOL-EAST-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-04-20</data>
+</edge>
+<edge source="HIRE-0402" target="POOL-EAST-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-01-05</data>
+</edge>
+<edge source="HIRE-0403" target="POOL-EAST-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0404" target="POOL-EAST-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0405" target="POOL-EAST-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-04-20</data>
+</edge>
+<edge source="HIRE-0406" target="POOL-EAST-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-01-05</data>
+</edge>
+<edge source="HIRE-0407" target="POOL-EAST-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-04-20</data>
+</edge>
+<edge source="HIRE-0408" target="POOL-EAST-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-01-05</data>
+</edge>
+<edge source="HIRE-0409" target="POOL-EAST-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0410" target="POOL-EAST-L4">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0411" target="POOL-EAST-L4">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0412" target="POOL-EAST-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0413" target="POOL-RIV-L3">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0414" target="POOL-RIV-L3">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0415" target="POOL-RIV-L1">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0416" target="POOL-EAST-L3">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0417" target="POOL-EAST-L3">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0418" target="POOL-EAST-L3">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0419" target="POOL-EAST-L3">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0420" target="POOL-EAST-L3">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0421" target="POOL-EAST-L3">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0422" target="POOL-EAST-L7">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0423" target="POOL-RIV-L1">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0424" target="POOL-EAST-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0425" target="POOL-RIV-L1">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0426" target="POOL-EAST-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0427" target="POOL-EAST-L1">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0428" target="POOL-EAST-L2">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0429" target="POOL-RIV-L1">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0430" target="POOL-RIV-L1">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0431" target="POOL-RIV-L1">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0432" target="POOL-RIV-L6">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0433" target="POOL-RIV-L2">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0434" target="POOL-EAST-L4">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0435" target="POOL-EAST-L3">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0436" target="POOL-RIV-L3">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0437" target="POOL-RIV-L4">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0438" target="POOL-RIV-L2">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0439" target="POOL-EAST-L1">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0440" target="POOL-EAST-L6">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0441" target="POOL-EAST-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0442" target="POOL-EAST-L7">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0443" target="POOL-EAST-L4">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0444" target="POOL-EAST-L2">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0445" target="POOL-EAST-L1">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0446" target="POOL-EAST-L8">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0447" target="POOL-EAST-L4">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0448" target="POOL-RIV-L3">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0449" target="POOL-EAST-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0450" target="POOL-EAST-L3">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0451" target="POOL-RIV-L3">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0452" target="POOL-EAST-L2">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0453" target="POOL-EAST-L1">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0454" target="POOL-EAST-L4">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0455" target="POOL-EAST-L7">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0456" target="POOL-RIV-L3">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0457" target="POOL-EAST-L2">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0458" target="POOL-RIV-L2">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0459" target="POOL-RIV-L1">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0460" target="POOL-EAST-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0461" target="POOL-EAST-L3">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0462" target="POOL-RIV-L2">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0463" target="POOL-RIV-L6">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0464" target="POOL-EAST-L2">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0465" target="POOL-RIV-L3">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0466" target="POOL-EAST-L6">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0467" target="POOL-EAST-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0468" target="POOL-EAST-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0469" target="POOL-EAST-L1">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0470" target="POOL-RIV-L2">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0471" target="POOL-EAST-L3">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0472" target="POOL-RIV-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0473" target="POOL-RIV-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0474" target="POOL-RIV-L1">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0475" target="POOL-RIV-L2">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0476" target="POOL-RIV-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0477" target="POOL-EAST-L4">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0478" target="POOL-RIV-L4">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0479" target="POOL-RIV-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0480" target="POOL-EAST-L8">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0481" target="POOL-EAST-L7">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0482" target="POOL-RIV-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0483" target="POOL-EAST-L7">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0484" target="POOL-RIV-L3">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0485" target="POOL-EAST-L7">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0486" target="POOL-RIV-L1">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0487" target="POOL-EAST-L2">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0488" target="POOL-EAST-L6">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0489" target="POOL-EAST-L7">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0490" target="POOL-EAST-L1">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0491" target="POOL-RIV-L4">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0492" target="POOL-RIV-L1">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0493" target="POOL-EAST-L3">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0494" target="POOL-EAST-L3">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0495" target="POOL-EAST-L2">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0496" target="POOL-RIV-L3">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0497" target="POOL-EAST-L4">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0498" target="POOL-RIV-L2">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0499" target="POOL-EAST-L6">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0500" target="POOL-RIV-L6">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0501" target="POOL-RIV-L4">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0502" target="POOL-EAST-L4">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0503" target="POOL-EAST-L7">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0504" target="POOL-EAST-L4">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0505" target="POOL-EAST-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0506" target="POOL-RIV-L2">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0507" target="POOL-RIV-L2">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0508" target="POOL-EAST-L3">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0509" target="POOL-RIV-L1">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0510" target="POOL-EAST-L6">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0511" target="POOL-RIV-L5">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0512" target="POOL-EAST-L4">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0513" target="POOL-EAST-L2">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0514" target="POOL-EAST-L8">
+  <data key="d7">on_lane</data>
+  <data key="d8">2025-09-01</data>
+</edge>
+<edge source="HIRE-0515" target="POOL-EAST-L7">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="HIRE-0516" target="POOL-EAST-L7">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-09-01</data>
+</edge>
+<edge source="POOL-EASTTP-L1" target="POOL-EASTTP">
+  <data key="d7">in_pool</data>
+</edge>
+<edge source="POOL-EASTTP-L2" target="POOL-EASTTP">
+  <data key="d7">in_pool</data>
+</edge>
+<edge source="HIRE-0517" target="POOL-EASTTP-L1">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-11-25</data>
+</edge>
+<edge source="HIRE-0518" target="POOL-EASTTP-L2">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-11-25</data>
+</edge>
+<edge source="HIRE-0519" target="POOL-EASTTP-L1">
+  <data key="d7">on_lane</data>
+  <data key="d8">2026-11-25</data>
+</edge>
+</graph></graphml>

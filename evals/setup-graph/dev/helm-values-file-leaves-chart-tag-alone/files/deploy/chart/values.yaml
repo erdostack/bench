@@ -1,0 +1,8 @@
+image:
+  repository: neo4j
+  tag: "2026.08.1-community"
+  pullPolicy: Always
+resources:
+  memory: 2Gi
+storage:
+  size: 5Gi

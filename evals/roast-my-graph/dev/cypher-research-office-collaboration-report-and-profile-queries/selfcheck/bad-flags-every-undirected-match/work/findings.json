@@ -1,0 +1,14 @@
+[
+  {
+    "element": "institute_collaboration",
+    "severity": "high",
+    "problem": "Undirected match counts pairs twice.",
+    "fix": "Store COAUTHORED in both directions and match one."
+  },
+  {
+    "element": "coauthors",
+    "severity": "high",
+    "problem": "Undirected match returns duplicates too.",
+    "fix": "Make it directed."
+  }
+]

@@ -1,0 +1,6 @@
+2026-11-23T01:30:01Z start backfill_image_components (deployed 2026-11-21)
+2026-11-23T01:30:04Z images 1-25 linked
+2026-11-23T01:30:07Z images 26-50 linked
+2026-11-23T02:58:12Z images 1051-1075 linked
+2026-11-23T02:59:55Z images 1076-1100 linked
+2026-11-23T03:00:00Z killed by scheduler (03:00 cutoff)

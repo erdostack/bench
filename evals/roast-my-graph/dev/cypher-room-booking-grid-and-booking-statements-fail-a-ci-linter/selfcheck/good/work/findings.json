@@ -1,0 +1,14 @@
+[
+  {
+    "element": "free_grid",
+    "severity": "low",
+    "problem": "The linter is right that rooms and slots are not connected, but that is the point: the screen is every room times every slot, at most 46 x 20 = 920 cells. LIMIT 100 would cut the grid after five rooms.",
+    "fix": "Leave it; mark the statement as an intended product in the linter config."
+  },
+  {
+    "element": "book_cell",
+    "severity": "low",
+    "problem": "Three lookups by unique key, one row each, so the product is a single row. The Booking.cell constraint already stops double bookings.",
+    "fix": "Leave it, or write each lookup as its own MATCH if you just want the linter quiet."
+  }
+]

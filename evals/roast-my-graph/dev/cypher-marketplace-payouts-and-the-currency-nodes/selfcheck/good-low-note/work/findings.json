@@ -1,0 +1,8 @@
+[
+  {
+    "element": "Currency",
+    "severity": "low",
+    "problem": "High in-degree on EUR (19M IN_CURRENCY), but it is only ever an end point: queries go payment -> currency and nothing expands from a currency. No cost at query time.",
+    "fix": "Leave it. Revisit only if someone adds a query that starts at a currency."
+  }
+]

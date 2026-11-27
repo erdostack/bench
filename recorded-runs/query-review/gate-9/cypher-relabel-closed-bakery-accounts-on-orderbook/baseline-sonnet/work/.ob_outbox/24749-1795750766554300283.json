@@ -1,0 +1,1 @@
+{"uri": "neo4j+s://orderbook.millrace-bakery.example:7687", "statement": "MATCH (a:Account) WHERE a.status = 'closed' AND a.balancePence = 0 RETURN count(*)"}

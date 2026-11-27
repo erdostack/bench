@@ -1,0 +1,56 @@
+[
+  {
+    "element": "route",
+    "severity": "critical",
+    "problem": "route() builds its graph from every row in segment, with no check that both endpoints still exist in junction. The live trails.db has 14 segments pointing at 4 junction ids that were deleted (248, 433, 434, 681). route() keeps those edges and the fallback codes.get(j, str(j)) prints the raw id as if it were a junction code. Example on a copy of the live map: J0707 -> J0907 returns 886 m via ['J0707', '248', 'J0907'], so the planner sends walkers through a closed junction. The README says this cannot happen.",
+    "fix": "Join segment to junction on both endpoints when loading the graph, so orphaned segments are never used. Replace codes.get(j, str(j)) with a KeyError or an explicit error. Purge the orphan rows with a new migration (003) and re-run the foreign_key_check."
+  },
+  {
+    "element": "connect_db",
+    "severity": "critical",
+    "problem": "connect_db() opens a plain sqlite3 connection without PRAGMA foreign_keys = ON. Foreign keys are off per connection by default, so ON DELETE CASCADE on segment never fires for the app. PRAGMA foreign_key_check on the live trails.db reports 15 violating rows. Closing J0002 on a copy left all 3 segments that touched it in place (segment count 1388 before and after).",
+    "fix": "Run PRAGMA foreign_keys = ON on every connection in connect_db (and in migrate.py's connection). Add a migration 003 that deletes segments whose from_junction or to_junction is missing, then check the live map."
+  },
+  {
+    "element": "close_junction",
+    "severity": "high",
+    "problem": "close_junction() relies entirely on the cascade and its docstring says segments 'go too'. Because the cascade is inert, closing a junction leaves dangling segments behind. The DELETE is also not paired with an explicit delete of the segments in the same transaction, so nothing guarantees the closure takes effect in the graph.",
+    "fix": "Inside the same with-block, delete segment rows where from_junction or to_junction matches the junction's id before deleting the junction. Then a closed junction disappears from routing whether or not foreign keys are on. Add a test that closes a junction and checks no segment still references it."
+  },
+  {
+    "element": "PRAGMA foreign_keys = ON",
+    "severity": "high",
+    "problem": "001_init.sql turns on foreign keys only for the connection that runs the migration. The pragma is per connection, so the app never gets it. The pragma does not persist into the database file, so it has no effect on later sessions.",
+    "fix": "Move the foreign key setting into connect_db and migrate.py. Keep the pragma in 001_init.sql only if it is harmless, and add a comment saying it does nothing for other connections."
+  },
+  {
+    "element": "add_segment",
+    "severity": "high",
+    "problem": "add_segment() inserts with INSERT ... SELECT from junction a, junction b where a.code = ? and b.code = ?. If either code does not exist, the SELECT returns no rows and the insert silently does nothing. No error is raised. A test on a copy with the code 'NOPE' inserted 0 rows and returned normally, so a mistyped junction code disappears without a trace.",
+    "fix": "Check cursor.rowcount after the insert and raise ValueError when it is 0, or look up both ids first and raise a clear error for an unknown code."
+  },
+  {
+    "element": "add_segment",
+    "severity": "medium",
+    "problem": "add_segment() does not check for an existing segment. Calling it twice with the same codes creates duplicate rows. A test on a copy created two J0000-J0001 segments, which gives parallel edges in route() and inflates the segment count the README quotes.",
+    "fix": "Add UNIQUE(from_junction, to_junction) to segment in a new migration, or check for an existing row (in either direction) before inserting, and decide what a duplicate means for the planner."
+  },
+  {
+    "element": "migrate",
+    "severity": "medium",
+    "problem": "migrate() runs each script with executescript, which commits, and only then sets PRAGMA user_version in a separate statement. A migration that fails partway leaves the schema half-applied with the old version number. Re-running it then fails on the same statement, for example a duplicate column in 002_surface.sql.",
+    "fix": "Wrap each script and its user_version bump in one transaction (BEGIN ... COMMIT, with user_version set inside it). Stop on the first error and report which script failed."
+  },
+  {
+    "element": "002_surface.sql",
+    "severity": "low",
+    "problem": "ALTER TABLE segment ADD COLUMN surface ... DEFAULT 'dirt' stamps 'dirt' on every existing row without any data. In the live map 723 of 1388 segments are now 'dirt', and nothing checks whether that is true. route() never reads surface, so the value is stored but unused.",
+    "fix": "Backfill surface from the source data, or make the column nullable and reject NULL only for new rows. Either way, have route() use surface if the planner is meant to filter on it, or say in the README that it is informational."
+  },
+  {
+    "element": "README.md",
+    "severity": "low",
+    "problem": "README.md says foreign keys are 'switched on in migration 001' so that close_junction removes every segment that touches a junction, and that the planner can never route through a closed junction. Both claims are false for the app, as shown by the route and connect_db findings above.",
+    "fix": "Correct the README after the code fixes. State that foreign keys are enabled in connect_db, and document the orphan check."
+  }
+]

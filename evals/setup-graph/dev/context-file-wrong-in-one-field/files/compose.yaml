@@ -1,0 +1,13 @@
+services:
+  graph:
+    image: neo4j:2025.10.1
+    environment:
+      NEO4J_AUTH: neo4j/${SEEDBANK_GRAPH_PASSWORD}
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - seedbank-data:/data
+
+volumes:
+  seedbank-data:

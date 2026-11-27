@@ -1,0 +1,1 @@
+docs/graph/ROAST.md and findings.json are done. One critical finding: the folder tree is a slash-separated string and the LIKE-based statements grab sibling folders (and the rename rebrands folders nobody touched). Fix: parent_id plus a recursive query.

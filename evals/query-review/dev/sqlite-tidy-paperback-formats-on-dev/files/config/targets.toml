@@ -1,0 +1,5 @@
+[dev]
+path = "var/dev.db"
+
+[live]
+path = "/srv/folio/live.db"

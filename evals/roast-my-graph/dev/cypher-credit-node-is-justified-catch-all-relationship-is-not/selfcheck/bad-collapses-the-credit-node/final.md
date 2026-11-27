@@ -1,0 +1,1 @@
+docs/graph/ROAST.md and findings.json written. Critical: Credit is a join table kept as a node and should become a Person-to-Production relationship; HOLDS and ON go with it. Medium: split RELATED into specific types.

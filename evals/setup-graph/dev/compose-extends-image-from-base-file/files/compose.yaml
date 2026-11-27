@@ -1,0 +1,10 @@
+services:
+  graph:
+    extends:
+      file: compose.base.yaml
+      service: neo4j
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - ./import:/import:ro

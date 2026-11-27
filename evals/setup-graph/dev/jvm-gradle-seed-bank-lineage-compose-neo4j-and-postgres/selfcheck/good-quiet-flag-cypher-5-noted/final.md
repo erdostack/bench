@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. One thing is off: docs/query-style.md says the database runs Cypher 5, but compose.yaml sets the default language to CYPHER_25 on the 2026.03.1 server, so unprefixed queries run as Cypher 25.

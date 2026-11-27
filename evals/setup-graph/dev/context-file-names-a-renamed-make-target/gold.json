@@ -1,0 +1,42 @@
+{
+  "graph_present": true,
+  "profiles": [
+    {
+      "engine": [
+        "neo4j"
+      ],
+      "engine_version": "5.26.26",
+      "query_language": {
+        "any_of": [
+          "cypher"
+        ]
+      },
+      "driver": {
+        "package": [
+          "neo4j",
+          "neo4j-python-driver"
+        ],
+        "version": "5.28.1"
+      },
+      "run_queries": {
+        "accept": [
+          "\\bmake\\b.*\\squery\\b",
+          "scripts/run_query\\.sh",
+          "orchard\\.tools\\.run_query",
+          "tools/run_query\\.py"
+        ]
+      }
+    }
+  ],
+  "access": "read-only",
+  "schema_snapshot": {
+    "accept": [
+      "docs/graph/schema.md"
+    ]
+  },
+  "texts": {
+    "run-queries-real": "run_queries has been corrected: the Makefile has no `cypher` target any more; the entry point is `make query` (scripts/run_query.sh, python -m orchard.tools.run_query)",
+    "engine-version-pinned": "engine_version is still 5.26.26 (docker-compose.yml): what was right is left right",
+    "schema-snapshot-exists-or-none": "schema_snapshot still points at docs/graph/schema.md, which exists"
+  }
+}

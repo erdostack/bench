@@ -1,0 +1,7 @@
+[classroom]
+uri = "neo4j://comp3207-lab.teaching.example:7687"
+database = "classroom"
+
+[marks]
+uri = "neo4j+s://marks-graph.internal.example:7687"
+database = "marks"

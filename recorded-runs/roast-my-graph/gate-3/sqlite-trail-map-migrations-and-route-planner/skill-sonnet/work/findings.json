@@ -1,0 +1,14 @@
+[
+  {
+    "element": "close_junction",
+    "severity": "critical",
+    "problem": "The README promises close_junction removes every segment touching a closed junction via ON DELETE CASCADE, but PRAGMA foreign_keys is per connection and is only set in migrations/001_init.sql on the migrate.py connection. connect_db opens connections with foreign keys off, so DELETE FROM junction removes no segments. Shipped trails.db has 15 orphan segment rows (e.g. ids 326, 369, 371, 372, 624) touching deleted junction ids 248, 433, 434 and 681 (PRAGMA foreign_key_check). route() reads all segments, so on a copy route(con, 'J0220', 'J2008') returned 17325 m through closed junction 433 (shown as '433').",
+    "fix": "In connect_db run con.execute(\"PRAGMA foreign_keys = ON\") after sqlite3.connect. Add migrations/003_remove_orphan_segments.sql: DELETE FROM segment WHERE from_junction NOT IN (SELECT id FROM junction) OR to_junction NOT IN (SELECT id FROM junction); then confirm PRAGMA foreign_key_check returns no rows and re-run the route() examples. Stopgap only: make route() skip segments whose endpoints are not in the junction ids."
+  },
+  {
+    "element": "add_segment",
+    "severity": "low",
+    "problem": "Question to confirm: if add_segment is called with a junction code that does not exist, the INSERT ... SELECT matches no rows, so nothing is inserted and no error is raised. Nothing in the files shows this happening.",
+    "fix": "Check the cursor's rowcount after execute and raise ValueError when it is 0."
+  }
+]

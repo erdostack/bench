@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# bin/query <file.cypher>: run a saved query through the port-forward, read-only.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+exec ./mvnw -q exec:java -Dexec.args="${1:?usage: bin/query <file.cypher>}"

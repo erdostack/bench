@@ -1,0 +1,1 @@
+Three findings in docs/graph/ROAST.md and findings.json. The two high ones are naming: partOf and SentAt break the conventions. Also a medium on load_subscribers, which can create a second node when a plan changes.

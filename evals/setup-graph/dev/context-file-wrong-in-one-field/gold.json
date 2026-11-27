@@ -1,0 +1,34 @@
+{
+  "graph_present": true,
+  "profiles": [
+    {
+      "engine": [
+        "neo4j"
+      ],
+      "engine_version": "2025.10.1",
+      "query_language": {
+        "any_of": [
+          "cypher"
+        ]
+      },
+      "driver": {
+        "package": [
+          "neo4j-java-driver"
+        ],
+        "version": "6.1.0"
+      },
+      "run_queries": {
+        "accept": [
+          "bin/cypher",
+          "RunQuery",
+          "exec:java"
+        ]
+      }
+    }
+  ],
+  "access": "read-only",
+  "texts": {
+    "driver-from-lockfile": "driver has been corrected to neo4j-java-driver 6.1.0 (pom.xml); the 5.28.1 in the existing file is stale",
+    "engine-version-pinned": "engine_version is still 2025.10.1 (compose.yaml): the field that was right is left right"
+  }
+}

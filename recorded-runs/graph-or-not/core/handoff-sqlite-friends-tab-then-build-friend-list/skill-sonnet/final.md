@@ -1,0 +1,7 @@
+I added `queries/friends.sql`. It takes `:person_id` and returns one row per friend with `friend_id` and `since` in that order, where `since` is the friendship's `creation_date` as stored. Rows are ordered newest first, and ties go by `friend_id` ascending. I followed the no-graph decision in `docs/graph/DECISION.md`.
+
+- **Closed accounts:** the query leaves out friends whose `person.state` is 2. The decision record states the legal rule, and I checked the code in `account_state`. Suspended (3) and pending-verification (4) members are listed, as the rule requires. Filtering on `state = 1` would have hidden them.
+- **Friendship direction:** a friendship is stored once, so the query reads both sides. It selects `person2_id` where `person1_id` matches and `person1_id` where `person2_id` matches, joined with `UNION ALL`. That way the primary key and the `person_knows_person_2` index each serve one branch.
+- **File name:** the record names the file `queries/friends_tab.sql`. I used `queries/friends.sql` as you asked, so `sql.run(conn, "friends", person_id=...)` finds it.
+
+I ran it read-only through `sql.run` against the sample `var/hearth.db`, for every member. The results matched an independent query for each of them, and the plan used the indexes. I did not touch `hearth/profile.py`, so `friends_tab` still raises `NotImplementedError` until it calls the query. Production timing is still unknown. The record measured the equivalent query at about 0.04 ms on the sample.

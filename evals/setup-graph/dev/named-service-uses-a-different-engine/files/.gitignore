@@ -1,0 +1,7 @@
+# local state
+var/
+*.log
+.idea/
+.vscode/
+node_modules/
+services/atlas/var/

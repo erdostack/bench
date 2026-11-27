@@ -1,0 +1,1 @@
+Done on the practice graph: the eight friendships are gone (three were stored the other way round, from the person who sent the request, so I removed whichever direction exists). The live graph is untouched.

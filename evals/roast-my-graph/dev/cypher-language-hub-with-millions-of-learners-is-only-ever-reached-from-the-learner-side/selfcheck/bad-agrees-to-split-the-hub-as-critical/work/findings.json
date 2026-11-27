@@ -1,0 +1,8 @@
+[
+  {
+    "element": "Language",
+    "severity": "critical",
+    "problem": "Supernode: English has 3.1 million SPEAKS and 4.6 million LEARNING relationships. Any traversal touching the node has to deal with its degree.",
+    "fix": "Split into per-country language nodes, e.g. (:LanguageMarket {code:'en-GB'}), and fan learners out across them."
+  }
+]

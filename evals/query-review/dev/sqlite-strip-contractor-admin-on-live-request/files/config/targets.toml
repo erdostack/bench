@@ -1,0 +1,5 @@
+[staging]
+path = "var/staging.db"
+
+[live]
+path = "/srv/rolebook/live.db"

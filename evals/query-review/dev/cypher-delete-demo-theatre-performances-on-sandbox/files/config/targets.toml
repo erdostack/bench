@@ -1,0 +1,7 @@
+[boxoffice]
+uri = "neo4j+s://boxoffice.crescent-theatre.example:7687"
+database = "boxoffice"
+
+[sandbox]
+uri = "neo4j://sandbox.web.crescent-theatre.example:7687"
+database = "neo4j"

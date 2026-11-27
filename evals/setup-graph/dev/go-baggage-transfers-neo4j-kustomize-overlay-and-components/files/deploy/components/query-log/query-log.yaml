@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: graph
+spec:
+  template:
+    spec:
+      containers:
+        - name: neo4j
+          env:
+            - name: NEO4J_db_logs_query_enabled
+              value: INFO
+            - name: NEO4J_db_logs_query_threshold
+              value: 500ms

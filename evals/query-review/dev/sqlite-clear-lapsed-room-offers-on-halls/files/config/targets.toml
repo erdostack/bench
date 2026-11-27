@@ -1,0 +1,5 @@
+[practice]
+path = "data/practice.db"
+
+[halls]
+path = "data/halls.db"

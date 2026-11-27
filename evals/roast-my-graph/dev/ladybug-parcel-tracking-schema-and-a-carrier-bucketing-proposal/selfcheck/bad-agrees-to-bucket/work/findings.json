@@ -1,0 +1,14 @@
+[
+  {
+    "element": "Carrier",
+    "severity": "critical",
+    "problem": "Supernode with 14.2M SHIPPED_BY relationships; every query that touches it slows down.",
+    "fix": "Introduce CarrierMonth nodes and link shipments to the month bucket."
+  },
+  {
+    "element": "track",
+    "severity": "high",
+    "problem": "Touches the Carrier supernode on every request.",
+    "fix": "Use the buckets."
+  }
+]

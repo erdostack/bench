@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. The README is behind: it says Neo4j 5.26, and so do the chart defaults (5.26.14), but the values file that `make dev-up` actually passes sets the image tag to 2026.02.2. I recorded 2026.02.2.

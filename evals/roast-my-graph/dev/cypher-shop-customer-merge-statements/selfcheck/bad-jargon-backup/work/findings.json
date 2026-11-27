@@ -1,0 +1,8 @@
+[
+  {
+    "element": "drop_duplicate",
+    "severity": "high",
+    "problem": "DETACH DELETE is a destructive cascading anti-pattern.",
+    "fix": "Take a backup before each merge and ask support to confirm the customer id twice."
+  }
+]

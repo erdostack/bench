@@ -1,0 +1,1 @@
+Done on the sandbox with bin/gx sandbox mv.py: the 7 feeds links of RLY-HILLTOP now come from RLY-BEACON with the same band, km and channel. Hilltop and its link and backhaul edges stay; live untouched.

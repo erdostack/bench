@@ -1,0 +1,1 @@
+["bin/bx", "practice", "SELECT count(*) FROM edges e JOIN nodes a ON a.id = e.src WHERE e.kind = 'holds' AND a.code LIKE 'TRN-%'"]

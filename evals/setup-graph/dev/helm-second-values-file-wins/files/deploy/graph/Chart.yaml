@@ -1,0 +1,5 @@
+apiVersion: v2
+name: pollen-graph
+version: 0.2.0
+appVersion: "2026.02.2"
+description: Single-instance Neo4j for the pollen service

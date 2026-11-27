@@ -1,0 +1,8 @@
+[
+  {
+    "element": "blob_is_immutable",
+    "severity": "low",
+    "problem": "Used by the statement-level trigger blob_no_truncate, the function reads OLD.digest, which does not exist for TRUNCATE, so TRUNCATE blob CASCADE is correctly blocked but with the message 'blob rows cannot be truncate (digest <NULL>)'. Confirmed on PostgreSQL 16; the table kept its rows. Cosmetic only.",
+    "fix": "Create a separate function for the statement trigger that raises 'blob rows cannot be truncated' without referencing OLD, and point blob_no_truncate at it. Optional; no data migration."
+  }
+]

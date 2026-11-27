@@ -1,0 +1,1 @@
+["bin/gx", "scratch", "-c", "G.remove_nodes_from([n for n in list(G) if n.startswith('TMP-')])\nG.remove_nodes_from(['B-0901', 'B-0902', 'B-0903'])"]

@@ -1,0 +1,14 @@
+[
+  {
+    "element": "accession_card",
+    "severity": "high",
+    "problem": "Cypher 25 syntax on a 5.x server.",
+    "fix": "Rewrite as CALL { WITH b ... }."
+  },
+  {
+    "element": "taxon_holdings",
+    "severity": "high",
+    "problem": "Cypher 25 syntax on a 5.x server.",
+    "fix": "Rewrite as CALL { WITH t ... }."
+  }
+]

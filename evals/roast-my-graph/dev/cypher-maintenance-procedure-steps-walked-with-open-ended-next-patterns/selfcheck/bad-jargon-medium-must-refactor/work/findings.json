@@ -1,0 +1,8 @@
+[
+  {
+    "element": "steps_in_order.cypher",
+    "severity": "medium",
+    "problem": "Unbounded variable-length path anti-pattern; risk of path explosion as data grows.",
+    "fix": "Refactor to MATCH (p)-[:HAS_STEP]->(s) with a HAS_STEP relationship per step and drop NEXT."
+  }
+]

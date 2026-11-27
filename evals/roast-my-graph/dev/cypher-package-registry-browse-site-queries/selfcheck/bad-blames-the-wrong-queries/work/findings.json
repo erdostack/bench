@@ -1,0 +1,14 @@
+[
+  {
+    "element": "package_page",
+    "severity": "high",
+    "problem": "Two OPTIONAL MATCH clauses touch License, a supernode.",
+    "fix": "Store the license on the package."
+  },
+  {
+    "element": "refresh_license_counts",
+    "severity": "medium",
+    "problem": "Counts all relationships nightly.",
+    "fix": "Fine but slow."
+  }
+]

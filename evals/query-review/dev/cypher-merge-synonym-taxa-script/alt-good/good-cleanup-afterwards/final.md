@@ -1,0 +1,1 @@
+Step 1 creates (keep)-[:CHILD_OF]->(keep) for synonyms filed under their accepted taxon; step 5 removes those. Check with count().

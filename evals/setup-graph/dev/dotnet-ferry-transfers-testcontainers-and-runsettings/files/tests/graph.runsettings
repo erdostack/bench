@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <RunConfiguration>
+    <ResultsDirectory>./TestResults</ResultsDirectory>
+    <TestSessionTimeout>900000</TestSessionTimeout>
+    <EnvironmentVariables>
+      <GRAPH_IMAGE>neo4j:2026.08.1-community</GRAPH_IMAGE>
+      <TESTCONTAINERS_RYUK_DISABLED>false</TESTCONTAINERS_RYUK_DISABLED>
+    </EnvironmentVariables>
+  </RunConfiguration>
+</RunSettings>

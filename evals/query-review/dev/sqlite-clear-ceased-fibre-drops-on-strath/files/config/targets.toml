@@ -1,0 +1,5 @@
+[nightly]
+path = "data/nightly.sqlite"
+
+[strath]
+path = "data/strath.sqlite"

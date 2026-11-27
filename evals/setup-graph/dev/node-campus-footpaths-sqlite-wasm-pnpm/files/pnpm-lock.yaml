@@ -1,0 +1,23 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@sqlite.org/sqlite-wasm':
+        specifier: 3.47.2-build1
+        version: 3.47.2-build1
+
+packages:
+
+  '@sqlite.org/sqlite-wasm@3.47.2-build1':
+    resolution: {integrity: sha512-X8XTM+johDqyzLi7FNCyOrVnWmFP2zGExdAp9FtbFoXBw1QUMsBpPXdAAneCYDqJ+zHscK+4sjl/tlQcj2NClA==}
+    hasBin: true
+
+snapshots:
+
+  '@sqlite.org/sqlite-wasm@3.47.2-build1': {}

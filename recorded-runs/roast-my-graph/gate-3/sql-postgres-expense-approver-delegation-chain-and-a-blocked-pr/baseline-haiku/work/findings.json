@@ -1,0 +1,26 @@
+[
+  {
+    "element": "queries/final_approver.sql: WITH RECURSIVE chain (user_id, path)",
+    "severity": "high",
+    "problem": "The chain starts at the line manager, and the claimant is never put in the path or excluded from the result. If the manager has delegated to the claimant, or the chain loops back to the claimant (manager -> B -> claimant), the query returns the claimant as the approver, so a person can approve their own claim. Nothing in the query or schema prevents this.",
+    "fix": "Pass the claimant id as a parameter, seed the path with the claimant as well as the manager, and reject or skip the claimant if the chain returns them (or have the caller check that the returned user_id differs from the claimant before assigning)."
+  },
+  {
+    "element": "queries/final_approver.sql: SELECT $1::bigint, ARRAY[$1::bigint]",
+    "severity": "medium",
+    "problem": "If the claimant has no line manager, app_user.manager_id is NULL, $1 is NULL, and the seed row has user_id NULL. The query then returns a row with a NULL approver and zero hand-offs instead of an error or a fallback. Whatever the application does with that row can leave the claim with no approver.",
+    "fix": "Return no rows (or raise an error) when $1 IS NULL, and make the caller handle the no-manager case explicitly, for example by routing to a fallback approver."
+  },
+  {
+    "element": "schema.sql: claim.approver_id",
+    "severity": "medium",
+    "problem": "approver_id is nullable and no CHECK ties it to status. A claim can be 'submitted' with no approver, and queries/my_queue.sql filters on approver_id = $1, so such a claim never appears in anyone's queue and is silently stuck.",
+    "fix": "Add CHECK (status <> 'submitted' OR approver_id IS NOT NULL), or make the column NOT NULL once the workflow always assigns an approver before submission is complete."
+  },
+  {
+    "element": "schema.sql: delegate.user_id",
+    "severity": "low",
+    "problem": "The path guard in final_approver.sql is what stops the recursion, and it only keeps the output finite because the PRIMARY KEY on user_id allows at most one outgoing edge per person, so the walk is a single line. If that key were ever relaxed to allow several delegates per person, the walk would branch and the number of rows could grow exponentially with chain length, even though it still terminates. The current schema is correct; the dependency is undocumented.",
+    "fix": "Keep the PRIMARY KEY, and add a comment in schema.sql and final_approver.sql that the single-row-per-user rule is what bounds the recursion."
+  }
+]

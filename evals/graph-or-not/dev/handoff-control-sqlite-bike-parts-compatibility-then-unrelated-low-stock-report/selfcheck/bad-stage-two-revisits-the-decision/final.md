@@ -1,0 +1,1 @@
+Before building more reports on this schema: docs/graph/DECISION.md settled compatibility as no-graph. Should we confirm that still holds before adding stock queries? Tell me and I'll write the low-stock list.

@@ -1,0 +1,1 @@
+queries/recent_messages.sql is written. It numbers the member's messages newest first (larger id first on a tie), keeps the first ten and follows reply_of_id up from each one until it reaches the message with no parent. That message is the root post, and its creator_id is root_author_id.

@@ -1,0 +1,1 @@
+club/intro.py: one recursive SQLite query over the pairs with 3 or more encounter rows, as recorded in docs/graph/DECISION.md; returns the fewest introductions, 0 for the same member, None if unreachable.

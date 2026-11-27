@@ -1,0 +1,622 @@
+{
+ "directed": true,
+ "multigraph": false,
+ "graph": {},
+ "nodes": [
+  {
+   "kind": "studio",
+   "name": "Wexcombe studio",
+   "site": "Quay Street",
+   "id": "STU-MAIN"
+  },
+  {
+   "kind": "relay",
+   "name": "Hilltop relay",
+   "site": "Hilltop mast",
+   "id": "RLY-HILLTOP"
+  },
+  {
+   "kind": "relay",
+   "name": "Beacon relay",
+   "site": "Beacon mast",
+   "id": "RLY-BEACON"
+  },
+  {
+   "kind": "relay",
+   "name": "Ridge relay",
+   "site": "Ridge mast",
+   "id": "RLY-RIDGE"
+  },
+  {
+   "kind": "relay",
+   "name": "Marsh relay",
+   "site": "Marsh mast",
+   "id": "RLY-MARSH"
+  },
+  {
+   "kind": "relay",
+   "name": "Chapel relay",
+   "site": "Chapel mast",
+   "id": "RLY-CHAPEL"
+  },
+  {
+   "kind": "relay",
+   "name": "Quarry relay",
+   "site": "Quarry mast",
+   "id": "RLY-QUARRY"
+  },
+  {
+   "kind": "relay",
+   "name": "Harbour relay",
+   "site": "Harbour mast",
+   "id": "RLY-HARBOUR"
+  },
+  {
+   "kind": "relay",
+   "name": "Moor relay",
+   "site": "Moor mast",
+   "id": "RLY-MOOR"
+  },
+  {
+   "kind": "relay",
+   "name": "Station relay",
+   "site": "Station mast",
+   "id": "RLY-STATION"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 01",
+   "site": "Site 01",
+   "id": "TX-01"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 02",
+   "site": "Site 02",
+   "id": "TX-02"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 03",
+   "site": "Site 03",
+   "id": "TX-03"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 04",
+   "site": "Site 04",
+   "id": "TX-04"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 05",
+   "site": "Site 05",
+   "id": "TX-05"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 06",
+   "site": "Site 06",
+   "id": "TX-06"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 07",
+   "site": "Site 07",
+   "id": "TX-07"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 08",
+   "site": "Site 08",
+   "id": "TX-08"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 09",
+   "site": "Site 09",
+   "id": "TX-09"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 10",
+   "site": "Site 10",
+   "id": "TX-10"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 11",
+   "site": "Site 11",
+   "id": "TX-11"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 12",
+   "site": "Site 12",
+   "id": "TX-12"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 13",
+   "site": "Site 13",
+   "id": "TX-13"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 14",
+   "site": "Site 14",
+   "id": "TX-14"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 15",
+   "site": "Site 15",
+   "id": "TX-15"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 16",
+   "site": "Site 16",
+   "id": "TX-16"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 17",
+   "site": "Site 17",
+   "id": "TX-17"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 18",
+   "site": "Site 18",
+   "id": "TX-18"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 19",
+   "site": "Site 19",
+   "id": "TX-19"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 20",
+   "site": "Site 20",
+   "id": "TX-20"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 21",
+   "site": "Site 21",
+   "id": "TX-21"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 22",
+   "site": "Site 22",
+   "id": "TX-22"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 23",
+   "site": "Site 23",
+   "id": "TX-23"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 24",
+   "site": "Site 24",
+   "id": "TX-24"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 25",
+   "site": "Site 25",
+   "id": "TX-25"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 26",
+   "site": "Site 26",
+   "id": "TX-26"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 27",
+   "site": "Site 27",
+   "id": "TX-27"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 28",
+   "site": "Site 28",
+   "id": "TX-28"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 29",
+   "site": "Site 29",
+   "id": "TX-29"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 30",
+   "site": "Site 30",
+   "id": "TX-30"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 31",
+   "site": "Site 31",
+   "id": "TX-31"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 32",
+   "site": "Site 32",
+   "id": "TX-32"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 33",
+   "site": "Site 33",
+   "id": "TX-33"
+  },
+  {
+   "kind": "transmitter",
+   "name": "Transmitter 34",
+   "site": "Site 34",
+   "id": "TX-34"
+  }
+ ],
+ "edges": [
+  {
+   "kind": "link",
+   "band": "5.8GHz",
+   "km": 10.8,
+   "source": "STU-MAIN",
+   "target": "RLY-HILLTOP"
+  },
+  {
+   "kind": "link",
+   "band": "5.8GHz",
+   "km": 16.0,
+   "source": "STU-MAIN",
+   "target": "RLY-BEACON"
+  },
+  {
+   "kind": "link",
+   "band": "5.8GHz",
+   "km": 23.5,
+   "source": "STU-MAIN",
+   "target": "RLY-RIDGE"
+  },
+  {
+   "kind": "link",
+   "band": "5.8GHz",
+   "km": 11.8,
+   "source": "STU-MAIN",
+   "target": "RLY-MARSH"
+  },
+  {
+   "kind": "link",
+   "band": "5.8GHz",
+   "km": 12.6,
+   "source": "STU-MAIN",
+   "target": "RLY-CHAPEL"
+  },
+  {
+   "kind": "link",
+   "band": "5.8GHz",
+   "km": 7.1,
+   "source": "STU-MAIN",
+   "target": "RLY-QUARRY"
+  },
+  {
+   "kind": "link",
+   "band": "5.8GHz",
+   "km": 14.9,
+   "source": "STU-MAIN",
+   "target": "RLY-HARBOUR"
+  },
+  {
+   "kind": "link",
+   "band": "5.8GHz",
+   "km": 14.0,
+   "source": "STU-MAIN",
+   "target": "RLY-MOOR"
+  },
+  {
+   "kind": "link",
+   "band": "5.8GHz",
+   "km": 9.0,
+   "source": "STU-MAIN",
+   "target": "RLY-STATION"
+  },
+  {
+   "kind": "backhaul",
+   "band": "5.8GHz",
+   "km": 9.4,
+   "source": "RLY-HILLTOP",
+   "target": "RLY-RIDGE"
+  },
+  {
+   "kind": "feeds",
+   "band": "2.4GHz",
+   "km": 10.4,
+   "channel": 12,
+   "source": "RLY-BEACON",
+   "target": "TX-16"
+  },
+  {
+   "kind": "feeds",
+   "band": "5.8GHz",
+   "km": 7.2,
+   "channel": 7,
+   "source": "RLY-BEACON",
+   "target": "TX-02"
+  },
+  {
+   "kind": "feeds",
+   "band": "2.4GHz",
+   "km": 1.6,
+   "channel": 8,
+   "source": "RLY-BEACON",
+   "target": "TX-01"
+  },
+  {
+   "kind": "feeds",
+   "band": "2.4GHz",
+   "km": 2.9,
+   "channel": 4,
+   "source": "RLY-BEACON",
+   "target": "TX-33"
+  },
+  {
+   "kind": "feeds",
+   "band": "2.4GHz",
+   "km": 10.1,
+   "channel": 8,
+   "source": "RLY-BEACON",
+   "target": "TX-30"
+  },
+  {
+   "kind": "feeds",
+   "band": "5.8GHz",
+   "km": 11.7,
+   "channel": 11,
+   "source": "RLY-RIDGE",
+   "target": "TX-20"
+  },
+  {
+   "kind": "feeds",
+   "band": "2.4GHz",
+   "km": 2.0,
+   "channel": 11,
+   "source": "RLY-RIDGE",
+   "target": "TX-19"
+  },
+  {
+   "kind": "feeds",
+   "band": "5.8GHz",
+   "km": 6.2,
+   "channel": 1,
+   "source": "RLY-RIDGE",
+   "target": "TX-10"
+  },
+  {
+   "kind": "feeds",
+   "band": "5.8GHz",
+   "km": 10.1,
+   "channel": 12,
+   "source": "RLY-RIDGE",
+   "target": "TX-29"
+  },
+  {
+   "kind": "feeds",
+   "band": "2.4GHz",
+   "km": 4.0,
+   "channel": 1,
+   "source": "RLY-MARSH",
+   "target": "TX-22"
+  },
+  {
+   "kind": "feeds",
+   "band": "2.4GHz",
+   "km": 3.7,
+   "channel": 11,
+   "source": "RLY-MARSH",
+   "target": "TX-31"
+  },
+  {
+   "kind": "feeds",
+   "band": "2.4GHz",
+   "km": 10.5,
+   "channel": 6,
+   "source": "RLY-MARSH",
+   "target": "TX-23"
+  },
+  {
+   "kind": "feeds",
+   "band": "2.4GHz",
+   "km": 9.1,
+   "channel": 10,
+   "source": "RLY-MARSH",
+   "target": "TX-21"
+  },
+  {
+   "kind": "backhaul",
+   "band": "5.8GHz",
+   "km": 7.1,
+   "source": "RLY-MARSH",
+   "target": "RLY-HILLTOP"
+  },
+  {
+   "kind": "feeds",
+   "band": "5.8GHz",
+   "km": 11.9,
+   "channel": 1,
+   "source": "RLY-CHAPEL",
+   "target": "TX-26"
+  },
+  {
+   "kind": "feeds",
+   "band": "2.4GHz",
+   "km": 10.7,
+   "channel": 5,
+   "source": "RLY-CHAPEL",
+   "target": "TX-06"
+  },
+  {
+   "kind": "feeds",
+   "band": "5.8GHz",
+   "km": 9.6,
+   "channel": 6,
+   "source": "RLY-CHAPEL",
+   "target": "TX-05"
+  },
+  {
+   "kind": "feeds",
+   "band": "2.4GHz",
+   "km": 4.9,
+   "channel": 9,
+   "source": "RLY-CHAPEL",
+   "target": "TX-04"
+  },
+  {
+   "kind": "feeds",
+   "band": "2.4GHz",
+   "km": 3.0,
+   "channel": 11,
+   "source": "RLY-CHAPEL",
+   "target": "TX-08"
+  },
+  {
+   "kind": "feeds",
+   "band": "2.4GHz",
+   "km": 5.4,
+   "channel": 11,
+   "source": "RLY-QUARRY",
+   "target": "TX-11"
+  },
+  {
+   "kind": "feeds",
+   "band": "5.8GHz",
+   "km": 1.6,
+   "channel": 10,
+   "source": "RLY-QUARRY",
+   "target": "TX-24"
+  },
+  {
+   "kind": "feeds",
+   "band": "2.4GHz",
+   "km": 11.0,
+   "channel": 13,
+   "source": "RLY-HARBOUR",
+   "target": "TX-03"
+  },
+  {
+   "kind": "feeds",
+   "band": "5.8GHz",
+   "km": 9.7,
+   "channel": 13,
+   "source": "RLY-HARBOUR",
+   "target": "TX-14"
+  },
+  {
+   "kind": "feeds",
+   "band": "5.8GHz",
+   "km": 4.1,
+   "channel": 2,
+   "source": "RLY-HARBOUR",
+   "target": "TX-34"
+  },
+  {
+   "kind": "feeds",
+   "band": "5.8GHz",
+   "km": 9.0,
+   "channel": 4,
+   "source": "RLY-HARBOUR",
+   "target": "TX-27"
+  },
+  {
+   "kind": "feeds",
+   "band": "5.8GHz",
+   "km": 4.7,
+   "channel": 2,
+   "source": "RLY-MOOR",
+   "target": "TX-13"
+  },
+  {
+   "kind": "feeds",
+   "band": "5.8GHz",
+   "km": 9.2,
+   "channel": 3,
+   "source": "RLY-MOOR",
+   "target": "TX-17"
+  },
+  {
+   "kind": "feeds",
+   "band": "5.8GHz",
+   "km": 5.9,
+   "channel": 9,
+   "source": "RLY-STATION",
+   "target": "TX-25"
+  },
+  {
+   "kind": "feeds",
+   "band": "2.4GHz",
+   "km": 5.0,
+   "channel": 11,
+   "source": "TX-07",
+   "target": "RLY-BEACON"
+  },
+  {
+   "kind": "feeds",
+   "band": "2.4GHz",
+   "km": 11.6,
+   "channel": 6,
+   "source": "TX-09",
+   "target": "RLY-BEACON"
+  },
+  {
+   "kind": "feeds",
+   "band": "2.4GHz",
+   "km": 3.5,
+   "channel": 1,
+   "source": "TX-12",
+   "target": "RLY-BEACON"
+  },
+  {
+   "kind": "feeds",
+   "band": "2.4GHz",
+   "km": 2.9,
+   "channel": 6,
+   "source": "TX-15",
+   "target": "RLY-BEACON"
+  },
+  {
+   "kind": "feeds",
+   "band": "2.4GHz",
+   "km": 2.4,
+   "channel": 5,
+   "source": "TX-18",
+   "target": "RLY-BEACON"
+  },
+  {
+   "kind": "feeds",
+   "band": "5.8GHz",
+   "km": 1.0,
+   "channel": 12,
+   "source": "TX-28",
+   "target": "RLY-BEACON"
+  },
+  {
+   "kind": "feeds",
+   "band": "5.8GHz",
+   "km": 1.9,
+   "channel": 5,
+   "source": "TX-32",
+   "target": "RLY-BEACON"
+  }
+ ]
+}

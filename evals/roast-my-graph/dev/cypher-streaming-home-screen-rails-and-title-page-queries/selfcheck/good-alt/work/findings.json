@@ -1,0 +1,14 @@
+[
+  {
+    "element": "home.cypher / watch_next",
+    "severity": "critical",
+    "problem": "Picked for you is not personalised: (m:Title)-[:IN_GENRE]->(:Genre) matches any genre, unrelated to the FAVOURS genres, so every viewer gets the catalogue's top scores (minus what they watched), with duplicates.",
+    "fix": "Bind the genre: (m:Title)-[:IN_GENRE]->(g), and RETURN DISTINCT m.id, m.name, m.score."
+  },
+  {
+    "element": "continue_watching",
+    "severity": "low",
+    "problem": "Reads all of a viewer's WATCHED to find unfinished ones; median 310.",
+    "fix": "Fine as is."
+  }
+]

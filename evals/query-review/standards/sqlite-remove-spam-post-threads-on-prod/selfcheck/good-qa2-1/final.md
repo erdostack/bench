@@ -1,0 +1,1 @@
+Not run on prod (docs/changes.md). changes/022-mod5521-remove-spam-threads.sql removes the 9 posts, 401 comments at any depth, their likes and tags, leaves first, under 1,000 rows a run; tried on scratch. Count query in the header.

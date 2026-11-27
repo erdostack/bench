@@ -1,0 +1,1 @@
+Takes the longest prefix. Check with count().

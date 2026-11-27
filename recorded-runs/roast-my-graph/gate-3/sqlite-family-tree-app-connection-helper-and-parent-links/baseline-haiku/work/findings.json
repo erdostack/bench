@@ -1,0 +1,50 @@
+[
+  {
+    "element": "parse",
+    "severity": "high",
+    "problem": "parse only resets the current record for INDI and FAM. A level-1 NAME under any other level-0 record, such as SUBM or REPO, overwrites the last person's name. Reproduced with a sample GEDCOM: the individual Ann /Jones/ was imported as given 'Jane Submitter' with an empty surname, because a trailing '0 @U1@ SUBM' record carried a '1 NAME' line.",
+    "fix": "Set cur = None on every level-0 line, not just INDI and FAM, so NAME, CHIL, HUSB and WIFE are read only inside the record they belong to. Add a test with SUBM and REPO records after the individuals."
+  },
+  {
+    "element": "load",
+    "severity": "medium",
+    "problem": "Running the importer twice on the same file inserts every person again. person has no source xref or unique key, and nothing checks whether the file was imported before. The README says the import runs once per file, but nothing enforces that.",
+    "fix": "Record the source file and GEDCOM xref for each imported person, with a UNIQUE constraint, and skip rows that already exist. Or refuse to import a file whose name is already recorded."
+  },
+  {
+    "element": "parse",
+    "severity": "medium",
+    "problem": "The importer never reads the BIRT or DEAT DATE lines, so every imported person has born and died NULL. The person table has those columns, but the GEDCOM import never fills them.",
+    "fix": "Read the DATE line under BIRT and DEAT into born and died, and add a test with a dated individual."
+  },
+  {
+    "element": "load",
+    "severity": "low",
+    "problem": "A family whose HUSB, WIFE or CHIL xref is not in the same file is skipped silently by the check if parent in ids and child in ids. Those parent links are lost with no warning, which matters when one relative's file refers to people in another file.",
+    "fix": "Count and report the skipped links after each import, and fail or warn when a family refers to an xref that is missing from the file."
+  },
+  {
+    "element": "parse",
+    "severity": "low",
+    "problem": "The PEDI tag is never read, so adoptive and step relationships are imported as the default kind 'birth'. The schema allows 'adoptive' and 'step', but the importer cannot produce them.",
+    "fix": "Read the PEDI tag under the child and map adopted and step values to 'adoptive' and 'step'."
+  },
+  {
+    "element": "connect",
+    "severity": "medium",
+    "problem": "Foreign key enforcement depends on every connection going through connect(). A direct sqlite3.connect has foreign keys off, and the ON DELETE CASCADE clauses do nothing there. The README says the Flask front end sits outside this repo, so this is the one place the friend's concern would apply.",
+    "fix": "Document in the README that connect() is the only permitted way to open family.db, and make the Flask app use it. Add a test that asserts PRAGMA foreign_keys is 1 for connect()."
+  },
+  {
+    "element": "tests/test_people.py",
+    "severity": "medium",
+    "problem": "Nothing tests tools/import_gedcom.py, so the NAME overwrite and the dropped dates went unnoticed. The fresh() helper also opens db/schema.sql by a relative path, so the tests only pass when run from the repo root.",
+    "fix": "Add tests for parse and load on a small GEDCOM sample, including re-import and records after the individuals. Build the schema path from Path(__file__) instead of a relative path."
+  },
+  {
+    "element": "app/people.py",
+    "severity": "low",
+    "problem": "ancestors, descendants, add_parent and delete_person open a new connection when no con is passed, and never close it. Each call leaks a connection until garbage collection.",
+    "fix": "Have callers pass a connection, or use a context manager that closes the connection when it opens one."
+  }
+]

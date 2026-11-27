@@ -1,0 +1,1 @@
+Switched to MERGE so re-runs match. EXPLAIN it first.

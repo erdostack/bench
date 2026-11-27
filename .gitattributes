@@ -1,0 +1,3 @@
+# Fixtures are data: a case has to reach a reader byte for byte as it was measured,
+# so nothing in this repository gets line-ending conversion, on any platform.
+* -text

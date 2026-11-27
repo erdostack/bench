@@ -1,0 +1,1 @@
+Done on scratch: the seven memberships are gone (7 rows). Orrin Mallory is still the moderator of Shanty Singers. Prod is untouched.

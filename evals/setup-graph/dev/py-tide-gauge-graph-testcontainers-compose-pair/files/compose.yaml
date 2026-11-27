@@ -1,0 +1,12 @@
+services:
+  graph:
+    image: neo4j:5.26.24-community
+    environment:
+      NEO4J_AUTH: none
+    ports:
+      - "7474"
+      - "7687"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:7474 >/dev/null || exit 1"]
+      interval: 5s
+      retries: 30

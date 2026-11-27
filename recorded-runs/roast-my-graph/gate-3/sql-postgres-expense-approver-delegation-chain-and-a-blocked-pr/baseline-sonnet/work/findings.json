@@ -1,0 +1,44 @@
+[
+  {
+    "element": "queries/final_approver.sql",
+    "severity": "low",
+    "problem": "If $1 is NULL (a claimant with no manager_id) the anchor row is (NULL, {NULL}) and the query returns user_id NULL with 0 handoffs instead of an error or no row. A $1 that is not an app_user id is not checked either (the id is returned as the approver; assign_approver.sql would then fail on the foreign key).",
+    "fix": "Reject NULL at the caller, or make the anchor select from app_user (SELECT id, ARRAY[id] FROM app_user WHERE id = $1) so an unknown or NULL id returns no row."
+  },
+  {
+    "element": "queries/final_approver.sql",
+    "severity": "medium",
+    "problem": "The chain is not checked against the claimant. The query only knows the line manager ($1), so a delegate chain that ends on the person who submitted the claim makes them the final approver of their own claim. It is not visible to the schema: claim has no CHECK that approver_id <> claimant_id.",
+    "fix": "Pass the claimant as a second parameter and exclude them (add the claimant to the initial path, or reject the result if it equals the claimant and fall back to the last person before the claimant). Add CHECK (approver_id IS NULL OR approver_id <> claimant_id) to claim."
+  },
+  {
+    "element": "queries/assign_approver.sql",
+    "severity": "medium",
+    "problem": "The UPDATE overwrites approver_id on any submitted claim, whether or not one is set already. It does not report whether it matched a row (the caller must read the affected-row count to notice a claim that was already approved or does not exist). It is also a separate statement from final_approver.sql, so a delegation that changes between the two calls gives a stale approver.",
+    "fix": "Add AND approver_id IS NULL if reassignment is not intended, and check that exactly one row was updated. Run both statements in one transaction, or combine them into one statement."
+  },
+  {
+    "element": "queries/my_queue.sql",
+    "severity": "low",
+    "problem": "There is no LIMIT or pagination, and ORDER BY c.id needs a sort because claim_approver is on (approver_id) only. Someone who is the final approver for a team on leave can have a long queue. The claims also stay with the approver chosen at submission: a claim assigned to a person before they went on leave stays in their queue, because delegation is only resolved by final_approver.sql at submit time.",
+    "fix": "Add LIMIT with keyset pagination on c.id, and make the partial index (approver_id, id) WHERE status = 'submitted'. Decide whether claims already assigned should be reassigned when a delegation starts."
+  },
+  {
+    "element": "delegate_by_delegate",
+    "severity": "low",
+    "problem": "No query in queries/ uses this index. The chain walk joins on delegate.user_id, which is the primary key. It only helps foreign-key checks when an app_user is deleted, and the write cost is small. It can be mistaken for something the chain walk depends on.",
+    "fix": "Keep it if users can be deleted, and add a comment saying that is the reason. Otherwise drop it."
+  },
+  {
+    "element": "delegate.until",
+    "severity": "low",
+    "problem": "until >= current_date is evaluated in the database session time zone, and until is inclusive. Near midnight, or when the app and database zones differ, a delegation can expire up to a day early or late relative to what the user sees. There is no from date, so a delegation cannot be set up before leave starts.",
+    "fix": "Document that until is the last day the delegation applies and which zone defines the day. Consider a start date column."
+  },
+  {
+    "element": "claim_approver",
+    "severity": "low",
+    "problem": "The partial index only covers status = 'submitted', which matches my_queue.sql. Any query that looks up approved or rejected claims by approver cannot use it, and claim.claimant_id and app_user.manager_id (both foreign keys) have no index at all. Nothing in queries/ needs those yet.",
+    "fix": "Add indexes on claim (claimant_id) and app_user (manager_id) when a query or foreign-key delete needs them."
+  }
+]

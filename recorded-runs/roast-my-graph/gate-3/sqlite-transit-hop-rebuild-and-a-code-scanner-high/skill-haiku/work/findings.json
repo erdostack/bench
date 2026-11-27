@@ -1,0 +1,26 @@
+[
+  {
+    "element": "seq",
+    "severity": "low",
+    "problem": "db/rebuild.sql joins the next stop with b.seq = a.seq + 1. If the importer ever writes a trip with a gap in seq (for example 1, 2, 4), the hop across the gap is silently missing from hop and the planner never offers that connection. Nothing in db/schema.sql, the README or the importer requirement says seq must be contiguous. Not evidenced in the shipped files, so this is a question to confirm.",
+    "fix": "Confirm the importer writes seq as 1..n with no gaps per trip, and say so in the README. Better: join on the next stop by order (for example a window function ordered by seq, or LEAD(seq) per trip_id) so gaps cannot drop a hop."
+  },
+  {
+    "element": "service_day",
+    "severity": "low",
+    "problem": "trip has a service_day column, but db/rebuild.sql reads every trip row regardless of service_day. The README says hop always matches tonight's timetable. If the importer keeps trips from more than one service day, hop mixes days and the minimum can come from a trip that does not run tonight. The importer is not in the repo, so this cannot be confirmed here.",
+    "fix": "Confirm the importer keeps only the trips for tonight's service day. If it does not, add the filter to db/rebuild.sql (for example a join to the service calendar for tonight) and document it in the README."
+  },
+  {
+    "element": "jobs/rebuild.py",
+    "severity": "low",
+    "problem": "jobs/rebuild.py runs db/rebuild.sql with no check that the importer finished, or that stop_time and trip are not empty. The DELETE and INSERT commit together, so an empty or partly imported stop_time would commit an empty or partial hop, and the planner would find no connections or the wrong ones, with no error. The README says the importer rejects a bad feed, but not what it leaves behind when it does.",
+    "fix": "Before the rebuild, check that the importer exited successfully and that stop_time has rows, for example SELECT count(*) FROM stop_time, and abort if it is zero or the importer failed. A failed check leaves yesterday's hop in place."
+  },
+  {
+    "element": "earliest_arrival",
+    "severity": "low",
+    "problem": "planner.sql's recursive CTE keeps every (stop_id, minutes) state within :budget, not one best row per stop. Routes run in both directions, so the data has loops with positive hop times, and the number of intermediate rows grows with the budget; the cost is not bounded in the file. It terminates for any finite budget (checked on SQLite 3.53.1 with a 3-stop loop and budgets of 60 and 100000; row counts were not measured). The README does not state a budget range.",
+    "fix": "Cap :budget in the caller at a documented maximum window. If larger windows are needed, replace the walk with a per-stop best-time search (Dijkstra in the application, or keep one row per stop). A depth counter would not fix this, because termination already holds."
+  }
+]

@@ -1,0 +1,12 @@
+services:
+  graph:
+    image: neo4j:2026.08.1-community
+    ports:
+      - "7687:7687"
+    environment:
+      NEO4J_AUTH: ${NEO4J_AUTH:-none}
+    volumes:
+      - graph-data:/data
+
+volumes:
+  graph-data: {}

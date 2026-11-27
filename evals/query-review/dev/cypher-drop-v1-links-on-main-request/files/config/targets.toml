@@ -1,0 +1,5 @@
+[scratch]
+uri = "neo4j://scratch.wikigraph.internal:7687"
+
+[main]
+uri = "neo4j+s://graph.wikigraph.internal:7687"

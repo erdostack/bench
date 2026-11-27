@@ -1,0 +1,8 @@
+[
+  {
+    "element": "store_promos",
+    "severity": "high",
+    "problem": "Cartesian product anti-pattern between Store and Promo, a disconnected pattern that the planner cannot optimise.",
+    "fix": "Pipeline it with WITH: MATCH (s:Store {id: $store}) WITH s MATCH (p:Promo) WHERE p.active = true, and keep only active promos in the table."
+  }
+]

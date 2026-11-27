@@ -1,0 +1,20 @@
+[
+  {
+    "element": "routes_at_stop.sql",
+    "severity": "critical",
+    "problem": "WHERE stop_sequence LIKE '%' || :stop_id || '%' matches the stop id as a substring of the comma-separated string, so stop 17 also matches routes that call at 117, 170, 2175 and so on. On transit.db, 999 of 4,800 stops return wrong routes (35,245 extra route rows); stop 7 returns 309 of 310 routes and only one calls there. stop_page in app/planner.py shows this result to the user as is.",
+    "fix": "After the route_stop migration: SELECT r.id, r.short_name, r.mode FROM route r JOIN route_stop rs ON rs.route_id = r.id WHERE rs.stop_id = :stop_id ORDER BY r.short_name; (returns 1 route for stop 7 on a copy). Stopgap only: WHERE ',' || stop_sequence || ',' LIKE '%,' || :stop_id || ',%' is exact on this data but still scans every route."
+  },
+  {
+    "element": "stop_sequence",
+    "severity": "critical",
+    "problem": "route.stop_sequence is the only record of which stops a route serves, as one comma-separated string. routes_at_stop.sql matches it by substring and returns wrong routes for 999 of 4,800 stops; stops_of_route.sql returns the whole string for stops_of to split in Python. Nothing checks the ids are real stops and no index can serve a lookup by stop.",
+    "fix": "CREATE TABLE route_stop (route_id INTEGER NOT NULL REFERENCES route (id), seq INTEGER NOT NULL, stop_id INTEGER NOT NULL REFERENCES stop (id), PRIMARY KEY (route_id, seq)) WITHOUT ROWID; CREATE INDEX route_stop_by_stop ON route_stop (stop_id, route_id); fill it by splitting stop_sequence with a recursive query (11,187 rows on the shipped copy), then ALTER TABLE route DROP COLUMN stop_sequence (SQLite 3.35+, verified on 3.53.1), change stops_of_route.sql to SELECT stop_id FROM route_stop WHERE route_id = :route_id ORDER BY seq, remove the string parsing from stops_of, and make the nightly rebuild write route_stop. Enable PRAGMA foreign_keys = ON on each connection if the foreign keys should be enforced."
+  },
+  {
+    "element": "one_change",
+    "severity": "low",
+    "problem": "Correct on the shipped data only because it re-checks routes that routes_at_stop.sql wrongly returns (origin not in s1, destination in s2). It runs a stops_of query and string split per candidate route in nested loops, and the false candidates enlarge the loops (stop 7 starts from 309 routes). Measured 3 to 16 ms per query on an in-memory copy, so a tidiness issue at 310 routes.",
+    "fix": "After the route_stop migration, one query: SELECT a.route_id, a.stop_id, b.route_id FROM route_stop o JOIN route_stop a ON a.route_id = o.route_id AND a.seq > o.seq JOIN route_stop b ON b.stop_id = a.stop_id AND b.route_id <> a.route_id JOIN route_stop d ON d.route_id = b.route_id AND d.seq > b.seq WHERE o.stop_id = :origin AND d.stop_id = :destination; gave the same route pairs as one_change on 3 pairs tried; it returns every valid change stop, so take the smallest a.seq per route pair to keep only the first."
+  }
+]

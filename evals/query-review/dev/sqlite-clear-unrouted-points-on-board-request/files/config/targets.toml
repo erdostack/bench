@@ -1,0 +1,5 @@
+[board]
+file = "var/board.db"
+
+[scratch]
+file = "var/scratch.db"

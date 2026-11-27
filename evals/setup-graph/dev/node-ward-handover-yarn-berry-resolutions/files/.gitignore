@@ -1,0 +1,3 @@
+node_modules/
+.yarn/
+.neo4j/

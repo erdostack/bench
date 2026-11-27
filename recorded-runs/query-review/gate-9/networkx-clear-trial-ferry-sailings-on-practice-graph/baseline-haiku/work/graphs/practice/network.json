@@ -1,0 +1,3051 @@
+{
+ "directed": true,
+ "graph": {},
+ "links": [
+  {
+   "kind": "departs",
+   "source": "S-20261201-0710-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261201-0710-DUNVAR",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261201-0710-DUNVAR",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261201-0840-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261201-0840-ORAN",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261201-0840-ORAN",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261201-1030-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261201-1030-DUNVAR",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261201-1030-DUNVAR",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261201-1215-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261201-1215-DUNVAR",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261201-1215-DUNVAR",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261201-1400-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261201-1400-TOBH",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261201-1400-TOBH",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261201-1545-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261201-1545-DUNVAR",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261201-1545-DUNVAR",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261201-1545-DUNVAR",
+   "target": "S-20261207-0840-DUNVAR"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261201-1545-DUNVAR",
+   "target": "S-20261209-1400-DUNVAR"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261201-1730-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261201-1730-TOBH",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261201-1730-TOBH",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261201-1915-KELLS",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261201-1915-KELLS",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261201-1915-KELLS",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261201-1915-KELLS",
+   "target": "S-20261202-1545-ORAN"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261202-0710-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261202-0710-TOBH",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261202-0710-TOBH",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261202-0840-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261202-0840-TOBH",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261202-0840-TOBH",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261202-1030-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261202-1030-TOBH",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261202-1030-TOBH",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261202-1215-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261202-1215-TOBH",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261202-1215-TOBH",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261202-1400-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261202-1400-ORAN",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261202-1400-ORAN",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261202-1545-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261202-1545-ORAN",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261202-1545-ORAN",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261202-1545-ORAN",
+   "target": "S-20261212-0840-BRAE"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261202-1730-KELLS",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261202-1730-KELLS",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261202-1730-KELLS",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261202-1730-KELLS",
+   "target": "S-20261214-1915-BRAE"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261202-1915-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261202-1915-TOBH",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261202-1915-TOBH",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261202-1915-TOBH",
+   "target": "S-20261208-1215-KELLS"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261203-0710-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261203-0710-ORAN",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261203-0710-ORAN",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261203-0840-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261203-0840-DUNVAR",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261203-0840-DUNVAR",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261203-1030-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261203-1030-ORAN",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261203-1030-ORAN",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261203-1030-ORAN",
+   "target": "S-20261212-0710-TOBH"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261203-1215-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261203-1215-DUNVAR",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261203-1215-DUNVAR",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261203-1215-DUNVAR",
+   "target": "S-20261202-1030-TOBH"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261203-1400-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261203-1400-ORAN",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261203-1400-ORAN",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261203-1400-ORAN",
+   "target": "S-20261214-1915-BRAE"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261203-1400-ORAN",
+   "target": "S-20261202-1915-TOBH"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261203-1400-ORAN",
+   "target": "S-20261212-0710-TOBH"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261203-1545-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261203-1545-ORAN",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261203-1545-ORAN",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261203-1545-ORAN",
+   "target": "S-20261210-1030-KELLS"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261203-1730-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261203-1730-TOBH",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261203-1730-TOBH",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261203-1915-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261203-1915-ORAN",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261203-1915-ORAN",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261203-1915-ORAN",
+   "target": "S-20261206-1545-TOBH"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261203-1915-ORAN",
+   "target": "S-20261202-1915-TOBH"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261204-0710-KELLS",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261204-0710-KELLS",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261204-0710-KELLS",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261204-0710-KELLS",
+   "target": "S-20261204-1915-ORAN"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261204-0840-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261204-0840-ORAN",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261204-0840-ORAN",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261204-1030-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261204-1030-DUNVAR",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261204-1030-DUNVAR",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261204-1215-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261204-1215-TOBH",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261204-1215-TOBH",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261204-1400-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261204-1400-DUNVAR",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261204-1400-DUNVAR",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261204-1545-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261204-1545-TOBH",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261204-1545-TOBH",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261204-1730-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261204-1730-DUNVAR",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261204-1730-DUNVAR",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261204-1915-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261204-1915-ORAN",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261204-1915-ORAN",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261204-1915-ORAN",
+   "target": "S-20261211-1915-BRAE"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261205-0710-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261205-0710-DUNVAR",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261205-0710-DUNVAR",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261205-0840-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261205-0840-ORAN",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261205-0840-ORAN",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261205-0840-ORAN",
+   "target": "S-20261201-1400-TOBH"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261205-1030-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261205-1030-TOBH",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261205-1030-TOBH",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261205-1215-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261205-1215-DUNVAR",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261205-1215-DUNVAR",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261205-1400-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261205-1400-DUNVAR",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261205-1400-DUNVAR",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261205-1545-KELLS",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261205-1545-KELLS",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261205-1545-KELLS",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261205-1545-KELLS",
+   "target": "S-20261201-0710-DUNVAR"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261205-1545-KELLS",
+   "target": "S-20261212-0840-BRAE"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261205-1545-KELLS",
+   "target": "S-20261207-0710-TOBH"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261205-1730-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261205-1730-TOBH",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261205-1730-TOBH",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261205-1915-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261205-1915-ORAN",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261205-1915-ORAN",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261205-1915-ORAN",
+   "target": "S-20261214-1030-ORAN"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261206-0710-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261206-0710-DUNVAR",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261206-0710-DUNVAR",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261206-0710-DUNVAR",
+   "target": "S-20261209-0840-DUNVAR"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261206-0710-DUNVAR",
+   "target": "S-20261204-1030-DUNVAR"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261206-0710-DUNVAR",
+   "target": "S-20261213-1215-DUNVAR"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261206-0840-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261206-0840-ORAN",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261206-0840-ORAN",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261206-1030-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261206-1030-DUNVAR",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261206-1030-DUNVAR",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261206-1030-DUNVAR",
+   "target": "S-20261202-1730-KELLS"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261206-1215-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261206-1215-TOBH",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261206-1215-TOBH",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261206-1400-BRAE",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261206-1400-BRAE",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261206-1400-BRAE",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261206-1545-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261206-1545-TOBH",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261206-1545-TOBH",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261206-1545-TOBH",
+   "target": "S-20261208-1545-TOBH"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261206-1730-BRAE",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261206-1730-BRAE",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261206-1730-BRAE",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261206-1915-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261206-1915-TOBH",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261206-1915-TOBH",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261207-0710-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261207-0710-TOBH",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261207-0710-TOBH",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261207-0840-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261207-0840-DUNVAR",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261207-0840-DUNVAR",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261207-1030-BRAE",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261207-1030-BRAE",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261207-1030-BRAE",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261207-1030-BRAE",
+   "target": "S-20261202-1215-TOBH"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261207-1030-BRAE",
+   "target": "S-20261206-1545-TOBH"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261207-1215-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261207-1215-ORAN",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261207-1215-ORAN",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261207-1215-ORAN",
+   "target": "S-20261208-0710-KELLS"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261207-1400-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261207-1400-TOBH",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261207-1400-TOBH",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261207-1400-TOBH",
+   "target": "S-20261209-1730-BRAE"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261207-1545-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261207-1545-TOBH",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261207-1545-TOBH",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261207-1730-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261207-1730-DUNVAR",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261207-1730-DUNVAR",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261207-1730-DUNVAR",
+   "target": "S-20261202-0840-TOBH"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261207-1915-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261207-1915-TOBH",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261207-1915-TOBH",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261208-0710-KELLS",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261208-0710-KELLS",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261208-0710-KELLS",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261208-0710-KELLS",
+   "target": "S-20261211-1215-BRAE"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261208-0840-BRAE",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261208-0840-BRAE",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261208-0840-BRAE",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261208-0840-BRAE",
+   "target": "S-20261211-1215-BRAE"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261208-0840-BRAE",
+   "target": "S-20261213-1215-DUNVAR"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261208-1030-KELLS",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261208-1030-KELLS",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261208-1030-KELLS",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261208-1030-KELLS",
+   "target": "S-20261205-1215-DUNVAR"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261208-1215-KELLS",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261208-1215-KELLS",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261208-1215-KELLS",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261208-1215-KELLS",
+   "target": "S-20261214-1915-BRAE"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261208-1400-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261208-1400-ORAN",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261208-1400-ORAN",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261208-1545-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261208-1545-TOBH",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261208-1545-TOBH",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261208-1730-KELLS",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261208-1730-KELLS",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261208-1730-KELLS",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261208-1915-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261208-1915-TOBH",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261208-1915-TOBH",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261209-0710-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261209-0710-ORAN",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261209-0710-ORAN",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261209-0710-ORAN",
+   "target": "S-20261203-0840-DUNVAR"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261209-0840-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261209-0840-DUNVAR",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261209-0840-DUNVAR",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261209-1030-BRAE",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261209-1030-BRAE",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261209-1030-BRAE",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261209-1215-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261209-1215-DUNVAR",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261209-1215-DUNVAR",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261209-1400-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261209-1400-DUNVAR",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261209-1400-DUNVAR",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261209-1545-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261209-1545-ORAN",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261209-1545-ORAN",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261209-1730-BRAE",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261209-1730-BRAE",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261209-1730-BRAE",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261209-1915-KELLS",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261209-1915-KELLS",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261209-1915-KELLS",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261210-0710-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261210-0710-ORAN",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261210-0710-ORAN",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261210-0710-ORAN",
+   "target": "S-20261202-1915-TOBH"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261210-0840-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261210-0840-TOBH",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261210-0840-TOBH",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261210-0840-TOBH",
+   "target": "S-20261206-1545-TOBH"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261210-1030-KELLS",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261210-1030-KELLS",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261210-1030-KELLS",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261210-1215-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261210-1215-ORAN",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261210-1215-ORAN",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261210-1215-ORAN",
+   "target": "S-20261201-0840-ORAN"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261210-1400-BRAE",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261210-1400-BRAE",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261210-1400-BRAE",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261210-1400-BRAE",
+   "target": "S-20261210-0840-TOBH"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261210-1545-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261210-1545-DUNVAR",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261210-1545-DUNVAR",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261210-1545-DUNVAR",
+   "target": "S-20261205-1400-DUNVAR"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261210-1730-KELLS",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261210-1730-KELLS",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261210-1730-KELLS",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261210-1730-KELLS",
+   "target": "S-20261202-1400-ORAN"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261210-1915-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261210-1915-ORAN",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261210-1915-ORAN",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261211-0710-BRAE",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261211-0710-BRAE",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261211-0710-BRAE",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261211-0840-BRAE",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261211-0840-BRAE",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261211-0840-BRAE",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261211-0840-BRAE",
+   "target": "S-20261209-1400-DUNVAR"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261211-0840-BRAE",
+   "target": "S-20261201-1215-DUNVAR"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261211-1030-BRAE",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261211-1030-BRAE",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261211-1030-BRAE",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261211-1030-BRAE",
+   "target": "S-20261213-1545-KELLS"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261211-1215-BRAE",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261211-1215-BRAE",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261211-1215-BRAE",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261211-1215-BRAE",
+   "target": "S-20261201-1915-KELLS"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261211-1215-BRAE",
+   "target": "S-20261206-1400-BRAE"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261211-1400-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261211-1400-TOBH",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261211-1400-TOBH",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261211-1400-TOBH",
+   "target": "S-20261204-0840-ORAN"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261211-1545-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261211-1545-TOBH",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261211-1545-TOBH",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261211-1730-KELLS",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261211-1730-KELLS",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261211-1730-KELLS",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261211-1730-KELLS",
+   "target": "S-20261204-1215-TOBH"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261211-1915-BRAE",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261211-1915-BRAE",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261211-1915-BRAE",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261212-0710-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261212-0710-TOBH",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261212-0710-TOBH",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261212-0840-BRAE",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261212-0840-BRAE",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261212-0840-BRAE",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261212-0840-BRAE",
+   "target": "S-20261202-0710-TOBH"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261212-1030-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261212-1030-DUNVAR",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261212-1030-DUNVAR",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261212-1215-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261212-1215-ORAN",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261212-1215-ORAN",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261212-1400-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261212-1400-DUNVAR",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261212-1400-DUNVAR",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261212-1545-BRAE",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261212-1545-BRAE",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261212-1545-BRAE",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261212-1730-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261212-1730-ORAN",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261212-1730-ORAN",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261212-1730-ORAN",
+   "target": "S-20261210-1030-KELLS"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261212-1915-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261212-1915-DUNVAR",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261212-1915-DUNVAR",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261213-0710-BRAE",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261213-0710-BRAE",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261213-0710-BRAE",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261213-0710-BRAE",
+   "target": "S-20261211-1400-TOBH"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261213-0840-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261213-0840-TOBH",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261213-0840-TOBH",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261213-1030-BRAE",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261213-1030-BRAE",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261213-1030-BRAE",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261213-1215-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261213-1215-DUNVAR",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261213-1215-DUNVAR",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261213-1400-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261213-1400-TOBH",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261213-1400-TOBH",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261213-1400-TOBH",
+   "target": "S-20261203-0840-DUNVAR"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261213-1545-KELLS",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261213-1545-KELLS",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261213-1545-KELLS",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261213-1545-KELLS",
+   "target": "S-20261214-1030-ORAN"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261213-1730-DUNVAR",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261213-1730-DUNVAR",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261213-1730-DUNVAR",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261213-1915-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261213-1915-TOBH",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261213-1915-TOBH",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261213-1915-TOBH",
+   "target": "S-20261208-1215-KELLS"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261214-0710-BRAE",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261214-0710-BRAE",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261214-0710-BRAE",
+   "target": "MV-MHAIRI"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261214-0710-BRAE",
+   "target": "S-20261211-1915-BRAE"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261214-0840-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261214-0840-ORAN",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261214-0840-ORAN",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261214-1030-ORAN",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261214-1030-ORAN",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261214-1030-ORAN",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261214-1030-ORAN",
+   "target": "S-20261213-1545-KELLS"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261214-1215-KELLS",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261214-1215-KELLS",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261214-1215-KELLS",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261214-1400-TOBH",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261214-1400-TOBH",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261214-1400-TOBH",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261214-1400-TOBH",
+   "target": "S-20261211-1915-BRAE"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261214-1545-KELLS",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261214-1545-KELLS",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261214-1545-KELLS",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261214-1730-BRAE",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261214-1730-BRAE",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261214-1730-BRAE",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261214-1915-BRAE",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261214-1915-BRAE",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261214-1915-BRAE",
+   "target": "MV-ORANSAY"
+  },
+  {
+   "kind": "connects_to",
+   "source": "S-20261214-1915-BRAE",
+   "target": "S-20261204-1545-TOBH"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261204-2130-BRAE",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261204-2130-BRAE",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261204-2130-BRAE",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261211-2130-BRAE",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261211-2130-BRAE",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261211-2130-BRAE",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261218-2130-BRAE",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261218-2130-BRAE",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261218-2130-BRAE",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "departs",
+   "source": "S-20261225-2130-BRAE",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "arrives",
+   "source": "S-20261225-2130-BRAE",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "S-20261225-2130-BRAE",
+   "target": "MV-SELVAY"
+  },
+  {
+   "kind": "departs",
+   "source": "EX-01",
+   "target": "PORT-PRACTICE"
+  },
+  {
+   "kind": "arrives",
+   "source": "EX-01",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "EX-01",
+   "target": "MV-TRIALBOAT"
+  },
+  {
+   "kind": "departs",
+   "source": "EX-02",
+   "target": "PORT-PRACTICE"
+  },
+  {
+   "kind": "arrives",
+   "source": "EX-02",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "operated_by",
+   "source": "EX-02",
+   "target": "MV-TRIALBOAT"
+  },
+  {
+   "kind": "departs",
+   "source": "EX-03",
+   "target": "PORT-PRACTICE"
+  },
+  {
+   "kind": "arrives",
+   "source": "EX-03",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "EX-03",
+   "target": "MV-TRIALBOAT"
+  },
+  {
+   "kind": "departs",
+   "source": "EX-04",
+   "target": "PORT-PRACTICE"
+  },
+  {
+   "kind": "arrives",
+   "source": "EX-04",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "EX-04",
+   "target": "MV-TRIALBOAT"
+  },
+  {
+   "kind": "departs",
+   "source": "EX-05",
+   "target": "PORT-PRACTICE"
+  },
+  {
+   "kind": "arrives",
+   "source": "EX-05",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "EX-05",
+   "target": "MV-TRIALBOAT"
+  },
+  {
+   "kind": "departs",
+   "source": "EX-06",
+   "target": "PORT-PRACTICE"
+  },
+  {
+   "kind": "arrives",
+   "source": "EX-06",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "EX-06",
+   "target": "MV-TRIALBOAT"
+  },
+  {
+   "kind": "departs",
+   "source": "EX-07",
+   "target": "PORT-PRACTICE"
+  },
+  {
+   "kind": "arrives",
+   "source": "EX-07",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "operated_by",
+   "source": "EX-07",
+   "target": "MV-TRIALBOAT"
+  },
+  {
+   "kind": "departs",
+   "source": "EX-08",
+   "target": "PORT-PRACTICE"
+  },
+  {
+   "kind": "arrives",
+   "source": "EX-08",
+   "target": "PORT-ORAN"
+  },
+  {
+   "kind": "operated_by",
+   "source": "EX-08",
+   "target": "MV-TRIALBOAT"
+  },
+  {
+   "kind": "departs",
+   "source": "EX-09",
+   "target": "PORT-PRACTICE"
+  },
+  {
+   "kind": "arrives",
+   "source": "EX-09",
+   "target": "PORT-TOBH"
+  },
+  {
+   "kind": "operated_by",
+   "source": "EX-09",
+   "target": "MV-TRIALBOAT"
+  },
+  {
+   "kind": "departs",
+   "source": "EX-10",
+   "target": "PORT-PRACTICE"
+  },
+  {
+   "kind": "arrives",
+   "source": "EX-10",
+   "target": "PORT-BRAE"
+  },
+  {
+   "kind": "operated_by",
+   "source": "EX-10",
+   "target": "MV-TRIALBOAT"
+  },
+  {
+   "kind": "departs",
+   "source": "EX-11",
+   "target": "PORT-PRACTICE"
+  },
+  {
+   "kind": "arrives",
+   "source": "EX-11",
+   "target": "PORT-DUNVAR"
+  },
+  {
+   "kind": "operated_by",
+   "source": "EX-11",
+   "target": "MV-TRIALBOAT"
+  },
+  {
+   "kind": "departs",
+   "source": "EX-12",
+   "target": "PORT-PRACTICE"
+  },
+  {
+   "kind": "arrives",
+   "source": "EX-12",
+   "target": "PORT-KELLS"
+  },
+  {
+   "kind": "operated_by",
+   "source": "EX-12",
+   "target": "MV-TRIALBOAT"
+  }
+ ],
+ "multigraph": false,
+ "nodes": [
+  {
+   "id": "PORT-BRAE",
+   "kind": "port",
+   "name": "Brae"
+  },
+  {
+   "id": "PORT-DUNVAR",
+   "kind": "port",
+   "name": "Dunvar"
+  },
+  {
+   "id": "PORT-KELLS",
+   "kind": "port",
+   "name": "Kells"
+  },
+  {
+   "id": "PORT-ORAN",
+   "kind": "port",
+   "name": "Oran Pier"
+  },
+  {
+   "id": "PORT-TOBH",
+   "kind": "port",
+   "name": "Tobh"
+  },
+  {
+   "cars": 34,
+   "id": "MV-SELVAY",
+   "kind": "vessel",
+   "name": "Selvay"
+  },
+  {
+   "cars": 18,
+   "id": "MV-ORANSAY",
+   "kind": "vessel",
+   "name": "Oransay"
+  },
+  {
+   "cars": 12,
+   "id": "MV-MHAIRI",
+   "kind": "vessel",
+   "name": "Mhairi"
+  },
+  {
+   "day": "2026-12-01",
+   "departs": "07:10",
+   "id": "S-20261201-0710-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-01",
+   "departs": "08:40",
+   "id": "S-20261201-0840-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-01",
+   "departs": "10:30",
+   "id": "S-20261201-1030-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-01",
+   "departs": "12:15",
+   "id": "S-20261201-1215-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-01",
+   "departs": "14:00",
+   "id": "S-20261201-1400-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-01",
+   "departs": "15:45",
+   "id": "S-20261201-1545-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-01",
+   "departs": "17:30",
+   "id": "S-20261201-1730-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-01",
+   "departs": "19:15",
+   "id": "S-20261201-1915-KELLS",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-02",
+   "departs": "07:10",
+   "id": "S-20261202-0710-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-02",
+   "departs": "08:40",
+   "id": "S-20261202-0840-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-02",
+   "departs": "10:30",
+   "id": "S-20261202-1030-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-02",
+   "departs": "12:15",
+   "id": "S-20261202-1215-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-02",
+   "departs": "14:00",
+   "id": "S-20261202-1400-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-02",
+   "departs": "15:45",
+   "id": "S-20261202-1545-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-02",
+   "departs": "17:30",
+   "id": "S-20261202-1730-KELLS",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-02",
+   "departs": "19:15",
+   "id": "S-20261202-1915-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-03",
+   "departs": "07:10",
+   "id": "S-20261203-0710-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-03",
+   "departs": "08:40",
+   "id": "S-20261203-0840-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-03",
+   "departs": "10:30",
+   "id": "S-20261203-1030-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-03",
+   "departs": "12:15",
+   "id": "S-20261203-1215-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-03",
+   "departs": "14:00",
+   "id": "S-20261203-1400-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-03",
+   "departs": "15:45",
+   "id": "S-20261203-1545-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-03",
+   "departs": "17:30",
+   "id": "S-20261203-1730-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-03",
+   "departs": "19:15",
+   "id": "S-20261203-1915-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-04",
+   "departs": "07:10",
+   "id": "S-20261204-0710-KELLS",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-04",
+   "departs": "08:40",
+   "id": "S-20261204-0840-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-04",
+   "departs": "10:30",
+   "id": "S-20261204-1030-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-04",
+   "departs": "12:15",
+   "id": "S-20261204-1215-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-04",
+   "departs": "14:00",
+   "id": "S-20261204-1400-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-04",
+   "departs": "15:45",
+   "id": "S-20261204-1545-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-04",
+   "departs": "17:30",
+   "id": "S-20261204-1730-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-04",
+   "departs": "19:15",
+   "id": "S-20261204-1915-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-05",
+   "departs": "07:10",
+   "id": "S-20261205-0710-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-05",
+   "departs": "08:40",
+   "id": "S-20261205-0840-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-05",
+   "departs": "10:30",
+   "id": "S-20261205-1030-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-05",
+   "departs": "12:15",
+   "id": "S-20261205-1215-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-05",
+   "departs": "14:00",
+   "id": "S-20261205-1400-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-05",
+   "departs": "15:45",
+   "id": "S-20261205-1545-KELLS",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-05",
+   "departs": "17:30",
+   "id": "S-20261205-1730-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-05",
+   "departs": "19:15",
+   "id": "S-20261205-1915-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-06",
+   "departs": "07:10",
+   "id": "S-20261206-0710-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-06",
+   "departs": "08:40",
+   "id": "S-20261206-0840-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-06",
+   "departs": "10:30",
+   "id": "S-20261206-1030-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-06",
+   "departs": "12:15",
+   "id": "S-20261206-1215-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-06",
+   "departs": "14:00",
+   "id": "S-20261206-1400-BRAE",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-06",
+   "departs": "15:45",
+   "id": "S-20261206-1545-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-06",
+   "departs": "17:30",
+   "id": "S-20261206-1730-BRAE",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-06",
+   "departs": "19:15",
+   "id": "S-20261206-1915-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-07",
+   "departs": "07:10",
+   "id": "S-20261207-0710-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-07",
+   "departs": "08:40",
+   "id": "S-20261207-0840-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-07",
+   "departs": "10:30",
+   "id": "S-20261207-1030-BRAE",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-07",
+   "departs": "12:15",
+   "id": "S-20261207-1215-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-07",
+   "departs": "14:00",
+   "id": "S-20261207-1400-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-07",
+   "departs": "15:45",
+   "id": "S-20261207-1545-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-07",
+   "departs": "17:30",
+   "id": "S-20261207-1730-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-07",
+   "departs": "19:15",
+   "id": "S-20261207-1915-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-08",
+   "departs": "07:10",
+   "id": "S-20261208-0710-KELLS",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-08",
+   "departs": "08:40",
+   "id": "S-20261208-0840-BRAE",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-08",
+   "departs": "10:30",
+   "id": "S-20261208-1030-KELLS",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-08",
+   "departs": "12:15",
+   "id": "S-20261208-1215-KELLS",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-08",
+   "departs": "14:00",
+   "id": "S-20261208-1400-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-08",
+   "departs": "15:45",
+   "id": "S-20261208-1545-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-08",
+   "departs": "17:30",
+   "id": "S-20261208-1730-KELLS",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-08",
+   "departs": "19:15",
+   "id": "S-20261208-1915-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-09",
+   "departs": "07:10",
+   "id": "S-20261209-0710-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-09",
+   "departs": "08:40",
+   "id": "S-20261209-0840-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-09",
+   "departs": "10:30",
+   "id": "S-20261209-1030-BRAE",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-09",
+   "departs": "12:15",
+   "id": "S-20261209-1215-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-09",
+   "departs": "14:00",
+   "id": "S-20261209-1400-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-09",
+   "departs": "15:45",
+   "id": "S-20261209-1545-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-09",
+   "departs": "17:30",
+   "id": "S-20261209-1730-BRAE",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-09",
+   "departs": "19:15",
+   "id": "S-20261209-1915-KELLS",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-10",
+   "departs": "07:10",
+   "id": "S-20261210-0710-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-10",
+   "departs": "08:40",
+   "id": "S-20261210-0840-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-10",
+   "departs": "10:30",
+   "id": "S-20261210-1030-KELLS",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-10",
+   "departs": "12:15",
+   "id": "S-20261210-1215-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-10",
+   "departs": "14:00",
+   "id": "S-20261210-1400-BRAE",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-10",
+   "departs": "15:45",
+   "id": "S-20261210-1545-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-10",
+   "departs": "17:30",
+   "id": "S-20261210-1730-KELLS",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-10",
+   "departs": "19:15",
+   "id": "S-20261210-1915-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-11",
+   "departs": "07:10",
+   "id": "S-20261211-0710-BRAE",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-11",
+   "departs": "08:40",
+   "id": "S-20261211-0840-BRAE",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-11",
+   "departs": "10:30",
+   "id": "S-20261211-1030-BRAE",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-11",
+   "departs": "12:15",
+   "id": "S-20261211-1215-BRAE",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-11",
+   "departs": "14:00",
+   "id": "S-20261211-1400-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-11",
+   "departs": "15:45",
+   "id": "S-20261211-1545-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-11",
+   "departs": "17:30",
+   "id": "S-20261211-1730-KELLS",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-11",
+   "departs": "19:15",
+   "id": "S-20261211-1915-BRAE",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-12",
+   "departs": "07:10",
+   "id": "S-20261212-0710-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-12",
+   "departs": "08:40",
+   "id": "S-20261212-0840-BRAE",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-12",
+   "departs": "10:30",
+   "id": "S-20261212-1030-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-12",
+   "departs": "12:15",
+   "id": "S-20261212-1215-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-12",
+   "departs": "14:00",
+   "id": "S-20261212-1400-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-12",
+   "departs": "15:45",
+   "id": "S-20261212-1545-BRAE",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-12",
+   "departs": "17:30",
+   "id": "S-20261212-1730-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-12",
+   "departs": "19:15",
+   "id": "S-20261212-1915-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-13",
+   "departs": "07:10",
+   "id": "S-20261213-0710-BRAE",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-13",
+   "departs": "08:40",
+   "id": "S-20261213-0840-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-13",
+   "departs": "10:30",
+   "id": "S-20261213-1030-BRAE",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-13",
+   "departs": "12:15",
+   "id": "S-20261213-1215-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-13",
+   "departs": "14:00",
+   "id": "S-20261213-1400-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-13",
+   "departs": "15:45",
+   "id": "S-20261213-1545-KELLS",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-13",
+   "departs": "17:30",
+   "id": "S-20261213-1730-DUNVAR",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-13",
+   "departs": "19:15",
+   "id": "S-20261213-1915-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-14",
+   "departs": "07:10",
+   "id": "S-20261214-0710-BRAE",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-14",
+   "departs": "08:40",
+   "id": "S-20261214-0840-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-14",
+   "departs": "10:30",
+   "id": "S-20261214-1030-ORAN",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-14",
+   "departs": "12:15",
+   "id": "S-20261214-1215-KELLS",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-14",
+   "departs": "14:00",
+   "id": "S-20261214-1400-TOBH",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-14",
+   "departs": "15:45",
+   "id": "S-20261214-1545-KELLS",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-14",
+   "departs": "17:30",
+   "id": "S-20261214-1730-BRAE",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-14",
+   "departs": "19:15",
+   "id": "S-20261214-1915-BRAE",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-04",
+   "departs": "21:30",
+   "id": "S-20261204-2130-BRAE",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-11",
+   "departs": "21:30",
+   "id": "S-20261211-2130-BRAE",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-18",
+   "departs": "21:30",
+   "id": "S-20261218-2130-BRAE",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-25",
+   "departs": "21:30",
+   "id": "S-20261225-2130-BRAE",
+   "kind": "sailing"
+  },
+  {
+   "id": "PORT-PRACTICE",
+   "kind": "port",
+   "name": "Practice Pier (workshop only)"
+  },
+  {
+   "cars": 20,
+   "id": "MV-TRIALBOAT",
+   "kind": "vessel",
+   "name": "Trialboat (workshop only)"
+  },
+  {
+   "day": "2026-12-02",
+   "departs": "08:00",
+   "id": "EX-01",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-03",
+   "departs": "09:00",
+   "id": "EX-02",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-04",
+   "departs": "10:00",
+   "id": "EX-03",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-05",
+   "departs": "11:00",
+   "id": "EX-04",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-06",
+   "departs": "12:00",
+   "id": "EX-05",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-07",
+   "departs": "13:00",
+   "id": "EX-06",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-01",
+   "departs": "14:00",
+   "id": "EX-07",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-02",
+   "departs": "15:00",
+   "id": "EX-08",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-03",
+   "departs": "16:00",
+   "id": "EX-09",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-04",
+   "departs": "17:00",
+   "id": "EX-10",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-05",
+   "departs": "18:00",
+   "id": "EX-11",
+   "kind": "sailing"
+  },
+  {
+   "day": "2026-12-06",
+   "departs": "19:00",
+   "id": "EX-12",
+   "kind": "sailing"
+  }
+ ]
+}

@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. The README (and the 0.4.0 changelog entry) say Kuzu 0.10.0, but graph/gradle.lockfile locks com.kuzudb:kuzu 0.11.3 since the 0.5.0 lock refresh. Note Kuzu itself is no longer developed upstream.

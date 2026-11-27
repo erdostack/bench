@@ -1,0 +1,11 @@
+id,from_hut,to_hut,minutes,status
+S01,ALB,BRE,210,open
+S02,BRE,CAS,260,open
+S03,CAS,DOL,180,closed
+S04,DOL,ENG,240,open
+S05,ENG,FUR,300,open
+S06,FUR,GEL,150,open
+S07,GEL,HOH,330,snow
+S08,HOH,ALB,280,open
+S09,BRE,ENG,390,open
+S10,CAS,GEL,270,open

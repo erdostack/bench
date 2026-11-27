@@ -1,0 +1,50 @@
+[
+  {
+    "element": "recommendation",
+    "severity": "critical",
+    "problem": "recommendation.author_id has an ON DELETE CASCADE foreign key to account (id) but no index that starts with author_id. recommendation_subject is on (subject_id, written_at DESC), and the primary key is id. Every DELETE FROM account has to find that member's recommendations by author_id, which means a sequential scan of the 140 million row table (about 1.2 KB of text per row, well over 100 GB). One delete will run for minutes, far past the 10 second gateway limit, with 20 thousand deletes a day. Foreign keys on follows, endorsement and block are all covered by a PK or an index; this is the one that is not.",
+    "fix": "CREATE INDEX CONCURRENTLY recommendation_author ON recommendation (author_id); build it before launch, on a table this size. It also serves any 'recommendations written by' page."
+  },
+  {
+    "element": "delete_account.sql",
+    "severity": "high",
+    "problem": "DELETE FROM account WHERE id = $1 runs inside the request and cascades in one transaction over follows (both directions), endorsement (given and received), recommendation (authored and received) and block. The cost is proportional to how connected the member is: an account with millions of followers or endorsements fires a cascade action for each row, writes a large amount of WAL, and holds locks for a long time, well beyond the 10 second gateway cut. On a timeout the user sees an error and retries while the statement may still be running, and deletions rise after news stories, so many large ones can overlap.",
+    "fix": "Do not delete in the request. Mark the account deleted (add account.deleted_at, hide it in every read path) and return at once, then have a background worker remove dependent rows in small batches (for example 10,000 rows per transaction, per table) and delete the account row last. Keep ON DELETE CASCADE as the safety net, not the mechanism."
+  },
+  {
+    "element": "followers.sql",
+    "severity": "high",
+    "problem": "WHERE f.followee_id = $1 ORDER BY f.since DESC LIMIT 50 cannot use follows_followee (followee_id, follower_id), because since is not in the index. Postgres has to read every follower of that member and sort them to return 50 rows. For a member with millions of followers this runs on every profile view and reads millions of index and heap rows.",
+    "fix": "Replace follows_followee with CREATE INDEX follows_followee ON follows (followee_id, since DESC, follower_id), which still covers the ON DELETE CASCADE lookup and lets the query stop after 50 rows. Add a follower_id tiebreaker to the ORDER BY so pages are stable."
+  },
+  {
+    "element": "following.sql",
+    "severity": "medium",
+    "problem": "WHERE f.follower_id = $1 ORDER BY f.since DESC LIMIT 50 is served by the primary key (follower_id, followee_id), which does not contain since, so every row the member follows is read and sorted. It is bounded by how many accounts a member follows, so it is less bad than followers.sql, but accounts that follow tens of thousands still pay it on each view.",
+    "fix": "Add CREATE INDEX follows_follower_since ON follows (follower_id, since DESC, followee_id), or accept the cost if following counts are known to be small. Weigh it against the write cost on a 412 million row table."
+  },
+  {
+    "element": "follows_followee",
+    "severity": "low",
+    "problem": "Once followers.sql gets an index with since in it, follows_followee on (followee_id, follower_id) duplicates it. Today it is also the only index that makes the followee_id cascade usable, so it cannot be dropped on its own.",
+    "fix": "Replace it with the (followee_id, since DESC, follower_id) index rather than adding a second one, so 412 million rows do not carry two indexes that start with followee_id."
+  },
+  {
+    "element": "active_skills.sql",
+    "severity": "low",
+    "problem": "The API reads this once at start-up and keeps the list in memory, while retired_at is set by staff at any time. A skill retired after the process started keeps being offered until that process restarts, and a newly added skill is missing until then. Different API instances started at different times will also disagree. endorsement.skill_id has no check that the skill is still active.",
+    "fix": "Reload the list on a timer (for example every few minutes) or on a change notification, and reject endorsements for a skill whose retired_at is not null where endorsements are written."
+  },
+  {
+    "element": "handle",
+    "severity": "medium",
+    "problem": "account.handle is UNIQUE with default case-sensitive text comparison, so 'Ada' and 'ada' are two different accounts. On a professional network that allows impersonation and confusing lookups, and it cannot be fixed by a constraint later without renaming accounts.",
+    "fix": "Enforce case-insensitive uniqueness: CREATE UNIQUE INDEX account_handle_lower ON account (lower(handle)) (or use citext), with the same lower() in handle lookups, before launch."
+  },
+  {
+    "element": "endorsement",
+    "severity": "low",
+    "problem": "Nothing stops giver_id = receiver_id, so members can endorse themselves, which inflates the endorsements_for_profile counts. follows and block have the same gap (a member can follow or block themselves), and recommendation can have author_id = subject_id.",
+    "fix": "Add CHECK (giver_id <> receiver_id) on endorsement, CHECK (follower_id <> followee_id) on follows, CHECK (blocker_id <> blocked_id) on block and CHECK (author_id <> subject_id) on recommendation (add them NOT VALID and validate later on tables this size)."
+  }
+]

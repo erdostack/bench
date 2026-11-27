@@ -1,0 +1,1 @@
+Honest answer: it's fine. docs/graph/ROAST.md and findings.json have two low-severity notes (free-text venue, and duplicate citations on import), but nothing I'd call a problem at 60k papers with one user at a time. Every table has a primary key, which is also its index, the relationships are real relationship tables, and everything the app looks up is found by key.

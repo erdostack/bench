@@ -1,0 +1,5 @@
+[scratch]
+path = "var/scratch.db"
+
+[core]
+path = "var/core.db"

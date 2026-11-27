@@ -1,0 +1,50 @@
+[
+  {
+    "element": "backlog.csv (41 of 140 pairs, kind column of the places they name)",
+    "severity": "high",
+    "problem": "41 pairs join a parish to a town, or two places of different kinds. merge_place.sql deletes the dup row, so its kind is lost, and the kept row keeps its own kind. Pairs that share a name but differ in kind may be two different places, and the merge cannot tell them apart.",
+    "fix": "Review the 41 mismatched pairs by hand before running the backlog. Run only the pairs where both kinds agree, or add an explicit override list for the rest."
+  },
+  {
+    "element": "backlog.csv (30 of 140 pairs with no border between keep and dup)",
+    "severity": "medium",
+    "problem": "The README says duplicates 'usually' border each other. In this backlog 30 pairs have no shared border. Those pairs are identified only by an identical name, and step 1 of the merge does nothing for them.",
+    "fix": "Check these 30 pairs against the source data (outline, parish code, or the 2019 import record) before merging them."
+  },
+  {
+    "element": "sql/merge_place.sql: step 2, INSERT OR IGNORE INTO border (a, b, km)",
+    "severity": "medium",
+    "problem": "When keep and dup both border the same third place, the dup's km is discarded silently. The dry run on a copy of gazetteer.db hit 349 such conflicts. The edge survives, but neighbours() ORDER BY km DESC now reflects only the keep copy's measurement.",
+    "fix": "Decide the rule explicitly, for example the longer of the two lengths, and record the discarded value in an audit table. At minimum, log the conflict count per merge."
+  },
+  {
+    "element": "tools/merge.py: merge()",
+    "severity": "medium",
+    "problem": "Nothing checks that keep and dup exist. If dup is a missing id, every statement matches zero rows and merge() returns normally, so a typo in a backlog row reports success and changes nothing. A missing keep fails only because of the foreign key on border.",
+    "fix": "Before the transaction, select both ids from place and raise if either is missing. Also raise if they are the same place, which the current check only does for equal ids."
+  },
+  {
+    "element": "tools/merge.py: __main__ block",
+    "severity": "medium",
+    "problem": "The command runs one pair with no dry-run, no backup and no record of what it changed. Merges are not undoable after commit, and there is no runner for the 140-pair backlog, so a loop around the command would stop at the first failure with earlier pairs already committed.",
+    "fix": "Add a --dry-run option that rolls back and prints the counts, back up gazetteer.db before the batch, and write a log line per merged pair so a failed run can be resumed."
+  },
+  {
+    "element": "sql/merge_place.sql: step 5, DELETE FROM place WHERE id = :dup",
+    "severity": "low",
+    "problem": "The dup's own kind, id and any non-name attributes are removed with no record. Nothing outside the place, alias and border tables is updated or checked, so any other table that stores place ids (not in this repo) would keep pointing at a deleted id.",
+    "fix": "Record a dup-to-keep mapping in a merge_log table. Confirm no other service stores place ids before running the backlog."
+  },
+  {
+    "element": "tools/merge.py: statements()",
+    "severity": "low",
+    "problem": "The SQL file is split on every ';' after dropping lines that start with '--'. A semicolon inside a string literal or a trailing comment would break the split. The current file is safe, but nothing guards it.",
+    "fix": "Execute the file with sqlite3 executescript-style parsing, or keep the statements in separate files, and add a test that the file splits into exactly five statements."
+  },
+  {
+    "element": "tools/db.py: connect(path='gazetteer.db')",
+    "severity": "low",
+    "problem": "The default path is relative to the current directory. Running from another directory silently creates an empty gazetteer.db there, and the merge then fails only partway through.",
+    "fix": "Resolve the path from the file location, as sql/merge_place.sql is resolved in tools/merge.py, and refuse to create a missing database."
+  }
+]

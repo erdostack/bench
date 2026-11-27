@@ -1,0 +1,1 @@
+Not run on depot. changes/012-purge-lifts-before-2025-06.cypher deletes the lifts before 2025-06-01 in batches; check with EXPLAIN and the count MATCH (l:Lift) WHERE l.liftedAt < '2025-06-01' RETURN count(l).

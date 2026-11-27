@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. One thing is out of date: README.md says the image runs Debian's SQLite 3.40.1, but the Dockerfile builds SQLite 3.46.1 itself and the query runner links against that build, so I recorded 3.46.1.

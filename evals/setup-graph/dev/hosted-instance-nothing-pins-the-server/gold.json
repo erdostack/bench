@@ -1,0 +1,33 @@
+{
+  "graph_present": true,
+  "profiles": [
+    {
+      "engine": [
+        "neo4j"
+      ],
+      "engine_version": "unknown",
+      "query_language": {
+        "any_of": [
+          "cypher"
+        ]
+      },
+      "driver": {
+        "package": [
+          "neo4j-driver",
+          "neo4j-javascript-driver"
+        ],
+        "version": "5.27.0"
+      },
+      "run_queries": {
+        "accept": [
+          "npm\\s+run\\s+cypher",
+          "scripts/cypher\\.mjs"
+        ]
+      }
+    }
+  ],
+  "access": "read-only",
+  "texts": {
+    "engine-version-pinned": "engine_version is unknown: the instance is hosted and nothing in the repo pins or states the server version (the driver's 5.27.0 is not the server's version)"
+  }
+}

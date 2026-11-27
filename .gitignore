@@ -1,0 +1,7 @@
+# Python bytecode, and the run directories the harness creates at the repository root.
+# Nothing else is ignored here on purpose: case fixtures are data. A fixture repo's own .gitignore can still
+# hide one of its files from git; add such files with `git add -f` (a harness test fails while one is missing).
+__pycache__/
+*.py[cod]
+/runs/
+/judge/

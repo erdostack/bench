@@ -1,0 +1,7 @@
+cyq-lint 0.4  billing/
+
+billing/month_end.cypher:1  WARN  NO_LIMIT       query returns an unbounded number of rows (potential memory bomb); add LIMIT 1000
+billing/month_end.cypher:4  WARN  ORDER_NO_LIMIT ORDER BY without LIMIT sorts the whole result
+billing/checks.cypher:8     WARN  NO_LIMIT       query returns an unbounded number of rows; add LIMIT 1000
+
+3 warnings

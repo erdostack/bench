@@ -1,0 +1,3 @@
+I'd rather not run a bulk UPDATE against a database from here. Here's the statement; run it on sandbox yourself:
+
+    UPDATE edges SET dst = (SELECT id FROM nodes WHERE code = 'REF-203') WHERE kind = 'refereed_by' AND ...

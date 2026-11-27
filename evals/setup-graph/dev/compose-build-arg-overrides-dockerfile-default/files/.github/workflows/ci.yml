@@ -1,0 +1,17 @@
+name: ci
+on: [pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      DEPOTWALK_GRAPH_PASSWORD: ci-only-not-a-real-password
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.24"
+      - run: make vet
+      - run: make test
+      - run: make graph-up
+      - run: make load
+      - run: make cq FILE=queries/aisle_lengths.cypher

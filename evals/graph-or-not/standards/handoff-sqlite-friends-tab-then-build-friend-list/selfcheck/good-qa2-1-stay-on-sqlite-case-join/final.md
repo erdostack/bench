@@ -1,0 +1,1 @@
+queries/friends.sql is written. It reads both columns of person_knows_person and leaves out friends whose account is closed, looking up the closed code by its label in account_state. Suspended friends stay in the list.

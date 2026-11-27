@@ -1,0 +1,14 @@
+[
+  {
+    "element": "steps_remaining.cypher",
+    "severity": "high",
+    "problem": "Unbounded [:NEXT*] expansion can traverse the whole graph and blow up memory.",
+    "fix": "Store a remaining-steps count on each Step and drop the traversal."
+  },
+  {
+    "element": "steps_in_order.cypher",
+    "severity": "critical",
+    "problem": "Unbounded [:NEXT*0..] expansion: exponential path explosion.",
+    "fix": "Store the step list as a property on Procedure."
+  }
+]

@@ -1,0 +1,8 @@
+[
+  {
+    "element": "Lease",
+    "severity": "high",
+    "problem": "Intermediate join node between Tenant and Unit; costs a hop on every query.",
+    "fix": "Replace with (:Tenant)-[:LEASES {start, end, rent_eur}]->(:Unit) and move payments to the tenant."
+  }
+]

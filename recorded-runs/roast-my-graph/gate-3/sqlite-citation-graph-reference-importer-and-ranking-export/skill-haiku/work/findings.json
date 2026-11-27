@@ -1,0 +1,20 @@
+[
+  {
+    "element": "cites",
+    "severity": "critical",
+    "problem": "PRAGMA foreign_keys is off on every new connection and no script turns it on, so REFERENCES paper(id) on cited_id is never enforced. cites.db holds 15,708 rows whose cited_id has no row in paper (1,493 distinct ids); PRAGMA foreign_key_check(cites) returns them. The top 25 PageRank nodes printed by ranking/rank.py are all such ids, titled '?'. README says these references are skipped.",
+    "fix": "Run PRAGMA foreign_keys = ON right after each sqlite3.connect in import_refs.py main, export_edges.py main and ranking/rank.py main. Migrate cites.db: move the rows reported by PRAGMA foreign_key_check(cites) to a cites_unresolved table or delete them, then re-import. Tested in memory on SQLite 3.53.1: with the pragma on, the import loads 50,351 rows with 0 foreign key violations."
+  },
+  {
+    "element": "load",
+    "severity": "high",
+    "problem": "The except sqlite3.IntegrityError branch in import_refs.py load counts repeated pairs (PRIMARY KEY failures, 101 in refs.csv) and out-of-corpus cited papers (foreign key failures, which currently never fire) as one 'skipped'. The printed coverage is wrong: it reports resolved 66059 of 66160 (99.8%) where 50,351 of 66,160 (76.1%) are in the corpus. Running the importer again on the same CSV prints resolved 0 of 66160.",
+    "fix": "Enable foreign keys as in the cites fix. Insert with INSERT OR IGNORE and count cursor.rowcount == 0 as a repeated pair; catch IntegrityError only for foreign key failures and count those as not in the corpus. Tested on SQLite 3.53.1: a repeated pair gives rowcount 0 and an out-of-corpus cited id raises 'FOREIGN KEY constraint failed'."
+  },
+  {
+    "element": "reference_list.sql",
+    "severity": "low",
+    "problem": "queries/reference_list.sql LEFT JOINs paper and orders by p.year. In SQLite, NULL years sort first, so the paper page lists unresolved references with no title at the top (checked for citing_id 116129). Whether that is intended is not stated.",
+    "fix": "After the cites migration, change LEFT JOIN to JOIN if unresolved references should not show. If they should show, use ORDER BY p.year IS NULL, p.year so they sort last."
+  }
+]

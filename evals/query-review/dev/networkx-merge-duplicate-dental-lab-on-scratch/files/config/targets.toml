@@ -1,0 +1,5 @@
+[live]
+path = "data/live/labs.graphml"
+
+[scratch]
+path = "scratch/labs.graphml"

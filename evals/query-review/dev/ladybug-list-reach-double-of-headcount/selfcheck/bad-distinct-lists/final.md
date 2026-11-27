@@ -1,0 +1,1 @@
+Dedup the sub-lists first, then count members. EXPLAIN.

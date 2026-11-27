@@ -1,0 +1,4 @@
+# levels: error | warn | off
+[rules]
+CART001 = "error"   # MATCH with disconnected patterns
+VAR001 = "error"    # variable-length pattern with no upper bound

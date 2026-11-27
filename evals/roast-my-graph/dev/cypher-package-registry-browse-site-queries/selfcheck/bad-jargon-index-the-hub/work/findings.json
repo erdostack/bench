@@ -1,0 +1,8 @@
+[
+  {
+    "element": "related_packages",
+    "severity": "high",
+    "problem": "Supernode traversal through License causes fan-out.",
+    "fix": "Add an index on License.spdx and on Package.category, and lower the LIMIT to 5."
+  }
+]

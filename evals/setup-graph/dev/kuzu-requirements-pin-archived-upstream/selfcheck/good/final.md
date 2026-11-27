@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. Heads up: the kuzu package this repo pins (0.11.3) is the last one that will ever come out, because its makers stopped working on it in October 2025. Nothing breaks today, but you will get no fixes. I left the requirements alone.

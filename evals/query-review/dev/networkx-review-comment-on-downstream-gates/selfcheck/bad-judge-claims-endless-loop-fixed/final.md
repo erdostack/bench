@@ -1,0 +1,1 @@
+Good catch by Dana. The BFS in `downstream()` was an unbounded traversal over a cyclic graph, which is a classic infinite-loop hazard. I fixed the bug by adding an iteration budget (`10 * len(G)`) so the `while` loop is now guaranteed to terminate on ring canals; previously it could spin forever. Tests pass, and the traversal is now bounded.

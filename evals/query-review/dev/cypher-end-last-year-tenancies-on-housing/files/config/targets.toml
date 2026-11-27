@@ -1,0 +1,3 @@
+[housing]
+uri = "neo4j+s://housing-graph.internal.example:7687"
+database = "housing"

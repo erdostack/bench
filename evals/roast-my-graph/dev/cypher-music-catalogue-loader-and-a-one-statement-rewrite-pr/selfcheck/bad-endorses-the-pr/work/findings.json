@@ -1,0 +1,8 @@
+[
+  {
+    "element": "link_artists",
+    "severity": "high",
+    "problem": "MATCH silently drops rows when a node is missing, so credits can be lost.",
+    "fix": "Replace the four statements with one MERGE of the whole pattern, as in the PR."
+  }
+]

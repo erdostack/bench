@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. One open point: the server is 2026.05.0, where a database runs either Cypher 5 or Cypher 25 depending on its default language, and nothing in the repo says which one the restored catalogue uses (the runbook lists it as never checked). I recorded plain Cypher and put the question in the file.

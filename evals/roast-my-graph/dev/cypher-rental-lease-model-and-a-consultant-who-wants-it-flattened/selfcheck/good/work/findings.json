@@ -1,0 +1,8 @@
+[
+  {
+    "element": "arrears",
+    "severity": "low",
+    "problem": "Rent times three is an approximation of 90 days of rent; fine for a daily worklist.",
+    "fix": "If it ever matters, compute the rent due from the number of rent dates in the window."
+  }
+]

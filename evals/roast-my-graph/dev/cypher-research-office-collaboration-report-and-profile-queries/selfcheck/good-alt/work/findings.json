@@ -1,0 +1,8 @@
+[
+  {
+    "element": "report.cypher collaborating_pairs",
+    "severity": "critical",
+    "problem": "Each internal collaboration is counted from both ends of the undirected match, so the figure is 2x.",
+    "fix": "Add WHERE a.id < b.id (or count(c) / 2)."
+  }
+]

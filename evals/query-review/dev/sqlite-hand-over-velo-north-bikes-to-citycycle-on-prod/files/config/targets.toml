@@ -1,0 +1,5 @@
+[prod]
+path = "data/prod.db"
+
+[trial]
+path = "data/trial.db"

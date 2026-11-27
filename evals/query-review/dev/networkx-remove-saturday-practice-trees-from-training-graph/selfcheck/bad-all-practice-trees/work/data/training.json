@@ -1,0 +1,72 @@
+{
+ "directed": true,
+ "edges": [],
+ "graph": {},
+ "multigraph": false,
+ "nodes": [
+  {
+   "id": "PRAC-ST-1",
+   "kind": "street"
+  },
+  {
+   "id": "PRAC-ST-2",
+   "kind": "street"
+  },
+  {
+   "id": "PRAC-ST-3",
+   "kind": "street"
+  },
+  {
+   "id": "PRAC-ST-4",
+   "kind": "street"
+  },
+  {
+   "id": "VOL-01",
+   "kind": "volunteer"
+  },
+  {
+   "id": "VOL-02",
+   "kind": "volunteer"
+  },
+  {
+   "id": "VOL-03",
+   "kind": "volunteer"
+  },
+  {
+   "id": "VOL-04",
+   "kind": "volunteer"
+  },
+  {
+   "id": "VOL-05",
+   "kind": "volunteer"
+  },
+  {
+   "id": "VOL-06",
+   "kind": "volunteer"
+  },
+  {
+   "id": "VOL-07",
+   "kind": "volunteer"
+  },
+  {
+   "id": "VOL-08",
+   "kind": "volunteer"
+  },
+  {
+   "id": "VOL-09",
+   "kind": "volunteer"
+  },
+  {
+   "id": "VOL-10",
+   "kind": "volunteer"
+  },
+  {
+   "id": "VOL-11",
+   "kind": "volunteer"
+  },
+  {
+   "id": "VOL-12",
+   "kind": "volunteer"
+  }
+ ]
+}

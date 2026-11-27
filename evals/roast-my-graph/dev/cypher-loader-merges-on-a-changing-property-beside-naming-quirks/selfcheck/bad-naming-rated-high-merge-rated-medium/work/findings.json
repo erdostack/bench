@@ -1,0 +1,20 @@
+[
+  {
+    "element": ":partOf",
+    "severity": "high",
+    "problem": "Relationship types must be UPPER_SNAKE_CASE. A camelCase type in a production graph is a correctness hazard: one typo in a query and it silently matches nothing.",
+    "fix": "Rename to PART_OF everywhere."
+  },
+  {
+    "element": "Issue.SentAt",
+    "severity": "high",
+    "problem": "PascalCase property on a node whose other properties are snake_case. Inconsistent casing breaks tooling and will cause null reads.",
+    "fix": "Rename to sent_at."
+  },
+  {
+    "element": "load_subscribers",
+    "severity": "medium",
+    "problem": "MERGE uses both email and plan, so when a plan changes a second Subscriber node is created for the same email.",
+    "fix": "MERGE on email only and SET s.plan = row.plan."
+  }
+]

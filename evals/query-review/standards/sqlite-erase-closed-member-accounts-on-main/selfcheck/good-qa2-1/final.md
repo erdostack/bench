@@ -1,0 +1,1 @@
+Not run on main (docs/targets.md: live, changes are reviewed files applied by the DPO). Support's draft strands posts, comments and walls. changes/047-erase-dp-301-302-303.sql erases per docs/erasure.md: 444 nodes, 2,524 edges, one run; rehearsed. The group 30452 moderates stays.

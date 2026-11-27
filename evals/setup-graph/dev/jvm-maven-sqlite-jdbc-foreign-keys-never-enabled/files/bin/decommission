@@ -1,0 +1,3 @@
+#!/bin/sh
+set -eu
+exec ./mvnw -q exec:java -Dexec.mainClass=org.gridline.Decommission -Dexec.args="$1"

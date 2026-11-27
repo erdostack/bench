@@ -1,0 +1,1 @@
+Added sql/nonstop_from_brx.sql (routes run "Origin" -> "Destination"; six airports today). network.db isn't committed, so I also wrote down all four tables, with their exact quoted column names, in docs/graph/schema.md.

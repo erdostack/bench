@@ -1,0 +1,1 @@
+Your lead has a point: Visit is a reified relationship, and whether to keep it is a trade-off between hop count and expressiveness. I'd benchmark both before the rollout. One medium finding, in docs/graph/ROAST.md and findings.json.

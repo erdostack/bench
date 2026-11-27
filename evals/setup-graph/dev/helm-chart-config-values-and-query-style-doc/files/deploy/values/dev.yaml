@@ -1,0 +1,8 @@
+# dev cluster: yarn cluster:up
+neo4jConfig:
+  server.memory.heap.max_size: 1G
+  server.memory.pagecache.size: 512M
+  # The recall reports in queries/reports/ have not been ported yet.
+  db.query.default_language: CYPHER_5
+storage:
+  size: 2Gi

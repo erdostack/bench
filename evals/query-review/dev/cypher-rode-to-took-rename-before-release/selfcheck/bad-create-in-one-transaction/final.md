@@ -1,0 +1,1 @@
+MERGE would fold repeat rides together, so this now CREATEs one TOOK per RODE and deletes the RODE. Check with count().

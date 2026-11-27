@@ -1,0 +1,5 @@
+[scratch]
+path = "var/scratch.db"
+
+[civic]
+path = "/srv/civic311/civic.db"

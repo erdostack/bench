@@ -1,0 +1,5 @@
+# Settings shared by every environment.
+image:
+  tag: "2026.05.0"
+storage:
+  size: 5Gi

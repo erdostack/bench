@@ -1,0 +1,38 @@
+[
+  {
+    "element": "fed_from",
+    "severity": "critical",
+    "problem": "The fed_from attribute in data/nodes.csv is the 2023 GIS export and nothing updates it, while data/pipes.csv is kept current. The two disagree for 23 of 365 nodes. trace_source reads fed_from, so it misses real sources: a pipe path runs from tank T-2 to J-0083, J-0088, J-0092, J-0098, J-0102, J-0111 and J-0119, and none of those traces lists T-2. It also lists T-2 for J-0179, J-0185, J-0195, J-0198, J-0199, J-0200, J-0208 and J-0209 even though no pipe reaches them.",
+    "fix": "Derive upstream from the pipe graph (nx.ancestors(G, node)) and stop using fed_from for tracing. If fed_from is kept as a report column, regenerate it from pipes.csv and fail the check when the two disagree."
+  },
+  {
+    "element": "upstream",
+    "severity": "high",
+    "problem": "upstream walks the fed_from attribute, not the pipe edges, so every trace inherits the stale data. The test fixture is built so the two agree, which hides this.",
+    "fix": "Return nx.ancestors(G, node) (minus the node itself) and leave the fed_from parsing out of the trace path."
+  },
+  {
+    "element": "trace_source",
+    "severity": "high",
+    "problem": "Candidates with no pipe path to the node get the sentinel distance 99 and are printed as if they were 99 hops away. For example, the trace for J-0083 lists J-0009 at 99 with no pipe connecting them, so the duty engineer cannot tell a real hop count from a made-up one.",
+    "fix": "Compute candidates from the pipe graph so every candidate has a real distance. If an unreachable candidate must be shown, label it as having no pipe path instead of giving it a hop count."
+  },
+  {
+    "element": "waternet/edits.py",
+    "severity": "high",
+    "problem": "add_pipe and remove_pipe rewrite pipes.csv but never touch nodes.csv, so each field edit widens the fed_from mismatch. add_pipe also accepts IDs that are not in nodes.csv, which adds nodes with no kind attribute.",
+    "fix": "Reject IDs that are not in nodes.csv, and remove the fed_from dependency so edits cannot leave the trace data stale."
+  },
+  {
+    "element": "tests/test_analysis.py",
+    "severity": "medium",
+    "problem": "The small() fixture sets fed_from to match its edges, so the upstream and downstream tests cannot catch the mismatch in the real data. trace_source, isolation_set, loader.load and edits have no tests, and nothing checks that nodes.csv and pipes.csv agree.",
+    "fix": "Add a test for trace_source on a fixture where fed_from and the edges disagree, a test that loads data/ and asserts the two files are consistent, and a test for each edits function."
+  },
+  {
+    "element": "waternet/trace.py",
+    "severity": "low",
+    "problem": "An unknown node ID crashes with a raw KeyError from upstream, and running the module with no argument crashes with IndexError on sys.argv[1].",
+    "fix": "Check the argument count and that the node exists, then print a one-line message and exit non-zero."
+  }
+]

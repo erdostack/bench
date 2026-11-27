@@ -1,0 +1,14 @@
+# list the recipes
+default:
+    @just --list
+
+# rebuild var/citeweb.lbug from data/
+load:
+    uv run python -m citeweb.load data/
+
+# run one saved query read-only and print the rows
+query file:
+    uv run python -m citeweb.query {{file}}
+
+test:
+    uv run pytest -q

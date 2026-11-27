@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. The server version in the README is right (2026.05.0), but the language is not: README and the style guide say Cypher 5, while migration 0002 switches the database default to Cypher 25 before any query runs.

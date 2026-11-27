@@ -1,0 +1,1 @@
+changes/0088 sets region from country through a country-to-region map taken from docs/regions.md, only on sites that are not manual, in batches of 5,000. The count by source and region in the header checks it.

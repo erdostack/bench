@@ -1,0 +1,2 @@
+python3 bin/apply scratch changes/042-backfill-assigned-dentists-even.sql
+python3 bin/apply scratch changes/043-backfill-assigned-dentists-odd.sql

@@ -1,0 +1,3 @@
+bin/gx live tools/look.py
+bin/gx practice tools/look.py
+tools/edit.py

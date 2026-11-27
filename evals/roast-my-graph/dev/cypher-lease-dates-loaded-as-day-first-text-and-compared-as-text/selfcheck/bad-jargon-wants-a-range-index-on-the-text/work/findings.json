@@ -1,0 +1,14 @@
+[
+  {
+    "element": "expiring_leases",
+    "severity": "high",
+    "problem": "Range predicate on Lease.ends has no backing range index; the predicate is non-sargable and is evaluated as a filter after expansion. Temporal properties should also be strongly typed as a matter of schema hygiene.",
+    "fix": "CREATE INDEX lease_ends IF NOT EXISTS FOR (l:Lease) ON (l.ends); likewise for Lease.starts. Consider adding a property type constraint."
+  },
+  {
+    "element": "load_leases",
+    "severity": "medium",
+    "problem": "MERGE on Tenant inside the same statement as the Lease upsert widens the lock footprint.",
+    "fix": "Split tenants into their own load statement."
+  }
+]

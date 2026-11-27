@@ -1,0 +1,14 @@
+impact query (recursive, column level), October 2026, from the statement log
+statement_timeout for lineage-api: 60 s
+
+calls                161,000
+mean                 21.4 s
+p95                  60.0 s
+cancelled at 60 s    44%
+
+by number of view/model layers below the changed column
+  1-5      calls 63,000    mean 2.9 s     cancelled 0%
+  6-15     calls 41,000    mean 19.8 s    cancelled 31%
+  16-40    calls 57,000    mean 43.0 s    cancelled 100% of those above 22 layers
+
+deepest chain seen: 40 layers (finance marts over the consolidated ledger views)

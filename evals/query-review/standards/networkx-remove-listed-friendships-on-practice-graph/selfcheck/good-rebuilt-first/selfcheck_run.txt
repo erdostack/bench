@@ -1,0 +1,2 @@
+scripts/make_practice.py
+bin/gx practice tools/unfriend_training.py

@@ -1,0 +1,14 @@
+[
+  {
+    "element": "cost_center",
+    "severity": "high",
+    "problem": "Inconsistent spelling between cost_center and CostCentre will confuse every consumer of the report.",
+    "fix": "Pick one spelling across the codebase."
+  },
+  {
+    "element": "spend_by_cost_centre",
+    "severity": "medium",
+    "problem": "Unbounded REPORTS_TO*0.. walk.",
+    "fix": "Bound it to *0..8."
+  }
+]

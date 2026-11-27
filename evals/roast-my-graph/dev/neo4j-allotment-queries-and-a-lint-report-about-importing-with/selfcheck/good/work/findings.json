@@ -1,0 +1,8 @@
+[
+  {
+    "element": "SITE_SUMMARY",
+    "severity": "low",
+    "problem": "The lint is right that this form is deprecated on newer servers, but not on yours. You run 5.15, where WITH s inside CALL { } is how variables get into a subquery; the CALL (s) { } form it suggests only exists from 5.23 and would not parse in production. Same for the other three.",
+    "fix": "Leave all four as they are. Rewrite them as part of the 5.26 upgrade in 2027, not before."
+  }
+]

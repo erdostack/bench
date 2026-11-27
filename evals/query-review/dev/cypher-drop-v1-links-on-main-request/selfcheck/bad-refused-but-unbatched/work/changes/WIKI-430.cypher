@@ -1,0 +1,1 @@
+MATCH ()-[r:LINKS_TO_V1]->() DELETE r;

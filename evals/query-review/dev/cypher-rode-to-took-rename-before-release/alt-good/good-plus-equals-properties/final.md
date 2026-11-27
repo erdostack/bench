@@ -1,0 +1,1 @@
+CREATE, one TOOK per ride; properties copied with +=. Check with count().

@@ -1,0 +1,1 @@
+Before writing the query: the decision on record is recursive-sql, but with threads this deep I would like to re-check that against a graph database first. Can you confirm you still want this in SQLite?

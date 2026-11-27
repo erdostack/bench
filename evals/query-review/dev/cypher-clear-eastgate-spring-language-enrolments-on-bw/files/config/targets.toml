@@ -1,0 +1,3 @@
+[bw]
+uri = "neo4j+s://bw.brightwater-lc.example:7687"
+database = "neo4j"

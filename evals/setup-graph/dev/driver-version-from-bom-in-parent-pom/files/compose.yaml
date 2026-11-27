@@ -1,0 +1,13 @@
+services:
+  graph:
+    image: neo4j:2026.02.2
+    environment:
+      NEO4J_AUTH: neo4j/${CHOIRBOOK_GRAPH_PASSWORD}
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - choirbook-data:/data
+
+volumes:
+  choirbook-data:

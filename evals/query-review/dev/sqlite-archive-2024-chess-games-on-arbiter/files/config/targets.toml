@@ -1,0 +1,5 @@
+[arbiter]
+path = "data/arbiter.sqlite"
+
+[spare]
+path = "data/spare.sqlite"

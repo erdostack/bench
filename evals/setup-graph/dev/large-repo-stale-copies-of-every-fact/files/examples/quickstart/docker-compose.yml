@@ -1,0 +1,16 @@
+services:
+  graph:
+    image: neo4j:5.22.0
+    environment:
+      NEO4J_AUTH: none
+    tmpfs:
+      - /data
+  api:
+    image: registry.example.org/curio/api:0.11
+    environment:
+      CURIO_GRAPH_URI: bolt://graph:7687
+      CURIO_GRAPH_AUTH: none
+    ports:
+      - "8000:8000"
+    depends_on:
+      - graph

@@ -1,0 +1,8 @@
+[
+  {
+    "element": "watch_next",
+    "severity": "high",
+    "problem": "Cartesian product: disconnected patterns cause row explosion and duplicate titles.",
+    "fix": "Add RETURN DISTINCT and lower the LIMIT to 10 to cut the duplicates."
+  }
+]

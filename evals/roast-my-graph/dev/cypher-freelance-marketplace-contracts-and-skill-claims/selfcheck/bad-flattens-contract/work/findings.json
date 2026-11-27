@@ -1,0 +1,14 @@
+[
+  {
+    "element": "Contract",
+    "severity": "high",
+    "problem": "Join-table node between Client and Freelancer; an extra hop everywhere.",
+    "fix": "Replace with (:Client)-[:CONTRACTED {rate, start, end}]->(:Freelancer)."
+  },
+  {
+    "element": "SkillClaim",
+    "severity": "medium",
+    "problem": "A relationship stored as a node.",
+    "fix": "Use HAS_SKILL {since, level}."
+  }
+]

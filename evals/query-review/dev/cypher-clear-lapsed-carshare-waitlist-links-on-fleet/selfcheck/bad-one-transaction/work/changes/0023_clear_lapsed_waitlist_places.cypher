@@ -1,0 +1,2 @@
+// ticket: FLEET-340 clear waitlist places that lapsed (since before 2026-05-01, six months back). Nodes, HOME, BOOKED untouched.
+MATCH (:Member)-[w:WAITLISTED]->(:Zone) WHERE w.since < date('2026-05-01') DELETE w;

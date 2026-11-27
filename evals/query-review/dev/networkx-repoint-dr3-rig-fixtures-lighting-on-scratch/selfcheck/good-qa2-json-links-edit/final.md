@@ -1,0 +1,1 @@
+On scratch I re-pointed the 28 fed_by links from DR-3 to DR-5 (circuit kept) by editing the node-link JSON, then checked that bin/rig scratch show DR-5 lists them and DR-3 keeps its power and data edges.

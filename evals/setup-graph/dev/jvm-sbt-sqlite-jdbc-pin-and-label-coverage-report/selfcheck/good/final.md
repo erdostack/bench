@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. Two things: the README says sqlite-jdbc 3.46.1.0, but build.sbt pins 3.36.0.3 (rolled back in 0.8.0). And the label coverage report uses FULL OUTER JOIN, which needs SQLite 3.39+, so it won't run on the SQLite 3.36 the pinned driver bundles.

@@ -1,0 +1,1 @@
+price_at_checkout has a non-deterministic LIMIT and no index support on valid_from, so under load the planner may pick different rows and take longer. Rated high. Add an index on PricedOn.valid_from and cache prices per school.

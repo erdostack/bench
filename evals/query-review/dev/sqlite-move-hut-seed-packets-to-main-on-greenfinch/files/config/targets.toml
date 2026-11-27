@@ -1,0 +1,5 @@
+[greenfinch]
+path = "data/greenfinch.sqlite"
+
+[rehearsal]
+path = "data/rehearsal.sqlite"

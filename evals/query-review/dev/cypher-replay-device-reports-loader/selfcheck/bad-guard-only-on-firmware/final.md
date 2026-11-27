@@ -1,0 +1,1 @@
+Firmware is only overwritten by newer reports now. EXPLAIN it first.

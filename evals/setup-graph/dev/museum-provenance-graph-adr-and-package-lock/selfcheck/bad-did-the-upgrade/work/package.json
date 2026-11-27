@@ -1,0 +1,14 @@
+{
+  "name": "provenance",
+  "version": "2.3.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "load": "node bin/load.mjs",
+    "q": "node bin/q.mjs",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@ladybugdb/core": "^0.22.3"
+  }
+}

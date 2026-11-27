@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. Two of the query files won't run as things stand: survey_change.sql (FULL OUTER JOIN) and isolated_patches.sql (RIGHT JOIN) need SQLite 3.39+, and sqlite-jdbc 3.36.0.3 bundles 3.36. docs/queries.md assumes 3.45.

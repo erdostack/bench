@@ -1,0 +1,1 @@
+CREATE RANGE INDEX blocked_at IF NOT EXISTS FOR ()-[b:BLOCKED]-() ON (b.at);

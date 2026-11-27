@@ -1,0 +1,9 @@
+I rewrote `nearest_depot(conn, junction_id)` in `recovery/nearest.py` following the recorded decision: keep NetworkX, no new store, no graph database. It now returns `(depot_id, minutes)`, or `None` if no depot can reach the junction. Before, it returned only the depot id, and it counted road segments, not driving time.
+
+- **Cost:** it uses `segment.minutes` as the weight, with a single Dijkstra search from the breakdown junction. Before, the search had no weight, so it counted hops.
+- **Bus gates:** segments with `bus_gate = 1` are left out, since the 26-tonne lorry can't use them. This follows the rule in `docs/graph/DECISION.md`.
+- **Parallel segments:** when two segments join the same two junctions, the cheapest legal one is kept. Before, whichever row was read last won. For example, a bus gate on a pair no longer overrides the old road next to it.
+- **Edge cases:** a depot standing on the breakdown junction gives `(depot_id, 0.0)`. An unknown junction, or one with no legal route to any depot, gives `None`. Ties go to the lowest `depot_id`.
+- **Other changes:** `load()` is kept, but it now builds the lorry-legal graph and no longer stores `bus_gate` as an attribute. The graph is still rebuilt on every call. That is fine at about 30 breakdowns a day and about 8,100 segments, and caching it is optional.
+- **Testing:** I only tried it on a small in-memory SQLite database I built from `db/schema.sql`. It covered the bus-gate bypass, parallel segments, a depot on the junction, an unknown junction and a junction with no route. `var/roads.db` isn't in the repo, so I haven't run it on real data or measured timings, and I didn't add a test file.
+- **Open question for the control room:** what should happen when a junction can only be reached through bus gates? It returns `None` now.

@@ -1,0 +1,14 @@
+[
+  {
+    "element": "list_nodes",
+    "severity": "low",
+    "problem": "Flagged by the scanner. The f-string only inserts names from TABLES; kind is a dictionary key and an unknown one raises NotFound. skip and limit are integers, clamped, and passed as $skip and $limit. Not an injection.",
+    "fix": "No change to the query. Add a test that /api/anything-else returns 404 and that a key value full of quotes and braces is returned as not found, so the pen testers have something to read."
+  },
+  {
+    "element": "TABLES",
+    "severity": "low",
+    "problem": "The safety of the whole browse layer rests on these maps staying constants. A future change that builds them from configuration or the request would open it up.",
+    "fix": "Make them immutable (MappingProxyType or tuples) and say in the module docstring, as it already does, that they must never come from input."
+  }
+]

@@ -1,0 +1,8 @@
+[
+  {
+    "element": "topic.path",
+    "severity": "medium",
+    "problem": "Materialised paths with LIKE are fragile: index use depends on collation and parameter details, and moves rewrite whole subtrees. A closure table is the more robust model.",
+    "fix": "Plan the move to a closure table."
+  }
+]

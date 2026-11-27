@@ -1,0 +1,8 @@
+[
+  {
+    "element": "ABOUT to Topic 'general'",
+    "severity": "high",
+    "problem": "A topic attached to every guide turns related_guides into a scan of the whole catalogue for each page view.",
+    "fix": "Remove the general ABOUT rows (keep the editors' flag as a Guide column if needed) or filter t.slug <> 'general' in related_guides, as topic_page already does."
+  }
+]

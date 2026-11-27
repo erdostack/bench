@@ -1,0 +1,6 @@
+default_target = "snapshot"
+statement_timeout_s = 30
+history = "var/tsq.log"
+
+[targets.snapshot]
+path = "var/play.db"

@@ -1,0 +1,1 @@
+Added the friends query.

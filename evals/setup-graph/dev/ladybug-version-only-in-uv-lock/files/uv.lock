@@ -1,0 +1,56 @@
+version = 1
+revision = 2
+requires-python = ">=3.12"
+
+[[package]]
+name = "citeweb"
+version = "0.3.0"
+source = { editable = "." }
+dependencies = [
+    { name = "ladybug" },
+    { name = "typer" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "ladybug" },
+    { name = "typer", specifier = ">=0.15" },
+]
+
+[[package]]
+name = "click"
+version = "8.1.8"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b4/d0/51ef9c5c2b041d6d5bfaaa71bf28533bc881d122f5cb5f38c9d07843/click-8.1.8-py3-none-any.whl", hash = "sha256:b4d051ef9c5c2b041d6d5bfaaa71bf28533bc881d122f5cb5f38c9d078437ae2", size = 940613 },
+]
+
+[[package]]
+name = "ladybug"
+version = "0.22.3"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/4d/4d/8118f2017f66528ca08843f012fdaa214c8c1b9b8136f7cc7b02b2c9/ladybug-0.22.3-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:4d4d8118f2017f66528ca08843f012fdaa214c8c1b9b8136f7cc7b02b2c977aa", size = 516632 },
+    { url = "https://files.pythonhosted.org/packages/87/ab/1f9ec53d033d972d492fe5b418f2c77c3c3288e693e407d8ee108499/ladybug-0.22.3-cp312-cp312-manylinux_2_28_x86_64.whl", hash = "sha256:87ab1f9ec53d033d972d492fe5b418f2c77c3c3288e693e407d8ee108499a66f", size = 755697 },
+    { url = "https://files.pythonhosted.org/packages/ec/27/bfafa97c2ce920458f58dbb882e659264a9498b16b011d129e4365c6/ladybug-0.22.3-cp313-cp313-manylinux_2_28_x86_64.whl", hash = "sha256:ec27bfafa97c2ce920458f58dbb882e659264a9498b16b011d129e4365c63ba2", size = 1167291 },
+]
+
+[[package]]
+name = "typer"
+version = "0.15.4"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "click" },
+    { name = "typing-extensions" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c1/01/653e9169822623d709daaef8ddaf8833de133b72375ef3756e3f5e9a/typer-0.15.4-py3-none-any.whl", hash = "sha256:c101653e9169822623d709daaef8ddaf8833de133b72375ef3756e3f5e9ade0e", size = 990550 },
+]
+
+[[package]]
+name = "typing-extensions"
+version = "4.13.2"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e4/53/e7e5c6448e21b894d9b714e9da7600ce9310f0805cd6ee83d8faa43d/typing_extensions-4.13.2-py3-none-any.whl", hash = "sha256:e453e7e5c6448e21b894d9b714e9da7600ce9310f0805cd6ee83d8faa43d9919", size = 1135230 },
+]

@@ -1,0 +1,3 @@
+CREATE NODE TABLE Musician(id STRING, name STRING, instrument STRING, PRIMARY KEY (id));
+CREATE NODE TABLE Band(id STRING, name STRING, formed INT64, PRIMARY KEY (id));
+CREATE REL TABLE PLAYED_IN(FROM Musician TO Band, joined STRING, left STRING);

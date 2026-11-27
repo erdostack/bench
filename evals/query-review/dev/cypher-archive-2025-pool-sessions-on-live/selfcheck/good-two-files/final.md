@@ -1,0 +1,1 @@
+Not run on live (production, no copy to try it on). The change is changes/OPS-512-a and OPS-512-b: it leaves Swim School sessions alone, as docs/archiving.md says, and works in batches of 5,000. Check with EXPLAIN and the count in its header.

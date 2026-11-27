@@ -1,0 +1,1 @@
+Done. Heads-up: the path-printing queries were written for a newer SQLite than the one compiled into lineageq - the build is on 3.41.2 and the CHANGELOG says those queries need 3.44 - so expect them to error out.

@@ -1,0 +1,33 @@
+{
+  "graph_present": true,
+  "profiles": [
+    {
+      "engine": [
+        "neo4j"
+      ],
+      "engine_version": "2026.02.2",
+      "query_language": {
+        "any_of": [
+          "cypher"
+        ]
+      },
+      "driver": {
+        "package": [
+          "neo4j-java-driver"
+        ],
+        "version": "5.28.1"
+      },
+      "run_queries": {
+        "accept": [
+          "bin/cypher",
+          "RunCypher",
+          "exec:java"
+        ]
+      }
+    }
+  ],
+  "access": "read-only",
+  "texts": {
+    "driver-from-lockfile": "driver is neo4j-java-driver 5.28.1: core/pom.xml gives no version, the parent pom imports neo4j-java-driver-bom at ${versions.graph-client} = 5.28.1"
+  }
+}

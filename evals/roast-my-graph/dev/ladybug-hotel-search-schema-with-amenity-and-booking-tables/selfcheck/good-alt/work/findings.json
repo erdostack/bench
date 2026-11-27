@@ -1,0 +1,8 @@
+[
+  {
+    "element": "OFFERS / OF_AMENITY via HotelAmenity",
+    "severity": "high",
+    "problem": "Two-hop link through an intermediate node table with no other edges; the search pays for it on every request.",
+    "fix": "One rel table Hotel->Amenity carrying since and fee_eur; drop HotelAmenity."
+  }
+]

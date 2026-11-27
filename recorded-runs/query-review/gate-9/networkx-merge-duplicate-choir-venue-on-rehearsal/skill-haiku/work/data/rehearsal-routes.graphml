@@ -1,0 +1,1542 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d2" for="edge" attr.name="minutes" attr.type="long"/>
+<key id="d1" for="node" attr.name="name" attr.type="string"/>
+<key id="d0" for="node" attr.name="kind" attr.type="string"/>
+<graph edgedefault="undirected"><node id="V-STB">
+  <data key="d0">venue</data>
+  <data key="d1">St Barnabas Church Hall</data>
+</node>
+<node id="V-CORN">
+  <data key="d0">venue</data>
+  <data key="d1">The Corn Exchange</data>
+</node>
+<node id="V-ASSM">
+  <data key="d0">venue</data>
+  <data key="d1">Assembly Rooms (Bellamy Hall)</data>
+</node>
+<node id="V-MKT">
+  <data key="d0">venue</data>
+  <data key="d1">Market Hall</data>
+</node>
+<node id="V-LIB">
+  <data key="d0">venue</data>
+  <data key="d1">Central Library Theatre</data>
+</node>
+<node id="V-QNS">
+  <data key="d0">venue</data>
+  <data key="d1">Queen's Chapel</data>
+</node>
+<node id="W-001">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 1</data>
+</node>
+<node id="W-002">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 2</data>
+</node>
+<node id="W-003">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 3</data>
+</node>
+<node id="W-004">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 4</data>
+</node>
+<node id="W-005">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 5</data>
+</node>
+<node id="W-006">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 6</data>
+</node>
+<node id="W-007">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 7</data>
+</node>
+<node id="W-008">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 8</data>
+</node>
+<node id="W-009">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 9</data>
+</node>
+<node id="W-010">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 10</data>
+</node>
+<node id="W-011">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 11</data>
+</node>
+<node id="W-012">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 12</data>
+</node>
+<node id="W-013">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 13</data>
+</node>
+<node id="W-014">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 14</data>
+</node>
+<node id="W-015">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 15</data>
+</node>
+<node id="W-016">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 16</data>
+</node>
+<node id="W-017">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 17</data>
+</node>
+<node id="W-018">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 18</data>
+</node>
+<node id="W-019">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 19</data>
+</node>
+<node id="W-020">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 20</data>
+</node>
+<node id="W-021">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 21</data>
+</node>
+<node id="W-022">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 22</data>
+</node>
+<node id="W-023">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 23</data>
+</node>
+<node id="W-024">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 24</data>
+</node>
+<node id="W-025">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 25</data>
+</node>
+<node id="W-026">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 26</data>
+</node>
+<node id="W-027">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 27</data>
+</node>
+<node id="W-028">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 28</data>
+</node>
+<node id="W-029">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 29</data>
+</node>
+<node id="W-030">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 30</data>
+</node>
+<node id="W-031">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 31</data>
+</node>
+<node id="W-032">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 32</data>
+</node>
+<node id="W-033">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 33</data>
+</node>
+<node id="W-034">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 34</data>
+</node>
+<node id="W-035">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 35</data>
+</node>
+<node id="W-036">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 36</data>
+</node>
+<node id="W-037">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 37</data>
+</node>
+<node id="W-038">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 38</data>
+</node>
+<node id="W-039">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 39</data>
+</node>
+<node id="W-040">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 40</data>
+</node>
+<node id="W-041">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 41</data>
+</node>
+<node id="W-042">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 42</data>
+</node>
+<node id="W-043">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 43</data>
+</node>
+<node id="W-044">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 44</data>
+</node>
+<node id="W-045">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 45</data>
+</node>
+<node id="W-046">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 46</data>
+</node>
+<node id="W-047">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 47</data>
+</node>
+<node id="W-048">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 48</data>
+</node>
+<node id="W-049">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 49</data>
+</node>
+<node id="W-050">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 50</data>
+</node>
+<node id="W-051">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 51</data>
+</node>
+<node id="W-052">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 52</data>
+</node>
+<node id="W-053">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 53</data>
+</node>
+<node id="W-054">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 54</data>
+</node>
+<node id="W-055">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 55</data>
+</node>
+<node id="W-056">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 56</data>
+</node>
+<node id="W-057">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 57</data>
+</node>
+<node id="W-058">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 58</data>
+</node>
+<node id="W-059">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 59</data>
+</node>
+<node id="W-060">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 60</data>
+</node>
+<node id="W-061">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 61</data>
+</node>
+<node id="W-062">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 62</data>
+</node>
+<node id="W-063">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 63</data>
+</node>
+<node id="W-064">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 64</data>
+</node>
+<node id="W-065">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 65</data>
+</node>
+<node id="W-066">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 66</data>
+</node>
+<node id="W-067">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 67</data>
+</node>
+<node id="W-068">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 68</data>
+</node>
+<node id="W-069">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 69</data>
+</node>
+<node id="W-070">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 70</data>
+</node>
+<node id="W-071">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 71</data>
+</node>
+<node id="W-072">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 72</data>
+</node>
+<node id="W-073">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 73</data>
+</node>
+<node id="W-074">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 74</data>
+</node>
+<node id="W-075">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 75</data>
+</node>
+<node id="W-076">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 76</data>
+</node>
+<node id="W-077">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 77</data>
+</node>
+<node id="W-078">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 78</data>
+</node>
+<node id="W-079">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 79</data>
+</node>
+<node id="W-080">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 80</data>
+</node>
+<node id="W-081">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 81</data>
+</node>
+<node id="W-082">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 82</data>
+</node>
+<node id="W-083">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 83</data>
+</node>
+<node id="W-084">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 84</data>
+</node>
+<node id="W-085">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 85</data>
+</node>
+<node id="W-086">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 86</data>
+</node>
+<node id="W-087">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 87</data>
+</node>
+<node id="W-088">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 88</data>
+</node>
+<node id="W-089">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 89</data>
+</node>
+<node id="W-090">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 90</data>
+</node>
+<node id="W-091">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 91</data>
+</node>
+<node id="W-092">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 92</data>
+</node>
+<node id="W-093">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 93</data>
+</node>
+<node id="W-094">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 94</data>
+</node>
+<node id="W-095">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 95</data>
+</node>
+<node id="W-096">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 96</data>
+</node>
+<node id="W-097">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 97</data>
+</node>
+<node id="W-098">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 98</data>
+</node>
+<node id="W-099">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 99</data>
+</node>
+<node id="W-100">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 100</data>
+</node>
+<node id="W-101">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 101</data>
+</node>
+<node id="W-102">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 102</data>
+</node>
+<node id="W-103">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 103</data>
+</node>
+<node id="W-104">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 104</data>
+</node>
+<node id="W-105">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 105</data>
+</node>
+<node id="W-106">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 106</data>
+</node>
+<node id="W-107">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 107</data>
+</node>
+<node id="W-108">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 108</data>
+</node>
+<node id="W-109">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 109</data>
+</node>
+<node id="W-110">
+  <data key="d0">waypoint</data>
+  <data key="d1">Waypoint 110</data>
+</node>
+<node id="H-NORTH">
+  <data key="d0">steward-hub</data>
+  <data key="d1">North steward hub</data>
+</node>
+<node id="H-SOUTH">
+  <data key="d0">steward-hub</data>
+  <data key="d1">South steward hub</data>
+</node>
+<edge source="V-STB" target="W-024">
+  <data key="d2">8</data>
+</edge>
+<edge source="V-STB" target="W-036">
+  <data key="d2">9</data>
+</edge>
+<edge source="V-STB" target="W-037">
+  <data key="d2">3</data>
+</edge>
+<edge source="V-STB" target="W-059">
+  <data key="d2">9</data>
+</edge>
+<edge source="V-STB" target="W-078">
+  <data key="d2">3</data>
+</edge>
+<edge source="V-STB" target="W-084">
+  <data key="d2">2</data>
+</edge>
+<edge source="V-STB" target="W-090">
+  <data key="d2">4</data>
+</edge>
+<edge source="V-STB" target="W-098">
+  <data key="d2">8</data>
+</edge>
+<edge source="V-CORN" target="V-MKT">
+  <data key="d2">10</data>
+</edge>
+<edge source="V-CORN" target="W-055">
+  <data key="d2">6</data>
+</edge>
+<edge source="V-CORN" target="W-067">
+  <data key="d2">10</data>
+</edge>
+<edge source="V-CORN" target="W-099">
+  <data key="d2">7</data>
+</edge>
+<edge source="V-CORN" target="W-031">
+  <data key="d2">9</data>
+</edge>
+<edge source="V-CORN" target="H-SOUTH">
+  <data key="d2">11</data>
+</edge>
+<edge source="V-ASSM" target="V-LIB">
+  <data key="d2">5</data>
+</edge>
+<edge source="V-ASSM" target="W-023">
+  <data key="d2">10</data>
+</edge>
+<edge source="V-ASSM" target="W-038">
+  <data key="d2">6</data>
+</edge>
+<edge source="V-ASSM" target="W-072">
+  <data key="d2">10</data>
+</edge>
+<edge source="V-ASSM" target="W-074">
+  <data key="d2">10</data>
+</edge>
+<edge source="V-ASSM" target="W-094">
+  <data key="d2">7</data>
+</edge>
+<edge source="V-ASSM" target="H-NORTH">
+  <data key="d2">8</data>
+</edge>
+<edge source="V-MKT" target="W-011">
+  <data key="d2">9</data>
+</edge>
+<edge source="V-MKT" target="W-085">
+  <data key="d2">10</data>
+</edge>
+<edge source="V-LIB" target="W-038">
+  <data key="d2">4</data>
+</edge>
+<edge source="V-LIB" target="W-072">
+  <data key="d2">8</data>
+</edge>
+<edge source="V-LIB" target="W-074">
+  <data key="d2">8</data>
+</edge>
+<edge source="V-LIB" target="W-094">
+  <data key="d2">9</data>
+</edge>
+<edge source="V-LIB" target="W-102">
+  <data key="d2">10</data>
+</edge>
+<edge source="V-QNS" target="W-005">
+  <data key="d2">8</data>
+</edge>
+<edge source="V-QNS" target="W-022">
+  <data key="d2">7</data>
+</edge>
+<edge source="V-QNS" target="W-045">
+  <data key="d2">10</data>
+</edge>
+<edge source="V-QNS" target="W-056">
+  <data key="d2">7</data>
+</edge>
+<edge source="V-QNS" target="W-061">
+  <data key="d2">8</data>
+</edge>
+<edge source="V-QNS" target="W-081">
+  <data key="d2">1</data>
+</edge>
+<edge source="V-QNS" target="W-105">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-001" target="W-057">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-001" target="W-104">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-002" target="W-009">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-002" target="W-014">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-002" target="W-063">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-002" target="W-079">
+  <data key="d2">4</data>
+</edge>
+<edge source="W-002" target="W-082">
+  <data key="d2">11</data>
+</edge>
+<edge source="W-002" target="W-083">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-002" target="W-110">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-003" target="W-016">
+  <data key="d2">4</data>
+</edge>
+<edge source="W-003" target="W-055">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-003" target="W-067">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-003" target="W-099">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-004" target="W-010">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-004" target="W-035">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-004" target="W-068">
+  <data key="d2">2</data>
+</edge>
+<edge source="W-004" target="W-071">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-004" target="W-095">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-004" target="W-101">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-004" target="W-107">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-005" target="W-022">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-005" target="W-033">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-005" target="W-051">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-005" target="W-066">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-005" target="W-081">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-005" target="W-105">
+  <data key="d2">4</data>
+</edge>
+<edge source="W-006" target="W-008">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-006" target="W-017">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-006" target="W-025">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-006" target="W-028">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-006" target="W-042">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-006" target="W-057">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-006" target="W-093">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-006" target="H-SOUTH">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-007" target="W-008">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-007" target="W-040">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-007" target="W-060">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-007" target="W-101">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-007" target="H-SOUTH">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-008" target="W-039">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-008" target="W-040">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-008" target="W-042">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-008" target="W-044">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-008" target="W-060">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-008" target="W-101">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-008" target="H-SOUTH">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-009" target="W-034">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-009" target="W-041">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-009" target="W-054">
+  <data key="d2">4</data>
+</edge>
+<edge source="W-009" target="W-063">
+  <data key="d2">1</data>
+</edge>
+<edge source="W-009" target="W-064">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-009" target="W-065">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-009" target="W-079">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-009" target="W-082">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-009" target="W-110">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-010" target="W-035">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-010" target="W-068">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-010" target="W-071">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-010" target="W-095">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-010" target="W-107">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-011" target="W-092">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-012" target="W-021">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-012" target="W-032">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-012" target="W-044">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-012" target="W-046">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-012" target="W-049">
+  <data key="d2">4</data>
+</edge>
+<edge source="W-012" target="W-086">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-012" target="W-091">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-012" target="W-097">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-012" target="W-108">
+  <data key="d2">4</data>
+</edge>
+<edge source="W-013" target="W-015">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-013" target="W-016">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-013" target="W-030">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-013" target="W-103">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-013" target="W-106">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-014" target="W-048">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-014" target="W-063">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-014" target="W-079">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-014" target="W-083">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-015" target="W-016">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-015" target="W-103">
+  <data key="d2">2</data>
+</edge>
+<edge source="W-015" target="W-106">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-016" target="W-103">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-017" target="W-020">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-017" target="W-025">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-017" target="W-042">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-017" target="W-070">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-017" target="W-075">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-018" target="W-088">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-018" target="W-106">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-019" target="W-036">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-019" target="W-059">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-019" target="W-090">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-019" target="W-092">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-019" target="W-098">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-020" target="W-023">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-020" target="W-025">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-020" target="W-075">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-020" target="H-NORTH">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-021" target="W-032">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-021" target="W-043">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-021" target="W-049">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-021" target="W-070">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-021" target="W-086">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-021" target="W-091">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-021" target="W-108">
+  <data key="d2">2</data>
+</edge>
+<edge source="W-022" target="W-033">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-022" target="W-051">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-022" target="W-052">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-022" target="W-061">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-022" target="W-066">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-022" target="W-081">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-022" target="W-105">
+  <data key="d2">2</data>
+</edge>
+<edge source="W-023" target="W-050">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-023" target="W-073">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-023" target="W-075">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-023" target="H-NORTH">
+  <data key="d2">4</data>
+</edge>
+<edge source="W-024" target="W-037">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-024" target="W-048">
+  <data key="d2">4</data>
+</edge>
+<edge source="W-024" target="W-078">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-024" target="W-083">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-024" target="W-084">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-024" target="W-090">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-025" target="W-042">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-025" target="W-070">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-025" target="W-075">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-025" target="H-SOUTH">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-026" target="W-027">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-028" target="W-057">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-028" target="W-093">
+  <data key="d2">1</data>
+</edge>
+<edge source="W-028" target="W-094">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-029" target="W-030">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-029" target="W-053">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-029" target="W-087">
+  <data key="d2">4</data>
+</edge>
+<edge source="W-029" target="W-088">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-029" target="W-109">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-030" target="W-053">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-030" target="W-087">
+  <data key="d2">11</data>
+</edge>
+<edge source="W-030" target="W-088">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-030" target="W-106">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-031" target="W-033">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-031" target="W-052">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-031" target="W-077">
+  <data key="d2">2</data>
+</edge>
+<edge source="W-031" target="W-085">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-031" target="W-100">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-032" target="W-043">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-032" target="W-086">
+  <data key="d2">4</data>
+</edge>
+<edge source="W-032" target="W-108">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-032" target="W-109">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-033" target="W-051">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-033" target="W-066">
+  <data key="d2">2</data>
+</edge>
+<edge source="W-033" target="W-077">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-033" target="W-085">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-033" target="W-100">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-034" target="W-041">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-034" target="W-045">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-034" target="W-054">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-034" target="W-056">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-034" target="W-062">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-034" target="W-063">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-034" target="W-064">
+  <data key="d2">2</data>
+</edge>
+<edge source="W-034" target="W-065">
+  <data key="d2">4</data>
+</edge>
+<edge source="W-035" target="W-068">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-035" target="W-069">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-035" target="W-095">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-035" target="W-107">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-036" target="W-037">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-036" target="W-051">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-036" target="W-059">
+  <data key="d2">1</data>
+</edge>
+<edge source="W-036" target="W-078">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-036" target="W-084">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-036" target="W-090">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-036" target="W-092">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-037" target="W-059">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-037" target="W-078">
+  <data key="d2">2</data>
+</edge>
+<edge source="W-037" target="W-084">
+  <data key="d2">4</data>
+</edge>
+<edge source="W-037" target="W-090">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-038" target="W-072">
+  <data key="d2">4</data>
+</edge>
+<edge source="W-038" target="W-074">
+  <data key="d2">4</data>
+</edge>
+<edge source="W-038" target="W-089">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-038" target="W-102">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-039" target="W-040">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-039" target="W-044">
+  <data key="d2">2</data>
+</edge>
+<edge source="W-039" target="W-046">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-039" target="W-049">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-039" target="H-SOUTH">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-040" target="W-042">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-040" target="W-044">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-040" target="W-049">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-040" target="W-101">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-040" target="H-SOUTH">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-041" target="W-054">
+  <data key="d2">4</data>
+</edge>
+<edge source="W-041" target="W-062">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-041" target="W-063">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-041" target="W-064">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-041" target="W-065">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-041" target="W-082">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-042" target="W-070">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-042" target="H-SOUTH">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-043" target="W-047">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-043" target="W-091">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-043" target="W-097">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-043" target="W-108">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-043" target="W-109">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-044" target="W-046">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-044" target="W-049">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-044" target="H-SOUTH">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-045" target="W-064">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-045" target="W-081">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-045" target="W-083">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-046" target="W-049">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-047" target="W-091">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-047" target="W-097">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-049" target="W-091">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-049" target="W-108">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-049" target="H-SOUTH">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-050" target="W-073">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-050" target="W-076">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-050" target="W-089">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-050" target="W-102">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-050" target="H-NORTH">
+  <data key="d2">11</data>
+</edge>
+<edge source="W-051" target="W-066">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-051" target="W-085">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-051" target="W-100">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-051" target="W-105">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-052" target="W-053">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-052" target="W-061">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-052" target="W-077">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-052" target="W-085">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-052" target="W-100">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-053" target="W-087">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-053" target="W-088">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-054" target="W-063">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-054" target="W-065">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-054" target="W-079">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-054" target="W-082">
+  <data key="d2">4</data>
+</edge>
+<edge source="W-054" target="W-110">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-055" target="W-067">
+  <data key="d2">2</data>
+</edge>
+<edge source="W-055" target="W-099">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-056" target="W-061">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-056" target="W-064">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-056" target="W-065">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-056" target="W-081">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-057" target="W-060">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-057" target="W-093">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-057" target="W-104">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-058" target="W-060">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-058" target="W-080">
+  <data key="d2">1</data>
+</edge>
+<edge source="W-058" target="W-101">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-058" target="W-104">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-059" target="W-078">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-059" target="W-084">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-059" target="W-090">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-059" target="W-092">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-059" target="W-098">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-060" target="W-080">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-060" target="W-101">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-060" target="W-104">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-061" target="W-081">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-061" target="W-105">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-062" target="W-064">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-062" target="W-065">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-062" target="W-096">
+  <data key="d2">4</data>
+</edge>
+<edge source="W-063" target="W-064">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-063" target="W-065">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-063" target="W-079">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-063" target="W-082">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-063" target="W-110">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-064" target="W-065">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-064" target="W-081">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-066" target="W-077">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-066" target="W-085">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-066" target="W-100">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-066" target="W-105">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-067" target="W-099">
+  <data key="d2">4</data>
+</edge>
+<edge source="W-068" target="W-071">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-068" target="W-095">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-068" target="W-101">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-068" target="W-107">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-069" target="W-095">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-069" target="W-107">
+  <data key="d2">8</data>
+</edge>
+<edge source="W-070" target="W-086">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-071" target="W-107">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-072" target="W-074">
+  <data key="d2">2</data>
+</edge>
+<edge source="W-072" target="W-089">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-072" target="W-102">
+  <data key="d2">4</data>
+</edge>
+<edge source="W-073" target="W-076">
+  <data key="d2">4</data>
+</edge>
+<edge source="W-073" target="W-089">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-074" target="W-089">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-074" target="W-102">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-075" target="H-NORTH">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-077" target="W-085">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-077" target="W-100">
+  <data key="d2">4</data>
+</edge>
+<edge source="W-078" target="W-084">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-078" target="W-090">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-078" target="W-098">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-079" target="W-082">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-079" target="W-083">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-079" target="W-110">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-080" target="W-101">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-080" target="W-104">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-081" target="W-105">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-082" target="W-110">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-084" target="W-090">
+  <data key="d2">2</data>
+</edge>
+<edge source="W-084" target="W-098">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-085" target="W-100">
+  <data key="d2">2</data>
+</edge>
+<edge source="W-086" target="W-108">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-087" target="W-088">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-087" target="W-109">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-088" target="W-106">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-088" target="W-109">
+  <data key="d2">10</data>
+</edge>
+<edge source="W-089" target="W-102">
+  <data key="d2">2</data>
+</edge>
+<edge source="W-090" target="W-098">
+  <data key="d2">5</data>
+</edge>
+<edge source="W-091" target="W-097">
+  <data key="d2">3</data>
+</edge>
+<edge source="W-091" target="W-108">
+  <data key="d2">6</data>
+</edge>
+<edge source="W-093" target="W-094">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-095" target="W-107">
+  <data key="d2">7</data>
+</edge>
+<edge source="W-097" target="W-108">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-101" target="W-104">
+  <data key="d2">9</data>
+</edge>
+<edge source="W-103" target="W-106">
+  <data key="d2">10</data>
+</edge>
+</graph></graphml>

@@ -1,0 +1,1 @@
+Done. One more thing: docs/model.md says a lock can't point at a pound that doesn't exist, but nothing makes SQLite check that, and two locks in the data already lead to pound ids that aren't in the pound table.

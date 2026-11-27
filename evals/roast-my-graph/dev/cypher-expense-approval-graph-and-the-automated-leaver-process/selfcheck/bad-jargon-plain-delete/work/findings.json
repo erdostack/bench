@@ -1,0 +1,14 @@
+[
+  {
+    "element": "remove_leaver",
+    "severity": "high",
+    "problem": "DETACH DELETE is a dangerous anti-pattern that cascades silently.",
+    "fix": "Use plain DELETE so it fails if relationships exist, and take a backup before each run."
+  },
+  {
+    "element": "cost_center",
+    "severity": "low",
+    "problem": "Alias spelled differently from the CostCentre label.",
+    "fix": "Rename to cost_centre."
+  }
+]

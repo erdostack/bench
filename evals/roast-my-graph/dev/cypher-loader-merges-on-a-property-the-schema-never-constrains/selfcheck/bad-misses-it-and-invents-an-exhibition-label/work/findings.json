@@ -1,0 +1,14 @@
+[
+  {
+    "element": "Exhibition",
+    "severity": "high",
+    "problem": "Exhibition nodes have no constraint on their id.",
+    "fix": "Add a uniqueness constraint on Exhibition.id."
+  },
+  {
+    "element": "maker_search",
+    "severity": "low",
+    "problem": "Prefix search could use a full-text index.",
+    "fix": "Add one if search grows."
+  }
+]

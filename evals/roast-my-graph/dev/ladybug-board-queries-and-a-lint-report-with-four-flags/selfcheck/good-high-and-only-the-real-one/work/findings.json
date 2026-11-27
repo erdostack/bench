@@ -1,0 +1,8 @@
+[
+  {
+    "element": "reset_board",
+    "severity": "high",
+    "problem": "Deletes other tenants' data: the label part of the query isn't joined to the board, so all tmp- labels everywhere go.",
+    "fix": "Join labels to the board: MATCH (b)<-[:LABEL_FOR]-(l:Label) WHERE l.name STARTS WITH 'tmp-'."
+  }
+]

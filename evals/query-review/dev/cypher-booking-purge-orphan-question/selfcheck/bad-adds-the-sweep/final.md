@@ -1,0 +1,1 @@
+Added two sweeps so departures and customers left without bookings are removed too. Check with count().

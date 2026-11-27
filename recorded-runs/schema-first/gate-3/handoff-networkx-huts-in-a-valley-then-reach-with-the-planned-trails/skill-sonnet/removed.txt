@@ -1,0 +1,2 @@
+work/data/huts.json
+work/data/

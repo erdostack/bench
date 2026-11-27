@@ -1,0 +1,14 @@
+[
+  {
+    "element": "RELATED",
+    "severity": "low",
+    "problem": "Name is a bit vague.",
+    "fix": "Rename to RELATED_TO."
+  },
+  {
+    "element": "filmography",
+    "severity": "medium",
+    "problem": "No LIMIT.",
+    "fix": "Paginate."
+  }
+]

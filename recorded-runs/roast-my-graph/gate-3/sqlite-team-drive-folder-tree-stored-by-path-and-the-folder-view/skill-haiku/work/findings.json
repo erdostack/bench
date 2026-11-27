@@ -1,0 +1,26 @@
+[
+  {
+    "element": "queries/subtree.sql",
+    "severity": "high",
+    "problem": "The filter is WHERE path LIKE :prefix || '%'. On drive.db (SQLite 3.53.1) EXPLAIN QUERY PLAN reports SCAN node USING INDEX sqlite_autoindex_node_1, so the UNIQUE index on node.path is read in full on every folder view. The sample has 120,000 nodes; the README says production has about 3 million, so every request reads about 25 times more rows.",
+    "fix": "Replace the LIKE with a range on the same index: WHERE path >= :prefix AND path < :upper AND path <> :prefix ORDER BY path, where :upper is the prefix with its final '/' replaced by '0' (computed in drive/tree.py). EXPLAIN QUERY PLAN then reports SEARCH node USING INDEX sqlite_autoindex_node_1 (path>? AND path<?). Measured on drive.db: a 4,375-row folder fell from 21 ms to 9 ms; the 58,545-row folder from 141 ms to 127 ms; the 106,766-row folder from 276 ms to 241 ms. The gain is small for big folders because the result set dominates, which is the next finding."
+  },
+  {
+    "element": "queries/subtree.sql",
+    "severity": "high",
+    "problem": "The query has no LIMIT and no keyset paging, so a folder view returns every descendant. The largest folder in the sample, /shared-4/, returns 106,766 rows and took 241 to 276 ms on this machine, already over the README's 100 ms budget. At production size (about 3 million nodes) a top-level folder can return millions of rows in one request, which no index can bring under 100 ms.",
+    "fix": "Page the result: WHERE path > :after AND path < :upper ORDER BY path LIMIT :page_size, with the cursor passed back from the client. Alternatively show children with a stored subtree size per folder, using a maintained size_bytes or count column updated on write. Which of these the product accepts is a product decision: the README requires that the view show everything under a folder and answer in 100 ms, and both cannot hold at production size."
+  },
+  {
+    "element": "drive/tree.py",
+    "severity": "medium",
+    "problem": "folder_view passes folder_path to the LIKE in queries/subtree.sql without escaping % or _. A request for /shared_4/ returns 106,767 rows from /shared-4/, because _ matches any character; a request for /shared-4% returns the same subtree. The README says names never contain % or _, but folder_path is caller input and nothing validates it. This needs a caller that sends such a path, so it is rated medium.",
+    "fix": "Remove the LIKE as in the subtree.sql finding, so the prefix is compared as a literal string. Also validate folder_path against the same character set as the node.name CHECK in schema.sql before the query runs."
+  },
+  {
+    "element": "path",
+    "severity": "low",
+    "problem": "node.path stores the full ancestor chain as text, and parent_id stores the same tree as a reference. In the sample they agree (0 path mismatches against parent_id), but no file in the repo writes node rows, so nothing shown keeps them in step. Moving a folder would have to rewrite the path of every descendant. This is a question to confirm.",
+    "fix": "Confirm how the write path updates path when a folder is moved or renamed, and that it rewrites every descendant in the same transaction. Keep the check that path equals parent path plus name in the test suite."
+  }
+]

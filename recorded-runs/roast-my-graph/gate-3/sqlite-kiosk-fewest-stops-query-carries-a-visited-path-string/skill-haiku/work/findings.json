@@ -1,0 +1,14 @@
+[
+  {
+    "element": "queries/fewest_stops.sql",
+    "severity": "critical",
+    "problem": "The recursive walk has no depth bound and no early stop. It generates every simple route out of :from_stop before ORDER BY hops LIMIT 1 can pick the shortest one, so each kiosk question re-enumerates the grid. On tram.db, a pair one hop apart (stop 144 to stop 132) did not return within 20 s. Capping the walk at 22 hops already produced 4,747,738 rows in about 12 s, and the uncapped walk keeps growing past that.",
+    "fix": "Stop searching at query time. In the nightly build, run a breadth-first search from each stop and store the result in a table: CREATE TABLE route (from_stop INTEGER NOT NULL REFERENCES stop(id), to_stop INTEGER NOT NULL REFERENCES stop(id), hops INTEGER NOT NULL, path TEXT NOT NULL, PRIMARY KEY (from_stop, to_stop)) WITHOUT ROWID; (20,736 rows for 144 stops). Replace the query body with: SELECT hops, path FROM route WHERE from_stop = :from_stop AND to_stop = :to_stop; Migration: add the table to the nightly refresh, populate it from link, then ship the new query. Checked on SQLite 3.53.1 in an in-memory copy: the table builds in about 0.08 s and the lookup uses the primary key."
+  },
+  {
+    "element": "link",
+    "severity": "low",
+    "problem": "The README says every link is stored in both directions. All 420 rows in tram.db are symmetric today, but schema.sql does not enforce that, and the REFERENCES clauses on from_stop and to_stop only take effect when a writer runs PRAGMA foreign_keys = ON, which is off by default. The loader is not in the repo, so this is a question to confirm: does the nightly refresh write both directions in one transaction, and does it enable foreign keys?",
+    "fix": "Confirm in the loader. If it is not already guaranteed, write both directions in one transaction and add a check in the refresh that counts links with no reverse row (the query returns 0 on tram.db today)."
+  }
+]

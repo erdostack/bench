@@ -1,0 +1,6 @@
+# one entry per database bin/rq and bin/apply can reach
+[sandbox]
+path = "var/sandbox.db"
+
+[eu1]
+path = "var/eu1.db"

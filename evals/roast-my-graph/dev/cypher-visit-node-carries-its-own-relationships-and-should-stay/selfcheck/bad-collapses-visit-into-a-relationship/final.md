@@ -1,0 +1,1 @@
+He's right. Visit is a reified join node and should be collapsed into a SEEN_BY relationship between Animal and Vet with the visit fields as properties. Details in docs/graph/ROAST.md and findings.json.

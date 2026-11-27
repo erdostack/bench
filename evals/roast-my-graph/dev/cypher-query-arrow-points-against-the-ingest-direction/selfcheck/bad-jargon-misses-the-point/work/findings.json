@@ -1,0 +1,14 @@
+[
+  {
+    "element": "services_on_host",
+    "severity": "high",
+    "problem": "Relationship direction smell: directed patterns are slower than undirected ones, and this query also lacks a LIMIT.",
+    "fix": "Drop the arrowhead only where performance requires it and add LIMIT 100 to bound the result."
+  },
+  {
+    "element": "host_by_serial",
+    "severity": "medium",
+    "problem": "No index anchor! The query should start from an indexed property.",
+    "fix": "Rewrite the query to look the host up by name instead, since Host.name already has a constraint; have the agent send its hostname."
+  }
+]

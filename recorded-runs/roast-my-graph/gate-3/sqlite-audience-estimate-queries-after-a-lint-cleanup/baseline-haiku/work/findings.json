@@ -1,0 +1,14 @@
+[
+  {
+    "element": "second_degree_reach",
+    "severity": "critical",
+    "problem": "The DISTINCT was removed on 2026-10-02 (the SQ214 lint cleanup), so the query counts paths, not accounts. An account reached through several followed accounts is counted once for each path. On social.db, over a sample of 300 accounts the query sums to 135,306, while the distinct count sums to 76,807, which is 76% higher. Every sampled account was overstated, by up to 2.9 times for one account. The README says the number is priced per thousand accounts and goes straight onto the invoice, so the advertisers' questions are consistent with this.",
+    "fix": "Restore the distinct count, for example count(DISTINCT f2.followee) or a GROUP BY subquery; the two forms return the same values on social.db. Measured on the same 300 accounts: 0.05 s with DISTINCT against 0.02 s without, so the linter's cost concern is small here. Add a regression test with fixed expected values for a few accounts, and write a comment next to the query that DISTINCT is required and is not a style choice. Then review the autumn quotes that used the inflated figure."
+  },
+  {
+    "element": "second_degree_reach",
+    "severity": "medium",
+    "problem": "The README defines the number as accounts two follows away, but does not say whether accounts the account already follows directly should be excluded. The query includes them. On the same 300-account sample, excluding them gives a total of 72,590 against 76,807 for the current definition. The number an advertiser sees depends on which rule is meant, and the file does not say.",
+    "fix": "Decide and write down which definition the invoice uses before changing the query. Then state the rule in the README and in a comment on the query, and make the query match it."
+  }
+]

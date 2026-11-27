@@ -1,0 +1,7 @@
+from,to,metres,steps,surface
+J001,J002,120,false,paved
+J002,J003,340,false,paved
+J003,J004,95,true,stone
+J002,J005,410,false,gravel
+J005,J006,220,true,stone
+J004,J006,510,false,paved

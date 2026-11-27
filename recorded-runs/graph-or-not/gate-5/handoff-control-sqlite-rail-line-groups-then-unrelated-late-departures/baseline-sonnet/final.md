@@ -1,0 +1,5 @@
+I added `sql/late_departures.sql`. It takes `:service_date` and returns `service_id` and `station_code` for each departure that was scheduled on that date, ran (`actual` is not null), and left 5 or more minutes after its scheduled time. A departure that is exactly 5 minutes late is included, and one that is 4 minutes late is not. The query gives one row per departure, ordered by `service_id` and `station_code`, like `sql/cancellations.sql`.
+
+The date filter is on the scheduled time, as you asked. A departure scheduled at 23:58 that left at 00:05 the next day still counts as late on the scheduled date, because the lateness is worked out from the full date and time, not just the clock time.
+
+I ran it against a small in-memory database built from `db/schema.sql`. It handled 4, 5 and 7 minutes late, a departure that crossed midnight, a cancelled departure (`actual` null), an early departure, and a departure scheduled on a different date. I haven't run it against `var/rail.db`. The repo has no test suite, so I didn't add tests.

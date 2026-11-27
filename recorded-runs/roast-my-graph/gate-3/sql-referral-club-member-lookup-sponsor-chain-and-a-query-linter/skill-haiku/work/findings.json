@@ -1,0 +1,8 @@
+[
+  {
+    "element": "queries/sponsored_by.sql",
+    "severity": "low",
+    "problem": "WHERE sponsor_id = $1 ORDER BY joined_at uses member_sponsor, which leads with sponsor_id but does not include joined_at, so each sponsor's sponees are sorted after the lookup. The number of sponees per sponsor and the query frequency are not stated, so this is a question to confirm.",
+    "fix": "If the query is hot and some sponsors have many sponees, replace member_sponsor with CREATE INDEX member_sponsor_joined ON member (sponsor_id, joined_at); on PostgreSQL 16 (not run here). Confirm with EXPLAIN that the sort disappears first."
+  }
+]

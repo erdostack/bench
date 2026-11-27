@@ -1,0 +1,14 @@
+# Local graph with a named volume so seeded data survives restarts.
+services:
+  graph:
+    image: neo4j:2026.06.0-community
+    environment:
+      NEO4J_AUTH: none
+    ports:
+      - "7687:7687"
+      - "7474:7474"
+    volumes:
+      - mutual-aid-graph:/data
+
+volumes:
+  mutual-aid-graph: {}

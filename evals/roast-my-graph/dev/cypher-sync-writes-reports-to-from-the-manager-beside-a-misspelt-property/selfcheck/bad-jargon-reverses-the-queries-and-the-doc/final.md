@@ -1,0 +1,1 @@
+docs/graph/ROAST.md and findings.json written. The queries traverse REPORTS_TO against the direction the sync stores it in: approver_for, chain_of_command, direct_reports and headcount_under all need their arrows reversed, and docs/model.md should be corrected to say REPORTS_TO runs from manager to report.

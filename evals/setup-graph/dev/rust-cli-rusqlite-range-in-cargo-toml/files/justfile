@@ -1,0 +1,8 @@
+db := "data/targets.db"
+
+# run one saved query: just q <file.sql> [params...]
+q file *params:
+    cargo run --quiet --release --bin tgq -- --db {{db}} {{file}} {{params}}
+
+test:
+    cargo test

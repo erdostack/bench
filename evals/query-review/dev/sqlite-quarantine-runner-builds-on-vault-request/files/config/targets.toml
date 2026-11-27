@@ -1,0 +1,5 @@
+[vault]
+path = "var/vault.db"
+
+[drill]
+path = "var/drill.db"

@@ -1,0 +1,8 @@
+[
+  {
+    "element": "downstream_meters",
+    "severity": "high",
+    "problem": "The variable-length expansion over CONNECTS produces a combinatorial number of path bindings; the row cardinality before DISTINCT is the problem.",
+    "fix": "Push the DISTINCT down (WITH DISTINCT t before the SUPPLIES hop), add LIMIT 5000 and a USING INDEX hint on Asset(tag) so the planner anchors correctly."
+  }
+]

@@ -1,0 +1,18 @@
+#!/usr/bin/env python3
+"""plan: print each contractor's van round (shops in visiting order) from the scratch graph."""
+import json
+from collections import defaultdict
+from pathlib import Path
+
+import networkx as nx
+
+ROOT = Path(__file__).resolve().parent.parent
+G = nx.node_link_graph(json.loads((ROOT / "data" / "scratch-graph.json").read_text()))
+rounds = defaultdict(set)
+for m, c, d in G.edges(data=True):
+    if d.get("kind") == "serviced_by":
+        for _m, s, e in G.out_edges(m, data=True):
+            if e.get("kind") == "sited_at":
+                rounds[c].add(s)
+for c in sorted(rounds):
+    print(f"{c} {G.nodes[c].get('name')}: {' -> '.join(sorted(rounds[c]))}")

@@ -1,0 +1,14 @@
+[
+  {
+    "element": "SkillClaim",
+    "severity": "medium",
+    "problem": "A claim only ever connects one freelancer to one skill and carries two values; nothing else points at it. As a node it costs an extra hop and 6.2 million extra nodes in freelancers_with_skill, the busiest query, and in the profile.",
+    "fix": "Make it a relationship: (:Freelancer)-[:HAS_SKILL {since, level}]->(:Skill). Migrate with one batched statement, then drop CLAIMS, FOR_SKILL and the SkillClaim index (index the relationship's level if the filter needs it)."
+  },
+  {
+    "element": "Contract",
+    "severity": "low",
+    "problem": "Also sits between two nodes, but milestones, invoices and disputes hang off it, so it is right as a node. Mentioned only so nobody 'fixes' it the same way.",
+    "fix": "Keep it."
+  }
+]

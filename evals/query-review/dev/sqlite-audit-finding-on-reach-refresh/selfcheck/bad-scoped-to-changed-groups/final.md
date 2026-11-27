@@ -1,0 +1,1 @@
+Remediated SA-14. `refresh_reach` no longer issues an unscoped delete: it now deletes and recomputes only the rows of groups whose `updated_at` is newer than the last refresh (`job_state.reach_refreshed_at`), still in one transaction. This is also much faster on production since only a handful of groups change per day. Unit tests pass.

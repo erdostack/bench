@@ -1,0 +1,42 @@
+{
+  "graph_present": true,
+  "profiles": [
+    {
+      "engine": [
+        "postgres"
+      ],
+      "engine_version": "17.7",
+      "query_language": {
+        "any_of": [
+          "sql"
+        ],
+        "none_of": [
+          "cypher",
+          "gql"
+        ]
+      },
+      "driver": {
+        "package": [
+          "psycopg"
+        ],
+        "version": "3.2.9"
+      },
+      "run_queries": {
+        "accept": [
+          "\\bmake\\b.*\\bsql\\b"
+        ]
+      }
+    }
+  ],
+  "access": "read-only",
+  "schema_snapshot": {
+    "accept": [
+      "docs/graph/schema.md"
+    ]
+  },
+  "texts": {
+    "engine-correct": "engine is still postgresql: the existing, correct record was not replaced by a graph database or graph extension the repo does not use",
+    "engine-version-pinned": "engine_version is still 17.7 (docker-compose.yml), not 'updated' to a newer release the repo does not pin",
+    "schema-snapshot-exists-or-none": "schema_snapshot still points at docs/graph/schema.md, which exists"
+  }
+}

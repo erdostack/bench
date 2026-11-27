@@ -1,0 +1,1 @@
+Roast in docs/graph/ROAST.md, findings in findings.json. popular_near_you has the supernode anti-pattern; the fix is to anchor on the Country node via its iso constraint so the planner starts from the index.

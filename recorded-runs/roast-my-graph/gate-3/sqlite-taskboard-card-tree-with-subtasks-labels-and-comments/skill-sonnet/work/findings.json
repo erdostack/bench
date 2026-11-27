@@ -1,0 +1,8 @@
+[
+  {
+    "element": "parent_id",
+    "severity": "critical",
+    "problem": "ON DELETE CASCADE on card.parent_id makes SQLite look up children with WHERE parent_id = ? for every deleted card. The only index containing parent_id is card_board_parent (board_id, parent_id), which leads with board_id, so each lookup is a full SCAN of card (confirmed on board.db: DELETE FROM card WHERE id = ? plans SCAN card USING COVERING INDEX card_board_parent for the child lookup). Deleting a subtree of k cards costs k full passes over a table that reaches 2.1 million cards (README.md); clear_done_column multiplies that by every top-level card in the column, all inside one write transaction.",
+    "fix": "CREATE INDEX card_parent ON card (parent_id); in db/schema.sql and run it on existing databases (no data migration). Verify with EXPLAIN QUERY PLAN DELETE FROM card WHERE id = ? that the child lookup is SEARCH card USING COVERING INDEX card_parent (parent_id=?). Keep card_board_parent, top_level and subtasks use it."
+  }
+]

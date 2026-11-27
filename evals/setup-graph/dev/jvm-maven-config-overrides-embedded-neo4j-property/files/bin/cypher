@@ -1,0 +1,4 @@
+#!/bin/sh
+# Run one saved Cypher file against the embedded store, read-only.
+set -eu
+exec ./mvnw -q exec:java -Dexec.mainClass=org.citeweave.RunCypher -Dexec.args="$1"

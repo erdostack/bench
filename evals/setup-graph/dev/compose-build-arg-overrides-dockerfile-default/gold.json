@@ -1,0 +1,34 @@
+{
+  "graph_present": true,
+  "profiles": [
+    {
+      "engine": [
+        "neo4j"
+      ],
+      "engine_version": "2025.11.2",
+      "query_language": {
+        "any_of": [
+          "cypher"
+        ]
+      },
+      "driver": {
+        "package": [
+          "neo4j-go-driver",
+          "github.com/neo4j/neo4j-go-driver"
+        ],
+        "version": "5.28.1"
+      },
+      "run_queries": {
+        "accept": [
+          "\\bmake\\b.*\\scq\\b",
+          "go\\s+run\\s+(\\./)?cmd/cq",
+          "cmd/cq"
+        ]
+      }
+    }
+  ],
+  "access": "read-only",
+  "texts": {
+    "engine-version-pinned": "engine_version is 2025.11.2: the NEO4J_VERSION build arg that compose.yaml passes, which replaces the Dockerfile's ARG default of 5.26.14"
+  }
+}

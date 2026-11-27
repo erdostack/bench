@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. The trail graph is walked in SQLite: `make snapshot` copies junctions and segments out of Postgres into data/trails.sqlite and `make reach` runs the recursive queries on that file. The README makes it sound like Postgres is where you query it; it isn't.

@@ -1,0 +1,3 @@
+CREATE CONSTRAINT pallet_id IF NOT EXISTS FOR (p:Pallet) REQUIRE p.palletId IS UNIQUE;
+CREATE CONSTRAINT slot_id IF NOT EXISTS FOR (s:Slot) REQUIRE s.slotId IS UNIQUE;
+CREATE INDEX pallet_status IF NOT EXISTS FOR (p:Pallet) ON (p.status);

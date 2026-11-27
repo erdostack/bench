@@ -1,0 +1,4 @@
+CREATE NODE TABLE Recipe(id INT64, name STRING, minutes INT64, PRIMARY KEY (id));
+CREATE NODE TABLE Ingredient(name STRING, aisle STRING, PRIMARY KEY (name));
+CREATE REL TABLE USES(FROM Recipe TO Ingredient, grams DOUBLE);
+CREATE REL TABLE SWAPS_FOR(FROM Ingredient TO Ingredient, note STRING);

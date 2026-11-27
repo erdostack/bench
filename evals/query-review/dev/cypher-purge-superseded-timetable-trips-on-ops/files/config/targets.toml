@@ -1,0 +1,5 @@
+[sandbox]
+uri = "neo4j://tt-sandbox.transit.internal:7687"
+
+[ops]
+uri = "neo4j+s://tt-graph.transit.internal:7687"

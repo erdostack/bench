@@ -1,0 +1,7130 @@
+{
+ "directed": true,
+ "multigraph": false,
+ "graph": {},
+ "nodes": [
+  {
+   "kind": "depot",
+   "name": "Halifax depot",
+   "id": "DP-HFX"
+  },
+  {
+   "kind": "depot",
+   "name": "Bradford depot",
+   "id": "DP-BFD"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-01",
+   "id": "LD-01"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-02",
+   "id": "LD-02"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-03",
+   "id": "LD-03"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-04",
+   "id": "LD-04"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-05",
+   "id": "LD-05"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-06",
+   "id": "LD-06"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-07",
+   "id": "LD-07"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-08",
+   "id": "LD-08"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-09",
+   "id": "LD-09"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-10",
+   "id": "LD-10"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-11",
+   "id": "LD-11"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-12",
+   "id": "LD-12"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-13",
+   "id": "LD-13"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-14",
+   "id": "LD-14"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-15",
+   "id": "LD-15"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-16",
+   "id": "LD-16"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-17",
+   "id": "LD-17"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-18",
+   "id": "LD-18"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-19",
+   "id": "LD-19"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-20",
+   "id": "LD-20"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-21",
+   "id": "LD-21"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-22",
+   "id": "LD-22"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-23",
+   "id": "LD-23"
+  },
+  {
+   "kind": "shop",
+   "name": "Shop LD-24",
+   "id": "LD-24"
+  },
+  {
+   "kind": "contractor",
+   "name": "Pennine Laundry Engineering",
+   "id": "CT-PLE"
+  },
+  {
+   "kind": "contractor",
+   "name": "Pennine Laundry Engineering Ltd.",
+   "id": "CT-PLE-2"
+  },
+  {
+   "kind": "contractor",
+   "name": "Pennine Laundry Supplies",
+   "id": "CT-PLS"
+  },
+  {
+   "kind": "contractor",
+   "name": "Calder Spin Repairs",
+   "id": "CT-CSR"
+  },
+  {
+   "kind": "contractor",
+   "name": "Calder Spin Repairs Ltd",
+   "id": "CT-CSR2"
+  },
+  {
+   "kind": "contractor",
+   "name": "Aquawash Service",
+   "id": "CT-AQW"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 1",
+   "id": "MC-0001"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 2",
+   "id": "MC-0002"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 3",
+   "id": "MC-0003"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 4",
+   "id": "MC-0004"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 5",
+   "id": "MC-0005"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 6",
+   "id": "MC-0006"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 7",
+   "id": "MC-0007"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 8",
+   "id": "MC-0008"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 9",
+   "id": "MC-0009"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 10",
+   "id": "MC-0010"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 11",
+   "id": "MC-0011"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 12",
+   "id": "MC-0012"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 13",
+   "id": "MC-0013"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 14",
+   "id": "MC-0014"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 15",
+   "id": "MC-0015"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 16",
+   "id": "MC-0016"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 17",
+   "id": "MC-0017"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 18",
+   "id": "MC-0018"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 19",
+   "id": "MC-0019"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 20",
+   "id": "MC-0020"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 21",
+   "id": "MC-0021"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 22",
+   "id": "MC-0022"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 23",
+   "id": "MC-0023"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 24",
+   "id": "MC-0024"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 25",
+   "id": "MC-0025"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 26",
+   "id": "MC-0026"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 27",
+   "id": "MC-0027"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 28",
+   "id": "MC-0028"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 29",
+   "id": "MC-0029"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 30",
+   "id": "MC-0030"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 31",
+   "id": "MC-0031"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 32",
+   "id": "MC-0032"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 33",
+   "id": "MC-0033"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 34",
+   "id": "MC-0034"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 35",
+   "id": "MC-0035"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 36",
+   "id": "MC-0036"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 37",
+   "id": "MC-0037"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 38",
+   "id": "MC-0038"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 39",
+   "id": "MC-0039"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 40",
+   "id": "MC-0040"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 41",
+   "id": "MC-0041"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 42",
+   "id": "MC-0042"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 43",
+   "id": "MC-0043"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 44",
+   "id": "MC-0044"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 45",
+   "id": "MC-0045"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 46",
+   "id": "MC-0046"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 47",
+   "id": "MC-0047"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 48",
+   "id": "MC-0048"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 49",
+   "id": "MC-0049"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 50",
+   "id": "MC-0050"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 51",
+   "id": "MC-0051"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 52",
+   "id": "MC-0052"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 53",
+   "id": "MC-0053"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 54",
+   "id": "MC-0054"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 55",
+   "id": "MC-0055"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 56",
+   "id": "MC-0056"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 57",
+   "id": "MC-0057"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 58",
+   "id": "MC-0058"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 59",
+   "id": "MC-0059"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 60",
+   "id": "MC-0060"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 61",
+   "id": "MC-0061"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 62",
+   "id": "MC-0062"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 63",
+   "id": "MC-0063"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 64",
+   "id": "MC-0064"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 65",
+   "id": "MC-0065"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 66",
+   "id": "MC-0066"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 67",
+   "id": "MC-0067"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 68",
+   "id": "MC-0068"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 69",
+   "id": "MC-0069"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 70",
+   "id": "MC-0070"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 71",
+   "id": "MC-0071"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 72",
+   "id": "MC-0072"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 73",
+   "id": "MC-0073"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 74",
+   "id": "MC-0074"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 75",
+   "id": "MC-0075"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 76",
+   "id": "MC-0076"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 77",
+   "id": "MC-0077"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 78",
+   "id": "MC-0078"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 79",
+   "id": "MC-0079"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 80",
+   "id": "MC-0080"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 81",
+   "id": "MC-0081"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 82",
+   "id": "MC-0082"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 83",
+   "id": "MC-0083"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 84",
+   "id": "MC-0084"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 85",
+   "id": "MC-0085"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 86",
+   "id": "MC-0086"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 87",
+   "id": "MC-0087"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 88",
+   "id": "MC-0088"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 89",
+   "id": "MC-0089"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 90",
+   "id": "MC-0090"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 91",
+   "id": "MC-0091"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 92",
+   "id": "MC-0092"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 93",
+   "id": "MC-0093"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 94",
+   "id": "MC-0094"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 95",
+   "id": "MC-0095"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 96",
+   "id": "MC-0096"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 97",
+   "id": "MC-0097"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 98",
+   "id": "MC-0098"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 99",
+   "id": "MC-0099"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 100",
+   "id": "MC-0100"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 101",
+   "id": "MC-0101"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 102",
+   "id": "MC-0102"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 103",
+   "id": "MC-0103"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 104",
+   "id": "MC-0104"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 105",
+   "id": "MC-0105"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 106",
+   "id": "MC-0106"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 107",
+   "id": "MC-0107"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 108",
+   "id": "MC-0108"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 109",
+   "id": "MC-0109"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 110",
+   "id": "MC-0110"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 111",
+   "id": "MC-0111"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 112",
+   "id": "MC-0112"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 113",
+   "id": "MC-0113"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 114",
+   "id": "MC-0114"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 115",
+   "id": "MC-0115"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 116",
+   "id": "MC-0116"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 117",
+   "id": "MC-0117"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 118",
+   "id": "MC-0118"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 119",
+   "id": "MC-0119"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 120",
+   "id": "MC-0120"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 121",
+   "id": "MC-0121"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 122",
+   "id": "MC-0122"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 123",
+   "id": "MC-0123"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 124",
+   "id": "MC-0124"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 125",
+   "id": "MC-0125"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 126",
+   "id": "MC-0126"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 127",
+   "id": "MC-0127"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 128",
+   "id": "MC-0128"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 129",
+   "id": "MC-0129"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 130",
+   "id": "MC-0130"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 131",
+   "id": "MC-0131"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 132",
+   "id": "MC-0132"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 133",
+   "id": "MC-0133"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 134",
+   "id": "MC-0134"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 135",
+   "id": "MC-0135"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 136",
+   "id": "MC-0136"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 137",
+   "id": "MC-0137"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 138",
+   "id": "MC-0138"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 139",
+   "id": "MC-0139"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 140",
+   "id": "MC-0140"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 141",
+   "id": "MC-0141"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 142",
+   "id": "MC-0142"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 143",
+   "id": "MC-0143"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 144",
+   "id": "MC-0144"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 145",
+   "id": "MC-0145"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 146",
+   "id": "MC-0146"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 147",
+   "id": "MC-0147"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 148",
+   "id": "MC-0148"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 149",
+   "id": "MC-0149"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 150",
+   "id": "MC-0150"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 151",
+   "id": "MC-0151"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 152",
+   "id": "MC-0152"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 153",
+   "id": "MC-0153"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 154",
+   "id": "MC-0154"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 155",
+   "id": "MC-0155"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 156",
+   "id": "MC-0156"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 157",
+   "id": "MC-0157"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 158",
+   "id": "MC-0158"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 159",
+   "id": "MC-0159"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 160",
+   "id": "MC-0160"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 161",
+   "id": "MC-0161"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 162",
+   "id": "MC-0162"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 163",
+   "id": "MC-0163"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 164",
+   "id": "MC-0164"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 165",
+   "id": "MC-0165"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 166",
+   "id": "MC-0166"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 167",
+   "id": "MC-0167"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 168",
+   "id": "MC-0168"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 169",
+   "id": "MC-0169"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 170",
+   "id": "MC-0170"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 171",
+   "id": "MC-0171"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 172",
+   "id": "MC-0172"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 173",
+   "id": "MC-0173"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 174",
+   "id": "MC-0174"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 175",
+   "id": "MC-0175"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 176",
+   "id": "MC-0176"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 177",
+   "id": "MC-0177"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 178",
+   "id": "MC-0178"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 179",
+   "id": "MC-0179"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 180",
+   "id": "MC-0180"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 181",
+   "id": "MC-0181"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 182",
+   "id": "MC-0182"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 183",
+   "id": "MC-0183"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 184",
+   "id": "MC-0184"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 185",
+   "id": "MC-0185"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 186",
+   "id": "MC-0186"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 187",
+   "id": "MC-0187"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 188",
+   "id": "MC-0188"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 189",
+   "id": "MC-0189"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 190",
+   "id": "MC-0190"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 191",
+   "id": "MC-0191"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 192",
+   "id": "MC-0192"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 193",
+   "id": "MC-0193"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 194",
+   "id": "MC-0194"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 195",
+   "id": "MC-0195"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 196",
+   "id": "MC-0196"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 197",
+   "id": "MC-0197"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 198",
+   "id": "MC-0198"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 199",
+   "id": "MC-0199"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 200",
+   "id": "MC-0200"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 201",
+   "id": "MC-0201"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 202",
+   "id": "MC-0202"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 203",
+   "id": "MC-0203"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 204",
+   "id": "MC-0204"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 205",
+   "id": "MC-0205"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 206",
+   "id": "MC-0206"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 207",
+   "id": "MC-0207"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 208",
+   "id": "MC-0208"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 209",
+   "id": "MC-0209"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 210",
+   "id": "MC-0210"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 211",
+   "id": "MC-0211"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 212",
+   "id": "MC-0212"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 213",
+   "id": "MC-0213"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 214",
+   "id": "MC-0214"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 215",
+   "id": "MC-0215"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 216",
+   "id": "MC-0216"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 217",
+   "id": "MC-0217"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 218",
+   "id": "MC-0218"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 219",
+   "id": "MC-0219"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 220",
+   "id": "MC-0220"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 221",
+   "id": "MC-0221"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 222",
+   "id": "MC-0222"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 223",
+   "id": "MC-0223"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 224",
+   "id": "MC-0224"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 225",
+   "id": "MC-0225"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 226",
+   "id": "MC-0226"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 227",
+   "id": "MC-0227"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 228",
+   "id": "MC-0228"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 229",
+   "id": "MC-0229"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 230",
+   "id": "MC-0230"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 231",
+   "id": "MC-0231"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 232",
+   "id": "MC-0232"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 233",
+   "id": "MC-0233"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 234",
+   "id": "MC-0234"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 235",
+   "id": "MC-0235"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 236",
+   "id": "MC-0236"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 237",
+   "id": "MC-0237"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 238",
+   "id": "MC-0238"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 239",
+   "id": "MC-0239"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 240",
+   "id": "MC-0240"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 241",
+   "id": "MC-0241"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 242",
+   "id": "MC-0242"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 243",
+   "id": "MC-0243"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 244",
+   "id": "MC-0244"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 245",
+   "id": "MC-0245"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 246",
+   "id": "MC-0246"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 247",
+   "id": "MC-0247"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 248",
+   "id": "MC-0248"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 249",
+   "id": "MC-0249"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 250",
+   "id": "MC-0250"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 251",
+   "id": "MC-0251"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 252",
+   "id": "MC-0252"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 253",
+   "id": "MC-0253"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 254",
+   "id": "MC-0254"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 255",
+   "id": "MC-0255"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 256",
+   "id": "MC-0256"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 257",
+   "id": "MC-0257"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 258",
+   "id": "MC-0258"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 259",
+   "id": "MC-0259"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 260",
+   "id": "MC-0260"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 261",
+   "id": "MC-0261"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 262",
+   "id": "MC-0262"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 263",
+   "id": "MC-0263"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 264",
+   "id": "MC-0264"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 265",
+   "id": "MC-0265"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 266",
+   "id": "MC-0266"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 267",
+   "id": "MC-0267"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 268",
+   "id": "MC-0268"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 269",
+   "id": "MC-0269"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 270",
+   "id": "MC-0270"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 271",
+   "id": "MC-0271"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 272",
+   "id": "MC-0272"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 273",
+   "id": "MC-0273"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 274",
+   "id": "MC-0274"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 275",
+   "id": "MC-0275"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 276",
+   "id": "MC-0276"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 277",
+   "id": "MC-0277"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 278",
+   "id": "MC-0278"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 279",
+   "id": "MC-0279"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 280",
+   "id": "MC-0280"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 281",
+   "id": "MC-0281"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 282",
+   "id": "MC-0282"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 283",
+   "id": "MC-0283"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 284",
+   "id": "MC-0284"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 285",
+   "id": "MC-0285"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 286",
+   "id": "MC-0286"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 287",
+   "id": "MC-0287"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 288",
+   "id": "MC-0288"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 289",
+   "id": "MC-0289"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 290",
+   "id": "MC-0290"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 291",
+   "id": "MC-0291"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 292",
+   "id": "MC-0292"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 293",
+   "id": "MC-0293"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 294",
+   "id": "MC-0294"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 295",
+   "id": "MC-0295"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 296",
+   "id": "MC-0296"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 297",
+   "id": "MC-0297"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 298",
+   "id": "MC-0298"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 299",
+   "id": "MC-0299"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 300",
+   "id": "MC-0300"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 301",
+   "id": "MC-0301"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 302",
+   "id": "MC-0302"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 303",
+   "id": "MC-0303"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 304",
+   "id": "MC-0304"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 305",
+   "id": "MC-0305"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 306",
+   "id": "MC-0306"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 307",
+   "id": "MC-0307"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 308",
+   "id": "MC-0308"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 309",
+   "id": "MC-0309"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 310",
+   "id": "MC-0310"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 311",
+   "id": "MC-0311"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 312",
+   "id": "MC-0312"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 313",
+   "id": "MC-0313"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 314",
+   "id": "MC-0314"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 315",
+   "id": "MC-0315"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 316",
+   "id": "MC-0316"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 317",
+   "id": "MC-0317"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 318",
+   "id": "MC-0318"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 319",
+   "id": "MC-0319"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 320",
+   "id": "MC-0320"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 321",
+   "id": "MC-0321"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 322",
+   "id": "MC-0322"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 323",
+   "id": "MC-0323"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 324",
+   "id": "MC-0324"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 325",
+   "id": "MC-0325"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 326",
+   "id": "MC-0326"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 327",
+   "id": "MC-0327"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 328",
+   "id": "MC-0328"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 329",
+   "id": "MC-0329"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 330",
+   "id": "MC-0330"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 331",
+   "id": "MC-0331"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 332",
+   "id": "MC-0332"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 333",
+   "id": "MC-0333"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 334",
+   "id": "MC-0334"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 335",
+   "id": "MC-0335"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 336",
+   "id": "MC-0336"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 337",
+   "id": "MC-0337"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 338",
+   "id": "MC-0338"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 339",
+   "id": "MC-0339"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 340",
+   "id": "MC-0340"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 341",
+   "id": "MC-0341"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 342",
+   "id": "MC-0342"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 343",
+   "id": "MC-0343"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 344",
+   "id": "MC-0344"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 345",
+   "id": "MC-0345"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 346",
+   "id": "MC-0346"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 347",
+   "id": "MC-0347"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 348",
+   "id": "MC-0348"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 349",
+   "id": "MC-0349"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 350",
+   "id": "MC-0350"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 351",
+   "id": "MC-0351"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 352",
+   "id": "MC-0352"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 353",
+   "id": "MC-0353"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 354",
+   "id": "MC-0354"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 355",
+   "id": "MC-0355"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 356",
+   "id": "MC-0356"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 357",
+   "id": "MC-0357"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 358",
+   "id": "MC-0358"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 359",
+   "id": "MC-0359"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 360",
+   "id": "MC-0360"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 361",
+   "id": "MC-0361"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 362",
+   "id": "MC-0362"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 363",
+   "id": "MC-0363"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 364",
+   "id": "MC-0364"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 365",
+   "id": "MC-0365"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 366",
+   "id": "MC-0366"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 367",
+   "id": "MC-0367"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 368",
+   "id": "MC-0368"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 369",
+   "id": "MC-0369"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 370",
+   "id": "MC-0370"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 371",
+   "id": "MC-0371"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 372",
+   "id": "MC-0372"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 373",
+   "id": "MC-0373"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 374",
+   "id": "MC-0374"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 375",
+   "id": "MC-0375"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 376",
+   "id": "MC-0376"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 377",
+   "id": "MC-0377"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 378",
+   "id": "MC-0378"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 379",
+   "id": "MC-0379"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 380",
+   "id": "MC-0380"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 381",
+   "id": "MC-0381"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 382",
+   "id": "MC-0382"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 383",
+   "id": "MC-0383"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 384",
+   "id": "MC-0384"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 385",
+   "id": "MC-0385"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 386",
+   "id": "MC-0386"
+  },
+  {
+   "kind": "machine",
+   "name": "Dryer 387",
+   "id": "MC-0387"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 388",
+   "id": "MC-0388"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 389",
+   "id": "MC-0389"
+  },
+  {
+   "kind": "machine",
+   "name": "Washer 390",
+   "id": "MC-0390"
+  }
+ ],
+ "edges": [
+  {
+   "kind": "based_at",
+   "source": "CT-PLE",
+   "target": "DP-HFX"
+  },
+  {
+   "kind": "based_at",
+   "source": "CT-PLE-2",
+   "target": "DP-HFX"
+  },
+  {
+   "kind": "based_at",
+   "source": "CT-PLS",
+   "target": "DP-HFX"
+  },
+  {
+   "kind": "based_at",
+   "source": "CT-CSR",
+   "target": "DP-BFD"
+  },
+  {
+   "kind": "based_at",
+   "source": "CT-CSR2",
+   "target": "DP-BFD"
+  },
+  {
+   "kind": "based_at",
+   "source": "CT-AQW",
+   "target": "DP-BFD"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0001",
+   "target": "LD-01"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-133",
+   "since": "2021-10-01",
+   "source": "MC-0001",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0002",
+   "target": "LD-01"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-127",
+   "since": "2020-03-01",
+   "source": "MC-0002",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0003",
+   "target": "LD-01"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-126",
+   "since": "2026-11-01",
+   "source": "MC-0003",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0004",
+   "target": "LD-01"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-124",
+   "since": "2020-12-01",
+   "source": "MC-0004",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0005",
+   "target": "LD-01"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-101",
+   "since": "2021-09-01",
+   "source": "MC-0005",
+   "target": "CT-CSR2"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0006",
+   "target": "LD-01"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-103",
+   "since": "2023-09-01",
+   "source": "MC-0006",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0007",
+   "target": "LD-01"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-115",
+   "since": "2020-02-01",
+   "source": "MC-0007",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0008",
+   "target": "LD-01"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-111",
+   "since": "2023-04-01",
+   "source": "MC-0008",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0009",
+   "target": "LD-01"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-125",
+   "since": "2023-03-01",
+   "source": "MC-0009",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0010",
+   "target": "LD-01"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-105",
+   "since": "2022-01-01",
+   "source": "MC-0010",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0011",
+   "target": "LD-01"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-118",
+   "since": "2020-03-01",
+   "source": "MC-0011",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0012",
+   "target": "LD-01"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-104",
+   "since": "2022-06-01",
+   "source": "MC-0012",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0013",
+   "target": "LD-01"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-136",
+   "since": "2023-06-01",
+   "source": "MC-0013",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0014",
+   "target": "LD-01"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-124",
+   "since": "2023-11-01",
+   "source": "MC-0014",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0015",
+   "target": "LD-01"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-124",
+   "since": "2025-06-01",
+   "source": "MC-0015",
+   "target": "CT-CSR2"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0016",
+   "target": "LD-01"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-136",
+   "since": "2025-07-01",
+   "source": "MC-0016",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0017",
+   "target": "LD-02"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-111",
+   "since": "2025-02-01",
+   "source": "MC-0017",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-111",
+   "since": "2025-02-01",
+   "source": "MC-0017",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0018",
+   "target": "LD-02"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-129",
+   "since": "2026-01-01",
+   "source": "MC-0018",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0019",
+   "target": "LD-02"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-135",
+   "since": "2019-12-01",
+   "source": "MC-0019",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0020",
+   "target": "LD-02"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-124",
+   "since": "2021-06-01",
+   "source": "MC-0020",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0021",
+   "target": "LD-02"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-108",
+   "since": "2026-07-01",
+   "source": "MC-0021",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0022",
+   "target": "LD-02"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-116",
+   "since": "2023-01-01",
+   "source": "MC-0022",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0023",
+   "target": "LD-02"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-129",
+   "since": "2022-05-01",
+   "source": "MC-0023",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0024",
+   "target": "LD-02"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-129",
+   "since": "2022-09-01",
+   "source": "MC-0024",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0025",
+   "target": "LD-02"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-129",
+   "since": "2026-04-01",
+   "source": "MC-0025",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0026",
+   "target": "LD-02"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-138",
+   "since": "2026-04-01",
+   "source": "MC-0026",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0027",
+   "target": "LD-02"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-113",
+   "since": "2024-07-01",
+   "source": "MC-0027",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-113",
+   "since": "2024-07-01",
+   "source": "MC-0027",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0028",
+   "target": "LD-02"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-126",
+   "since": "2019-11-01",
+   "source": "MC-0028",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0029",
+   "target": "LD-02"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-107",
+   "since": "2026-06-01",
+   "source": "MC-0029",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0030",
+   "target": "LD-02"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-132",
+   "since": "2023-08-01",
+   "source": "MC-0030",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0031",
+   "target": "LD-02"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-114",
+   "since": "2019-09-01",
+   "source": "MC-0031",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0032",
+   "target": "LD-02"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-122",
+   "since": "2022-11-01",
+   "source": "MC-0032",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0033",
+   "target": "LD-02"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-131",
+   "since": "2026-11-01",
+   "source": "MC-0033",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0034",
+   "target": "LD-02"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-114",
+   "since": "2021-11-01",
+   "source": "MC-0034",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-114",
+   "since": "2021-11-01",
+   "source": "MC-0034",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0035",
+   "target": "LD-03"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-127",
+   "since": "2026-04-01",
+   "source": "MC-0035",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0036",
+   "target": "LD-03"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-115",
+   "since": "2025-05-01",
+   "source": "MC-0036",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0037",
+   "target": "LD-03"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-117",
+   "since": "2022-07-01",
+   "source": "MC-0037",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0038",
+   "target": "LD-03"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-118",
+   "since": "2024-12-01",
+   "source": "MC-0038",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0039",
+   "target": "LD-03"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-107",
+   "since": "2026-04-01",
+   "source": "MC-0039",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0040",
+   "target": "LD-03"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-116",
+   "since": "2019-12-01",
+   "source": "MC-0040",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0041",
+   "target": "LD-03"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-101",
+   "since": "2025-01-01",
+   "source": "MC-0041",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0042",
+   "target": "LD-03"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-123",
+   "since": "2019-02-01",
+   "source": "MC-0042",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-123",
+   "since": "2019-02-01",
+   "source": "MC-0042",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0043",
+   "target": "LD-03"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLS-119",
+   "since": "2025-01-01",
+   "source": "MC-0043",
+   "target": "CT-PLS"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0044",
+   "target": "LD-03"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-138",
+   "since": "2021-09-01",
+   "source": "MC-0044",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0045",
+   "target": "LD-03"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-115",
+   "since": "2022-08-01",
+   "source": "MC-0045",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0046",
+   "target": "LD-03"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-133",
+   "since": "2025-10-01",
+   "source": "MC-0046",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0047",
+   "target": "LD-04"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-134",
+   "since": "2019-10-01",
+   "source": "MC-0047",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0048",
+   "target": "LD-04"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-136",
+   "since": "2023-01-01",
+   "source": "MC-0048",
+   "target": "CT-CSR2"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0049",
+   "target": "LD-04"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-104",
+   "since": "2021-03-01",
+   "source": "MC-0049",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0050",
+   "target": "LD-04"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-100",
+   "since": "2026-01-01",
+   "source": "MC-0050",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0051",
+   "target": "LD-04"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLS-125",
+   "since": "2024-11-01",
+   "source": "MC-0051",
+   "target": "CT-PLS"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0052",
+   "target": "LD-04"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-119",
+   "since": "2021-04-01",
+   "source": "MC-0052",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-119",
+   "since": "2021-04-01",
+   "source": "MC-0052",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0053",
+   "target": "LD-04"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-106",
+   "since": "2024-09-01",
+   "source": "MC-0053",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0054",
+   "target": "LD-04"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-107",
+   "since": "2026-12-01",
+   "source": "MC-0054",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0055",
+   "target": "LD-04"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-108",
+   "since": "2024-02-01",
+   "source": "MC-0055",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0056",
+   "target": "LD-04"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-112",
+   "since": "2020-04-01",
+   "source": "MC-0056",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0057",
+   "target": "LD-04"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-111",
+   "since": "2019-10-01",
+   "source": "MC-0057",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0058",
+   "target": "LD-04"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-123",
+   "since": "2019-03-01",
+   "source": "MC-0058",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0059",
+   "target": "LD-04"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-111",
+   "since": "2020-12-01",
+   "source": "MC-0059",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-111",
+   "since": "2020-12-01",
+   "source": "MC-0059",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0060",
+   "target": "LD-04"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-123",
+   "since": "2021-06-01",
+   "source": "MC-0060",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-123",
+   "since": "2021-06-01",
+   "source": "MC-0060",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0061",
+   "target": "LD-04"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-124",
+   "since": "2023-04-01",
+   "source": "MC-0061",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0062",
+   "target": "LD-04"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-117",
+   "since": "2021-11-01",
+   "source": "MC-0062",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0063",
+   "target": "LD-04"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-110",
+   "since": "2021-05-01",
+   "source": "MC-0063",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0064",
+   "target": "LD-04"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-132",
+   "since": "2023-08-01",
+   "source": "MC-0064",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0065",
+   "target": "LD-04"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLS-103",
+   "since": "2021-10-01",
+   "source": "MC-0065",
+   "target": "CT-PLS"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0066",
+   "target": "LD-04"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-119",
+   "since": "2025-01-01",
+   "source": "MC-0066",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0067",
+   "target": "LD-04"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLS-106",
+   "since": "2020-06-01",
+   "source": "MC-0067",
+   "target": "CT-PLS"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0068",
+   "target": "LD-05"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-131",
+   "since": "2024-12-01",
+   "source": "MC-0068",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0069",
+   "target": "LD-05"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-140",
+   "since": "2025-04-01",
+   "source": "MC-0069",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-140",
+   "since": "2025-04-01",
+   "source": "MC-0069",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0070",
+   "target": "LD-05"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-111",
+   "since": "2021-04-01",
+   "source": "MC-0070",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0071",
+   "target": "LD-05"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLS-100",
+   "since": "2019-07-01",
+   "source": "MC-0071",
+   "target": "CT-PLS"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0072",
+   "target": "LD-05"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-121",
+   "since": "2020-12-01",
+   "source": "MC-0072",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0073",
+   "target": "LD-05"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-106",
+   "since": "2019-08-01",
+   "source": "MC-0073",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0074",
+   "target": "LD-05"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-100",
+   "since": "2020-10-01",
+   "source": "MC-0074",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0075",
+   "target": "LD-05"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-134",
+   "since": "2019-09-01",
+   "source": "MC-0075",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0076",
+   "target": "LD-05"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-128",
+   "since": "2020-12-01",
+   "source": "MC-0076",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-128",
+   "since": "2020-12-01",
+   "source": "MC-0076",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0077",
+   "target": "LD-05"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-100",
+   "since": "2024-12-01",
+   "source": "MC-0077",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0078",
+   "target": "LD-05"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-139",
+   "since": "2021-05-01",
+   "source": "MC-0078",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0079",
+   "target": "LD-05"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-121",
+   "since": "2019-12-01",
+   "source": "MC-0079",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0080",
+   "target": "LD-06"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-116",
+   "since": "2020-08-01",
+   "source": "MC-0080",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-116",
+   "since": "2020-08-01",
+   "source": "MC-0080",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0081",
+   "target": "LD-06"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-107",
+   "since": "2019-08-01",
+   "source": "MC-0081",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0082",
+   "target": "LD-06"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-117",
+   "since": "2025-08-01",
+   "source": "MC-0082",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0083",
+   "target": "LD-06"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-108",
+   "since": "2022-10-01",
+   "source": "MC-0083",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0084",
+   "target": "LD-06"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLS-100",
+   "since": "2022-11-01",
+   "source": "MC-0084",
+   "target": "CT-PLS"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0085",
+   "target": "LD-06"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-116",
+   "since": "2023-06-01",
+   "source": "MC-0085",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0086",
+   "target": "LD-06"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-103",
+   "since": "2022-01-01",
+   "source": "MC-0086",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0087",
+   "target": "LD-06"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-104",
+   "since": "2021-04-01",
+   "source": "MC-0087",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0088",
+   "target": "LD-06"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-109",
+   "since": "2021-01-01",
+   "source": "MC-0088",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0089",
+   "target": "LD-06"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-125",
+   "since": "2026-12-01",
+   "source": "MC-0089",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0090",
+   "target": "LD-06"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLS-129",
+   "since": "2023-02-01",
+   "source": "MC-0090",
+   "target": "CT-PLS"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0091",
+   "target": "LD-06"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-136",
+   "since": "2020-08-01",
+   "source": "MC-0091",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0092",
+   "target": "LD-07"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-132",
+   "since": "2025-02-01",
+   "source": "MC-0092",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0093",
+   "target": "LD-07"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-124",
+   "since": "2023-05-01",
+   "source": "MC-0093",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0094",
+   "target": "LD-07"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-114",
+   "since": "2020-09-01",
+   "source": "MC-0094",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0095",
+   "target": "LD-07"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-137",
+   "since": "2020-01-01",
+   "source": "MC-0095",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0096",
+   "target": "LD-07"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-122",
+   "since": "2023-09-01",
+   "source": "MC-0096",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0097",
+   "target": "LD-07"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-100",
+   "since": "2025-06-01",
+   "source": "MC-0097",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-100",
+   "since": "2025-06-01",
+   "source": "MC-0097",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0098",
+   "target": "LD-07"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-121",
+   "since": "2025-04-01",
+   "source": "MC-0098",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0099",
+   "target": "LD-07"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-104",
+   "since": "2022-02-01",
+   "source": "MC-0099",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0100",
+   "target": "LD-07"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-135",
+   "since": "2023-08-01",
+   "source": "MC-0100",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0101",
+   "target": "LD-07"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-117",
+   "since": "2026-08-01",
+   "source": "MC-0101",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0102",
+   "target": "LD-07"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-107",
+   "since": "2023-12-01",
+   "source": "MC-0102",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0103",
+   "target": "LD-07"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-123",
+   "since": "2026-11-01",
+   "source": "MC-0103",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0104",
+   "target": "LD-07"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-140",
+   "since": "2021-04-01",
+   "source": "MC-0104",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0105",
+   "target": "LD-07"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-137",
+   "since": "2019-06-01",
+   "source": "MC-0105",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0106",
+   "target": "LD-07"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLS-113",
+   "since": "2019-08-01",
+   "source": "MC-0106",
+   "target": "CT-PLS"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0107",
+   "target": "LD-08"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-130",
+   "since": "2024-08-01",
+   "source": "MC-0107",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0108",
+   "target": "LD-08"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-117",
+   "since": "2020-05-01",
+   "source": "MC-0108",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0109",
+   "target": "LD-08"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-140",
+   "since": "2020-12-01",
+   "source": "MC-0109",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-140",
+   "since": "2020-12-01",
+   "source": "MC-0109",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0110",
+   "target": "LD-08"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLS-126",
+   "since": "2025-09-01",
+   "source": "MC-0110",
+   "target": "CT-PLS"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0111",
+   "target": "LD-08"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-121",
+   "since": "2022-11-01",
+   "source": "MC-0111",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0112",
+   "target": "LD-08"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-133",
+   "since": "2021-12-01",
+   "source": "MC-0112",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0113",
+   "target": "LD-08"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-122",
+   "since": "2020-04-01",
+   "source": "MC-0113",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0114",
+   "target": "LD-08"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-124",
+   "since": "2021-07-01",
+   "source": "MC-0114",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-124",
+   "since": "2021-07-01",
+   "source": "MC-0114",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0115",
+   "target": "LD-08"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-114",
+   "since": "2026-12-01",
+   "source": "MC-0115",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0116",
+   "target": "LD-08"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-123",
+   "since": "2021-01-01",
+   "source": "MC-0116",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0117",
+   "target": "LD-08"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLS-130",
+   "since": "2025-01-01",
+   "source": "MC-0117",
+   "target": "CT-PLS"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0118",
+   "target": "LD-08"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLS-116",
+   "since": "2019-07-01",
+   "source": "MC-0118",
+   "target": "CT-PLS"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0119",
+   "target": "LD-08"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-128",
+   "since": "2019-02-01",
+   "source": "MC-0119",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0120",
+   "target": "LD-08"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-122",
+   "since": "2024-12-01",
+   "source": "MC-0120",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0121",
+   "target": "LD-09"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-110",
+   "since": "2024-07-01",
+   "source": "MC-0121",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-110",
+   "since": "2024-07-01",
+   "source": "MC-0121",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0122",
+   "target": "LD-09"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-112",
+   "since": "2024-06-01",
+   "source": "MC-0122",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0123",
+   "target": "LD-09"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-120",
+   "since": "2023-11-01",
+   "source": "MC-0123",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0124",
+   "target": "LD-09"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-128",
+   "since": "2025-03-01",
+   "source": "MC-0124",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0125",
+   "target": "LD-09"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-124",
+   "since": "2022-08-01",
+   "source": "MC-0125",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-124",
+   "since": "2022-08-01",
+   "source": "MC-0125",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0126",
+   "target": "LD-09"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-131",
+   "since": "2025-12-01",
+   "source": "MC-0126",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0127",
+   "target": "LD-09"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-112",
+   "since": "2020-04-01",
+   "source": "MC-0127",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0128",
+   "target": "LD-09"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-105",
+   "since": "2026-05-01",
+   "source": "MC-0128",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0129",
+   "target": "LD-09"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-116",
+   "since": "2023-12-01",
+   "source": "MC-0129",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0130",
+   "target": "LD-09"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-102",
+   "since": "2022-01-01",
+   "source": "MC-0130",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0131",
+   "target": "LD-09"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-138",
+   "since": "2024-02-01",
+   "source": "MC-0131",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0132",
+   "target": "LD-09"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-109",
+   "since": "2020-09-01",
+   "source": "MC-0132",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-109",
+   "since": "2020-09-01",
+   "source": "MC-0132",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0133",
+   "target": "LD-09"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-130",
+   "since": "2019-06-01",
+   "source": "MC-0133",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0134",
+   "target": "LD-09"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-111",
+   "since": "2025-11-01",
+   "source": "MC-0134",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0135",
+   "target": "LD-10"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-107",
+   "since": "2019-03-01",
+   "source": "MC-0135",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-107",
+   "since": "2019-03-01",
+   "source": "MC-0135",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0136",
+   "target": "LD-10"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-101",
+   "since": "2025-09-01",
+   "source": "MC-0136",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0137",
+   "target": "LD-10"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-109",
+   "since": "2020-12-01",
+   "source": "MC-0137",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0138",
+   "target": "LD-10"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-135",
+   "since": "2026-12-01",
+   "source": "MC-0138",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0139",
+   "target": "LD-10"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-128",
+   "since": "2024-09-01",
+   "source": "MC-0139",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0140",
+   "target": "LD-10"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-109",
+   "since": "2020-03-01",
+   "source": "MC-0140",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0141",
+   "target": "LD-10"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-138",
+   "since": "2025-05-01",
+   "source": "MC-0141",
+   "target": "CT-CSR2"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0142",
+   "target": "LD-10"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-103",
+   "since": "2023-12-01",
+   "source": "MC-0142",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0143",
+   "target": "LD-10"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-125",
+   "since": "2019-09-01",
+   "source": "MC-0143",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-125",
+   "since": "2019-09-01",
+   "source": "MC-0143",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0144",
+   "target": "LD-10"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-139",
+   "since": "2024-10-01",
+   "source": "MC-0144",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0145",
+   "target": "LD-10"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-117",
+   "since": "2025-06-01",
+   "source": "MC-0145",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0146",
+   "target": "LD-10"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-114",
+   "since": "2019-06-01",
+   "source": "MC-0146",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0147",
+   "target": "LD-10"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-111",
+   "since": "2020-10-01",
+   "source": "MC-0147",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0148",
+   "target": "LD-10"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-123",
+   "since": "2022-02-01",
+   "source": "MC-0148",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0149",
+   "target": "LD-10"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-137",
+   "since": "2022-08-01",
+   "source": "MC-0149",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0150",
+   "target": "LD-10"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-117",
+   "since": "2026-11-01",
+   "source": "MC-0150",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0151",
+   "target": "LD-11"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-109",
+   "since": "2021-10-01",
+   "source": "MC-0151",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0152",
+   "target": "LD-11"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-103",
+   "since": "2019-05-01",
+   "source": "MC-0152",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0153",
+   "target": "LD-11"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-106",
+   "since": "2023-07-01",
+   "source": "MC-0153",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0154",
+   "target": "LD-11"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-130",
+   "since": "2023-04-01",
+   "source": "MC-0154",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0155",
+   "target": "LD-11"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-118",
+   "since": "2023-02-01",
+   "source": "MC-0155",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0156",
+   "target": "LD-11"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-101",
+   "since": "2023-12-01",
+   "source": "MC-0156",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0157",
+   "target": "LD-11"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-111",
+   "since": "2023-10-01",
+   "source": "MC-0157",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0158",
+   "target": "LD-11"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-121",
+   "since": "2026-04-01",
+   "source": "MC-0158",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0159",
+   "target": "LD-11"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-140",
+   "since": "2019-05-01",
+   "source": "MC-0159",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0160",
+   "target": "LD-11"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-122",
+   "since": "2022-05-01",
+   "source": "MC-0160",
+   "target": "CT-CSR2"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0161",
+   "target": "LD-11"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-127",
+   "since": "2025-12-01",
+   "source": "MC-0161",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0162",
+   "target": "LD-11"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-129",
+   "since": "2023-02-01",
+   "source": "MC-0162",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0163",
+   "target": "LD-11"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-117",
+   "since": "2025-11-01",
+   "source": "MC-0163",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-117",
+   "since": "2025-11-01",
+   "source": "MC-0163",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0164",
+   "target": "LD-11"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-140",
+   "since": "2021-02-01",
+   "source": "MC-0164",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0165",
+   "target": "LD-11"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-132",
+   "since": "2022-05-01",
+   "source": "MC-0165",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0166",
+   "target": "LD-11"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-116",
+   "since": "2021-08-01",
+   "source": "MC-0166",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0167",
+   "target": "LD-11"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLS-132",
+   "since": "2021-05-01",
+   "source": "MC-0167",
+   "target": "CT-PLS"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0168",
+   "target": "LD-11"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-115",
+   "since": "2024-07-01",
+   "source": "MC-0168",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-115",
+   "since": "2024-07-01",
+   "source": "MC-0168",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0169",
+   "target": "LD-11"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-112",
+   "since": "2020-06-01",
+   "source": "MC-0169",
+   "target": "CT-CSR2"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0170",
+   "target": "LD-11"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-127",
+   "since": "2024-08-01",
+   "source": "MC-0170",
+   "target": "CT-CSR2"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0171",
+   "target": "LD-12"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-126",
+   "since": "2024-08-01",
+   "source": "MC-0171",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0172",
+   "target": "LD-12"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-138",
+   "since": "2023-10-01",
+   "source": "MC-0172",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0173",
+   "target": "LD-12"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-100",
+   "since": "2023-03-01",
+   "source": "MC-0173",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0174",
+   "target": "LD-12"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-126",
+   "since": "2026-08-01",
+   "source": "MC-0174",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0175",
+   "target": "LD-12"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-116",
+   "since": "2023-07-01",
+   "source": "MC-0175",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0176",
+   "target": "LD-12"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-132",
+   "since": "2024-02-01",
+   "source": "MC-0176",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0177",
+   "target": "LD-12"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-104",
+   "since": "2019-08-01",
+   "source": "MC-0177",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0178",
+   "target": "LD-12"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-110",
+   "since": "2024-10-01",
+   "source": "MC-0178",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0179",
+   "target": "LD-12"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-106",
+   "since": "2022-08-01",
+   "source": "MC-0179",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-106",
+   "since": "2022-08-01",
+   "source": "MC-0179",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0180",
+   "target": "LD-12"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-132",
+   "since": "2022-12-01",
+   "source": "MC-0180",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0181",
+   "target": "LD-12"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-109",
+   "since": "2020-12-01",
+   "source": "MC-0181",
+   "target": "CT-CSR2"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0182",
+   "target": "LD-12"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLS-122",
+   "since": "2022-12-01",
+   "source": "MC-0182",
+   "target": "CT-PLS"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0183",
+   "target": "LD-12"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-105",
+   "since": "2020-02-01",
+   "source": "MC-0183",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0184",
+   "target": "LD-12"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-105",
+   "since": "2022-07-01",
+   "source": "MC-0184",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0185",
+   "target": "LD-13"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-140",
+   "since": "2026-08-01",
+   "source": "MC-0185",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0186",
+   "target": "LD-13"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-129",
+   "since": "2024-12-01",
+   "source": "MC-0186",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0187",
+   "target": "LD-13"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-100",
+   "since": "2025-05-01",
+   "source": "MC-0187",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0188",
+   "target": "LD-13"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-132",
+   "since": "2020-12-01",
+   "source": "MC-0188",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0189",
+   "target": "LD-13"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-116",
+   "since": "2026-05-01",
+   "source": "MC-0189",
+   "target": "CT-CSR2"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0190",
+   "target": "LD-13"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-137",
+   "since": "2025-05-01",
+   "source": "MC-0190",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0191",
+   "target": "LD-13"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-109",
+   "since": "2026-08-01",
+   "source": "MC-0191",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0192",
+   "target": "LD-13"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-136",
+   "since": "2024-11-01",
+   "source": "MC-0192",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0193",
+   "target": "LD-13"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-120",
+   "since": "2026-09-01",
+   "source": "MC-0193",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0194",
+   "target": "LD-13"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-105",
+   "since": "2021-08-01",
+   "source": "MC-0194",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0195",
+   "target": "LD-13"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-129",
+   "since": "2024-06-01",
+   "source": "MC-0195",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0196",
+   "target": "LD-13"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-119",
+   "since": "2026-11-01",
+   "source": "MC-0196",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-119",
+   "since": "2026-11-01",
+   "source": "MC-0196",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0197",
+   "target": "LD-13"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-133",
+   "since": "2026-12-01",
+   "source": "MC-0197",
+   "target": "CT-CSR2"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0198",
+   "target": "LD-13"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-121",
+   "since": "2024-06-01",
+   "source": "MC-0198",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0199",
+   "target": "LD-13"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-100",
+   "since": "2020-09-01",
+   "source": "MC-0199",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0200",
+   "target": "LD-13"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-106",
+   "since": "2019-12-01",
+   "source": "MC-0200",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0201",
+   "target": "LD-13"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-105",
+   "since": "2022-10-01",
+   "source": "MC-0201",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0202",
+   "target": "LD-13"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-117",
+   "since": "2022-11-01",
+   "source": "MC-0202",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0203",
+   "target": "LD-13"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-112",
+   "since": "2022-06-01",
+   "source": "MC-0203",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0204",
+   "target": "LD-13"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-139",
+   "since": "2021-06-01",
+   "source": "MC-0204",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0205",
+   "target": "LD-13"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLS-116",
+   "since": "2020-09-01",
+   "source": "MC-0205",
+   "target": "CT-PLS"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0206",
+   "target": "LD-14"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-109",
+   "since": "2024-10-01",
+   "source": "MC-0206",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0207",
+   "target": "LD-14"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-106",
+   "since": "2025-12-01",
+   "source": "MC-0207",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-106",
+   "since": "2025-12-01",
+   "source": "MC-0207",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0208",
+   "target": "LD-14"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-136",
+   "since": "2025-07-01",
+   "source": "MC-0208",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0209",
+   "target": "LD-14"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-130",
+   "since": "2026-12-01",
+   "source": "MC-0209",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0210",
+   "target": "LD-14"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-124",
+   "since": "2019-06-01",
+   "source": "MC-0210",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0211",
+   "target": "LD-14"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-121",
+   "since": "2023-01-01",
+   "source": "MC-0211",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0212",
+   "target": "LD-14"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-140",
+   "since": "2026-05-01",
+   "source": "MC-0212",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0213",
+   "target": "LD-14"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-118",
+   "since": "2022-11-01",
+   "source": "MC-0213",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0214",
+   "target": "LD-14"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-137",
+   "since": "2019-11-01",
+   "source": "MC-0214",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0215",
+   "target": "LD-14"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-101",
+   "since": "2023-09-01",
+   "source": "MC-0215",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0216",
+   "target": "LD-14"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-100",
+   "since": "2019-06-01",
+   "source": "MC-0216",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0217",
+   "target": "LD-14"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-138",
+   "since": "2024-01-01",
+   "source": "MC-0217",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0218",
+   "target": "LD-14"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-100",
+   "since": "2025-06-01",
+   "source": "MC-0218",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-100",
+   "since": "2025-06-01",
+   "source": "MC-0218",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0219",
+   "target": "LD-14"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-112",
+   "since": "2023-12-01",
+   "source": "MC-0219",
+   "target": "CT-CSR2"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0220",
+   "target": "LD-14"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-129",
+   "since": "2022-08-01",
+   "source": "MC-0220",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-129",
+   "since": "2022-08-01",
+   "source": "MC-0220",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0221",
+   "target": "LD-14"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-128",
+   "since": "2022-12-01",
+   "source": "MC-0221",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0222",
+   "target": "LD-14"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-101",
+   "since": "2022-05-01",
+   "source": "MC-0222",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0223",
+   "target": "LD-14"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-113",
+   "since": "2020-02-01",
+   "source": "MC-0223",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0224",
+   "target": "LD-14"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-134",
+   "since": "2020-04-01",
+   "source": "MC-0224",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0225",
+   "target": "LD-14"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-138",
+   "since": "2021-03-01",
+   "source": "MC-0225",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0226",
+   "target": "LD-15"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-110",
+   "since": "2024-10-01",
+   "source": "MC-0226",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-110",
+   "since": "2024-10-01",
+   "source": "MC-0226",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0227",
+   "target": "LD-15"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-116",
+   "since": "2024-09-01",
+   "source": "MC-0227",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0228",
+   "target": "LD-15"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-101",
+   "since": "2020-06-01",
+   "source": "MC-0228",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0229",
+   "target": "LD-15"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-138",
+   "since": "2019-02-01",
+   "source": "MC-0229",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0230",
+   "target": "LD-15"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-103",
+   "since": "2025-07-01",
+   "source": "MC-0230",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-103",
+   "since": "2025-07-01",
+   "source": "MC-0230",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0231",
+   "target": "LD-15"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-124",
+   "since": "2021-06-01",
+   "source": "MC-0231",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0232",
+   "target": "LD-15"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-124",
+   "since": "2025-12-01",
+   "source": "MC-0232",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0233",
+   "target": "LD-15"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-122",
+   "since": "2021-09-01",
+   "source": "MC-0233",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-122",
+   "since": "2021-09-01",
+   "source": "MC-0233",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0234",
+   "target": "LD-15"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-120",
+   "since": "2023-11-01",
+   "source": "MC-0234",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0235",
+   "target": "LD-15"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-122",
+   "since": "2026-04-01",
+   "source": "MC-0235",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0236",
+   "target": "LD-15"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-125",
+   "since": "2020-03-01",
+   "source": "MC-0236",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0237",
+   "target": "LD-15"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-111",
+   "since": "2022-02-01",
+   "source": "MC-0237",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0238",
+   "target": "LD-15"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-107",
+   "since": "2019-08-01",
+   "source": "MC-0238",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0239",
+   "target": "LD-15"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-127",
+   "since": "2021-04-01",
+   "source": "MC-0239",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0240",
+   "target": "LD-15"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-113",
+   "since": "2024-09-01",
+   "source": "MC-0240",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0241",
+   "target": "LD-15"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-118",
+   "since": "2023-09-01",
+   "source": "MC-0241",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0242",
+   "target": "LD-16"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-111",
+   "since": "2025-08-01",
+   "source": "MC-0242",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0243",
+   "target": "LD-16"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-111",
+   "since": "2025-11-01",
+   "source": "MC-0243",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0244",
+   "target": "LD-16"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-101",
+   "since": "2020-07-01",
+   "source": "MC-0244",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0245",
+   "target": "LD-16"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-100",
+   "since": "2024-09-01",
+   "source": "MC-0245",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0246",
+   "target": "LD-16"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-114",
+   "since": "2024-04-01",
+   "source": "MC-0246",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0247",
+   "target": "LD-16"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-136",
+   "since": "2023-04-01",
+   "source": "MC-0247",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0248",
+   "target": "LD-16"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-137",
+   "since": "2021-10-01",
+   "source": "MC-0248",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0249",
+   "target": "LD-16"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-120",
+   "since": "2026-06-01",
+   "source": "MC-0249",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0250",
+   "target": "LD-16"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-118",
+   "since": "2020-08-01",
+   "source": "MC-0250",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0251",
+   "target": "LD-16"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-111",
+   "since": "2023-11-01",
+   "source": "MC-0251",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0252",
+   "target": "LD-16"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-131",
+   "since": "2024-06-01",
+   "source": "MC-0252",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0253",
+   "target": "LD-16"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-115",
+   "since": "2022-11-01",
+   "source": "MC-0253",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0254",
+   "target": "LD-16"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-138",
+   "since": "2023-09-01",
+   "source": "MC-0254",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0255",
+   "target": "LD-16"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-122",
+   "since": "2025-04-01",
+   "source": "MC-0255",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0256",
+   "target": "LD-16"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-140",
+   "since": "2022-07-01",
+   "source": "MC-0256",
+   "target": "CT-CSR2"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0257",
+   "target": "LD-16"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-105",
+   "since": "2021-03-01",
+   "source": "MC-0257",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0258",
+   "target": "LD-16"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-117",
+   "since": "2025-03-01",
+   "source": "MC-0258",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0259",
+   "target": "LD-16"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-108",
+   "since": "2023-04-01",
+   "source": "MC-0259",
+   "target": "CT-CSR2"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0260",
+   "target": "LD-17"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-117",
+   "since": "2024-03-01",
+   "source": "MC-0260",
+   "target": "CT-CSR2"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0261",
+   "target": "LD-17"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-128",
+   "since": "2020-07-01",
+   "source": "MC-0261",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0262",
+   "target": "LD-17"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-128",
+   "since": "2024-04-01",
+   "source": "MC-0262",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0263",
+   "target": "LD-17"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-123",
+   "since": "2026-08-01",
+   "source": "MC-0263",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0264",
+   "target": "LD-17"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-100",
+   "since": "2026-10-01",
+   "source": "MC-0264",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0265",
+   "target": "LD-17"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-100",
+   "since": "2025-04-01",
+   "source": "MC-0265",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0266",
+   "target": "LD-17"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-110",
+   "since": "2024-08-01",
+   "source": "MC-0266",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0267",
+   "target": "LD-17"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-121",
+   "since": "2020-01-01",
+   "source": "MC-0267",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-121",
+   "since": "2020-01-01",
+   "source": "MC-0267",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0268",
+   "target": "LD-17"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-102",
+   "since": "2024-01-01",
+   "source": "MC-0268",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0269",
+   "target": "LD-17"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-120",
+   "since": "2021-05-01",
+   "source": "MC-0269",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0270",
+   "target": "LD-17"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-127",
+   "since": "2020-06-01",
+   "source": "MC-0270",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0271",
+   "target": "LD-17"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-125",
+   "since": "2023-03-01",
+   "source": "MC-0271",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0272",
+   "target": "LD-17"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-112",
+   "since": "2019-12-01",
+   "source": "MC-0272",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0273",
+   "target": "LD-17"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-135",
+   "since": "2022-04-01",
+   "source": "MC-0273",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0274",
+   "target": "LD-17"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLS-133",
+   "since": "2020-05-01",
+   "source": "MC-0274",
+   "target": "CT-PLS"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0275",
+   "target": "LD-17"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-119",
+   "since": "2021-10-01",
+   "source": "MC-0275",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0276",
+   "target": "LD-17"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-123",
+   "since": "2019-08-01",
+   "source": "MC-0276",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-123",
+   "since": "2019-08-01",
+   "source": "MC-0276",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0277",
+   "target": "LD-18"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-130",
+   "since": "2022-03-01",
+   "source": "MC-0277",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0278",
+   "target": "LD-18"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-105",
+   "since": "2020-03-01",
+   "source": "MC-0278",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0279",
+   "target": "LD-18"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-107",
+   "since": "2024-09-01",
+   "source": "MC-0279",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0280",
+   "target": "LD-18"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLS-121",
+   "since": "2022-07-01",
+   "source": "MC-0280",
+   "target": "CT-PLS"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0281",
+   "target": "LD-18"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-137",
+   "since": "2019-05-01",
+   "source": "MC-0281",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0282",
+   "target": "LD-18"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-118",
+   "since": "2026-12-01",
+   "source": "MC-0282",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0283",
+   "target": "LD-18"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-124",
+   "since": "2026-05-01",
+   "source": "MC-0283",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0284",
+   "target": "LD-18"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-132",
+   "since": "2020-10-01",
+   "source": "MC-0284",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0285",
+   "target": "LD-18"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-117",
+   "since": "2024-02-01",
+   "source": "MC-0285",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0286",
+   "target": "LD-18"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-139",
+   "since": "2026-08-01",
+   "source": "MC-0286",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0287",
+   "target": "LD-18"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-129",
+   "since": "2026-12-01",
+   "source": "MC-0287",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0288",
+   "target": "LD-18"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-103",
+   "since": "2020-04-01",
+   "source": "MC-0288",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-103",
+   "since": "2020-04-01",
+   "source": "MC-0288",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0289",
+   "target": "LD-18"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-117",
+   "since": "2024-06-01",
+   "source": "MC-0289",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0290",
+   "target": "LD-18"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-102",
+   "since": "2021-01-01",
+   "source": "MC-0290",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0291",
+   "target": "LD-18"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-115",
+   "since": "2024-01-01",
+   "source": "MC-0291",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0292",
+   "target": "LD-18"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLS-114",
+   "since": "2022-01-01",
+   "source": "MC-0292",
+   "target": "CT-PLS"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0293",
+   "target": "LD-18"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-129",
+   "since": "2026-02-01",
+   "source": "MC-0293",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0294",
+   "target": "LD-18"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-120",
+   "since": "2022-05-01",
+   "source": "MC-0294",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0295",
+   "target": "LD-19"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-100",
+   "since": "2025-01-01",
+   "source": "MC-0295",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0296",
+   "target": "LD-19"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-115",
+   "since": "2020-10-01",
+   "source": "MC-0296",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0297",
+   "target": "LD-19"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-116",
+   "since": "2022-12-01",
+   "source": "MC-0297",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0298",
+   "target": "LD-19"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-109",
+   "since": "2023-12-01",
+   "source": "MC-0298",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0299",
+   "target": "LD-19"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-123",
+   "since": "2025-12-01",
+   "source": "MC-0299",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0300",
+   "target": "LD-19"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-121",
+   "since": "2024-11-01",
+   "source": "MC-0300",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0301",
+   "target": "LD-19"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-100",
+   "since": "2021-03-01",
+   "source": "MC-0301",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0302",
+   "target": "LD-19"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-131",
+   "since": "2024-07-01",
+   "source": "MC-0302",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0303",
+   "target": "LD-19"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-104",
+   "since": "2025-08-01",
+   "source": "MC-0303",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-104",
+   "since": "2025-08-01",
+   "source": "MC-0303",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0304",
+   "target": "LD-19"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-121",
+   "since": "2020-05-01",
+   "source": "MC-0304",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0305",
+   "target": "LD-19"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-109",
+   "since": "2023-10-01",
+   "source": "MC-0305",
+   "target": "CT-CSR2"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0306",
+   "target": "LD-19"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-108",
+   "since": "2024-10-01",
+   "source": "MC-0306",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0307",
+   "target": "LD-19"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-124",
+   "since": "2025-03-01",
+   "source": "MC-0307",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0308",
+   "target": "LD-19"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-104",
+   "since": "2025-10-01",
+   "source": "MC-0308",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0309",
+   "target": "LD-19"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-134",
+   "since": "2025-07-01",
+   "source": "MC-0309",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0310",
+   "target": "LD-19"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-124",
+   "since": "2024-05-01",
+   "source": "MC-0310",
+   "target": "CT-CSR2"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0311",
+   "target": "LD-19"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-118",
+   "since": "2020-12-01",
+   "source": "MC-0311",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0312",
+   "target": "LD-19"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-130",
+   "since": "2024-10-01",
+   "source": "MC-0312",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0313",
+   "target": "LD-19"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-138",
+   "since": "2021-01-01",
+   "source": "MC-0313",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0314",
+   "target": "LD-19"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-124",
+   "since": "2024-12-01",
+   "source": "MC-0314",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-124",
+   "since": "2024-12-01",
+   "source": "MC-0314",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0315",
+   "target": "LD-20"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-124",
+   "since": "2022-11-01",
+   "source": "MC-0315",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0316",
+   "target": "LD-20"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-109",
+   "since": "2019-09-01",
+   "source": "MC-0316",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0317",
+   "target": "LD-20"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-111",
+   "since": "2024-08-01",
+   "source": "MC-0317",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0318",
+   "target": "LD-20"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-120",
+   "since": "2021-05-01",
+   "source": "MC-0318",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0319",
+   "target": "LD-20"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-112",
+   "since": "2021-12-01",
+   "source": "MC-0319",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0320",
+   "target": "LD-20"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-124",
+   "since": "2026-09-01",
+   "source": "MC-0320",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0321",
+   "target": "LD-20"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-111",
+   "since": "2020-07-01",
+   "source": "MC-0321",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0322",
+   "target": "LD-20"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-132",
+   "since": "2025-04-01",
+   "source": "MC-0322",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0323",
+   "target": "LD-20"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-124",
+   "since": "2026-01-01",
+   "source": "MC-0323",
+   "target": "CT-CSR2"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0324",
+   "target": "LD-20"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLS-129",
+   "since": "2024-04-01",
+   "source": "MC-0324",
+   "target": "CT-PLS"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0325",
+   "target": "LD-20"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-103",
+   "since": "2025-10-01",
+   "source": "MC-0325",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0326",
+   "target": "LD-20"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-108",
+   "since": "2025-08-01",
+   "source": "MC-0326",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0327",
+   "target": "LD-20"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-113",
+   "since": "2026-09-01",
+   "source": "MC-0327",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0328",
+   "target": "LD-20"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-124",
+   "since": "2021-05-01",
+   "source": "MC-0328",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0329",
+   "target": "LD-20"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-138",
+   "since": "2022-01-01",
+   "source": "MC-0329",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0330",
+   "target": "LD-21"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-130",
+   "since": "2025-07-01",
+   "source": "MC-0330",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0331",
+   "target": "LD-21"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-125",
+   "since": "2024-09-01",
+   "source": "MC-0331",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0332",
+   "target": "LD-21"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLS-129",
+   "since": "2023-10-01",
+   "source": "MC-0332",
+   "target": "CT-PLS"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0333",
+   "target": "LD-21"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-136",
+   "since": "2020-09-01",
+   "source": "MC-0333",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0334",
+   "target": "LD-21"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-112",
+   "since": "2020-01-01",
+   "source": "MC-0334",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0335",
+   "target": "LD-21"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-100",
+   "since": "2026-10-01",
+   "source": "MC-0335",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0336",
+   "target": "LD-21"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-121",
+   "since": "2019-11-01",
+   "source": "MC-0336",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0337",
+   "target": "LD-21"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-133",
+   "since": "2022-07-01",
+   "source": "MC-0337",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-133",
+   "since": "2022-07-01",
+   "source": "MC-0337",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0338",
+   "target": "LD-21"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-129",
+   "since": "2024-09-01",
+   "source": "MC-0338",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-129",
+   "since": "2024-09-01",
+   "source": "MC-0338",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0339",
+   "target": "LD-21"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-130",
+   "since": "2019-09-01",
+   "source": "MC-0339",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0340",
+   "target": "LD-21"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-124",
+   "since": "2025-01-01",
+   "source": "MC-0340",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0341",
+   "target": "LD-21"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-124",
+   "since": "2024-02-01",
+   "source": "MC-0341",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0342",
+   "target": "LD-21"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-102",
+   "since": "2020-11-01",
+   "source": "MC-0342",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0343",
+   "target": "LD-22"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-104",
+   "since": "2023-10-01",
+   "source": "MC-0343",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0344",
+   "target": "LD-22"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-134",
+   "since": "2020-08-01",
+   "source": "MC-0344",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0345",
+   "target": "LD-22"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-132",
+   "since": "2026-05-01",
+   "source": "MC-0345",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0346",
+   "target": "LD-22"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-137",
+   "since": "2026-12-01",
+   "source": "MC-0346",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0347",
+   "target": "LD-22"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-133",
+   "since": "2026-09-01",
+   "source": "MC-0347",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0348",
+   "target": "LD-22"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-111",
+   "since": "2023-01-01",
+   "source": "MC-0348",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0349",
+   "target": "LD-22"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-117",
+   "since": "2022-08-01",
+   "source": "MC-0349",
+   "target": "CT-CSR2"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0350",
+   "target": "LD-22"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-128",
+   "since": "2026-06-01",
+   "source": "MC-0350",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0351",
+   "target": "LD-22"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-106",
+   "since": "2024-01-01",
+   "source": "MC-0351",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-106",
+   "since": "2024-01-01",
+   "source": "MC-0351",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0352",
+   "target": "LD-22"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-105",
+   "since": "2022-04-01",
+   "source": "MC-0352",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-105",
+   "since": "2022-04-01",
+   "source": "MC-0352",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0353",
+   "target": "LD-22"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-138",
+   "since": "2022-05-01",
+   "source": "MC-0353",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0354",
+   "target": "LD-22"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-129",
+   "since": "2020-08-01",
+   "source": "MC-0354",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0355",
+   "target": "LD-22"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLS-128",
+   "since": "2022-06-01",
+   "source": "MC-0355",
+   "target": "CT-PLS"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0356",
+   "target": "LD-22"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-112",
+   "since": "2022-06-01",
+   "source": "MC-0356",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-112",
+   "since": "2022-06-01",
+   "source": "MC-0356",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0357",
+   "target": "LD-22"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-122",
+   "since": "2023-10-01",
+   "source": "MC-0357",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0358",
+   "target": "LD-22"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-114",
+   "since": "2019-05-01",
+   "source": "MC-0358",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0359",
+   "target": "LD-23"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-138",
+   "since": "2021-07-01",
+   "source": "MC-0359",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0360",
+   "target": "LD-23"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-135",
+   "since": "2023-11-01",
+   "source": "MC-0360",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-135",
+   "since": "2023-11-01",
+   "source": "MC-0360",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0361",
+   "target": "LD-23"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-125",
+   "since": "2019-02-01",
+   "source": "MC-0361",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0362",
+   "target": "LD-23"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-138",
+   "since": "2019-10-01",
+   "source": "MC-0362",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0363",
+   "target": "LD-23"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-138",
+   "since": "2024-01-01",
+   "source": "MC-0363",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0364",
+   "target": "LD-23"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-112",
+   "since": "2025-02-01",
+   "source": "MC-0364",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0365",
+   "target": "LD-23"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-107",
+   "since": "2024-05-01",
+   "source": "MC-0365",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-107",
+   "since": "2024-05-01",
+   "source": "MC-0365",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0366",
+   "target": "LD-23"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-133",
+   "since": "2026-03-01",
+   "source": "MC-0366",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0367",
+   "target": "LD-23"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-104",
+   "since": "2026-01-01",
+   "source": "MC-0367",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-104",
+   "since": "2026-01-01",
+   "source": "MC-0367",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0368",
+   "target": "LD-23"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-137",
+   "since": "2022-03-01",
+   "source": "MC-0368",
+   "target": "CT-CSR"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0369",
+   "target": "LD-23"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-111",
+   "since": "2020-03-01",
+   "source": "MC-0369",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0370",
+   "target": "LD-23"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-135",
+   "since": "2022-12-01",
+   "source": "MC-0370",
+   "target": "CT-CSR2"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0371",
+   "target": "LD-23"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-138",
+   "since": "2025-11-01",
+   "source": "MC-0371",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-138",
+   "since": "2025-11-01",
+   "source": "MC-0371",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0372",
+   "target": "LD-23"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-135",
+   "since": "2023-06-01",
+   "source": "MC-0372",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0373",
+   "target": "LD-23"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-103",
+   "since": "2026-12-01",
+   "source": "MC-0373",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0374",
+   "target": "LD-23"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-104",
+   "since": "2020-08-01",
+   "source": "MC-0374",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0375",
+   "target": "LD-23"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-103",
+   "since": "2026-06-01",
+   "source": "MC-0375",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0376",
+   "target": "LD-23"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-122",
+   "since": "2025-04-01",
+   "source": "MC-0376",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0377",
+   "target": "LD-24"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-127",
+   "since": "2023-07-01",
+   "source": "MC-0377",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0378",
+   "target": "LD-24"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-131",
+   "since": "2024-02-01",
+   "source": "MC-0378",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0379",
+   "target": "LD-24"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-130",
+   "since": "2022-07-01",
+   "source": "MC-0379",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0380",
+   "target": "LD-24"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLS-125",
+   "since": "2025-06-01",
+   "source": "MC-0380",
+   "target": "CT-PLS"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0381",
+   "target": "LD-24"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-134",
+   "since": "2020-09-01",
+   "source": "MC-0381",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0382",
+   "target": "LD-24"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-119",
+   "since": "2023-08-01",
+   "source": "MC-0382",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0383",
+   "target": "LD-24"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "AQW-140",
+   "since": "2019-01-01",
+   "source": "MC-0383",
+   "target": "CT-AQW"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0384",
+   "target": "LD-24"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-137",
+   "since": "2022-10-01",
+   "source": "MC-0384",
+   "target": "CT-PLE-2"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-137",
+   "since": "2022-10-01",
+   "source": "MC-0384",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0385",
+   "target": "LD-24"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-119",
+   "since": "2020-10-01",
+   "source": "MC-0385",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0386",
+   "target": "LD-24"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-135",
+   "since": "2019-03-01",
+   "source": "MC-0386",
+   "target": "CT-CSR2"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0387",
+   "target": "LD-24"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-130",
+   "since": "2024-10-01",
+   "source": "MC-0387",
+   "target": "CT-CSR2"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0388",
+   "target": "LD-24"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-109",
+   "since": "2019-01-01",
+   "source": "MC-0388",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0389",
+   "target": "LD-24"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "PLE-120",
+   "since": "2024-07-01",
+   "source": "MC-0389",
+   "target": "CT-PLE"
+  },
+  {
+   "kind": "sited_at",
+   "source": "MC-0390",
+   "target": "LD-24"
+  },
+  {
+   "kind": "serviced_by",
+   "contract": "CSR-130",
+   "since": "2022-03-01",
+   "source": "MC-0390",
+   "target": "CT-CSR"
+  }
+ ]
+}

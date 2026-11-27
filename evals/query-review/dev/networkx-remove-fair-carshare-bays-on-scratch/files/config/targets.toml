@@ -1,0 +1,5 @@
+[published]
+path = "data/published/bays.json"
+
+[scratch]
+path = "data/scratch/bays.json"

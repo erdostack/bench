@@ -1,0 +1,6 @@
+default_target = "registry"
+statement_timeout_s = 30
+history = ".sq_history"
+
+[targets.registry]
+path = "var/registry.db"

@@ -1,0 +1,6 @@
+default = "social"
+statement_timeout_s = 30
+history = ".sq_log"
+
+[databases.social]
+path = "var/social.db"

@@ -1,0 +1,7 @@
+2026-11-22T01:30:02Z start archive_ended_leases
+2026-11-22T01:30:02Z copy: 1000 leases copied (ids 1-1311)
+2026-11-22T01:30:03Z copy: 1000 leases copied (ids 1312-2614)
+2026-11-22T01:42:19Z copy: done, 11448 leases copied
+2026-11-22T01:42:19Z delete: 1000 leases deleted
+2026-11-22T02:59:58Z delete: 1000 leases deleted
+2026-11-22T03:00:00Z killed by scheduler (03:00 cutoff)

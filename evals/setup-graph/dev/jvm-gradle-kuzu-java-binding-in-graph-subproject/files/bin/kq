@@ -1,0 +1,4 @@
+#!/bin/sh
+# bin/kq <file.cypher> [stop=S01]
+cd "$(dirname "$0")/.." || exit 1
+exec ./gradlew -q :graph:run --args="$*"

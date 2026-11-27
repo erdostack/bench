@@ -1,0 +1,7 @@
+var
+**/__pycache__
+**/.pytest_cache
+**/*.pyc
+**/*.db
+**/*.sqlite
+**/*.sqlite3

@@ -1,0 +1,38 @@
+[
+  {
+    "element": "hop",
+    "severity": "low",
+    "problem": "Foreign key enforcement is off on every connection (no PRAGMA foreign_keys anywhere). hop.route_id, hop.from_stop and hop.to_stop are declared REFERENCES but are not enforced at write time. The guard is PRAGMA foreign_key_check in build() in build_snapshot.py, which runs on the built file and does not depend on the pragma. It returns 0 rows on the shipped data, and api/queries.py opens network.db read-only, so no current path writes an orphan.",
+    "fix": "No change needed for correctness. Keep the foreign_key_check gate in build(). Optionally add a test that asserts PRAGMA foreign_key_check returns no rows on the built network.db. Do not turn foreign_keys on in the build: the README records a 40% slower load, and the check already covers the same ground."
+  },
+  {
+    "element": "build",
+    "severity": "low",
+    "problem": "The dangling-reference report prints rowid, but hop is declared WITHOUT ROWID, so every problem row prints as 'hop row None -> stop'. Verified by adding the row 1,99,1,999999,4 to a scratch copy of feed/hops.csv: the build exits 1 and the message does not identify the row.",
+    "fix": "On the failure path only, print the key columns instead of rowid. For hop, select route_id, seq, from_stop, to_stop FROM hop WHERE route_id NOT IN (SELECT id FROM route) OR from_stop NOT IN (SELECT id FROM stop) OR to_stop NOT IN (SELECT id FROM stop) and print those rows, or print the key for each row from the foreign_key_check output."
+  },
+  {
+    "element": "build",
+    "severity": "low",
+    "problem": "Any load failure other than the FK check raises out of build(). Verified: a hop row with minutes 0 fails CHECK (minutes > 0), the process exits 1 with a traceback, and network.db.new is left on disk. The live network.db is untouched, but the README says a failed build deletes the new file, and that holds only for the FK path.",
+    "fix": "Wrap the load and check in try/except that unlinks the .new file and then re-raises (or returns 1 with a message), so every failure leaves the same state."
+  },
+  {
+    "element": "hop",
+    "severity": "low",
+    "problem": "The comment in schema.sql says there is one hop per pair of consecutive stops on a route's pattern, but nothing enforces the chain (hop.to_stop of seq n equals hop.from_stop of seq n+1) or that from_stop differs from to_stop. The shipped data has 0 chain breaks and 0 self-loops across 2453 rows, so this is a question to confirm, not a live defect. A bad nightly feed would be published without complaint.",
+    "fix": "Confirm with the feed owner whether a chain break or a self-loop is ever legal. If not, add CHECK (from_stop <> to_stop) to hop in schema.sql and add a query-based chain check to build() that fails the build the same way the foreign_key_check gate does, since a CHECK cannot read the next row."
+  },
+  {
+    "element": "build",
+    "severity": "low",
+    "problem": "build() interpolates CSV header names directly into the INSERT statement, f\"INSERT INTO {table} ({', '.join(rows[0])}) ...\", and an empty feed file fails with IndexError on rows[0]. The feed is trusted and the headers are fixed today, so this is hardening only.",
+    "fix": "Compare each CSV header with the expected column list for its table before inserting, and fail with a clear message on a mismatch or an empty file."
+  },
+  {
+    "element": "stop",
+    "severity": "low",
+    "problem": "262 of the 1500 rows in stop appear in no hop row, so next_stops and routes_through return nothing for them. This may be correct for a depot test feed, but the files do not say so.",
+    "fix": "Confirm with the feed owner whether those stops are meant to be unserved. If they should be served, the feed export is dropping their hops. If they should not, add a line to the README saying the feed carries unserved stops."
+  }
+]

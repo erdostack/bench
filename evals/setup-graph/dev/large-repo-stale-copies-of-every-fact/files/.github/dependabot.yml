@@ -1,0 +1,13 @@
+version: 2
+updates:
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: weekly
+    ignore:
+      - dependency-name: neo4j
+        update-types: ["version-update:semver-major"]
+  - package-ecosystem: docker
+    directory: /ops/compose
+    schedule:
+      interval: monthly

@@ -1,0 +1,6 @@
+default = "registry"
+statement_timeout_s = 30
+history = ".rq_log"
+
+[databases.registry]
+path = "var/registry.db"

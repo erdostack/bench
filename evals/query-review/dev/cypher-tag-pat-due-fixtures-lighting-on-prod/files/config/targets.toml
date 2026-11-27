@@ -1,0 +1,3 @@
+[prod]
+uri = "neo4j+s://stock.brightwork-hire.example:7687"
+database = "stock"

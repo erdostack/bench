@@ -1,0 +1,32 @@
+[
+  {
+    "element": "dependency.depends_on_id",
+    "severity": "low",
+    "problem": "The ON DELETE RESTRICT and ON DELETE CASCADE clauses in schema.sql only work on connections that set PRAGMA foreign_keys. On a raw connection, DELETE FROM package of a depended-on package succeeded and left 55 dangling dependency rows (checked on an in-memory copy). registry/db.py sets the pragma on every connection it opens, so the repo's own paths are enforced.",
+    "fix": "Enforce in the schema with a BEFORE DELETE ON package trigger that raises when a dependency row still references OLD.id, and an AFTER DELETE trigger that removes dependency rows where package_id = OLD.id (confirm trigger syntax on the target SQLite version). Until then, add a CI check that sqlite3.connect appears only in registry/db.py."
+  },
+  {
+    "element": "unpublish",
+    "severity": "low",
+    "problem": "unpublish catches every sqlite3.IntegrityError and reports it as StillRequired. Today the only integrity error a DELETE on package can raise is the RESTRICT, so the message is right now, but any future constraint on package would be reported as a dependency problem.",
+    "fix": "Check for dependents explicitly (SELECT 1 FROM dependency WHERE depends_on_id = ?) and raise StillRequired, or catch only the restrict failure and re-raise anything else."
+  },
+  {
+    "element": "unpublish",
+    "severity": "low",
+    "problem": "Unpublishing a name that does not exist deletes nothing and returns None with no error (checked: unpublish(con, 'ghost') returned without raising). A mistyped name looks like success.",
+    "fix": "Check the cursor rowcount after the DELETE and raise LookupError when it is 0, inside the same with con: block."
+  },
+  {
+    "element": "publish",
+    "severity": "low",
+    "problem": "A package that lists its own name in deps fails at the dependency CHECK (package_id <> depends_on_id) with a bare sqlite3.IntegrityError after the package insert. The transaction rolls back, so no data is wrong, but the caller gets a database error instead of a clean validation error.",
+    "fix": "Reject name in deps before the insert and raise ValueError."
+  },
+  {
+    "element": "dependency",
+    "severity": "low",
+    "problem": "Nothing in the schema prevents cycles. Only publish() writes edges, and it adds edges only from the new package to existing ones, so no cycle can form today. reverse_deps still terminates on a loop because its UNION carries only id (checked with a two-package loop in memory). This is a question to confirm: if an update-dependencies path is added, does a cycle matter for the yank dialog?",
+    "fix": "None needed now. If cycles must be excluded, add a write-path check that depends_on_id is older than package_id, or keep the UNION on id alone in queries/reverse_deps.sql."
+  }
+]

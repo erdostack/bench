@@ -1,0 +1,2 @@
+{"doi": "10.5555/cw.0001", "title": "Generated paper 1", "refs": []}
+{"doi": "10.5555/cw.0002", "title": "Generated paper 2", "refs": ["10.5555/cw.0001"]}

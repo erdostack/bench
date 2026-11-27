@@ -1,0 +1,1 @@
+Not run on prod. changes/0064_merge_v0099_into_v0012.sql; tried on copy. Check: SELECT count(*) FROM edges WHERE src = 99 OR dst = 99.

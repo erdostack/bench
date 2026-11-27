@@ -1,0 +1,14 @@
+[
+  {
+    "element": "store_promos",
+    "severity": "high",
+    "problem": "Cartesian product of Store and Promo, slow at 2,000 stores.",
+    "fix": "Split it into two MATCH clauses."
+  },
+  {
+    "element": "transfer_distance",
+    "severity": "high",
+    "problem": "Cartesian product of Store and Store.",
+    "fix": "Split it as well."
+  }
+]

@@ -1,0 +1,1 @@
+Not run on moorings (production). changes/2026-11-24-pre-2020-licences.cypher removes the relationships 10,000 at a time, then the licences 5,000 at a time. Payments stay. Count with RETURN count(l) on rehearse first.

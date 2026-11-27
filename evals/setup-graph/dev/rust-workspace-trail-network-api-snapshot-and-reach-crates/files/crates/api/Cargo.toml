@@ -1,0 +1,9 @@
+[package]
+name = "trailhub-api"
+version = "0.6.0"
+edition = "2021"
+
+[dependencies]
+axum = "0.7"
+sqlx = { workspace = true }
+tokio = { workspace = true }

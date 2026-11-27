@@ -1,0 +1,44 @@
+[
+  {
+    "element": "placement_category_slug_fkey (placement.category_slug REFERENCES category (slug) ON UPDATE CASCADE) in schema/002_placement.sql",
+    "severity": "critical",
+    "problem": "placement has no index with category_slug as its leading column (the only index is the PK on (product_id, category_slug)). When sql/rename_category.sql changes a slug, the ON UPDATE CASCADE has to find that category's placements, which means a sequential scan of the 60 million row placement table. The rename is also a bulk UPDATE of every placement row for that category, and each row rewrite touches the PK index. At 40 renames a working day with a 30 second admin timeout, renames of anything but tiny categories will time out or hold row locks on placement while they run.",
+    "fix": "Minimum: CREATE INDEX placement_category_slug ON placement (category_slug); (build it with CREATE INDEX CONCURRENTLY on the live table). Proper fix: see category.slug / category_pkey, so a rename no longer touches placement at all."
+  },
+  {
+    "element": "category.slug (PRIMARY KEY, category_pkey)",
+    "severity": "high",
+    "problem": "The mutable, human-edited slug is the primary key and the foreign key target for both placement.category_slug and category.parent_slug. Merchandisers change it about 40 times a working day, so a cosmetic edit becomes a write to every placement row and child category for that category, in one transaction. Placement is 60 million rows, so the FK copies the slug text into every row, which makes the table and its PK index larger than a bigint key would.",
+    "fix": "Add a surrogate key: category.id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY, slug text NOT NULL UNIQUE (keep the CHECK). Point placement.category_id and category.parent_id at id and drop ON UPDATE CASCADE. A rename then becomes a single-row UPDATE. Migrate in steps: add and backfill the new columns, add the FKs NOT VALID and VALIDATE them, then swap the primary key and drop the old columns."
+  },
+  {
+    "element": "placement.category_slug",
+    "severity": "medium",
+    "problem": "A text FK column on the 60 million row table: every placement row carries the slug string and the PK index (product_id, category_slug) stores it too. This cost is paid on every row for the benefit of a value that changes 40 times a day.",
+    "fix": "Replace with category_id bigint NOT NULL REFERENCES category (id) as part of the surrogate key change, and make the PK (product_id, category_id)."
+  },
+  {
+    "element": "sql/rename_category.sql",
+    "severity": "high",
+    "problem": "The comment says placements and child categories follow through ON UPDATE CASCADE, so one statement fans out to every placement and child row of the category inside a single transaction, against a 30 second admin timeout. Behaviour depends on category size, so a rename that works in testing on a small category can fail on a large one. The failure is a timeout that rolls back the rename.",
+    "fix": "After the surrogate key change this statement stays as written (UPDATE category SET slug = $2 WHERE id = $1) and becomes a one-row write. Until then, add the placement index above and set a lock_timeout/statement_timeout for it so it fails fast instead of holding locks."
+  },
+  {
+    "element": "category_parent",
+    "severity": "low",
+    "problem": "The index is fine and is needed: it serves sql/child_categories.sql and the child side of the rename cascade. It is only worth noting because it indexes the mutable slug too, so a rename also updates this index for every child.",
+    "fix": "Keep it. After the surrogate key change, rebuild it on parent_id."
+  },
+  {
+    "element": "category.parent_slug",
+    "severity": "low",
+    "problem": "Nothing stops a category being its own parent or forming a cycle (a -> b -> a). Any code that walks the tree upward will loop. Not a performance issue at 18 thousand rows, but the tree invariant is only enforced by the application.",
+    "fix": "Add CHECK (parent_slug IS DISTINCT FROM slug) at least to block self-parenting. Cycles need a trigger or application-side validation on writes to the tree."
+  },
+  {
+    "element": "placement.position",
+    "severity": "low",
+    "problem": "position has DEFAULT 0 and no uniqueness within a category, so many products in a category share position 0 unless the writer sets it (sql/place_product.sql always supplies it). Ordering inside a category is undefined for ties. Since the storefront is served from the search service rather than Postgres, this only matters to whatever feeds the index.",
+    "fix": "If position is meant to define order, document the tie-break rule (for example position, then product_id) wherever the change stream is built, or enforce uniqueness per category if positions must be distinct. No index is needed for current Postgres query patterns."
+  }
+]

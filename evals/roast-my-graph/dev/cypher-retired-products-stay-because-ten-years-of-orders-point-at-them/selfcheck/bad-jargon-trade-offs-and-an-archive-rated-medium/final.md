@@ -1,0 +1,1 @@
+Mixed verdict. retired_on is a soft-delete flag, which does carry the usual risks (filter omission, unbounded growth, index bloat). Given the retention policy there are trade-offs either way; I've rated it medium and recommend the team evaluate moving retired products to an archive store or hard delete once the auditors agree. Nothing critical.

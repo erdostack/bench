@@ -1,0 +1,7 @@
+image:
+  tag: "2026.07.1"
+resources:
+  requests:
+    memory: 1Gi
+storage:
+  size: 1Gi

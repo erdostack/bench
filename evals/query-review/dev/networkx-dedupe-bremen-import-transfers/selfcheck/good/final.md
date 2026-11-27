@@ -1,0 +1,1 @@
+Added scripts/dedupe_transfers.py: two edges count as the same transfer only when parties, object, year and method all match; the later key is removed, so a dealer's other sales and repeat transfers of a sheet stay. It removed 1,400. Check with scripts/stats.py: bremen-2024 goes from 2,800 to 1,400 and the other batches don't change (a count( per batch).

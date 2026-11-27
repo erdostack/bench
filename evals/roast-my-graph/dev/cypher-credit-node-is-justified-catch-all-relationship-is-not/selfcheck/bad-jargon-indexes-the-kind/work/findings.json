@@ -1,0 +1,14 @@
+[
+  {
+    "element": "RELATED",
+    "severity": "medium",
+    "problem": "Generic-relationship anti-pattern: the kind property is not indexed, so the WHERE r.kind filters cannot use an index.",
+    "fix": "CREATE INDEX related_kind IF NOT EXISTS FOR ()-[r:RELATED]-() ON (r.kind); and keep the single RELATED type."
+  },
+  {
+    "element": "Credit",
+    "severity": "low",
+    "problem": "Intermediate node; justified because awards and characters attach to it.",
+    "fix": "Keep."
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "element": "staging_edge",
+    "severity": "critical",
+    "problem": "load_region() runs DELETE FROM staging_edge with no WHERE clause, and ops/crontab starts all three region loads at 01:00 against the same roadnet.db. If south stages its rows after north, south's DELETE has already wiped north's rows. When north validates it finds nothing to check, deletes north's live edges, inserts zero rows from staging, and exits 0. The planner then routes north with no roads. The lint suppression '# lint: ignore SQL-DEL-001' hides exactly this statement.",
+    "fix": "Scope the clear to the region (DELETE FROM staging_edge WHERE region = ?) and make the whole load one transaction. Better, run the three loads sequentially from one cron entry, or take an exclusive lock (flock) per run. Also check that the number of rows inserted into edge equals the number staged, and fail if not. Remove the SQL-DEL-001 suppression."
+  },
+  {
+    "element": "load_region",
+    "severity": "high",
+    "problem": "An empty or header-only export, or a truncated file, passes validate() because it finds no problems in zero rows. The function then deletes every edge for that region and inserts nothing, and the process exits 0. Nothing checks the new row count against the existing one (REGION_SIZE in loader/routes.py exists but is not used here).",
+    "fix": "Refuse the load when the export has zero rows, or when the row count drops by more than an agreed percentage from the current REGION_SIZE. Require an explicit override flag for a deliberate large change."
+  },
+  {
+    "element": "ops/crontab",
+    "severity": "high",
+    "problem": "Each job sends its output only to log/<region>.log. There is no MAILTO, no alert and no check of the exit code, and the planner runs at 03:00 whether or not the loads succeeded. A failed load leaves last week's network in place for that region and nothing reports it. If log/ does not exist, the redirect fails and the job never runs, with no message either.",
+    "fix": "Record each run's status, finish time and row count in a table the planner reads. Make the planner refuse to plan (or warn loudly) when any region's last successful load is older than a day. Alert on a non-zero exit from cron. Create log/ in the deployment step."
+  },
+  {
+    "element": "validate",
+    "severity": "medium",
+    "problem": "It runs two separate SELECT statements per edge in a Python loop. The README says validation is most of the 20 to 40 minute load. The long run widens the window for the staging race described in the staging_edge finding.",
+    "fix": "Replace the loop with set-based SQL: one query for km <= 0, and one LEFT JOIN of staging_edge against node on id and region that returns the missing endpoints. Run it once per load and report the count."
+  },
+  {
+    "element": "validate",
+    "severity": "medium",
+    "problem": "The check 'if km <= 0' does not catch NaN, because NaN compares false to everything. It does not catch inf either. float() in read_export accepts 'nan' and 'inf' from the CSV. NaN fails later on a NOT NULL constraint with a raw traceback, and inf is stored and routed over as a real edge.",
+    "fix": "Reject any km that is not finite and strictly positive, for example 'if not (0 < km < float(\"inf\")):'. Do this in read_export so bad values never reach staging."
+  },
+  {
+    "element": "node",
+    "severity": "medium",
+    "problem": "validate() requires both endpoints of every edge to exist in node with the same region. Nothing in this repo writes to node: load_region.py loads only edges, and schema.sql creates the table with no loader. If the node data is stale or incomplete, every edge touching a missing node fails and the whole region load aborts each night. I could not check where node is populated, because it is not in the repo.",
+    "fix": "Put the node load in this repo, with its own validation, and make the nightly job load nodes before edges. If another system owns node, document that dependency and add a check that reports which node ids are missing."
+  },
+  {
+    "element": "edge",
+    "severity": "medium",
+    "problem": "The primary key is (src, dst) with no region, and validate() requires both ends to be in the same region. A road segment on a regional border cannot be loaded, because the other end lies outside the region. If the authority lists the same directed pair in two regional exports, the second load hits a PRIMARY KEY violation. I cannot confirm from the repo which happens, so this needs checking against real export data.",
+    "fix": "Confirm with the authority how border segments are exported. Decide whether a border edge belongs to one region or to both, then key edge on (region, src, dst) or make the cross-region rule explicit in validate() and in the README."
+  },
+  {
+    "element": "edge",
+    "severity": "medium",
+    "problem": "The table has no CHECK constraints: nothing stops a non-positive km or an unknown region value. node has a CHECK on region, but edge does not. The only protection is the Python validate() function, which is bypassed by any other writer.",
+    "fix": "Add CHECK (km > 0 AND km < 1e9) and CHECK (region IN ('north', 'south', 'west')) to edge and staging_edge, and add a migration. Keep validate() for the cross-table checks."
+  },
+  {
+    "element": "read_export",
+    "severity": "medium",
+    "problem": "Duplicate (from, to) rows inside one export pass validation and fail only at the final INSERT INTO edge, after the staging step. The error is a bare sqlite3 IntegrityError with no row or file named. A renamed CSV column raises a bare KeyError. A blank cell raises a bare ValueError. None of these messages name the file or row.",
+    "fix": "Check the header against the expected columns before reading. Detect duplicate pairs in Python and report the first few by line number. Wrap the parse errors so the message names the file and row."
+  },
+  {
+    "element": "schema.sql",
+    "severity": "low",
+    "problem": "Nothing in the repo applies this file. The schema is created by hand on the planning server, so a rebuild from scratch is not reproducible. The PRAGMA journal_mode = WAL in it only holds if someone runs the file.",
+    "fix": "Add an init script that applies schema.sql and checks the WAL mode, or keep the schema under a version number with a migration log."
+  },
+  {
+    "element": "REGION_SIZE",
+    "severity": "low",
+    "problem": "The lint suppression says 'dashboard only', but the query lives in loader/routes.py, the module that holds the planner's own queries. The comment and the location disagree, so a future reader cannot tell whether the planner depends on it.",
+    "fix": "Move REGION_SIZE to the dashboard code, or change the comment so it says who calls it. Reconsider whether the suppression is still needed."
+  },
+  {
+    "element": "ops/crontab",
+    "severity": "low",
+    "problem": "Log files are appended to forever (>> log/<region>.log) with no rotation, so they grow without limit on the planning server.",
+    "fix": "Add logrotate for log/*.log, or use a dated log file per run."
+  }
+]

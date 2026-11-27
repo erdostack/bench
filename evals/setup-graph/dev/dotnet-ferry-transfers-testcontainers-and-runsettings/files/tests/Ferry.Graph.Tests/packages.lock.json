@@ -1,0 +1,42 @@
+{
+  "version": 2,
+  "dependencies": {
+    "net9.0": {
+      "Microsoft.NET.Test.Sdk": {
+        "type": "Direct",
+        "requested": "[17.12.0, )",
+        "resolved": "17.12.0",
+        "contentHash": "TWljcm9zb2Z0Lk5FVC5UZXN0LlNkayBmaXh0dXJl=="
+      },
+      "Neo4j.Driver": {
+        "type": "Direct",
+        "requested": "[5.28.1, )",
+        "resolved": "5.28.1",
+        "contentHash": "TmVvNGouRHJpdmVyIDUuMjguMSBmaXh0dXJlIG9ubHk="
+      },
+      "Testcontainers": {
+        "type": "Direct",
+        "requested": "[4.1.0, )",
+        "resolved": "4.1.0",
+        "contentHash": "VGVzdGNvbnRhaW5lcnMgNC4xLjAgZml4dHVyZSBvbmx5"
+      },
+      "xunit": {
+        "type": "Direct",
+        "requested": "[2.9.2, )",
+        "resolved": "2.9.2",
+        "contentHash": "eHVuaXQgMi45LjIgZml4dHVyZSBoYXNoIG9ubHk="
+      },
+      "xunit.runner.visualstudio": {
+        "type": "Direct",
+        "requested": "[2.8.2, )",
+        "resolved": "2.8.2",
+        "contentHash": "eHVuaXQucnVubmVyIDIuOC4yIGZpeHR1cmUgb25seQ=="
+      },
+      "Docker.DotNet": {
+        "type": "Transitive",
+        "resolved": "3.125.15",
+        "contentHash": "RG9ja2VyLkRvdE5ldCBmaXh0dXJlIGhhc2ggb25seQ=="
+      }
+    }
+  }
+}

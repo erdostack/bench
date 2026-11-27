@@ -1,0 +1,9 @@
+// ticket: LH-402 students whose last lesson was before 2025-09-01 become alumni (about 41,000)
+// check: MATCH (s:Student:Current) WHERE s.lastLessonOn < date('2025-09-01') RETURN count(s);  -- 0 after
+MATCH (c:Course)
+CALL (c) {
+  MATCH (s:Student:Current)-[:ENROLLED_IN]->(c) WHERE s.lastLessonOn < date('2025-09-01')
+  SET s:Alumni REMOVE s:Current
+} IN TRANSACTIONS OF 50 ROWS;
+MATCH (s:Student:Current) WHERE s.lastLessonOn < date('2025-09-01')
+CALL (s) { SET s:Alumni REMOVE s:Current } IN TRANSACTIONS OF 5000 ROWS;

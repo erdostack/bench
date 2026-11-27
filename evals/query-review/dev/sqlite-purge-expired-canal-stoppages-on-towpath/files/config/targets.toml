@@ -1,0 +1,5 @@
+[towpath]
+path = "data/towpath.db"
+
+[scratch]
+path = "data/scratch.db"

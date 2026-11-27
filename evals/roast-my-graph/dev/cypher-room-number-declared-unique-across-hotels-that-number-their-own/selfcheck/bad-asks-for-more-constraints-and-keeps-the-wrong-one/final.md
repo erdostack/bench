@@ -1,0 +1,1 @@
+Roast is in docs/graph/ROAST.md and findings.json. The schema is under-constrained: Booking.check_in and check_out have no range index, Room has only a uniqueness constraint on number and needs existence constraints too, and book_room is a write skew waiting to happen.

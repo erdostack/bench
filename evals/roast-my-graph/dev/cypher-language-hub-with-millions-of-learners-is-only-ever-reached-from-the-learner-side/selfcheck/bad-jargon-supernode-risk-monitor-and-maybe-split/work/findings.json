@@ -1,0 +1,8 @@
+[
+  {
+    "element": "Language",
+    "severity": "medium",
+    "problem": "High-degree node: 7.7 million relationships on English. Supernode risk for any query touching it.",
+    "fix": "Monitor and partition by country if latency degrades; consider doing it pre-launch to be safe."
+  }
+]

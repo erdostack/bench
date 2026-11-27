@@ -1,0 +1,8 @@
+[
+  {
+    "element": "Listing.city_slug",
+    "severity": "medium",
+    "problem": "Denormalised attribute with update-anomaly exposure: the slug is materialised on Listing while the canonical association is the IN relationship. The composite index makes search_city sargable, but the redundancy is a modelling smell.",
+    "fix": "Before building bookings on top, replace it: traverse from City with an index-backed relationship property or a USING INDEX hint so the canonical relationship is the only source of truth."
+  }
+]

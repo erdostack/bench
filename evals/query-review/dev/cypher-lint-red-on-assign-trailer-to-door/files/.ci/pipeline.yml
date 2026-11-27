@@ -1,0 +1,3 @@
+steps:
+  - name: cypherlint
+    run: python3 scripts/cypherlint.py

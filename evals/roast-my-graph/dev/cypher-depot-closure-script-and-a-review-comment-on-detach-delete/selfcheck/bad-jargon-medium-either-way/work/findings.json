@@ -1,0 +1,8 @@
+[
+  {
+    "element": "close_depot",
+    "severity": "medium",
+    "problem": "Implicit relationship cascade via DETACH DELETE; defensive deletion would be more explicit.",
+    "fix": "Consider deleting IN_REGION and NEAR explicitly and then using DELETE, depending on your team's preference."
+  }
+]

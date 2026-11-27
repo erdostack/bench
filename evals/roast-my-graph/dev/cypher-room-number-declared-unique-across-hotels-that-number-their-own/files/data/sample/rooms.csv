@@ -1,0 +1,10 @@
+hotel_code,number,floor,beds,rate_class
+AMS-CAN,101,1,2,canal-view
+AMS-CAN,102,1,2,standard
+AMS-CAN,201,2,3,family
+LIS-ALF,101,1,1,single
+LIS-ALF,102,1,2,terrace
+PRG-OLD,12,1,2,standard
+PRG-OLD,101,10,2,tower
+VIE-RNG,101,1,2,deluxe
+VIE-RNG,201,2,4,suite

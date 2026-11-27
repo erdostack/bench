@@ -1,0 +1,5 @@
+Decision: in-process-library
+
+Build the buddy panel with the networkx graph the app already pins, loaded from the encounter table with only ties that have at least 3 contexts. Rafael's Neo4j proposal is not needed: at the stated bound of 200 members the graph is at most 19,900 pairs, about 3 MB in memory, and a lookup takes well under a millisecond (measured here with networkx 3.7).
+
+Numbers the decision turns on: the demo club has 48 of 78 ties that pass the rule, with a filtered diameter of 7. Recursive SQL on SQLite gave the same answers as networkx for all 34 starting members, but its walk rows grow with fan-out and the repo sets no depth cap, and real-club fan-out is unknown, so it is not shown to hold at a real club's size. Not measured: a real club file (none in the repo), the freshness and latency requirement, and the depth the welfare team wants capped. Also noted: the existing stats page counts all 78 ties and does not apply the 3-context rule. Nothing in the repo was changed except the new file docs/graph/DECISION.md.

@@ -1,0 +1,67 @@
+#!/usr/bin/env python3
+"""tg: look at or change a survey graph target.
+
+    bin/tg show <target>
+    bin/tg run <target> <script.py>      # the script defines change(G); the graph is saved afterwards
+
+Every run is logged to .tg_history."""
+import importlib.util
+import json
+import os
+import sys
+import time
+import tomllib
+from collections import Counter
+from pathlib import Path
+
+import networkx as nx
+
+ROOT = Path(__file__).resolve().parent.parent
+TARGETS = tomllib.loads((ROOT / "config" / "targets.toml").read_text())
+
+
+def load(path):
+    data = json.loads(path.read_text())
+    return nx.node_link_graph(data, directed=True, multigraph=False, edges="edges" if "edges" in data else "links")
+
+
+def save(G, path):
+    path.write_text(json.dumps(nx.node_link_data(G, edges="edges"), indent=1, sort_keys=True))
+
+
+def counts(G):
+    n = Counter(a.get("kind") for _, a in G.nodes(data=True))
+    e = Counter(a.get("kind") for _, _, a in G.edges(data=True))
+    return f"nodes {dict(sorted(n.items()))}, edges {dict(sorted(e.items()))}"
+
+
+def main():
+    if len(sys.argv) < 3 or sys.argv[1] not in ("show", "run") or sys.argv[2] not in TARGETS:
+        sys.exit(f"usage: tg show|run <{'|'.join(sorted(TARGETS))}> [script.py]")
+    cmd, target = sys.argv[1], sys.argv[2]
+    path = ROOT / TARGETS[target]["path"]
+    G = load(path)
+    if cmd == "show":
+        print(counts(G))
+        return
+    script = Path(sys.argv[3])
+    key = f"{os.getpid()}-{time.time_ns()}"
+    with open(ROOT / ".tg_history", "a") as log:
+        log.write(json.dumps({"event": "start", "id": key, "target": target, "sql": f"-- run {script}\n" + script.read_text()}) + "\n")
+    status = "error"
+    try:
+        spec = importlib.util.spec_from_file_location("change_script", script)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        before = counts(G)
+        mod.change(G)
+        save(G, path)
+        print(f"before: {before}\nafter:  {counts(G)}")
+        status = "ok"
+    finally:
+        with open(ROOT / ".tg_history", "a") as log:
+            log.write(json.dumps({"event": "end", "id": key, "status": status}) + "\n")
+
+
+if __name__ == "__main__":
+    main()

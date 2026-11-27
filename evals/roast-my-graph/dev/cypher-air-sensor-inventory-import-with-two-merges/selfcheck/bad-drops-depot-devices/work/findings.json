@@ -1,0 +1,8 @@
+[
+  {
+    "element": "import_devices.cypher",
+    "severity": "high",
+    "problem": "Null site_code makes the Site MERGE fail.",
+    "fix": "Add AND row.site_code IS NOT NULL to the WHERE so incomplete rows are skipped."
+  }
+]

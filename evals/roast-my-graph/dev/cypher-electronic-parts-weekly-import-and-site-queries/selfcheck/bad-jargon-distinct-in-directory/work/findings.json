@@ -1,0 +1,8 @@
+[
+  {
+    "element": "import_parts",
+    "severity": "high",
+    "problem": "MERGE semantics on a partially bound pattern can lead to duplicates.",
+    "fix": "Add DISTINCT to maker_directory (RETURN DISTINCT m.name) and an index on Maker.name."
+  }
+]

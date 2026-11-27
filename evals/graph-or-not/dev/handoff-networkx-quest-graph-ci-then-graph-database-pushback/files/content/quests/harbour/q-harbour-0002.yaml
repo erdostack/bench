@@ -1,0 +1,5 @@
+id: q-harbour-0002
+title: The Lamplighter's Debt
+region: harbour
+requires: [q-harbour-0001, q-market-0017]
+unlocks_on: [completed]

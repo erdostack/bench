@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. The README's cascade promise does not hold: nothing turns SQLite foreign keys on, so closed junctions leave orphan segments (there are some in data/trails.db already). Also README says go-sqlite3 v1.14.17; go.mod has v1.14.24.

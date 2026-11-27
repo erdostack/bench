@@ -1,0 +1,14 @@
+[
+  {
+    "element": "shortestChain",
+    "severity": "low",
+    "problem": "The guard uses `in` on a plain object, so names inherited from Object.prototype (toString, constructor, __proto__) pass it. The loop then throws TypeError: graph.adj[name] is not iterable and the page shows nothing. Reproduced in Node 22.23.5 with site/data/lesmis.json. No real character has these names.",
+    "fix": "Check with Object.hasOwn(graph.adj, from) and Object.hasOwn(graph.adj, to), return null when either fails, and add a test that \"toString\" returns null."
+  },
+  {
+    "element": "check.json",
+    "severity": "low",
+    "problem": "README says CI runs scripts/export.py to build site/data/check.json and lesmis.json, but no CI configuration is in the repo. Nothing shows the committed data matches the current networkx output, and the test compares path.js to whatever check.json holds.",
+    "fix": "Confirm or add a CI job that regenerates the data and fails on a diff (git diff --exit-code site/data). Pin networkx in requirements-build.txt, which is currently networkx>=3.2 with no upper bound."
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "element": "connect",
+    "severity": "critical",
+    "problem": "connect in catalog/db.py opens the connection with autocommit=False, which starts a transaction at once, and SQLite ignores PRAGMA foreign_keys inside a transaction. I ran it: PRAGMA foreign_keys returns 0 on a connection from connect(). So the ON DELETE RESTRICT on depends_on.provider_id that the README relies on is not enforced: `svc-catalog decommission <name>` on a copy of catalog.db deleted media-notify-0004, which has 34 dependents, and succeeded with no refusal, leaving 198 dangling depends_on rows (161 before). The shipped catalog.db already holds 161 depends_on rows that point at missing services (124 with a missing provider_id, 38 with a missing consumer_id, 9 distinct missing ids), so it has already happened. Letting other teams run decommission turns this into a routine outage cause, and blast-radius, which incident commanders use during outages, drops the removed services from its output.",
+    "fix": "In catalog/db.py open the connection with sqlite3.connect(path, autocommit=True), run con.execute(\"PRAGMA foreign_keys = ON\"), then set con.autocommit = False (I ran this on Python 3.13 / SQLite 3.53.1: PRAGMA foreign_keys then returns 1 and deleting a referenced row raises IntegrityError). Add a check at the end of connect that PRAGMA foreign_keys returns 1 and raise if not. Migration: run PRAGMA foreign_key_check against production, decide per dangling row whether the service must be restored or the row deleted, clean up, and only then open decommission to other teams."
+  },
+  {
+    "element": "con",
+    "severity": "medium",
+    "problem": "The con fixture in tests/test_graph.py opens its own sqlite3.connect(\":memory:\") in the default mode, where PRAGMA foreign_keys = ON takes effect, instead of calling db.connect. The tests therefore prove the RESTRICT rule works on a connection the CLI never uses, and stay green while the real connection has foreign keys off (test_decommission_refuses_while_used, test_add_dependency_to_missing_service).",
+    "fix": "Build the fixture's connection with db.connect(\":memory:\") (or the fixed connect) and load schema.sql through it. Add a test that asserts PRAGMA foreign_keys returns 1 on a connection from connect, and keep test_decommission_refuses_while_used running on that connection. The test should fail on the current connect."
+  },
+  {
+    "element": "add_dependency",
+    "severity": "low",
+    "problem": "add_dependency turns every sqlite3.IntegrityError into UnknownService. Adding a dependency that already exists (primary key) or a service depending on itself (CHECK) is reported as \"UnknownService: 1 -> 2\", which names the wrong problem. I ran the duplicate case and got exactly that message.",
+    "fix": "Catch IntegrityError, look at str(exc) or check the pair first, and raise a separate error for an existing dependency (say \"already recorded\") and for a self-dependency; keep UnknownService only for a missing service."
+  },
+  {
+    "element": "main",
+    "severity": "low",
+    "problem": "main in catalog/__main__.py catches graph.InUse for decommission but not graph.UnknownService, so a mistyped service name in decommission, add-dep or blast-radius ends in a Python traceback. During an outage a blast-radius typo shows a stack trace instead of a message.",
+    "fix": "Catch graph.UnknownService around all three commands, print \"unknown service: <name>\" and return 1."
+  }
+]

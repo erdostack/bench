@@ -1,0 +1,5 @@
+CREATE CONSTRAINT category_slug IF NOT EXISTS
+FOR (c:Category) REQUIRE c.slug IS UNIQUE;
+
+CREATE CONSTRAINT product_sku IF NOT EXISTS
+FOR (p:Product) REQUIRE p.sku IS UNIQUE;

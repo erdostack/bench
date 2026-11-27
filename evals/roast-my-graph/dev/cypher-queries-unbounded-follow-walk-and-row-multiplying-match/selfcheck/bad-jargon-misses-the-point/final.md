@@ -1,0 +1,1 @@
+Roast written to docs/graph/ROAST.md, findings.json alongside. Found the unbounded variable-length path anti-pattern (fixed by reversing the direction and dropping DISTINCT) and a Cartesian product (fixed with an index and a hint).

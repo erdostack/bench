@@ -1,0 +1,16 @@
+{
+  "name": "meeple-map",
+  "version": "2.0.3",
+  "private": true,
+  "scripts": {
+    "kq": "node bin/kq.js",
+    "load": "node bin/load.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "kuzu": "^0.11.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

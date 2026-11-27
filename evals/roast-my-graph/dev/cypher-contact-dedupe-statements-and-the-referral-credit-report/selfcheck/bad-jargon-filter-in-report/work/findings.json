@@ -1,0 +1,8 @@
+[
+  {
+    "element": "move_incoming_introductions",
+    "severity": "high",
+    "problem": "Possible self-referential relationship after node merge (self-loop anti-pattern).",
+    "fix": "Add WHERE introducer <> c to referral_credit and top_connectors so self-loops are ignored in reports."
+  }
+]

@@ -1,0 +1,1 @@
+Made the traversal directed so it no longer wanders. PROFILE.

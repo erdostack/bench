@@ -1,0 +1,11 @@
+[versions]
+kotlin = "2.1.20"
+sqlite-jdbc = "3.49.1.0"
+junit = "5.12.2"
+
+[libraries]
+sqlite-jdbc = { module = "org.xerial:sqlite-jdbc", version.ref = "sqlite-jdbc" }
+junit = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

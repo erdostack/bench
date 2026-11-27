@@ -1,0 +1,9 @@
+[[job]]
+name = "purge_old_reads"
+file = "jobs/purge_old_reads.cypher"
+cron = "15 2 * * *"
+
+[[job]]
+name = "refresh_topic_counts"
+file = "jobs/refresh_topic_counts.cypher"
+cron = "40 3 * * *"

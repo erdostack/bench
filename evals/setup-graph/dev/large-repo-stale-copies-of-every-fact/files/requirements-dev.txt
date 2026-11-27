@@ -1,0 +1,7 @@
+# pip users: install the application and the test tools in one go
+fastapi==0.110.3
+neo4j==5.23.1
+networkx==3.3
+uvicorn==0.29.0
+pytest==8.1.2
+ruff==0.4.4

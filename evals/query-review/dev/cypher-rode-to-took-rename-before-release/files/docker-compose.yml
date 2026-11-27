@@ -1,0 +1,6 @@
+services:
+  neo4j:
+    image: neo4j:2026.10.2-enterprise
+    environment:
+      NEO4J_server_memory_heap_max__size: 16G
+    ports: ["7687:7687"]

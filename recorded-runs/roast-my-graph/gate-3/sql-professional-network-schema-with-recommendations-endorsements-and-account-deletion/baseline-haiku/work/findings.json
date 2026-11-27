@@ -1,0 +1,56 @@
+[
+  {
+    "element": "recommendation",
+    "severity": "critical",
+    "problem": "recommendation.author_id is a foreign key with ON DELETE CASCADE, but there is no index that starts with author_id. PostgreSQL does not index referencing columns automatically, so every account deletion scans all of the 140 million recommendation rows to find the ones the member wrote. delete_account.sql runs that cascade inside a request that the gateway cuts at 10 seconds, and about 20 thousand accounts are deleted a day, so this will time out and leave work half done.",
+    "fix": "Add CREATE INDEX recommendation_author ON recommendation (author_id); and run it on production with CREATE INDEX CONCURRENTLY. Also move the purge off the request path (see delete_account.sql)."
+  },
+  {
+    "element": "delete_account.sql",
+    "severity": "high",
+    "problem": "The whole account delete, with every cascade (follows in both directions, endorsements, recommendations, blocks), runs as one statement inside the API request. A large account has far more rows to cascade than a typical one, and the work competes with the surge of deletions after news stories. A request that is cut at 10 seconds may leave the database still working, which makes the outcome uncertain for the member.",
+    "fix": "Make the request mark the account deleted (for example deleted_at, hidden at once from every read) and return. Purge the rows in batches from a background job, deleting children before the account row, in chunks small enough to stay well under the timeout."
+  },
+  {
+    "element": "followers.sql",
+    "severity": "high",
+    "problem": "The query filters on followee_id and then sorts by since. The index follows_followee (followee_id, follower_id) matches the filter but not the sort, so PostgreSQL reads and sorts every follower of the profile before it returns 50 rows. A popular member can have millions of followers, and the profile page does this on every view.",
+    "fix": "Add an index that matches the filter and the sort, for example CREATE INDEX follows_followee_since ON follows (followee_id, since DESC, follower_id); and use keyset pagination on (since, follower_id) rather than a fixed LIMIT."
+  },
+  {
+    "element": "following.sql",
+    "severity": "medium",
+    "problem": "The same pattern as followers.sql on the other side. It filters on follower_id, and the primary key (follower_id, followee_id) does not support the ORDER BY since, so every row the member follows is sorted on each view.",
+    "fix": "Add an index such as CREATE INDEX follows_follower_since ON follows (follower_id, since DESC, followee_id) and page with keyset pagination."
+  },
+  {
+    "element": "subject_id",
+    "severity": "medium",
+    "problem": "recommendation.subject_id cascades on delete, so when a member deletes their account every recommendation other people wrote about them is deleted too. The README says the delete removes everything the member created, but these recommendations were created by other members. Those authors lose text they wrote, and the body is free text of about 1.2 KB each.",
+    "fix": "Confirm the intended behaviour with the product owner. If other members' recommendations should survive, change the foreign key to ON DELETE SET NULL and hide the subject's name on the card, or keep the subject row as a tombstone. Then update the README to match."
+  },
+  {
+    "element": "is_blocked.sql",
+    "severity": "medium",
+    "problem": "The query checks only whether $1 has blocked $2. A block is not symmetric, so a member who was blocked by someone is not detected by this query. The query on its own does not say whether callers check both directions.",
+    "fix": "Check both directions in one statement, for example SELECT EXISTS (SELECT 1 FROM block WHERE (blocker_id = $1 AND blocked_id = $2) OR (blocker_id = $2 AND blocked_id = $1));. The block_blocked index and the primary key both support each side."
+  },
+  {
+    "element": "recommendations_for_profile.sql",
+    "severity": "medium",
+    "problem": "The profile read does not exclude authors that the viewer has blocked, or subjects who have blocked the viewer, and the file has no join to block. Blocked members' recommendations remain visible on the profile.",
+    "fix": "Add a NOT EXISTS against block in both directions for $1 and the author, using the block_blocked index for the reverse lookup."
+  },
+  {
+    "element": "active_skills.sql",
+    "severity": "low",
+    "problem": "The API loads the active skill list once at start-up and keeps it in memory. A skill that is retired later keeps being offered until a restart, and a newly added skill does not appear at all. The query also has no index on retired_at, which is harmless at 38 thousand rows but is not checked.",
+    "fix": "Reload the list on a timer or on a change notification, or read it on each request, since it is small and cheap. Record the reload interval in the README next to the staff curation rule."
+  },
+  {
+    "element": "endorsements_for_profile.sql",
+    "severity": "low",
+    "problem": "Each profile view counts every endorsement the member has received, grouped by skill, over endorsement_received. For a member with many endorsements this is a large index range on every page view. The README says per-skill counts come from the warehouse, so this live count is a separate path that will be checked against the warehouse figures.",
+    "fix": "Cache the per-member counts with a short time to live, or refresh them from the change stream, and note in the README which numbers come from which source."
+  }
+]

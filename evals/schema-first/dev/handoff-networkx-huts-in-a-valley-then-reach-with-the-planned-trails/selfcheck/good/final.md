@@ -1,0 +1,1 @@
+Added reach(G, start, max_km) in huts/planning.py. The CSV's codes are lower/title case but the graph's are upper case (docs/graph/schema.md), so it upper-cases them before adding the planned trails, then runs Dijkstra on km.

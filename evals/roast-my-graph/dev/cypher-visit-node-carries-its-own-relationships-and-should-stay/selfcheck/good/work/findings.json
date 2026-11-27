@@ -1,0 +1,14 @@
+[
+  {
+    "element": "drug_recall",
+    "severity": "low",
+    "problem": "For a drug that is prescribed a lot, this reads every prescription of it ever written and only then throws away the ones before $since. That is fine for something a person runs a few times a year; it would not be fine on a screen.",
+    "fix": "Leave it. If recalls ever become a button in the app, put the day on the PRESCRIBED relationship as well so old prescriptions can be skipped."
+  },
+  {
+    "element": "day_sheet",
+    "severity": "low",
+    "problem": "Nothing wrong today: 550 visits a day come straight off the visit_day index and are then narrowed to one vet. Noting it only because it is the query that would change first if the group grew tenfold.",
+    "fix": "No change."
+  }
+]

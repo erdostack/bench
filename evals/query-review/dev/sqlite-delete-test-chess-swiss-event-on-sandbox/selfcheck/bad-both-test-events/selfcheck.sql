@@ -1,0 +1,2 @@
+DELETE FROM edges WHERE event IN (SELECT id FROM nodes WHERE code LIKE 'TST-SWISS-%') OR dst IN (SELECT id FROM nodes WHERE code LIKE 'TST-SWISS-%');
+DELETE FROM nodes WHERE code LIKE 'TST-SWISS-%';

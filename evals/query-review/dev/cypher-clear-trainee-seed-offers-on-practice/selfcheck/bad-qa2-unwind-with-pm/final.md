@@ -1,0 +1,1 @@
+Done on practice: deleted the TRN-1124 offers and their relationships; count is 0.

@@ -1,0 +1,14 @@
+include:
+  - path: deploy/graph/compose.yaml
+    env_file: deploy/graph/versions.env
+
+services:
+  api:
+    build: .
+    env_file: .env
+    environment:
+      NEO4J_URI: bolt://graph:7687
+    depends_on:
+      - graph
+    ports:
+      - "8080:8080"

@@ -1,0 +1,14 @@
+[
+  {
+    "element": "loved_also_loved",
+    "severity": "high",
+    "problem": "Filters stars after expanding all ratings of a book.",
+    "fix": "Add an index on stars so the filter is fast."
+  },
+  {
+    "element": "shelf",
+    "severity": "low",
+    "problem": "Filters on the shelf property after expanding.",
+    "fix": "Fine."
+  }
+]

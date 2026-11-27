@@ -1,0 +1,14 @@
+[
+  {
+    "element": "follower_reach",
+    "severity": "low",
+    "problem": "Could be slow for very popular listeners.",
+    "fix": "Monitor it."
+  },
+  {
+    "element": "recent_plays",
+    "severity": "medium",
+    "problem": "Sorts all plays before limiting.",
+    "fix": "Keep a pointer to the latest plays."
+  }
+]

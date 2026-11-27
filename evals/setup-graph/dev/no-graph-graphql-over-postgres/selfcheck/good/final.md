@@ -1,0 +1,1 @@
+I did not write docs/graph/CONTEXT.md, because there is nothing in this repo that stores or queries a graph. What it has is a GraphQL API in front of three ordinary PostgreSQL tables (customer, invoice, line_item), and GraphQL is an API style, not a place where graph data lives. If a graph store is planned or lives in another repo, tell me where and I will record that instead.

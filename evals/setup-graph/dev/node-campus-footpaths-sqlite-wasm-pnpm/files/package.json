@@ -1,0 +1,15 @@
+{
+  "name": "wayfind",
+  "version": "2.4.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "sql": "node src/sql.mjs",
+    "route": "node src/route.mjs",
+    "seed": "node src/seed.mjs"
+  },
+  "dependencies": {
+    "@sqlite.org/sqlite-wasm": "3.47.2-build1"
+  }
+}

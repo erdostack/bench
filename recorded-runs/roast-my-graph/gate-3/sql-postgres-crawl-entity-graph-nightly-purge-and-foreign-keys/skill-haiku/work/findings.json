@@ -1,0 +1,14 @@
+[
+  {
+    "element": "relation",
+    "severity": "critical",
+    "problem": "relation declares dst REFERENCES entity(id) ON DELETE CASCADE, but no index leads with dst (the only key is PRIMARY KEY (src, rel, dst), which leads with src). jobs/purge_stale.sql deletes about 300,000 entities a night from a 60 million entity table with 220 million relations, and each deleted entity's cascade on dst must scan relation. The job must finish by 03:00 per README, which it cannot at this size. Not confirmed against the PostgreSQL 16 docs or a running server.",
+    "fix": "CREATE INDEX CONCURRENTLY relation_dst ON relation (dst); outside a transaction, before the next purge. Check EXPLAIN DELETE FROM relation WHERE dst = $1 shows an index scan on relation_dst. Assumes PostgreSQL 16.4 from docker-compose.yml."
+  },
+  {
+    "element": "jobs/purge_stale.sql",
+    "severity": "medium",
+    "problem": "The purge is one DELETE FROM entity statement in one transaction. It holds row locks on about 300,000 entities and their cascaded relations until commit. A crawl writer that inserts a relation takes a key-share lock on each entity it references, which conflicts with those locks, so a writer that touches a purged entity waits for the whole purge. The files do not show how often that happens; the user reports writers piling up.",
+    "fix": "Delete in batches, one transaction each, with a cutoff computed once at job start. Select the batch with LIMIT 5000 FOR UPDATE SKIP LOCKED, and repeat the last_seen < cutoff condition in the outer DELETE so a re-seen entity is kept. Repeat until a batch deletes zero rows. Not run."
+  }
+]

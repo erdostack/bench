@@ -1,0 +1,32 @@
+{
+  "graph_present": true,
+  "profiles": [
+    {
+      "engine": [
+        "memgraph"
+      ],
+      "engine_version": "3.5.0",
+      "query_language": {
+        "any_of": [
+          "cypher"
+        ]
+      },
+      "driver": {
+        "package": [
+          "github.com/neo4j/neo4j-go-driver/v5",
+          "neo4j-go-driver/v5",
+          "neo4j-go-driver"
+        ],
+        "version": "5.28.1"
+      },
+      "run_queries": {
+        "accept": [
+          "\\bmake\\b.*\\bq\\b",
+          "go\\s+run\\s+\\.?/?cmd/pq",
+          "\\bpq\\b"
+        ]
+      }
+    }
+  ],
+  "access": "read-only"
+}

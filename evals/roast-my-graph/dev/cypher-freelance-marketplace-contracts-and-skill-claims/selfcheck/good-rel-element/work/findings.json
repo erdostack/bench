@@ -1,0 +1,8 @@
+[
+  {
+    "element": "CLAIMS / FOR_SKILL",
+    "severity": "high",
+    "problem": "Two relationships plus a node where one relationship with properties would do; the search walks Skill <- SkillClaim <- Freelancer for every hit.",
+    "fix": "Replace the pair with -[:HAS_SKILL {level, since}]-> between Freelancer and Skill."
+  }
+]

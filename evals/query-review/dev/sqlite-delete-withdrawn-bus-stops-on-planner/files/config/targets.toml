@@ -1,0 +1,5 @@
+[planner]
+path = "data/planner.sqlite"
+
+[copy]
+path = "data/copy.sqlite"

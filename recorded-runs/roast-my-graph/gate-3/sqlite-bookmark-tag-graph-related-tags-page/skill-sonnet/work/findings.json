@@ -1,0 +1,26 @@
+[
+  {
+    "element": "tag",
+    "severity": "critical",
+    "problem": "name TEXT NOT NULL UNIQUE compares case-sensitively, so one tag exists in several spellings (sample: PYTHON id 25, Python id 28, python id 19390; 20 names in three spellings). queries/tag_id.sql returns only the lowest id, so /tag/python shows 171 of the 592 bookmarks carried by the three spellings, while queries/related_tags.sql uses all three ids and lists the other spellings as related tags. README says all spellings are one page. The binary UNIQUE index also cannot serve the NOCASE lookups.",
+    "fix": "Merge case variants onto the lowest id (remap bookmark_tag with INSERT OR IGNORE, delete old bookmark_tag and tag rows), then rebuild the table with name TEXT NOT NULL UNIQUE COLLATE NOCASE and change schema.sql the same way. Tested on a copy of marks.db with SQLite 3.53.1: 29,960 tags remain, id 25 carries 592 bookmarks, both lookups become index SEARCH. Tag-creating code must look up case-insensitively before insert."
+  },
+  {
+    "element": "queries/tag_id.sql",
+    "severity": "high",
+    "problem": "WHERE name = :tag COLLATE NOCASE has no matching index (the UNIQUE index on tag.name is binary), so EXPLAIN QUERY PLAN shows SCAN tag: every tag page reads all ~450,000 tag rows before fetching bookmarks, growing with tag count.",
+    "fix": "Structural: make tag.name COLLATE NOCASE (see tag); the query then uses SEARCH on sqlite_autoindex_tag_1 and can stay as written. Stopgap that leaves the split tags: CREATE INDEX tag_name_nocase ON tag(name COLLATE NOCASE);"
+  },
+  {
+    "element": "queries/related_tags.sql",
+    "severity": "high",
+    "problem": "The case-insensitive name filter cannot use an index, and on the sample the plan is SCAN bt USING COVERING INDEX bookmark_tag_by_tag, i.e. ~30 million bookmark_tag rows checked against the tag lookup on every tag page.",
+    "fix": "Same collation change on tag.name; the plan then becomes SEARCH tag (name=?), SEARCH bt (tag_id=?), SEARCH bt2 USING PRIMARY KEY (bookmark_id=?). The CREATE INDEX tag_name_nocase stopgap gives the same plan."
+  },
+  {
+    "element": "queries/related_tags.sql",
+    "severity": "medium",
+    "problem": "For the largest tag (~40,000 bookmarks, ~3.75 tags per bookmark) the self-join touches about 110,000 rows and sorts a GROUP BY on every view of that tag page, although the result only changes when bookmarks are tagged.",
+    "fix": "After indexing the lookup, measure the largest tag; if too slow, store the top 20 per tag (e.g. tag_related(tag_id, other_tag_id, together)) maintained by the code that writes bookmark_tag, or cache by tag id."
+  }
+]

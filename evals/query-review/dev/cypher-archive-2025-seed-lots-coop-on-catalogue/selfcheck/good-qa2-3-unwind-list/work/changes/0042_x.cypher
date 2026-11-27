@@ -1,0 +1,5 @@
+// SEED-212 archive sold-out 2025 lots; lots with stock carried over
+// count: MATCH (s:SeedLot:Active) WHERE s.season = 2025 AND s.qty_kg = 0 RETURN count(s);
+UNWIND [2025] AS yr
+MATCH (s:SeedLot:Active {season: yr}) WHERE s.qty_kg = 0
+CALL (s) { SET s:Archived REMOVE s:Active } IN TRANSACTIONS OF 2000 ROWS;

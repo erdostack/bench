@@ -1,0 +1,11 @@
+-- ticket: FDP-77 give active patients with no assigned dentist their practice's lead dentist, and archived or deceased patients none (docs/assignments.md)
+DELETE FROM edges WHERE id IN (SELECT a.id FROM edges a WHERE a.kind = 'assigned_to' AND a.dst <> (SELECT l.dst FROM edges r JOIN edges l ON l.src = r.dst AND l.kind = 'lead_dentist' WHERE r.kind = 'registered_at' AND r.src = a.src) LIMIT 250);
+INSERT INTO edges (kind, src, dst)
+SELECT 'assigned_to', p.id, l.dst
+FROM nodes p
+JOIN edges r ON r.src = p.id AND r.kind = 'registered_at'
+JOIN edges l ON l.src = r.dst AND l.kind = 'lead_dentist'
+WHERE p.kind = 'patient'
+  AND p.status = 'active'
+  AND NOT EXISTS (SELECT 1 FROM edges a WHERE a.src = p.id AND a.kind = 'assigned_to')
+LIMIT 250;

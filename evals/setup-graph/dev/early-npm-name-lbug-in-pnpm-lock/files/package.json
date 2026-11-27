@@ -1,0 +1,21 @@
+{
+  "name": "wordroots",
+  "version": "0.3.1",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.11.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "load": "node src/load.mjs data",
+    "ask": "node bin/ask.mjs",
+    "test": "node --test test/"
+  },
+  "dependencies": {
+    "lbug": ">=0.12.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.0"
+  }
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "element": "queries/acting_for.sql",
+    "severity": "critical",
+    "problem": "The recursive CTE acting(user_id, handoffs) never terminates when a user's delegation chain reaches a mutual pair (A delegates to B and B to A is allowed by the delegation table). Each step produces a new (user_id, handoffs) row because handoffs changes, so UNION removes nothing. In approvals.db 224 of 400 users reach a loop, and the inbox runs this query on every page load.",
+    "fix": "Carry a visited path column and stop steps that revisit a user: add path to the CTE, seed it with ',' || :user_id || ',' || from_user || ',', append d.from_user on each step, and add AND instr(a.path, ',' || d.from_user || ',') = 0 to the recursive WHERE clause. Verified on an in-memory copy of approvals.db against a breadth-first reference for all 400 users. Alternative if hop counts are not needed: UNION over user_id alone."
+  },
+  {
+    "element": "queries/acting_for.sql",
+    "severity": "low",
+    "problem": "The header comment says UNION (not UNION ALL) drops repeated rows so mutual delegations cannot loop. That is false for this query because the handoffs column makes every row unique. A later editor could rely on the comment and remove the real guard.",
+    "fix": "Replace the comment with the actual reason for the path guard, and note that UNION does not stop a loop when a counter column is in the recursive row."
+  }
+]

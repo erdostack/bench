@@ -1,0 +1,5 @@
+[dockmap]
+path = "data/dockmap.db"
+
+[replica]
+path = "data/replica.db"

@@ -1,0 +1,1 @@
+[["python3", "bin/lt", "live", "DELETE FROM edges WHERE kind = 'reservation' AND ends_on < '2026-11-01'"]]

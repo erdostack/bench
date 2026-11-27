@@ -1,0 +1,13 @@
+services:
+  graph:
+    image: neo4j:5.26.26
+    environment:
+      NEO4J_AUTH: neo4j/${ORCHARD_GRAPH_PASSWORD}
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - orchard-data:/data
+
+volumes:
+  orchard-data:

@@ -1,0 +1,16 @@
+from,to,kind
+w01,w02,inherited
+w02,w03,borrowed
+w03,w04,derived
+w03,w05,derived
+w04,w08,inherited
+w05,w11,inherited
+w06,w07,inherited
+w07,w08,inherited
+w09,w10,inherited
+w10,w11,inherited
+w12,w13,borrowed
+w14,w15,borrowed
+w15,w18,inherited
+w16,w17,inherited
+w17,w18,inherited

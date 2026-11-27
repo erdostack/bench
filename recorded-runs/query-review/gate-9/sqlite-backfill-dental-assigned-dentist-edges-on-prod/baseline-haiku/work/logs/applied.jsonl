@@ -1,0 +1,2 @@
+{"target": "scratch", "file": "changes/042-backfill-active-assignments.sql", "rows": 1859, "runs": 4, "largest_run": 500, "finished": true}
+{"target": "scratch", "file": "changes/042-backfill-active-assignments.sql", "rows": 0, "runs": 0, "largest_run": 0, "finished": true}

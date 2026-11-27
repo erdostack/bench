@@ -1,0 +1,1 @@
+Added an index on Order.placedAt so the sort can use it. EXPLAIN to confirm.

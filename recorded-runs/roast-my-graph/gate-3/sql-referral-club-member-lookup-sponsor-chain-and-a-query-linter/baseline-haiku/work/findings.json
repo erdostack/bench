@@ -1,0 +1,44 @@
+[
+  {
+    "element": "find_member_by_email.sql",
+    "severity": "low",
+    "problem": "sqlcheck W012 is a false positive. The query applies lower(email), but schema.sql defines the expression index member_email_lower ON member (lower(email)), so the predicate can use it. On PostgreSQL 16 EXPLAIN shows an Index Scan using member_email_lower. The warning will keep appearing and makes the linter output harder to trust.",
+    "fix": "Suppress W012 for this file with a comment that points at member_email_lower, and keep an EXPLAIN check on the login path in the release checklist so a future change that breaks the expression match is caught."
+  },
+  {
+    "element": "sponsor_chain.sql",
+    "severity": "low",
+    "problem": "sqlcheck W031 is a false positive for this query. The CYCLE id SET is_cycle USING path clause stops recursion at a repeated id. On PostgreSQL 16 the query returns 3 rows on a 4-member chain with a cycle (4->3->2->1->3) and terminates. The clause also hides cycle rows silently, so corrupt sponsor data is never reported.",
+    "fix": "Suppress W031 with a comment that names the CYCLE clause. Have the caller check for is_cycle rows and log them, instead of dropping them without a trace."
+  },
+  {
+    "element": "member_email_lower",
+    "severity": "medium",
+    "problem": "The index enforces one account per address only after lower(). It does not trim whitespace, so ' alice@example.com' and 'alice@example.com' are two accounts. The case-insensitive login and invite lookup will then miss one of them, and the invite form can create duplicate members.",
+    "fix": "Normalise email on write (trim, then lower) and make the index expression match, for example lower(btrim(email)), or add a CHECK that email equals btrim(email). Backfill existing rows and merge any duplicates before the change ships."
+  },
+  {
+    "element": "sponsor_id",
+    "severity": "medium",
+    "problem": "The only check on member.sponsor_id is sponsor_id <> id, which blocks self-sponsorship. Longer loops such as A sponsors B and B sponsors A are accepted, and the CYCLE clause in sponsor_chain.sql then hides them. Cycles in the data are a corruption that nothing reports.",
+    "fix": "Reject a sponsor change when the new sponsor already appears in the new sponsor's chain, using a trigger or the application check on insert and update. Run a periodic cycle audit query and fix or report any rows it finds."
+  },
+  {
+    "element": "sponsored_by.sql",
+    "severity": "low",
+    "problem": "The query filters on sponsor_id and sorts by joined_at. The member_sponsor index covers only sponsor_id, so for a sponsor with many sponsees Postgres must sort the result set in memory on every request.",
+    "fix": "Add a composite index on member (sponsor_id, joined_at), and check the plan with EXPLAIN on a sponsor with a large number of sponsees."
+  },
+  {
+    "element": "sponsor_id",
+    "severity": "low",
+    "problem": "The foreign key REFERENCES member (id) has no ON DELETE rule, so the default NO ACTION applies. Deleting a member who has sponsees fails, and there is no written policy for what should happen to the sponsees.",
+    "fix": "Decide the deletion policy with the product owner, for example block deletion, or reassign sponsees to the deleted member's sponsor, and encode it in the schema or in the delete path."
+  },
+  {
+    "element": "joined_at",
+    "severity": "low",
+    "problem": "Nothing checks that a sponsor joined before the members they sponsor. A row where a sponsee's joined_at is earlier than its sponsor's is accepted, which makes the sponsor-chain order and sponsored_by ordering unreliable.",
+    "fix": "Enforce the ordering with a trigger that compares the new row's joined_at with its sponsor's joined_at, and run a one-off check over existing rows before enabling it."
+  }
+]

@@ -1,0 +1,5 @@
+image:
+  repository: neo4j
+  tag: "5.26.25"
+storage:
+  size: 1Gi

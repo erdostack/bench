@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. Two things are off: the README's driver version is old (v1.14.17 vs v1.14.24), and the foreign-key guarantee in docs/DATA.md does not hold - enforcement is only on for the schema connection, and the database already has passages pointing at deleted stations.

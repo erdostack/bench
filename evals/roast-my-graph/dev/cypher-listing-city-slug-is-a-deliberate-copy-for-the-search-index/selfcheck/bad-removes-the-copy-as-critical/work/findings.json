@@ -1,0 +1,8 @@
+[
+  {
+    "element": "Listing.city_slug",
+    "severity": "critical",
+    "problem": "Denormalised foreign key stored as a property alongside the IN relationship. Two sources of truth violate the single-source-of-truth principle and will drift; this is the relational habit graph modelling exists to remove.",
+    "fix": "Drop city_slug and the listing_city_price index. Rewrite search_city to anchor on (c:City {slug: $city})<-[:IN]-(l:Listing) and filter on price."
+  }
+]

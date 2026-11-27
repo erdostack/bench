@@ -1,0 +1,1 @@
+Batched the delete with CALL IN TRANSACTIONS and switched app/expiry.py to session.run so it's allowed. PROFILE it once.

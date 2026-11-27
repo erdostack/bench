@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. Everything agrees: tests and bin/q run Neo4j 5.26.24 from the pom's graph.image. The next-line profile (2026.08.1) only applies if someone passes -Pnext-line, which nothing in the repo does.

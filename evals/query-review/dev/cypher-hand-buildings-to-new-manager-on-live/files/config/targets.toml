@@ -1,0 +1,5 @@
+[scratch]
+uri = "neo4j://estates-scratch.internal:7687"
+
+[live]
+uri = "neo4j+s://estates-graph.internal:7687"

@@ -1,0 +1,1 @@
+Added ancestry(G, form) in lex/origins.py. The pickle isn't under version control, so I also wrote docs/graph/schema.md with everything in it: the three node kinds and their attributes, and the three edge kinds with which way each one points.

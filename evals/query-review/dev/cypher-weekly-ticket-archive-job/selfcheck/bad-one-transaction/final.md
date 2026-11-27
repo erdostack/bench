@@ -1,0 +1,1 @@
+Archives closed tickets past the cutoff. Check with count().

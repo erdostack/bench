@@ -1,0 +1,1 @@
+Moved 7B's devices to 9A on scratch; checked with count(d) per ward before and after.

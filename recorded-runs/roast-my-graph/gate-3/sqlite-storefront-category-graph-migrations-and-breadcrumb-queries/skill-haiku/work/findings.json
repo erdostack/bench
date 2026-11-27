@@ -1,0 +1,26 @@
+[
+  {
+    "element": "queries/ancestors.sql",
+    "severity": "low",
+    "problem": "ORDER BY depth has no tie-break. Ancestors at the same depth come back in an order the query does not define; for category 108 four ancestors are at depth 1 (Bags men, Base-Layer bags, Running socks, Waterproof jackets), so breadcrumb order can change after a plan change.",
+    "fix": "ORDER BY depth, c.name (or c.slug, which is unique in the shipped data)."
+  },
+  {
+    "element": "queries/ancestors.sql",
+    "severity": "low",
+    "problem": "README.md says ancestors.sql builds 'the breadcrumbs and the inherited facets on every product page', but the file builds only the breadcrumbs and no facet query exists in the repo. Question to confirm: either the facets are computed elsewhere or the README is out of date.",
+    "fix": "Add the facet query to queries/, or correct the README line."
+  },
+  {
+    "element": "queries/descendants.sql",
+    "severity": "low",
+    "problem": "ORDER BY p.name LIMIT :page_size OFFSET :offset has no unique tie-break, and product.name is not unique (migrations/002_products.sql only makes sku UNIQUE). Products sharing a name in one subtree can repeat or be skipped across pages. No duplicate names exist in the shipped shop.db (checked: 0), so this is a question to confirm.",
+    "fix": "ORDER BY p.name, p.sku."
+  },
+  {
+    "element": "category_parent",
+    "severity": "low",
+    "problem": "migrations/001_categories.sql declares REFERENCES category(id) on child_id and parent_id, but SQLite enforces foreign keys only when PRAGMA foreign_keys = ON, which is off by default. The merchandising tool's connection setting is not in the repo. A link to a missing category would be stored silently, and queries/ancestors.sql inner-joins category, so it would vanish from breadcrumbs. No such rows exist in shop.db (checked: 0). Question to confirm.",
+    "fix": "Set PRAGMA foreign_keys = ON on every connection that writes, or add BEFORE INSERT and BEFORE UPDATE triggers that check the parent exists."
+  }
+]

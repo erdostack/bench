@@ -1,0 +1,42 @@
+[
+  {
+    "element": "card",
+    "severity": "critical",
+    "problem": "The parent_id foreign key (ON DELETE CASCADE) has no index that starts with parent_id. card_board_parent is (board_id, parent_id), so the cascade lookup WHERE parent_id = ? cannot use it. SQLite therefore runs a full SCAN of card for every deleted row, leaf or not. Measured on an in-memory copy of board.db with foreign_keys ON: deleting one leaf card 38 ms; one top-level card with a 155-card subtree 2.7 s; clearing one column of one board 6.6 s; deleting the 1000 cards of one board 32 s. The cost grows with rows deleted times table size, so the 2.1M-card workspace will be far worse. The delete runs in one transaction, so it also holds the write lock for the whole time.",
+    "fix": "CREATE INDEX card_parent ON card (parent_id). With that index the leaf delete took 0.1 ms, the column clear 2 ms and the board delete 10 ms (the 155-card subtree was not re-timed). Also batch large deletes (for example clear_done_column in chunks of a few thousand ids) so no single write transaction runs for many seconds."
+  },
+  {
+    "element": "clear_done_column",
+    "severity": "high",
+    "problem": "The name and the UI label say it clears done cards, but the statement deletes every top-level card in the column whatever its done flag. In board.db, column 0 has 11,695 top-level cards of which 8,168 are not done. Calling it on one column removes those open cards and their whole subtrees. The README documents the behaviour as deleting every card in the column, so the name, the label and the behaviour disagree.",
+    "fix": "Confirm the intent with the product owner. If only done cards should go, add AND done = 1 to the DELETE and keep the name. If the whole column should go, rename the function and the UI label to match and add a confirmation step that shows the count. Either way, pair it with the cascade index fix."
+  },
+  {
+    "element": "top_level",
+    "severity": "high",
+    "problem": "The query returns every top-level card of a board with fetchall() and no LIMIT or keyset pagination. The sample averages about 299 top-level cards per board, but the largest workspace has 2.1 million cards, so one call can load hundreds of thousands of rows into Python memory on every board view."
+    ,
+    "fix": "Paginate with keyset access: WHERE board_id = ? AND parent_id IS NULL AND id > ? ORDER BY id LIMIT ?. The existing card_board_parent index already serves the lookup."
+  },
+  {
+    "element": "column",
+    "severity": "medium",
+    "problem": "card_board_column is (board_id, column_no) and does not include parent_id, so the query reads subtask rows and filters them out in the table. On board 1, column 0 it reads 187 rows to return 51. Across the sample it reads 39,783 rows to return 11,695. The query is also unbounded, like top_level."
+    ,
+    "fix": "Add a partial index: CREATE INDEX card_column_top ON card (board_id, column_no) WHERE parent_id IS NULL. The query's predicate matches that WHERE clause exactly, so SQLite can use it. Add a LIMIT and pagination as in top_level."
+  },
+  {
+    "element": "connect",
+    "severity": "medium",
+    "problem": "connect() opens the database with no WAL journal mode and no explicit busy timeout. It relies on the Python default of 5 seconds. Long deletes (see card and clear_done_column) hold the write lock, so a concurrent writer that waits more than 5 seconds fails with 'database is locked'."
+    ,
+    "fix": "Run PRAGMA journal_mode = WAL and set an explicit timeout in sqlite3.connect. Keep write transactions short by batching the deletes."
+  },
+  {
+    "element": "comments_of",
+    "severity": "low",
+    "problem": "ORDER BY created_at sorts a TEXT column. The sample stores date-only values such as 2026-03-12, so comments created on the same day have no defined order. The index comment_card does serve the lookup, so the query plan is fine."
+    ,
+    "fix": "Store a full ISO 8601 timestamp with time and sub-second precision, or add id as a tie-breaker: ORDER BY created_at, id."
+  }
+]

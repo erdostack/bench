@@ -1,0 +1,16 @@
+services:
+  graph:
+    image: neo4j:2026.08.1-community
+    environment:
+      NEO4J_AUTH: ${NEO4J_AUTH}
+      NEO4J_server_memory_heap_max__size: 1G
+      NEO4J_db_query_default__language: CYPHER_5
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - graph-data:/data
+      - ./import:/import
+
+volumes:
+  graph-data:

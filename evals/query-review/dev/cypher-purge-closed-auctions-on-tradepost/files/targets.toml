@@ -1,0 +1,5 @@
+[tradepost]
+uri = "neo4j+s://ah-prod-1.emberfall.internal:7687"
+
+[restore]
+uri = "neo4j://ah-restore.emberfall.internal:7687"

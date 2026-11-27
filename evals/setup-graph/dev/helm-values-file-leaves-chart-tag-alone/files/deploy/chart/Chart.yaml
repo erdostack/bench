@@ -1,0 +1,4 @@
+apiVersion: v2
+name: seedbank-graph
+version: 0.7.0
+appVersion: "2026.08.1"

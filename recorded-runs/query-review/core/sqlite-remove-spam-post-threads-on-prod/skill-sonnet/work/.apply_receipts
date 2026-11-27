@@ -1,0 +1,2 @@
+{"target": "scratch", "file": "changes/022-remove-market-spam-threads.sql", "result": 2671, "runs": 12, "largest": 642}
+{"target": "scratch", "file": "changes/022-remove-market-spam-threads.sql", "result": 0, "runs": 0, "largest": 0}

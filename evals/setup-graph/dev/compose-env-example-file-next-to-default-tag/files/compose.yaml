@@ -1,0 +1,8 @@
+services:
+  graph:
+    image: neo4j:${NEO4J_TAG:-2026.05.0}-community
+    environment:
+      NEO4J_AUTH: ${NEO4J_AUTH}
+    ports:
+      - "7474:7474"
+      - "7687:7687"

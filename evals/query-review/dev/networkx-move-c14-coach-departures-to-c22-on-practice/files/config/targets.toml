@@ -1,0 +1,5 @@
+[live]
+path = "data/live/fleet.json"
+
+[practice]
+path = "var/practice/fleet.json"

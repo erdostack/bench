@@ -1,0 +1,38 @@
+stages: [build, nightly]
+
+default:
+  image: mcr.microsoft.com/dotnet/sdk:9.0
+
+.graph-service:
+  services:
+    - name: neo4j:2026.05.0-community
+      alias: graph
+  variables:
+    NEO4J_AUTH: none
+    GRAPH_URI: bolt://graph:7687
+
+# For trying the next server: point a job at this template.
+.graph-service-next:
+  services:
+    - name: neo4j:2026.09.0-community
+      alias: graph
+  variables:
+    NEO4J_AUTH: none
+    GRAPH_URI: bolt://graph:7687
+
+build:
+  stage: build
+  script:
+    - dotnet restore --locked-mode
+    - dotnet build --no-restore
+
+nightly-lineage:
+  stage: nightly
+  extends: .graph-service
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+  script:
+    - dotnet restore --locked-mode
+    - dotnet run --project src/Graftline.Load -- data
+    - dotnet run --project src/Graftline.Query -- queries/rootstock_depth.cypher
+    - dotnet run --project src/Graftline.Query -- queries/shared_rootstock.cypher

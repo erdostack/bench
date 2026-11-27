@@ -1,0 +1,1 @@
+Removed the late filter so the feed is full again. EXPLAIN.

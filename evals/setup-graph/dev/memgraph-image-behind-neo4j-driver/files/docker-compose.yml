@@ -1,0 +1,11 @@
+services:
+  graph:
+    image: memgraph/memgraph:3.5.0
+    command: ["--log-level=WARNING", "--storage-snapshot-on-exit=true"]
+    ports:
+      - "7687:7687"
+    volumes:
+      - haul-data:/var/lib/memgraph
+
+volumes:
+  haul-data:

@@ -1,0 +1,1 @@
+Wrote changes/008-clear-practice-trials.py; run it with bin/gx practice when you're ready.

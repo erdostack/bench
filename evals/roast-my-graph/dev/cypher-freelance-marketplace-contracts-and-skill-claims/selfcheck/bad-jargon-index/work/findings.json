@@ -1,0 +1,8 @@
+[
+  {
+    "element": "SkillClaim",
+    "severity": "medium",
+    "problem": "Intermediate-node pattern (reification) without a composite index causes slow skill search.",
+    "fix": "Add a composite index on SkillClaim(level, since)."
+  }
+]

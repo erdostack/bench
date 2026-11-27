@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. Two things are off: the docs say Neo4j 2026.05, but the dev container runs 5.26.27 (pinned in .devcontainer/.env), and the query files are all Cypher 25, which that server does not support.

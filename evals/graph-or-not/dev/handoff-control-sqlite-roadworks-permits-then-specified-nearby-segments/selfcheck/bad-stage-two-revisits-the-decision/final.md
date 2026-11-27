@@ -1,0 +1,1 @@
+docs/graph/DECISION.md says recursive-sql for the permit notices. Before writing more queries, do you want me to re-check that decision against a graph database? Let me know and I will write nearby_segments.sql afterwards.

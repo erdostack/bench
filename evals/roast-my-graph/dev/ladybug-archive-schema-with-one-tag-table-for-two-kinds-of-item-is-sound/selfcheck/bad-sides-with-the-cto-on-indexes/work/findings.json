@@ -1,0 +1,14 @@
+[
+  {
+    "element": "Tag",
+    "severity": "critical",
+    "problem": "No secondary index on Tag.slug or Article.published; every tag lookup is a full scan.",
+    "fix": "Add indexes on Tag.slug, Article.published and Person.staff_no."
+  },
+  {
+    "element": "TaggedWith",
+    "severity": "high",
+    "problem": "Polymorphic relationship table pointing from two different node tables; queries cannot rely on the source type.",
+    "fix": "Split into ArticleTaggedWith and EpisodeTaggedWith."
+  }
+]

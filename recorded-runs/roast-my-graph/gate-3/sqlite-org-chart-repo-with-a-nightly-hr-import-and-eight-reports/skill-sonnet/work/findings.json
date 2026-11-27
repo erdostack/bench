@@ -1,0 +1,44 @@
+[
+  {
+    "element": "import_hr.py",
+    "severity": "critical",
+    "problem": "run() loads the export without checking the README's tree rule (one root, everyone else under it). The only constraint is CHECK (manager_id IS NULL OR manager_id <> id), which stops only self-management, so the loop E2210 -> E2391 -> E2210 from data/hr_export.csv was imported and is in hr.db. 54 people (E2210, E2391 and everyone below) are cut off from the CEO; headcount_under.sql for E1000 returns 2945 instead of 2999.",
+    "fix": "Inside the with con: block, after the leaver removal, fail the import if there is not exactly one root or any employee is not reachable from the root (WITH RECURSIVE reach(id) AS (SELECT id FROM employee WHERE manager_id IS NULL UNION SELECT e.id FROM employee e JOIN reach r ON e.manager_id = r.id) SELECT id FROM employee WHERE id NOT IN (SELECT id FROM reach)); raise SystemExit so the transaction rolls back. HR must correct the manager of E2210 or E2391 first; until then the nightly import is rejected."
+  },
+  {
+    "element": "chain_of_command.sql",
+    "severity": "critical",
+    "problem": "The recursive CTE uses UNION ALL with a level counter and no cycle check. For the 54 people at or below the E2210/E2391 loop in hr.db the walk never ends (interrupted by a work cap when run for E2210 and for a person below the loop), so their profile 'Reports to' strip hangs. E1043 returns its 2 managers normally.",
+    "fix": "Stopgap (the loop is a data fault the import should reject): add a path column to the CTE, anchor ',' || id || ',', append c.path || e.id || ',' in the recursive member and add WHERE instr(c.path, ',' || e.id || ',') = 0. Checked on hr.db: finishes for E2210 and returns the same rows as before for E1043."
+  },
+  {
+    "element": "headcount_under.sql",
+    "severity": "high",
+    "problem": "Recursive CTE with UNION ALL and no cycle check. For E2210 and E2391, who are below each other, the walk never ends (interrupted by a work cap when run for E2210). It is fine for managers outside the loop, e.g. E1000 returns 2945.",
+    "fix": "Stopgap until the import rejects loops: change UNION ALL to UNION; rows carry only the id, so the walk ends. Checked on hr.db: 54 for E2210, still 2945 for E1000."
+  },
+  {
+    "element": "emp_tmp_idx",
+    "severity": "low",
+    "problem": "Named like a leftover temporary index but it is the only index on employee (manager_id), used by direct_reports.sql, headcount_under.sql and span_of_control.sql; dropping it because of the name would turn those into scans. Every other index is named <table>_<column>.",
+    "fix": "Rename, do not drop: DROP INDEX emp_tmp_idx; CREATE INDEX employee_manager ON employee (manager_id); in one transaction, and update schema.sql."
+  },
+  {
+    "element": "hired_on",
+    "severity": "low",
+    "problem": "The ON CONFLICT (id) DO UPDATE SET in import_hr.py updates name, title, location and manager_id but not hired_on, so a corrected hire date in the HR export never reaches hr.db. File and database agree today; confirm whether hired_on is meant to be frozen at first import.",
+    "fix": "If not intended, add hired_on = excluded.hired_on to the SET list; if intended, add a comment saying so."
+  },
+  {
+    "element": "new_joiners.sql",
+    "severity": "low",
+    "problem": "hired_on >= date('now', '-30 days') has no upper bound; 18 employees have a hired_on after today (up to 2026-12-27), so 18 of the 34 rows returned are people who have not started. The files do not say whether pre-boarding staff should appear; confirm.",
+    "fix": "If not wanted, add AND hired_on <= date('now')."
+  },
+  {
+    "element": "tenure.sql",
+    "severity": "low",
+    "problem": "The comment says 'Median-ish tenure' but the query computes avg(...), truncated by CAST AS INTEGER, and the 18 future-dated hired_on values are averaged in as negative tenure. Comment and arithmetic disagree; confirm which is meant.",
+    "fix": "Change the comment to 'mean', or compute a real median; exclude hired_on > date('now') if only started staff should count."
+  }
+]

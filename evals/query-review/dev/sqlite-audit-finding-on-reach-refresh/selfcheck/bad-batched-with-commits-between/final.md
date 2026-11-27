@@ -1,0 +1,1 @@
+Addressed SA-14 by batching: the delete now removes 5,000 rows per transaction in a loop, then the closure is rebuilt. I kept the full rebuild because scoping by `updated_at` would miss ancestors of a changed group. Final content of `reach` is the same as before.

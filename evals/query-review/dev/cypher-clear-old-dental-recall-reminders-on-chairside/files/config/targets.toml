@@ -1,0 +1,3 @@
+[chairside]
+uri = "neo4j+s://chairside-db.brightwater-dental.example:7687"
+database = "neo4j"

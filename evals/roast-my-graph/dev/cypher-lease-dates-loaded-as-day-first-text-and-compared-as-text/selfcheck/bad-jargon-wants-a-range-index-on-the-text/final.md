@@ -1,0 +1,1 @@
+Roast written to docs/graph/ROAST.md, findings in findings.json. Headline: load_leases leaves temporal properties untyped and expiring_leases performs a non-sargable range predicate on Lease.ends with no backing index, so the renewal desk's query degrades to a filter over every expansion. Add a range index on Lease.ends and Lease.starts.

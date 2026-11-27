@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net8.0": {
+      "Neo4j.Driver": {
+        "type": "Direct",
+        "requested": "[5.28.*, )",
+        "resolved": "5.28.1",
+        "contentHash": "Tm9vNGouRHJpdmVyIDUuMjguMSBjb250ZW50aGFzaA=="
+      },
+      "System.IO.Pipelines": {
+        "type": "Transitive",
+        "resolved": "8.0.0",
+        "contentHash": "U3lzdGVtLklPLlBpcGVsaW5lcyA4LjAuMA=="
+      }
+    }
+  }
+}

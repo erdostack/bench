@@ -1,0 +1,20 @@
+[
+  {
+    "element": "load/load_borders.cypher",
+    "severity": "medium",
+    "problem": "The two MATCH clauses are not optional, so any border row whose code_a or code_b has no Municipality node (because it is missing from municipalities.csv or was loaded in the wrong order) is dropped with no error or warning. The relationship count then falls short of the roughly 1,900 borders in the README without anyone noticing.",
+    "fix": "Run load_municipalities before this file and add a check after loading, such as counting the BORDERS relationships against the number of distinct pairs in borders.csv, or collecting the unmatched codes with OPTIONAL MATCH and failing the load if any are found. Document the required load order in the README."
+  },
+  {
+    "element": "queries/total_border_km.cypher",
+    "severity": "low",
+    "problem": "The result is correct today because the undirected match returns each BORDERS relationship twice and the query divides the sum by 2. The halving depends on the match shape, and lint CL204 flags it. A future query that adds a direction or a filter could break the total without any error.",
+    "fix": "Match once in the stored direction: MATCH ()-[r:BORDERS]->() RETURN sum(r.length_km) AS internal_border_km. This gives the same value and removes the divide-by-two and the CL204 warning."
+  },
+  {
+    "element": "queries/border_pairs.cypher",
+    "severity": "low",
+    "problem": "The query is correct today: the undirected match with WHERE a.code < b.code keeps one orientation per border. It is flagged by lint CL204, and the a.code < b.code filter is needed only because the pattern is undirected, even though load_borders.cypher already stores every BORDERS relationship from lower to higher code.",
+    "fix": "Match in the stored direction: MATCH (a:Municipality)-[r:BORDERS]->(b:Municipality) RETURN a.name, b.name, r.length_km ORDER BY r.length_km DESC. This returns the same rows and clears the warning. Keep a comment that the direction is guaranteed by the load."
+  }
+]

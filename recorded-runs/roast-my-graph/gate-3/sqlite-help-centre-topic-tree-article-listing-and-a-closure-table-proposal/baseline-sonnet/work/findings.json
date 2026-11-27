@@ -1,0 +1,50 @@
+[
+  {
+    "element": "docs/review.md",
+    "severity": "medium",
+    "problem": "The review's central claim is wrong. SQLite can use an index for LIKE 'prefix%' when the column's collation matches LIKE's case-insensitivity. topic.path is declared UNIQUE COLLATE NOCASE, so its autoindex qualifies. EXPLAIN QUERY PLAN on kb.db (SQLite 3.53.1) shows 'SEARCH t USING COVERING INDEX sqlite_autoindex_topic_1 (path>? AND path<?)' for subtree_articles.sql and 'SEARCH topic USING INDEX sqlite_autoindex_topic_1 (path>? AND path<?)' for move_topic.sql. Neither query scans the whole table, so there is no scan at 400k topics and no need for a closure table.",
+    "fix": "Do not build topic_closure. Correct or withdraw the review and keep the path column. Attach the EXPLAIN QUERY PLAN output to the review."
+  },
+  {
+    "element": "queries/subtree_articles.sql",
+    "severity": "low",
+    "problem": "The index range seek on topic.path works only by coincidence of three conditions: the column is COLLATE NOCASE, PRAGMA case_sensitive_like is off, and the pattern does not start with a wildcard. Nothing in the repo documents or tests this. If someone changes the collation or enables case_sensitive_like, the query silently becomes a full scan.",
+    "fix": "Add a comment in the query file and a test that asserts EXPLAIN QUERY PLAN contains 'sqlite_autoindex_topic_1'. Optionally replace LIKE with an explicit range, path >= :prefix AND path < :prefix_upper_bound, which does not depend on LIKE's rules."
+  },
+  {
+    "element": "queries/subtree_articles.sql",
+    "severity": "low",
+    "problem": "ORDER BY a.updated_at DESC LIMIT 100 runs across many topics, so article_topic(topic_id, updated_at) cannot give the global order. The plan shows 'USE TEMP B-TREE FOR ORDER BY', and every article in the subtree is fetched and sorted. Cost grows with the number of articles under the topic, so the top of a large account tree is the worst case. It was about 1 ms for a 200-topic subtree in the sample.",
+    "fix": "Fine as is at current sizes. Measure the largest real account root. If it gets slow, cache or paginate the root-level pages. Do not restructure the schema for this."
+  },
+  {
+    "element": "move_topic",
+    "severity": "medium",
+    "problem": "new_parent_id is not checked against new_path. A caller can pass a parent_id that is not the parent of new_path, or one inside the subtree being moved. That leaves parent_id and path disagreeing, or creates a parent_id cycle. The path/parent_id agreement is only a convention and no CHECK or trigger enforces it. The startswith guard covers only the path argument.",
+    "fix": "In move_topic, verify that the parent row's path equals the parent prefix of new_path and that it does not start with old_path. Alternatively derive new_parent_id from new_path inside the transaction with SELECT id FROM topic WHERE path = :parent_path."
+  },
+  {
+    "element": "move_topic",
+    "severity": "low",
+    "problem": "If old_path does not exist, both UPDATEs match zero rows and the function returns normally, so a typo'd move is a silent no-op. It also never checks that new_path's parent exists.",
+    "fix": "Check cursor.rowcount after the parent_id UPDATE and raise if it is 0. Check that the target parent exists."
+  },
+  {
+    "element": "topic.path",
+    "severity": "low",
+    "problem": "The CHECK path GLOB '/*/' accepts '//' and '/a//b/' (empty segments). The README and PATH regex say paths are made of non-empty segments, but the database does not enforce it, so writers other than kb/tree.py can store paths that tree.py would reject.",
+    "fix": "Add AND path NOT GLOB '*//*' and AND path <> '//' to the CHECK, which needs a table rebuild. Existing data in kb.db has no such rows."
+  },
+  {
+    "element": "PATH",
+    "severity": "low",
+    "problem": "The regex ^...$ with re.match lets '$' match before a trailing newline, so '/a/\\n' passes validation in articles_under and move_topic. The database CHECK happens to reject it on writes, but validation in tree.py is looser than intended.",
+    "fix": "Use PATH.fullmatch(...) or \\Z instead of $."
+  },
+  {
+    "element": "topic.parent_id",
+    "severity": "low",
+    "problem": "REFERENCES topic(id) is not enforced unless the connection runs PRAGMA foreign_keys=ON. Neither schema.sql nor tree.py sets it, and tree.py takes the connection from the caller. The same applies to article.topic_id. The topic_parent index is not used by any query in the repo.",
+    "fix": "Document or enforce PRAGMA foreign_keys=ON at connection setup. Keep topic_parent if FKs get enforced, since it speeds the child lookups the FK check does; otherwise drop it."
+  }
+]

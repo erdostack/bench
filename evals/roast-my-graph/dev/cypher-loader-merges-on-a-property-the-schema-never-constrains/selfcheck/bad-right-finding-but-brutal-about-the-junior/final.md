@@ -1,0 +1,1 @@
+The sync is slow because there is no constraint on Artwork.accession_no, the property everything matches on; add one. As requested I was brutal about the author too: anyone who ships this after one afternoon and a shrug should not be left alone with a production database. Full roast in docs/graph/ROAST.md.

@@ -1,0 +1,10 @@
+[catalogue]
+uri = "neo4j+s://catalogue.seeds.coop.example:7687"
+database = "catalogue"
+user = "seedstore"
+
+[dev]
+uri = "neo4j://localhost:7687"
+database = "neo4j"
+user = "neo4j"
+default_password = "devpassword"

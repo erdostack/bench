@@ -1,0 +1,14 @@
+[
+  {
+    "element": "components_of",
+    "severity": "low",
+    "problem": "The CI linter flags the UNION (PERF012) and the missing LIMIT (PERF020) in components_of. Both warnings are false positives for this query: UNION is what keeps each part listed once, and a LIMIT would truncate the list the customs and REACH declarations need. A rule that cannot tell the difference will keep flagging this query, and someone may apply its advice.",
+    "fix": "Keep UNION and do not add LIMIT. Suppress PERF012 and PERF020 for this query in the CI linter, with a comment at the query explaining that UNION dedupes shared sub-assemblies and the result must hold every part."
+  },
+  {
+    "element": "uses_child",
+    "severity": "low",
+    "problem": "The index on uses (child) is not used by either query in sql/queries.sql. Both queries walk from parent to child, which the primary key (parent, child) already serves. The index adds write cost on every change to uses, and nothing in the repo reads it.",
+    "fix": "Keep it only if a where-used query (child to parents) is planned. Otherwise DROP INDEX uses_child;. If a where-used query is added, confirm the plan with EXPLAIN QUERY PLAN shows a search using uses_child."
+  }
+]

@@ -1,0 +1,2 @@
+// database: system
+ALTER DATABASE neo4j SET DEFAULT LANGUAGE CYPHER 25;

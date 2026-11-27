@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. One thing that is out of date: the repo installs the LadybugDB binding under its early npm name, lbug (0.14.0). Upstream moved it to @ladybugdb/core, so staying on lbug means no newer releases.

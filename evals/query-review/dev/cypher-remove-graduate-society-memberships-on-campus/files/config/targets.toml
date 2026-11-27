@@ -1,0 +1,7 @@
+[local]
+uri = "neo4j://localhost:7687"
+database = "neo4j"
+
+[campus]
+uri = "neo4j+s://cg-core.internal.example:7687"
+database = "campus"

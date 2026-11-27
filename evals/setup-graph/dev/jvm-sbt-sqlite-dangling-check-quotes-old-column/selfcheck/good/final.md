@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. Two problems: the README's driver version is stale, and `make check` is broken - it tests a renamed column, so its empty output proves nothing, and there are in fact crossings to missing ports.

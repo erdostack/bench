@@ -1,0 +1,7 @@
+cypherlint 0.9.4  db/changes/0029_deactivate_retired_route_stops.cypher
+
+  2:40  error  CL031 unbounded-var-length
+        Variable-length relationship `[:NEXT*0..]` has no upper bound. Unbounded traversals can
+        expand without limit on dense or cyclic data. Add an upper bound, e.g. `[:NEXT*0..10]`.
+
+1 error. Exit 1.

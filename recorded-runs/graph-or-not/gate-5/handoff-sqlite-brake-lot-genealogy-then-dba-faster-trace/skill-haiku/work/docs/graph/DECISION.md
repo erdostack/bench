@@ -1,0 +1,43 @@
+# Graph decision
+
+Decision: graph-database
+
+The question is whether recall tracing (containment forward, root cause backward) should stay on Postgres, as the boss prefers, or move to a graph database, an in-memory library, or no graph. The traversals are deep (up to 25 levels, stated by the user) and must answer within the 30 s OEM contract, while the recursive SQL measured 14 minutes forward on a full copy (stated by the user), 28 times the budget, even after the indexes and partitioning Markus added. Markus's later covering indexes on their own replica brought that to 6 minutes forward and 4 minutes backward (stated by the user), still 12 and 8 times the budget, so the call still stands: "Still stands: yes". The finding it turns on is that measurement: the graph database trial answered both directions in 1.2 s and 0.9 s on the full copy and kept up with the MES write rate (stated by the user), and no in-memory copy fits the 64 GB host limit.
+
+## Workload facts
+
+- Links: 2.3 billion in Postgres, one row per parent and child pair (stated by the user; `db/schema.sql` `lot_link`)
+- Write rate: about 3,000 links a second from the plants' MES (stated by the user; `ingest/mes_consumer.py` inserts each event). Growth: 3,000 x 86,400 = 259.2 million links per day (derived from the stated rate)
+- Depth: chains up to 25 deep (stated by the user). Both traces are recursive walks of data-dependent depth (`sql/trace_forward.sql`, `sql/trace_backward.sql`)
+- The question asked of the connections: forward, every shipped lot downstream of a lot (containment); backward, every raw-material lot upstream (root cause). Each is a `WITH RECURSIVE` walk with `UNION` on the lot id, so each lot is visited once per walk (`sql/trace_forward.sql`, `sql/trace_backward.sql`)
+- Lots: count not stated and not in the repo; `lot` holds raw, component, assembly and shipped kinds (`db/schema.sql`). The node count is unknown, so the fan-out per lot is unknown
+- Latency budget: 30 s for the containment list and 30 s for the backward trace (stated by the user, from the OEM contract)
+- Present timing on a full copy, recursive SQL, forward: 14 minutes (840 s) after indexes and partitioning, before covering indexes (stated by the user); 840 / 30 = 28 times the budget (derived). Now 6 minutes (360 s) with covering indexes on a replica (stated by the user); 360 / 30 = 12 times the budget (derived). Improvement 840 / 360 = 2.3 times (derived).
+- Present timing on a full copy, recursive SQL, backward: 4 minutes (240 s) with covering indexes on a replica (stated by the user); 240 / 30 = 8 times the budget (derived). The earlier backward figure was not stated.
+- Whether the 6-minute and 4-minute runs are single runs, percentiles or a mix of lots, and whether the replica matches production load: unknown
+- Graph database trial on a full copy: 1.2 s forward and 0.9 s backward (stated by the user). Headroom against 30 s: 25 times and 33 times (derived). Whether these are single runs, percentiles or a mix of lots is unknown
+- Memory: a networkx run on a 1 percent sample took 19 GB (stated by the user). One percent of 2.3 billion links is 23 million links, so about 830 bytes per link (derived; assumes memory scales with links). The full set would be about 1.9 TB, about 30 times the 64 GB host limit the platform team runs (derived from the stated numbers)
+- Compact-layout floor, arithmetic only: one neighbour id per link in each direction, so 8 bytes per link with 4-byte ids or 16 bytes with 8-byte ids: 18.4 GB or 36.8 GB for 2.3 billion links, before attributes, offsets, headroom or growth of 259 million links a day (derived; not measured)
+- Engine operated today: Postgres 16, partitioned by plant (`README.md`). Whether the walks prune partitions is unknown, since a walk crosses plants
+- Indexes on the walk's join columns: `lot_link` primary key `(parent_lot, child_lot)` serves the forward walk, and `lot_link_child (child_lot, parent_lot)` serves the backward walk (`db/schema.sql`). Markus's covering indexes are not in `db/schema.sql`; the repo still shows the plain indexes, so the covering layout is stated by the user only (unknown in the repo)
+- Freshness: the write rate is continuous; the freshness the quality team needs for a recall is not stated: unknown
+- Concurrency: the number of traces at once is not stated: unknown
+- Measured in this check: nothing. The repo has no Postgres data, and its tests use SQLite; the figures above are the user's
+- What was already tried: Markus's indexes and partitioning (stated by the user); the networkx sample (stated by the user). No remedy on the recursive query beyond those is recorded in the repo; no plan or distinct-versus-produced row count was given, so no waste in the walk could be shown
+- unknown: the lot count and the fan-out distribution (tail and hubs); the query plan and row counts for the 14-minute and 6-minute runs; the backward time on Postgres before covering indexes; the freshness the recall desk needs; the number of concurrent traces; the owner of the 30 s budget beyond the OEM contract
+
+## Options considered
+
+- graph-database (the trial on a full copy; the product is not named in the request): chosen, because the traversals are deep, online, against a 30 s budget; the edge set (2.3 billion, growing 259 million a day) is too large for a copy per process; the writes are continuous; and the recursive SQL is measured failing at the required depth (14 minutes against 30 s) after the indexes and partitioning that were tried. The trial meets both directions with headroom and kept up with the write rate. The costs go on the table: a second stateful system to back up, upgrade and page for, a feed from the MES and Postgres that can drift, and a new query language. Postgres stays as the system of record for the links, so the feed is a design item, not an option
+- in-process-library (the edges loaded into memory and walked with a graph library): rejected, because the measured library footprint (19 GB for 1 percent, about 830 bytes per link) extrapolates to about 1.9 TB against a 64 GB host; a compact layout would need about 18 to 37 GB for one copy before headroom and growth, which leaves no room for a copy per process and needs a reload at each restart while links arrive at 259 million a day
+- recursive-sql (recursive queries on the Postgres database already run): rejected on the present evidence, because the forward walk is measured at 6 minutes on a full copy with covering indexes (14 minutes before them) and the backward walk at 4 minutes, against a 30 s budget, so the rung fails in both directions even after the indexes and partitioning were tried; a covering-index change run on a replica does not reopen a failed rung, and it is 12 and 8 times over the budget; no rewrite has been run that the record shows, and nothing in the repo indicates waste in the walk (the `UNION` on lot id already keeps each lot once), so the rung is not shown to hold. Postgres could still be tried with a precomputed closure table, but its size follows the reachable pairs rather than the links and nobody has estimated it; any such trial would reopen this only if it is run and measured
+- no-graph (plain joins, no traversal): rejected, because the containment and root-cause questions follow chains of data-dependent depth up to 25 levels
+
+## What would change the decision
+
+- A recorded rewrite or precomputed table on Postgres (a closure table, a materialised ancestor list, or a cached walk per shipped lot) run on the full copy that holds both traces within 30 s: that would move this to recursive-sql. The measurement must be on the full copy, with the row counts and plan written down
+- The trial's figures not holding on the real query mix (the lots the desk actually traces, including the largest containment sets) or at the real write rate over a sustained period: that gates the spend, and a failure there would reopen the question
+- A compact in-process structure measured to hold both directions of the full link set with headroom under the 64 GB host limit, and a freshness requirement that a reload can meet: that would move this to in-process-library. Today the freshness requirement is unknown and the measured library footprint is far above the limit
+- The 30 s budget relaxed in the contract to a level the measured Postgres walk meets (for example, above 6 minutes forward and 4 minutes backward, the times the covering indexes measured): that would move this to recursive-sql; the owner of the budget is the OEM contract and the quality team
+
+Nothing in the repo was changed. The only file left is this one.

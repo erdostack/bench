@@ -1,0 +1,3 @@
+CREATE CONSTRAINT recipe_id IF NOT EXISTS FOR (r:Recipe) REQUIRE r.id IS UNIQUE;
+CREATE CONSTRAINT ingredient_name IF NOT EXISTS FOR (i:Ingredient) REQUIRE i.name IS UNIQUE;
+CREATE INDEX substitute_ratio IF NOT EXISTS FOR ()-[s:SUBSTITUTES]-() ON (s.ratio);

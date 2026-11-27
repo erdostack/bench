@@ -1,0 +1,33 @@
+{
+  "graph_present": true,
+  "profiles": [
+    {
+      "engine": [
+        "neo4j"
+      ],
+      "engine_version": "2026.08.1",
+      "query_language": {
+        "any_of": [
+          "cypher"
+        ]
+      },
+      "driver": {
+        "package": [
+          "neo4j-go-driver",
+          "github.com/neo4j/neo4j-go-driver"
+        ],
+        "version": "5.28.1"
+      },
+      "run_queries": {
+        "accept": [
+          "\\bmake\\b.*\\bq\\b",
+          "cmd/cq"
+        ]
+      }
+    }
+  ],
+  "access": "read-only",
+  "texts": {
+    "engine-version-pinned": "engine_version is 2026.08.1: deploy/values/dev.yaml, which `make up` passes, does not set image.tag, so the chart default (2026.08.1, also in README.md) is what runs; 2026.09.0 is only mentioned in a comment about another cluster"
+  }
+}

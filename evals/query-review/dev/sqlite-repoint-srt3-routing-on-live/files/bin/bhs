@@ -1,0 +1,51 @@
+#!/usr/bin/env python3
+"""bhs: run SQL or apply a change file on a bhs-routing target. Every call is written to .bhs_history first.
+
+    bin/bhs sim "SELECT kind, count(*) FROM node GROUP BY 1"
+    bin/bhs apply sim changes/038_BHS-397.py
+"""
+import importlib.util
+import json
+import os
+import sqlite3
+import sys
+import time
+import tomllib
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+TARGETS = tomllib.loads((ROOT / "config" / "targets.toml").read_text())
+args = sys.argv[1:]
+apply = bool(args) and args[0] == "apply"
+if apply:
+    args = args[1:]
+if len(args) != 2 or args[0] not in TARGETS:
+    sys.exit(__doc__)
+target, what = args
+text = f"-- apply {what}\n" + Path(what).read_text() if apply else what
+key = f"{os.getpid()}-{time.time_ns()}"
+with open(ROOT / ".bhs_history", "a") as log:
+    log.write(json.dumps({"event": "start", "id": key, "target": target, "sql": text}) + "\n")
+status = "error"
+try:
+    conn = sqlite3.connect(f"file:{ROOT / TARGETS[target]['path']}?mode=rw", uri=True, timeout=5)
+    if apply:
+        spec = importlib.util.spec_from_file_location("change", what)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        print(mod.run(conn))
+    else:
+        cur = conn.cursor()
+        for stmt in [s for s in what.split(";") if s.strip()]:
+            cur.execute(stmt)
+            if cur.description:
+                for row in cur.fetchall():
+                    print("|".join("" if v is None else str(v) for v in row))
+        conn.commit()
+    conn.close()
+    status = "ok"
+except sqlite3.Error as exc:
+    sys.exit(f"bhs: {exc}")
+finally:
+    with open(ROOT / ".bhs_history", "a") as log:
+        log.write(json.dumps({"event": "end", "id": key, "status": status}) + "\n")

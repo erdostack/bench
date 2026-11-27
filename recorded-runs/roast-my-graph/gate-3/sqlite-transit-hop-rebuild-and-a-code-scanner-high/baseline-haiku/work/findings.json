@@ -1,0 +1,26 @@
+[
+  {
+    "element": "DELETE FROM hop",
+    "severity": "high",
+    "problem": "db/rebuild.sql:3 deletes every hop row and then inserts the new graph, with no check that the insert produced a sensible result. If the importer leaves stop_time empty or partial, the rebuild commits a hop table with few or no rows, and the planner then returns no or incomplete journeys with no error. The DELETE is correct for a table that is fully derived, but the scanner's HIGH is pointing at a real gap: nothing guards the commit.",
+    "fix": "Build the new graph into a staging table (hop_next, with the same columns, PRIMARY KEY and CHECK as db/schema.sql), count its rows in jobs/rebuild.py, and only if the count passes a minimum commit the swap: DROP TABLE hop; ALTER TABLE hop_next RENAME TO hop; all inside the one BEGIN IMMEDIATE transaction. Otherwise ROLLBACK and keep last night's graph. This removes the flagged DELETE statement and adds the guard. Do not add a dummy WHERE clause to silence the scanner."
+  },
+  {
+    "element": "earliest_arrival",
+    "severity": "high",
+    "problem": "db/planner.sql:4-12 adds hop.minutes along each path and reports the minimum total as earliest arrival. hop.minutes is in-vehicle time between consecutive stops (arrive minus depart on one trip), as the README says. The query therefore ignores the wait for the next departure and any transfer time, and returns the minimum riding time, not an arrival time. The name and the minutes column both mislead the planner's users.",
+    "fix": "Either rename the query and column to ride_time and document that it excludes waiting, or make the graph time-dependent: store departure times on hop (or join to stop_time) and compute the arrival at each stop from the previous arrival plus the wait for the next departure. Add a test on a small timetable where the wait is non-zero."
+  },
+  {
+    "element": "earliest_arrival",
+    "severity": "low",
+    "problem": "db/planner.sql:5 is the recursive CTE the scanner flags as MEDIUM. It does terminate: UNION removes repeated (stop_id, minutes) states, and the WHERE clause stops any path that goes over :budget, and hop.minutes is never negative (CHECK minutes >= 0). A large budget on a dense network can still generate many distinct states, so runtime is the risk, not termination.",
+    "fix": "Keep the budget clause, which is the real bound, and add a short comment saying so. Optionally cap the number of hops with a depth counter as the scanner suggests, and record the scanner finding as a documented false positive with that reason."
+  },
+  {
+    "element": "main",
+    "severity": "low",
+    "problem": "jobs/rebuild.py:8-13 opens the connection with isolation_level=None, so the BEGIN IMMEDIATE in rebuild.sql is the only transaction control. If an error happens between BEGIN and COMMIT, the code only closes the connection. The open transaction is rolled back implicitly by close, which is correct but depends on that behaviour and does not report the failure clearly.",
+    "fix": "Wrap the execution in try/except that calls ROLLBACK on error and re-raises, so the failure is explicit and the exit status is non-zero. This also fits the staging change above."
+  }
+]

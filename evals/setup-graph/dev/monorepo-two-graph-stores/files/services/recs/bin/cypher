@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# bin/cypher <file.cypher>: run a saved query in the recs-graph container.
+set -euo pipefail
+here="$(cd "$(dirname "$0")/.." && pwd)"
+docker compose -f "$here/../../compose.yaml" exec -T recs-graph \
+  cypher-shell -u neo4j -p "$RECS_GRAPH_PASSWORD" --format plain < "$1"

@@ -1,0 +1,9 @@
+Decision: in-process-library
+
+With the extract size known, the open question is settled. 180,000 segments and 150,000 junctions is about 4.7 times your 38,000-segment pilot sample, and the pilot sample used about 70 MB. That puts the networkx graph at roughly 300 to 350 MB, well inside the 1.5 GB limit. I loaded a synthetic network of that size into the prototype's `load()`. The graph took about 285 MB and the process peaked near 360 MB. This is my own generated data, not the supplier's. Ordinary checks took about 1 to 2 ms on average.
+
+So keep the graph library in the worker. A graph database would add a second system to run and load for 300 checks a day against a network that changes only when the supplier delivers a new extract, and it would not remove the weight-restricted shortest-path search. Recursive SQL is a poor fit for a quickest-route search with a per-vehicle weight limit.
+
+One thing is still unmeasured against your 2 s limit. A closure with a very long detour makes the search cover the whole network. On a deliberately awkward synthetic network (a long ring with random shortcuts) the slowest of 30 checks took about 5.5 s. On a grid-like synthetic network the slowest check took about 40 ms, but that network split into many small components, so it did not exercise the long-detour case. Real roads will fall somewhere in between. Please time worst-case checks on the real extract when it arrives: a heavy vehicle, and a closure on a main route with only a long detour. If they are over 2 s, the fix is in the search itself, for example a cheaper per-edge cost, and not a change of storage.
+
+I updated the README, the only place the storage choice is written down. It now has a "Storage decision" section with the decision, the numbers above, and the point at which to revisit it (an extract above about 600,000 segments). I did not change `roads/diversion.py`.

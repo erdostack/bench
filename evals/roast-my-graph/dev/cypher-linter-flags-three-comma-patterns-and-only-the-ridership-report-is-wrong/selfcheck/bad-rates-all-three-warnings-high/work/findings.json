@@ -1,0 +1,20 @@
+[
+  {
+    "element": "same_line",
+    "severity": "high",
+    "problem": "Cartesian product between two disconnected Station patterns on the planner hot path.",
+    "fix": "Rewrite as a single connected pattern."
+  },
+  {
+    "element": "zone_pairs",
+    "severity": "high",
+    "problem": "Cartesian product of Zone with Zone; quadratic growth.",
+    "fix": "Precompute the pairs or connect the patterns."
+  },
+  {
+    "element": "line_ridership",
+    "severity": "high",
+    "problem": "Cartesian product between Tap and Station: the patterns share no variable, so each station is paired with every tap and all stations get the same count.",
+    "fix": "MATCH (t:Tap)-[:AT]->(s:Station)-[:ON]->(l:Line {code: $line})."
+  }
+]

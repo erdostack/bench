@@ -1,0 +1,26 @@
+[
+  {
+    "element": "zone_rollup",
+    "severity": "critical",
+    "problem": "Unbounded variable-length pattern (WITHIN*0..). Unbounded traversals are never acceptable in production Cypher.",
+    "fix": "Add an upper bound."
+  },
+  {
+    "element": "downstream_meters",
+    "severity": "critical",
+    "problem": "Unbounded variable-length pattern over CONNECTS on a meshed network: path explosion.",
+    "fix": "Bound the hops and exclude normally_open cables."
+  },
+  {
+    "element": "asset_by_old_ref",
+    "severity": "high",
+    "problem": "Unindexed lookup on legacy_ref scans 410,000 nodes.",
+    "fix": "Create an index on Asset.legacy_ref."
+  },
+  {
+    "element": "installed_ms",
+    "severity": "high",
+    "problem": "Epoch integers instead of temporal types break date arithmetic.",
+    "fix": "Migrate to datetime."
+  }
+]

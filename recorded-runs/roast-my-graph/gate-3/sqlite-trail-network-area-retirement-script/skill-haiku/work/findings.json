@@ -1,0 +1,32 @@
+[
+  {
+    "element": "retire",
+    "severity": "critical",
+    "problem": "retire() opens its connection with sqlite3.connect(DB) and never runs PRAGMA foreign_keys = ON. SQLite leaves foreign keys off by default, so the ON DELETE CASCADE on segment.from_junction and segment.to_junction never fires. Deleting the quarry's junctions leaves their segments behind. app/db.py turns the pragma on, but this script does not use it. The retire_area.py docstring and the README both say the segments go with the junctions.",
+    "fix": "Open the connection through app.db.connect(), or add con.execute(\"PRAGMA foreign_keys = ON\") immediately after sqlite3.connect(DB) in retire(). Then run the migration in the segment finding to clear the rows already left behind."
+  },
+  {
+    "element": "segment",
+    "severity": "critical",
+    "problem": "The stored data already has the damage: 90 segment rows point at junction ids that no longer exist (the quarry's 60 junctions, per retired_area quarry 2026-09-12 blasting). Because load_graph reads every segment, the planner routes through them. In a random sample of 399 routable pairs between live junctions in trails.db, 192 shortest routes pass through a retired junction id.",
+    "fix": "Migration, run once: DELETE FROM segment WHERE from_junction NOT IN (SELECT id FROM junction) OR to_junction NOT IN (SELECT id FROM junction); Then keep the cascade working for every writer: the foreign_keys pragma fix in retire(), and, if other scripts write to junction, a trigger AFTER DELETE ON junction that deletes segment rows where from_junction or to_junction equals OLD.id, so the rule no longer depends on the connection."
+  },
+  {
+    "element": "plan",
+    "severity": "medium",
+    "problem": "names.get(j, f\"junction {j}\") prints a placeholder for any junction id missing from the junction table, and plan() raises no error. A route through retired junctions therefore comes back as a list of 'junction 169'-style stops that looks like a normal route, which hides the dangling segments from anyone reading the output.",
+    "fix": "Fail loudly on a missing junction: check that every id in the path exists in names and raise an error naming the missing id. Keep the placeholder only for display after the segment migration and the foreign key fix are in place."
+  },
+  {
+    "element": "load_graph",
+    "severity": "medium",
+    "problem": "load_graph calls G.add_edge(a, b, metres=metres) on an nx.Graph, so a second segment between the same two junctions overwrites the first. trails.db has six such pairs. In three of them the longer segment is kept, for example junctions 193 and 194 keep 1183 m where 473 m also exists. The schema has no unique constraint on the pair, so the file does not say whether the duplicate is a second trail or a data error. The shortest-path result changed in none of the 1,770 live-junction pairs compared, so the cost is a wrong distance, not yet a wrong route.",
+    "fix": "Build nx.MultiGraph() instead of nx.Graph(). With weight='metres', shortest_path then uses the smallest parallel segment; checked on trails.db, a MultiGraph returns 586 m for junctions 16 and 17, the minimum of 586 and 1191. If the duplicates are data errors, delete the longer row after confirming with the park."
+  },
+  {
+    "element": "segment",
+    "severity": "low",
+    "problem": "The foreign keys on segment only do their job when the connection enables them, and app/db.py is the only place that does. Every writer that does not go through connect() can leave dangling rows, so the declared constraint is a promise nothing enforces by itself. The files show one such writer, retire_area.py, and nothing in the repo shows that there are others.",
+    "fix": "Route all connections through app.db.connect(), and treat the trigger in the migration finding as the fallback if another writer can exist. Confirm that no other script opens trails.db directly."
+  }
+]

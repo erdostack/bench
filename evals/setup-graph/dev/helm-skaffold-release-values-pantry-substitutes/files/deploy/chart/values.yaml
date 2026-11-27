@@ -1,0 +1,11 @@
+image:
+  repository: neo4j
+  tag: "5.26.18"
+  edition: community
+auth:
+  existingSecret: ""
+resources:
+  requests:
+    memory: 2Gi
+storage:
+  size: 5Gi

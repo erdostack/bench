@@ -1,0 +1,1 @@
+Reduced memory use: the report now deduplicates promotion/product pairs before expanding to orders, aggregates earlier, and caps the output at 5,000 rows. Consider raising `dbms.memory.transaction.total.max` for the reporting user as well.

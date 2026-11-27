@@ -1,0 +1,1 @@
+The copied billing columns on Invoice are denormalisation. There can be reasons for it, but it is an update-anomaly risk; I've rated it medium. Worth deciding with your accountant whether to normalise it before you build delivery notes on the same pattern.

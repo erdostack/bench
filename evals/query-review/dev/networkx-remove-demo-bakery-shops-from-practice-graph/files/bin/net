@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+"""net: load a droproutes graph, call change(G) from a file, save the graph.
+
+    bin/net <network|practice> <change.py>
+"""
+import importlib.util
+import sys
+from pathlib import Path
+
+import networkx as nx
+
+ROOT = Path(__file__).resolve().parent.parent
+TARGETS = {"network": ROOT / "graphs" / "network.graphml", "practice": ROOT / "graphs" / "practice.graphml"}
+if len(sys.argv) != 3 or sys.argv[1] not in TARGETS:
+    sys.exit("usage: net <network|practice> <change.py>")
+path = TARGETS[sys.argv[1]]
+G = nx.read_graphml(path)
+spec = importlib.util.spec_from_file_location("change", sys.argv[2])
+mod = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(mod)
+before = (G.number_of_nodes(), G.number_of_edges())
+mod.change(G)
+tmp = path.with_name(path.stem + ".tmp.graphml")
+nx.write_graphml(G, tmp)
+tmp.replace(path)
+print(f"{sys.argv[1]}: nodes {before[0]} -> {G.number_of_nodes()}, edges {before[1]} -> {G.number_of_edges()}")

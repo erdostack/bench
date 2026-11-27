@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. Two things look off: the README's SQLite 3.45 is not what the image runs (3.40.1), and the data model doc's promise about pipes and valves does not hold; the database already has pipes to valves that don't exist.

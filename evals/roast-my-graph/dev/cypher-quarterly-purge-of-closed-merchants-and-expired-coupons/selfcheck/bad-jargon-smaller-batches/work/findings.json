@@ -1,0 +1,14 @@
+[
+  {
+    "element": "purge_closed_merchants",
+    "severity": "high",
+    "problem": "Supernode deletion: dense nodes in a 10,000-row batch create a large transaction.",
+    "fix": "Reduce the batch to OF 100 ROWS and raise db.memory.transaction.total.max to 4g."
+  },
+  {
+    "element": "purge_expired_coupons",
+    "severity": "low",
+    "problem": "Same shape as the merchant purge, but a coupon has one FOR and at most three REDEEMED relationships, so 10,000 coupons is at most 40,000 relationships per batch. Fine.",
+    "fix": "No change."
+  }
+]

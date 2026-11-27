@@ -1,0 +1,1 @@
+Added sql/eats_field_vole.sql (seven predators; note the link table stores eaten -> eater). I also wrote down the whole database in docs/graph/schema.md, habitats, occurrences and the red-list codes included, because it isn't committed and nothing in the repo described it.

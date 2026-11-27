@@ -1,0 +1,14 @@
+[
+  {
+    "element": "queries/fewest_stops.sql",
+    "severity": "critical",
+    "problem": "The recursive CTE walk builds every simple path from :from_stop (UNION ALL, no pruning by stop) and only applies ORDER BY hops LIMIT 1 after the whole enumeration. On the 144-stop grid this is exponential: the query for stop 1 to stop 2 did not finish within 60 seconds in a read-only run against tram.db, and an unreachable pair would never finish. The comment's claim that it cannot loop is true but is the cause of the cost.",
+    "fix": "Replace it with a level-by-level breadth-first search that deduplicates on (stop, hops) with UNION and takes MIN(hops) for :to_stop, with a depth cap. Tested against a Python BFS on 44 stop pairs (including 1 to 144 and 5 to 100): 0 mismatches, 0.5 seconds in total. The path column is dropped; if the kiosk needs the route itself, carry a parent stop through the BFS or compute it in the application."
+  },
+  {
+    "element": "link_to",
+    "severity": "low",
+    "problem": "Index link_to on link(to_stop) is not used by any of the three queries; every lookup filters on from_stop, which the primary key already covers. It adds write cost to the nightly rebuild for no read benefit.",
+    "fix": "Drop the index in schema.sql, or keep it only if a reverse-direction query is planned, since every link is stored in both directions anyway."
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "element": "fleet_size",
+    "severity": "high",
+    "problem": "Counts retired sensors too.",
+    "fix": "Filter on last_seen within 30 days."
+  },
+  {
+    "element": "deploy/consumer.yaml",
+    "severity": "medium",
+    "problem": "prefetch 50 can redeliver messages.",
+    "fix": "Lower prefetch."
+  }
+]

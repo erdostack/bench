@@ -1,0 +1,3 @@
+[studio-b]
+uri = "neo4j+s://playgraph.wexcombe-radio.example:7687"
+database = "neo4j"

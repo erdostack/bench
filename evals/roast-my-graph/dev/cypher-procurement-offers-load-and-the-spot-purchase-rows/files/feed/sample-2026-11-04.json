@@ -1,0 +1,6 @@
+{"exported": "2026-11-04", "offers": [
+  {"supplier": "NL812345678B01", "gtin": "08712345000017", "price": 412.0, "contract_ref": "FW-2024-031"},
+  {"supplier": "NL812345678B01", "gtin": "08712345000024", "price": 89.5, "contract_ref": "FW-2024-031"},
+  {"supplier": "NL855501234B01", "gtin": "04006381333931", "price": 3.2},
+  {"supplier": "NL800777123B01", "gtin": "05012345678900", "price": 1150.0, "contract_ref": "FW-2025-007"}
+]}

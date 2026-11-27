@@ -1,0 +1,14 @@
+[
+  {
+    "element": "Device.serial",
+    "severity": "critical",
+    "problem": "WITH row WHERE row.serial IS NOT NULL silently discards feed rows: silent data loss.",
+    "fix": "Load every row and flag the ones without serial."
+  },
+  {
+    "element": "site_code",
+    "severity": "medium",
+    "problem": "Null site_code fails the MERGE for depot devices.",
+    "fix": "Make the Site MERGE conditional."
+  }
+]

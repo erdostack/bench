@@ -1,0 +1,16 @@
+[project]
+name = "citeweb"
+version = "0.3.0"
+description = "Citation graph for a reading group"
+requires-python = ">=3.12"
+dependencies = [
+    "ladybug",
+    "typer>=0.15",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/citeweb"]

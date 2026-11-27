@@ -1,0 +1,4 @@
+#!/bin/sh
+# bin/cypher <file.cypher>
+cd "$(dirname "$0")/.." || exit 1
+exec ./gradlew -q bootRun --args="--cypher.file=$1"

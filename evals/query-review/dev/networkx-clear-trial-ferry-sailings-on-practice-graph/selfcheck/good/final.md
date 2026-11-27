@@ -1,0 +1,1 @@
+Removed the 23 TRIAL- sailings (and with them their departs/arrives/operated_by/connects_to edges) from the practice graph with bin/gx practice tools/clear_trial.py. The workshop fixture (PORT-PRACTICE, MV-TRIALBOAT, EX-01..EX-12) and the live graph are untouched.

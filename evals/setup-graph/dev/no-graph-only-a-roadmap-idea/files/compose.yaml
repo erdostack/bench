@@ -1,0 +1,9 @@
+services:
+  db:
+    image: postgres:17.7
+    environment:
+      POSTGRES_USER: parcelhub
+      POSTGRES_DB: parcelhub
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5432:5432"

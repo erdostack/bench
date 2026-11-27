@@ -1,0 +1,38 @@
+[
+  {
+    "element": "place.kind",
+    "severity": "medium",
+    "problem": "41 of the 140 backlog pairs share a name but disagree on kind (for example 267 parish vs 1209 town; 726 town vs 1220 parish). Step 5 of sql/merge_place.sql deletes the dup row and its kind with no check or record. README says the copies are 'the same place', which these pairs contradict. If they are distinct places, the merge is wrong.",
+    "fix": "Before running, list the 41 pairs and decide each one: merge, or keep both and remove them from backlog.csv. For any merge kept, log the dup kind before deleting."
+  },
+  {
+    "element": "border.km",
+    "severity": "medium",
+    "problem": "Step 2 of sql/merge_place.sql uses INSERT OR IGNORE, so for every neighbour both copies border, dup's km is discarded in favour of keep's. In the backlog this happens 349 times, and in all 349 the two lengths differ (for example 842/1201 with 811: 4.24 km vs 6.37 km). The discarded values cannot be recovered after the run, and neighbours sorts by km.",
+    "fix": "Log both measurements before the merge. Decide the stored km deliberately (longer, mean, or re-measured from geometry) and document it in README.md. If km is only used for ordering, say so."
+  },
+  {
+    "element": "sql/merge_place.sql",
+    "severity": "medium",
+    "problem": "Nothing records what a merge removes. Step 5 deletes the dup place row, step 3 deletes its border rows (110 in the backlog), and step 4 deletes its aliases. The merge cannot be reversed from the files, and the backlog includes pairs whose correctness is open.",
+    "fix": "Copy gazetteer.db before the run at minimum. Better, write a merge_log row (keep, dup, kind, removed border rows, dropped km, timestamp) in the same transaction before the deletes."
+  },
+  {
+    "element": "alias",
+    "severity": "low",
+    "problem": "Step 4 of sql/merge_place.sql inserts the dup's own name as an alias of keep. In all 140 pairs the names are identical, so 131 alias rows (168 to 299) repeat place.name and add nothing to lookup.",
+    "fix": "Add AND name <> (SELECT name FROM place WHERE id = :keep) to the second INSERT in step 4, or skip it when the names match."
+  },
+  {
+    "element": "merge",
+    "severity": "low",
+    "problem": "tools/merge.py merge() does not check that keep or dup exists. A nonexistent dup makes every statement a no-op and the call returns normally, so a mistyped id looks like a successful merge.",
+    "fix": "Check both ids exist before the transaction starts and raise ValueError if either does not."
+  },
+  {
+    "element": "statements",
+    "severity": "low",
+    "problem": "tools/merge.py statements() removes only lines starting with -- and then splits on ';'. A comment after code on the same line that contains a ';' would split one statement into two. Nothing in the current file triggers it.",
+    "fix": "Store one statement per file or per list entry, or split with sqlite3.complete_statement on a running buffer."
+  }
+]

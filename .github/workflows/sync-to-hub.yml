@@ -1,0 +1,35 @@
+name: Sync to Hugging Face
+
+# Mirrors this repository to the dataset huggingface.co/datasets/erdostack/bench, where the case index can be
+# browsed and loaded. Runs when a version tag is pushed, or by hand. It needs one repository secret, HF_TOKEN:
+# a token for the erdostack organization on Hugging Face that may write to that dataset. Files removed here are
+# removed there. The action leaves out .gitattributes, .gitignore and .github/. Not run yet at the time of
+# writing: with about 60,000 small files the first sync may take a long while.
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sync-to-hub
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: Mirror to the Hub
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: huggingface/hub-sync@v0.3.0
+        with:
+          github_repo_id: ${{ github.repository }}
+          huggingface_repo_id: erdostack/bench
+          repo_type: dataset
+          hf_token: ${{ secrets.HF_TOKEN }}

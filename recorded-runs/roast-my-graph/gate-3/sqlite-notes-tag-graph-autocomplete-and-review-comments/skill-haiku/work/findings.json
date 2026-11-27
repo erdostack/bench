@@ -1,0 +1,26 @@
+[
+  {
+    "element": "note_tag",
+    "severity": "medium",
+    "problem": "note_tag declares REFERENCES note and tag with ON DELETE CASCADE, but no file in the repo runs PRAGMA foreign_keys = ON (SQLite leaves it off per connection; the sample connection reports 0). The references and cascades do nothing. tag_note in app/tagging.py also accepts any note_id from its caller, so a note_tag row for a missing note is stored without error. Trigger: a note deletion, or a tag_note call with an id that is not in note. Trigger is not in these files, so this is a medium.",
+    "fix": "Run PRAGMA foreign_keys = ON on every connection the application opens, next to where it creates the connection (not in these files). Check that the existing tag_note path raises on a missing note_id after that. Then verify on tags.db: SELECT count(*) FROM note_tag WHERE note_id NOT IN (SELECT id FROM note) must stay 0."
+  },
+  {
+    "element": "notes_with_tag",
+    "severity": "medium",
+    "problem": "db/queries/notes_with_tag.sql filters on note_tag_by_tag (tag_id, note_id), then sorts with ORDER BY n.updated DESC LIMIT 50. EXPLAIN QUERY PLAN on tags.db shows USE TEMP B-TREE FOR ORDER BY, so every note with the tag is read and sorted to return 50. The sample has 12 notes for its busiest tag, but the README gives 9 million note-tag rows over 80 thousand tags, so popular tags will carry many more notes. The answer is right; the cost is paid on every tag page.",
+    "fix": "Keep updated next to the link: add updated to note_tag (copied from note), index (tag_id, updated DESC, note_id), and rewrite the query to read that index in order and stop at 50. The copy has to be kept in step by whatever writes note.updated, which is not in these files. Until then, a stopgap is an index on note (updated) with the query rewritten to walk note in updated order, which is only cheap for tags with few notes."
+  },
+  {
+    "element": "note",
+    "severity": "low",
+    "problem": "note.updated is TEXT with no format check, and notes_with_tag.sql orders by it with no tie-breaker. The sample's 50,000 values are all 10-character YYYY-MM-DD and sort correctly as text, so Sam's nit is right only if another format can reach the column; the files do not say whether one can. Because the values are dates without a time, many notes share a value, so the 50 shown for a tag can change between runs.",
+    "fix": "Add CHECK (updated GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]') if dates are always ISO, or store an INTEGER timestamp. Add note.id DESC as a second sort key in notes_with_tag.sql so ties are deterministic. Confirm the expected precision with the owner of the field."
+  },
+  {
+    "element": "tag_parent",
+    "severity": "low",
+    "problem": "CHECK (child_id <> parent_id) blocks only self-parents. The schema allows cycles of length three or more, which nothing in the files forbids. tag_ancestors.sql still terminates, because UNION drops rows it has already seen, but a cycle makes a tag its own ancestor through the other tags, and the files do not say whether that is allowed. Whether cycles exist in the sample could not be checked beyond two-cycles, which are absent.",
+    "fix": "If the hierarchy must be a DAG, reject a new edge whose parent is already a descendant of its child, in the code that inserts tag_parent rows, or add a periodic check query. If cycles are allowed, document it next to tag_ancestors.sql."
+  }
+]

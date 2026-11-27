@@ -1,0 +1,14 @@
+2026-11-22 02:00:01 INFO jobs.assign_rings start
+2026-11-22 02:00:02 INFO jobs.assign_rings chunk 1 assigned devices 1001-1500; updating ring counts
+2026-11-22 02:00:02 INFO jobs.assign_rings chunk 2 assigned devices 1501-2000; updating ring counts
+2026-11-22 02:00:03 INFO jobs.assign_rings chunk 3 assigned devices 2001-2500; updating ring counts
+[... chunks 4-27 the same ...]
+2026-11-22 02:00:31 INFO jobs.assign_rings chunk 28 assigned devices 14501-15000; updating ring counts
+2026-11-22 02:00:32 INFO jobs.assign_rings chunk 29 assigned devices 15001-15500; updating ring counts
+2026-11-22 02:00:37 ERROR jobs.assign_rings job failed
+Traceback (most recent call last):
+  File "/srv/fleetgraph/jobs/__main__.py", line 14, in <module>
+    print(importlib.import_module(f"jobs.{sys.argv[1]}").run(conn))
+  File "/srv/fleetgraph/jobs/assign_rings.py", line 31, in run
+    conn.execute(f"""UPDATE rings SET member_count = member_count +
+sqlite3.OperationalError: database is locked

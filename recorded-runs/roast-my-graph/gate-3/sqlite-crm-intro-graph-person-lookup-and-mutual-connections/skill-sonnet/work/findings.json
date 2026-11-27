@@ -1,0 +1,14 @@
+[
+  {
+    "element": "person_by_email.sql",
+    "severity": "high",
+    "problem": "WHERE lower(email) = lower(:email) cannot use sqlite_autoindex_person_1 (the UNIQUE on email is case-sensitive), so every sidebar request, which runs this first, does SCAN person over 1.2 million rows in production. On the 60,000-person sample the scan takes 16 to 22 ms against 0.07 ms for an exact lookup; at 20 times the rows the 80 ms p95 cannot hold. Results are correct, only too slow.",
+    "fix": "CREATE UNIQUE INDEX person_email_lower ON person (lower(email)); (or CREATE INDEX if production has case-only duplicate emails; check with SELECT lower(email) FROM person GROUP BY 1 HAVING count(*) > 1). Leave the query as written: on a copy the plan became SEARCH person USING INDEX person_email_lower (<expr>=?) with the same result in about 0.002 ms. Needs SQLite 3.9+; verified on 3.53.1. A plain index on email does not help."
+  },
+  {
+    "element": "email",
+    "severity": "low",
+    "problem": "Question to confirm: UNIQUE on email is exact-spelling only, while the CRM matches without regard to case. If production holds two rows that differ only in case, person_by_email.sql returns both and api/sidebar.py takes an arbitrary one with fetchone(). The sample has no such rows (0 of 60,000).",
+    "fix": "The unique expression index on lower(email) enforces it; otherwise normalise to lower case on write and match with =."
+  }
+]

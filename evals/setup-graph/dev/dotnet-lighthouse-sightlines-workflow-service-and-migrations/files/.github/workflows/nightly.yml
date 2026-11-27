@@ -1,0 +1,32 @@
+name: nightly
+on:
+  schedule:
+    - cron: "40 2 * * *"
+  workflow_dispatch:
+
+jobs:
+  graph:
+    runs-on: ubuntu-latest
+    services:
+      graph:
+        image: neo4j:2026.05.0-enterprise
+        env:
+          NEO4J_AUTH: none
+          NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
+        ports:
+          - 7687:7687
+        options: >-
+          --health-cmd "cypher-shell 'RETURN 1'"
+          --health-interval 10s --health-retries 12
+    env:
+      GRAPH_URI: bolt://localhost:7687
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - run: dotnet restore --locked-mode
+      - run: dotnet run --project src/Sightline.Migrate -- db/migrations
+      - run: dotnet run --project src/Sightline.Load -- data
+      - run: |
+          for f in queries/*.cypher; do dotnet run --project src/Sightline.Query -- "$f"; done

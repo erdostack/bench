@@ -1,0 +1,50 @@
+[
+  {
+    "element": "queries/subtree.sql",
+    "severity": "critical",
+    "problem": "WHERE path LIKE :prefix || '%' cannot use the index on path. SQLite's LIKE is case-insensitive by default while the UNIQUE index on path uses BINARY collation, so EXPLAIN QUERY PLAN shows 'SCAN node USING INDEX sqlite_autoindex_node_1': a full scan of every node for every folder view. On the 120k sample it takes 19-25 ms for a 2.5k-row folder and 270-350 ms for the big ones; on 3M production nodes the scan alone is about 25x worse (hundreds of ms to seconds) for every folder regardless of size.",
+    "fix": "Use an index range on path: WHERE path >= :prefix AND path < :prefix || char(1114111) (or compute the upper bound in code by incrementing the last character, '/' -> '0'). The plan becomes 'SEARCH node USING INDEX ... (path>? AND path<?)' and a 4.4k-row folder drops from ~34 ms to ~10 ms with identical results. GLOB does not help here: it still scans in this SQLite build (3.53.1)."
+  },
+  {
+    "element": "queries/subtree.sql",
+    "severity": "high",
+    "problem": "Even with the range search, the query returns the whole subtree. The sample's root and /shared-4/ return 119,999 and 106,766 rows, taking 0.27-0.35 s; at 3M nodes a top-level folder is hundreds of thousands to millions of rows. No query shape can hit 100 ms while materialising and shipping all of them, and the UI cannot display them anyway.",
+    "fix": "Add LIMIT/OFFSET or, better, keyset pagination on path (WHERE path > :after AND path < :upper ORDER BY path LIMIT 200). With limit 200 the same queries run in about 0.2-0.3 ms. Return counts or totals separately if the UI needs them."
+  },
+  {
+    "element": "node_parent",
+    "severity": "medium",
+    "problem": "The only secondary index is node_parent(parent_id, name). The subtree query selects id, path, kind, size_bytes, so each hit in the path index needs a row lookup into the table. There is no covering index for the folder view.",
+    "fix": "CREATE INDEX node_path_cover ON node(path, kind, size_bytes). The plan becomes 'SEARCH node USING COVERING INDEX' and measured time drops again: 4.4k rows 10 ms -> 4.7 ms, 107k rows 0.27 s -> 0.14 s, 2.5k rows ~2.8 ms. The path UNIQUE index itself can then be kept for the constraint only. Weigh the extra write and storage cost at 3M rows."
+  },
+  {
+    "element": "path",
+    "severity": "medium",
+    "problem": "path is a denormalised copy of the tree (full path stored on every node) with nothing enforcing that path = parent path || name (|| '/' for folders). The sample is consistent today, but the schema allows drift, and renaming or moving a folder means rewriting the path of every descendant (up to millions of rows) in one transaction.",
+    "fix": "Make paths changeable only through one function or trigger that rewrites descendants in a single UPDATE using the same range predicate. Add a periodic consistency check. If moves of large folders matter, consider a closure table or nested-set columns instead of path strings."
+  },
+  {
+    "element": "folder_view",
+    "severity": "medium",
+    "problem": "folder_view in drive/tree.py runs fetchall() on the whole subtree and takes no limit, cursor or page arguments, so the application loads every row into Python memory even if the SQL becomes fast. It also appends '/' to the caller's folder_path without validating that it is a folder path, and it passes the value straight to a LIKE: the README's 'no % or _ in paths' guarantee only holds for stored names, not for a prefix supplied by a caller, so a prefix such as /a_b/ matches /axb/ too.",
+    "fix": "Add limit and after parameters and bind them. Use the range predicate (no wildcards), which also makes the wildcard issue disappear. Validate that the prefix is an existing folder, or at least matches the name CHECK pattern."
+  },
+  {
+    "element": "SUBTREE",
+    "severity": "low",
+    "problem": "The SUBTREE statement is read from queries/subtree.sql at import time and executed as-is; the prefix is interpreted by LIKE, which is case-insensitive, so a prefix that differs only in case would match, and the extra path <> :prefix filter is applied after the scan.",
+    "fix": "Keep the named parameter but change the SQL to a half-open range; the prefix itself is excluded by using path > :prefix instead of a separate <> test."
+  },
+  {
+    "element": "queries/children.sql",
+    "severity": "low",
+    "problem": "ORDER BY kind DESC, name does not match node_parent(parent_id, name), so EXPLAIN QUERY PLAN shows 'USE TEMP B-TREE FOR ORDER BY' for every sidebar load. Folders are small here (max about 48 children in the sample) so this is cheap now, but a folder with tens of thousands of children would sort them every time. It also returns no size_bytes and has no limit.",
+    "fix": "Index (parent_id, kind DESC, name) so the order comes from the index, and add a limit or pagination for very wide folders."
+  },
+  {
+    "element": "queries/breadcrumbs.sql",
+    "severity": "low",
+    "problem": "The recursive walk up is fine (primary-key lookups, depth at most 53 in the sample) but orders with a temp b-tree and walks one query per level in a CTE. It is not a budget risk by itself.",
+    "fix": "No urgent change. If it ever matters, derive breadcrumbs from splitting the stored path, which needs no query for the ancestors' names."
+  }
+]

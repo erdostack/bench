@@ -1,0 +1,1 @@
+Not run on main. You also need to delete their posts, comments, walls and everything below, with the edges.

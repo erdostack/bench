@@ -1,0 +1,3 @@
+CREATE CONSTRAINT employee_staff_no IF NOT EXISTS FOR (e:Employee) REQUIRE e.staff_no IS UNIQUE;
+CREATE CONSTRAINT claim_ref IF NOT EXISTS FOR (c:Claim) REQUIRE c.ref IS UNIQUE;
+CREATE CONSTRAINT cost_centre_code IF NOT EXISTS FOR (cc:CostCentre) REQUIRE cc.code IS UNIQUE;

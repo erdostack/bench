@@ -1,0 +1,8 @@
+[
+  {
+    "element": "PricedOn",
+    "severity": "medium",
+    "problem": "Each checkout line walks from Product to every price list; in August this runs hundreds of times a minute.",
+    "fix": "Cache the price per school and product for an hour."
+  }
+]

@@ -1,0 +1,10 @@
+"""0018: clear lapsed holds (until before the first day of this month); open-ended holds stay."""
+
+def run(conn):
+    total = 0
+    while True:
+        with conn:
+            n = conn.execute("DELETE FROM edges WHERE id IN (SELECT id FROM edges WHERE kind = 'holds' AND until < strftime('%Y-%m-01', 'now') LIMIT 1000)").rowcount
+        if not n:
+            return total
+        total += n

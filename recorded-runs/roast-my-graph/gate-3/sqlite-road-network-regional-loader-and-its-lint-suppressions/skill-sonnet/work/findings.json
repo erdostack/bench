@@ -1,0 +1,14 @@
+[
+  {
+    "element": "staging_edge",
+    "severity": "critical",
+    "problem": "The three region loaders start together (ops/crontab, 0 1 * * *) and each runs DELETE FROM staging_edge with no region filter, wiping the other regions' staged rows. A loader whose rows were wiped validates zero rows, then deletes its region from edge and inserts nothing. Replayed on an in-memory copy of sql/schema.sql: all three validations passed and only one region kept its edges.",
+    "fix": "Change the clear in loader/load_region.py to DELETE FROM staging_edge WHERE region = ? and remove the SQL-DEL-001 lint suppression. Before the swap, fail unless the staged row count for the region equals len(rows). Run DELETE FROM staging_edge once to clear leftovers and restore any region already emptied from its last good export."
+  },
+  {
+    "element": "validate",
+    "severity": "medium",
+    "problem": "validate runs one SELECT against node per endpoint, two per staged edge, from Python; the README says validation is most of the 20 to 40 minute load. Correct and within the 03:00 window today, but the application is doing the database's job.",
+    "fix": "Replace the per-edge lookups with set-based statements: one SELECT for km <= 0 and a UNION ALL of two NOT EXISTS queries against node (n.id = s.src / s.dst AND n.region = ?1), keeping the same messages. Compare with the old output on a past export before switching."
+  }
+]

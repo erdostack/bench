@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. One thing to know: README.md and docs/query-style.md say queries are Cypher 25, but the GraphServer fixture sets the server's default language to CYPHER_5, so unprefixed queries run as Cypher 5. Either prefix the files with CYPHER 25 or change the style guide.

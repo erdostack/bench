@@ -1,0 +1,1 @@
+changes/0088 sets region from country for every site whose region is not manual (docs/sites.md: manual regions are never overwritten), and marks them derived, in batches of 5,000. The count by source/region in the header checks it.

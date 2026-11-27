@@ -1,0 +1,3 @@
+services:
+  graph:
+    image: memgraph/memgraph:3.4.0

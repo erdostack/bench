@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# bin/q <file.cypher>: start the seeded test container and run one saved query against it, read-only.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+file="${1:?usage: bin/q <file.cypher>}"
+exec ./mvnw -q verify -Dtest=none -Dsurefire.failIfNoSpecifiedTests=false \
+  -Dit.test=AdHocQueryIT -Dquery.file="$file"

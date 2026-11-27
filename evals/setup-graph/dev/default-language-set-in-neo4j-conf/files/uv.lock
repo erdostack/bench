@@ -1,0 +1,158 @@
+version = 1
+revision = 2
+requires-python = ">=3.12"
+
+[[package]]
+name = "trailmap"
+version = "0.5.1"
+source = { editable = "." }
+dependencies = [
+    { name = "fastapi" },
+    { name = "neo4j" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "pytest" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "fastapi", specifier = ">=0.115" },
+    { name = "neo4j", specifier = ">=5.28,<7" },
+]
+
+[[package]]
+name = "annotated-types"
+version = "0.7.0"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/01/92/075477c67d0c8b27e08cf27a7e4994a352df929518eeb3f0ebba663c/annotated_types-0.7.0-py3-none-any.whl", hash = "sha256:0192075477c67d0c8b27e08cf27a7e4994a352df929518eeb3f0ebba663c953e", size = 20402 },
+]
+
+[[package]]
+name = "anyio"
+version = "4.9.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "idna" },
+    { name = "sniffio" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/03/21/0e89736af87a38d10313f2062a48b000a9e0aa72b5c686ce99aa29e6/anyio-4.9.0-py3-none-any.whl", hash = "sha256:03210e89736af87a38d10313f2062a48b000a9e0aa72b5c686ce99aa29e6850c", size = 20801 },
+]
+
+[[package]]
+name = "fastapi"
+version = "0.115.12"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pydantic" },
+    { name = "starlette" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/84/68/5ccf6fdc210f0d624c1d60b793dc817c05c9b21670734d6abec1aa81/fastapi-0.115.12-py3-none-any.whl", hash = "sha256:84685ccf6fdc210f0d624c1d60b793dc817c05c9b21670734d6abec1aa81f0cb", size = 53896 },
+]
+
+[[package]]
+name = "idna"
+version = "3.10"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/22/e9/6c4af37c93be102a9ff2f07415257513bf494efa0ef351a503ace746/idna-3.10-py3-none-any.whl", hash = "sha256:22e96c4af37c93be102a9ff2f07415257513bf494efa0ef351a503ace7462761", size = 28937 },
+]
+
+[[package]]
+name = "iniconfig"
+version = "2.1.0"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/07/78/a93b0256b2199a09fde75fc0da6b6a2260a1b85bc22ec5d59f029bec/iniconfig-2.1.0-py3-none-any.whl", hash = "sha256:0778a93b0256b2199a09fde75fc0da6b6a2260a1b85bc22ec5d59f029bec33d1", size = 21912 },
+]
+
+[[package]]
+name = "neo4j"
+version = "6.1.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pytz" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/86/49/d981b477d4751a91b2bccac2840eafc7ca7c00a4658b3b8edd7b9e50/neo4j-6.1.0-py3-none-any.whl", hash = "sha256:8649d981b477d4751a91b2bccac2840eafc7ca7c00a4658b3b8edd7b9e501282", size = 54377 },
+]
+
+[[package]]
+name = "packaging"
+version = "25.0"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/fc/07/c649b792a9b468d2f7e0f52d94598f6de6f8eb902ab538935ecf8103/packaging-25.0-py3-none-any.whl", hash = "sha256:fc07c649b792a9b468d2f7e0f52d94598f6de6f8eb902ab538935ecf810366e6", size = 84519 },
+]
+
+[[package]]
+name = "pluggy"
+version = "1.6.0"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/99/b4/86fc5d50fefcd41703c646769378c69b97f1cd2fe8ac9fc0995968ca/pluggy-1.6.0-py3-none-any.whl", hash = "sha256:99b486fc5d50fefcd41703c646769378c69b97f1cd2fe8ac9fc0995968ca3a90", size = 59348 },
+]
+
+[[package]]
+name = "pydantic"
+version = "2.11.4"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "annotated-types" },
+    { name = "pydantic-core" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c5/ca/ea545b07c8a86d44ab32549f30f98709690f4002cbcc3a7cdcb09dd9/pydantic-2.11.4-py3-none-any.whl", hash = "sha256:c5caea545b07c8a86d44ab32549f30f98709690f4002cbcc3a7cdcb09dd9230c", size = 70634 },
+]
+
+[[package]]
+name = "pydantic-core"
+version = "2.33.2"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/15/3a/1f304632399d15a80e751d9ee6ac32fc4e8e0f41aa6ec7ec608eb85c/pydantic_core-2.33.2-py3-none-any.whl", hash = "sha256:153a1f304632399d15a80e751d9ee6ac32fc4e8e0f41aa6ec7ec608eb85c028b", size = 25434 },
+]
+
+[[package]]
+name = "pytest"
+version = "8.3.5"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "iniconfig" },
+    { name = "packaging" },
+    { name = "pluggy" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/8c/ba/0287a6e3cddccd9bd93c02a624230c5213d475808c37e462c2e2c83c/pytest-8.3.5-py3-none-any.whl", hash = "sha256:8cba0287a6e3cddccd9bd93c02a624230c5213d475808c37e462c2e2c83c7e4a", size = 56026 },
+]
+
+[[package]]
+name = "pytz"
+version = "2025.2"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/6b/a3/fbe8a4e2075a5eae13a0790242598deacf3496248a4b213077c40ee3/pytz-2025.2-py3-none-any.whl", hash = "sha256:6ba3fbe8a4e2075a5eae13a0790242598deacf3496248a4b213077c40ee3d2f5", size = 47555 },
+]
+
+[[package]]
+name = "sniffio"
+version = "1.3.1"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/05/fb/041bf2d77527e9eea76a63a4fb56ffc690a978945321b943e92705cc/sniffio-1.3.1-py3-none-any.whl", hash = "sha256:05fb041bf2d77527e9eea76a63a4fb56ffc690a978945321b943e92705cc2040", size = 21531 },
+]
+
+[[package]]
+name = "starlette"
+version = "0.46.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "anyio" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/56/bd/1913b83b78d7b5a0ec2b0aec3269a2035db29c4d0652811a7ece6fd4/starlette-0.46.2-py3-none-any.whl", hash = "sha256:56bd1913b83b78d7b5a0ec2b0aec3269a2035db29c4d0652811a7ece6fd4f154", size = 42205 },
+]

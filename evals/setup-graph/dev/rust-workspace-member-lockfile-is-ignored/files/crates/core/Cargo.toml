@@ -1,0 +1,4 @@
+[package]
+name = "dockflow-core"
+version.workspace = true
+edition.workspace = true

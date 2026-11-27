@@ -1,0 +1,2 @@
+# <path> <notification code> # <reason>
+queries/series_backlist.cypher Neo.ClientNotification.Statement.FeatureDeprecationWarning # none left after the 5.26 move; kept until the next audit

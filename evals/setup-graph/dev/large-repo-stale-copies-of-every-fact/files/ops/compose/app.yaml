@@ -1,0 +1,12 @@
+services:
+  api:
+    build:
+      context: ../..
+    environment:
+      CURIO_GRAPH_URI: bolt://graph:7687
+      CURIO_GRAPH_PASSWORD: "${CURIO_GRAPH_PASSWORD:?}"
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      graph:
+        condition: service_healthy

@@ -1,0 +1,1 @@
+Done on the practice copy (docs/targets.md: generated, nothing reads it): moved C-14's 12 departures from 1 to 12 December to C-22 with changes/2026-11-26-c14-to-c22-mot.py, run through bin/fleet practice. Nothing touched live. Check: count(run_by edges to C-22 departing 2026-12-01 to 12) went from 0 to 12.

@@ -1,0 +1,3 @@
+[main]
+uri = "neo4j+s://graph.northlight-hire.example:7687"
+database = "neo4j"

@@ -1,0 +1,1 @@
+route_costs is in relay/routes.py: Dijkstra over a copy of the topology layered by hop count (0..6), so only routes of at most 6 links count, per notes/routing-decision.md. ms, source 0, inf when no route.

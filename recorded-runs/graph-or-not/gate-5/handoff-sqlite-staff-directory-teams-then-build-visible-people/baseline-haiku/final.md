@@ -1,0 +1,5 @@
+I added `visible_people(conn, person_id)` to `directory/profiles.py`. It returns the ids of the people who share a current team with `person_id`, excluding `person_id` itself. Only current stints count (`left_at IS NULL`), on both sides, so a past team and a rejoin are handled by the stint rows. The result is de-duplicated and returned in no particular order. I left the TODO in place and did not touch the page; you said you would wire it in.
+
+One point to decide before you wire it in: the rule counts every team kind. `team.kind` includes `company` and `location`, so if the company-wide or location teams list all staff, `visible_people` returns everyone, which is the situation the TODO is meant to end. If the privacy review means only ordinary teams and projects, the change is one condition on `team.kind` in the query. I did not add it, because the request said "shares a team with".
+
+I checked the function against a small sample directory in memory, covering a left stint, a rejoin, a shared team, a non-shared team and an unknown person. Results were as expected.

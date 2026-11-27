@@ -1,0 +1,2 @@
+["scripts/build_rehearsal.py"]
+["bin/gx", "rehearsal", "merge_corn.py"]

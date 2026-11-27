@@ -1,0 +1,8 @@
+[
+  {
+    "element": "IN_CURRENCY",
+    "severity": "low",
+    "problem": "Looks scary in a degree count (EUR has about 19 million), but every query arrives at the currency from a single payment and reads two properties. Nothing starts at a currency and walks out.",
+    "fix": "Keep it. Only worth revisiting if someone adds a query that starts from a currency."
+  }
+]

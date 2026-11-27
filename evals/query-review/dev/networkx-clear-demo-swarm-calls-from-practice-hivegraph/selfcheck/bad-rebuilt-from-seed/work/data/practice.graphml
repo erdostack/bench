@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d3" for="edge" attr.name="kind" attr.type="string"/>
+<key id="d2" for="node" attr.name="name" attr.type="string"/>
+<key id="d1" for="node" attr.name="kind" attr.type="string"/>
+<key id="d0" for="node" attr.name="code" attr.type="string"/>
+<graph edgedefault="directed"><node id="AR-DEMO">
+  <data key="d0">AR-DEMO</data>
+  <data key="d1">area</data>
+  <data key="d2">Demo Valley</data>
+</node>
+<node id="AR-01">
+  <data key="d0">AR-01</data>
+  <data key="d1">area</data>
+  <data key="d2">HX1</data>
+</node>
+<node id="AR-02">
+  <data key="d0">AR-02</data>
+  <data key="d1">area</data>
+  <data key="d2">HX2</data>
+</node>
+<node id="AR-03">
+  <data key="d0">AR-03</data>
+  <data key="d1">area</data>
+  <data key="d2">HX3</data>
+</node>
+<node id="AR-04">
+  <data key="d0">AR-04</data>
+  <data key="d1">area</data>
+  <data key="d2">OL14</data>
+</node>
+<node id="AR-05">
+  <data key="d0">AR-05</data>
+  <data key="d1">area</data>
+  <data key="d2">BD22</data>
+</node>
+<node id="M-9001">
+  <data key="d0">M-9001</data>
+  <data key="d1">member</data>
+  <data key="d2">Ann Example</data>
+</node>
+<node id="M-9002">
+  <data key="d0">M-9002</data>
+  <data key="d1">member</data>
+  <data key="d2">Bob Sample</data>
+</node>
+<node id="M-9003">
+  <data key="d0">M-9003</data>
+  <data key="d1">member</data>
+  <data key="d2">Cath Placeholder</data>
+</node>
+<node id="M-9004">
+  <data key="d0">M-9004</data>
+  <data key="d1">member</data>
+  <data key="d2">Dev Fictional</data>
+</node>
+<node id="M-9005">
+  <data key="d0">M-9005</data>
+  <data key="d1">member</data>
+  <data key="d2">Eve Pretend</data>
+</node>
+<node id="M-9006">
+  <data key="d0">M-9006</data>
+  <data key="d1">member</data>
+  <data key="d2">Fin Madeup</data>
+</node>
+<node id="EX-001">
+  <data key="d0">EX-001</data>
+  <data key="d1">report</data>
+  <data key="d2">Swarm on a garden hedge</data>
+</node>
+<node id="EX-002">
+  <data key="d0">EX-002</data>
+  <data key="d1">report</data>
+  <data key="d2">Bees in a chimney</data>
+</node>
+<node id="EX-003">
+  <data key="d0">EX-003</data>
+  <data key="d1">report</data>
+  <data key="d2">Swarm on a car wing mirror</data>
+</node>
+<node id="EX-004">
+  <data key="d0">EX-004</data>
+  <data key="d1">report</data>
+  <data key="d2">Wasps' nest in a shed (not bees)</data>
+</node>
+<node id="EX-005">
+  <data key="d0">EX-005</data>
+  <data key="d1">report</data>
+  <data key="d2">Same swarm as EX-001 rung in by a neighbour</data>
+</node>
+<node id="EX-006">
+  <data key="d0">EX-006</data>
+  <data key="d1">report</data>
+  <data key="d2">Swarm on a lamp post outside a school</data>
+</node>
+<node id="EX-007">
+  <data key="d0">EX-007</data>
+  <data key="d1">report</data>
+  <data key="d2">Bumblebees in a compost bin</data>
+</node>
+<node id="EX-008">
+  <data key="d0">EX-008</data>
+  <data key="d1">report</data>
+  <data key="d2">Swarm in a playground hedge</data>
+</node>
+<edge source="M-9001" target="AR-DEMO">
+  <data key="d3">covers</data>
+</edge>
+<edge source="M-9002" target="AR-DEMO">
+  <data key="d3">covers</data>
+</edge>
+<edge source="M-9003" target="AR-01">
+  <data key="d3">covers</data>
+</edge>
+<edge source="M-9004" target="AR-02">
+  <data key="d3">covers</data>
+</edge>
+<edge source="M-9005" target="AR-03">
+  <data key="d3">covers</data>
+</edge>
+<edge source="M-9006" target="AR-DEMO">
+  <data key="d3">covers</data>
+</edge>
+<edge source="EX-001" target="AR-DEMO">
+  <data key="d3">in_area</data>
+</edge>
+<edge source="EX-001" target="M-9001">
+  <data key="d3">collected_by</data>
+</edge>
+<edge source="EX-002" target="AR-DEMO">
+  <data key="d3">in_area</data>
+</edge>
+<edge source="EX-003" target="AR-DEMO">
+  <data key="d3">in_area</data>
+</edge>
+<edge source="EX-003" target="M-9002">
+  <data key="d3">collected_by</data>
+</edge>
+<edge source="EX-004" target="AR-DEMO">
+  <data key="d3">in_area</data>
+</edge>
+<edge source="EX-005" target="AR-DEMO">
+  <data key="d3">in_area</data>
+</edge>
+<edge source="EX-005" target="EX-001">
+  <data key="d3">duplicate_of</data>
+</edge>
+<edge source="EX-006" target="AR-DEMO">
+  <data key="d3">in_area</data>
+</edge>
+<edge source="EX-006" target="M-9006">
+  <data key="d3">collected_by</data>
+</edge>
+<edge source="EX-007" target="AR-DEMO">
+  <data key="d3">in_area</data>
+</edge>
+<edge source="EX-008" target="AR-DEMO">
+  <data key="d3">in_area</data>
+</edge>
+</graph></graphml>

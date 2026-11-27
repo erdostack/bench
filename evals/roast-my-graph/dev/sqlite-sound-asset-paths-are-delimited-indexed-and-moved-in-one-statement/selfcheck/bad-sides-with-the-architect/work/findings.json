@@ -1,0 +1,14 @@
+[
+  {
+    "element": "asset.path",
+    "severity": "critical",
+    "problem": "Hierarchy stored as delimited text. Prefix matching on strings is fragile and returns wrong subtrees, and the GLOB forces a full table scan.",
+    "fix": "Replace path with parent_id and use WITH RECURSIVE for subtrees and breadcrumbs."
+  },
+  {
+    "element": "move",
+    "severity": "high",
+    "problem": "A move rewrites every descendant row.",
+    "fix": "With parent_id a move is a single-row update."
+  }
+]

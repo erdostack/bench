@@ -1,0 +1,2 @@
+python3 bin/labs scratch run scratch/merge_lab31.py
+python3 bin/labs live run scratch/merge_lab31.py

@@ -1,0 +1,14 @@
+[
+  {
+    "element": "shop_orders",
+    "severity": "low",
+    "problem": "avg of integer cents returns a float.",
+    "fix": "Round it in the board pack."
+  },
+  {
+    "element": "load_reports",
+    "severity": "low",
+    "problem": "Parses the file by splitting on comments.",
+    "fix": "Keep the queries in Python constants."
+  }
+]

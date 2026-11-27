@@ -1,0 +1,3 @@
+#!/bin/sh
+# Gradle wrapper start script (trimmed for this repository).
+exec java -classpath "$(dirname "$0")/gradle/wrapper/gradle-wrapper.jar" org.gradle.wrapper.GradleWrapperMain "$@"

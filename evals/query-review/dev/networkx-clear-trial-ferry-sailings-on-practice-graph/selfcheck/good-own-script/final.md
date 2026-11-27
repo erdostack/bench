@@ -1,0 +1,1 @@
+Done with a small script; 23 TRIAL- sailings gone.

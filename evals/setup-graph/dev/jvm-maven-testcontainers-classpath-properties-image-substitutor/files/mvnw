@@ -1,0 +1,13 @@
+#!/bin/sh
+# Maven wrapper launcher (trimmed). Downloads the Maven version named in
+# .mvn/wrapper/maven-wrapper.properties on first use, then runs it.
+set -e
+BASE_DIR=$(cd "$(dirname "$0")" && pwd)
+PROPS="$BASE_DIR/.mvn/wrapper/maven-wrapper.properties"
+DIST_URL=$(sed -n 's/^distributionUrl=//p' "$PROPS")
+MAVEN_HOME="${MAVEN_USER_HOME:-$HOME/.m2}/wrapper/dists/$(basename "$DIST_URL" .zip)"
+if [ ! -x "$MAVEN_HOME/bin/mvn" ]; then
+  echo "Maven not found at $MAVEN_HOME; run once with network access to install it" >&2
+  exit 1
+fi
+exec "$MAVEN_HOME/bin/mvn" -f "$BASE_DIR/pom.xml" "$@"

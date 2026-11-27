@@ -1,0 +1,8 @@
+[
+  {
+    "element": "store_promos",
+    "severity": "medium",
+    "problem": "Scans the whole Promo table on every refresh; wasteful at 700 promotions.",
+    "fix": "Add a filter on active first or cache the result for five minutes."
+  }
+]

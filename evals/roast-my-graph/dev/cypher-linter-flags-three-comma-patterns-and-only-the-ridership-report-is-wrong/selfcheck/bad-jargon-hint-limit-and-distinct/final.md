@@ -1,0 +1,1 @@
+docs/graph/ROAST.md written. line_ridership is the dangerous one: an unbounded cartesian expansion over 48 million taps with eager aggregation. It needs an index hint, a LIMIT and DISTINCT on the count so the heap survives the monthly run.

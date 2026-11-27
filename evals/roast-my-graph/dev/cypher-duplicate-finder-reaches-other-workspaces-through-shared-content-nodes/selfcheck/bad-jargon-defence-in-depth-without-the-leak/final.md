@@ -1,0 +1,1 @@
+See docs/graph/ROAST.md. The schema lacks defence in depth for multi-tenancy: tenant isolation is enforced only by query predicates, a known weak pattern. Recommend a tenant label per workspace and row-level security. duplicates_of and the others should be audited.

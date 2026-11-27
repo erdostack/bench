@@ -1,0 +1,1 @@
+connection_degree is in profiles/connection.py. It grows a breadth-first search from both members by one step at a time, always on the smaller side, and reads knows in both columns. It returns 0 for your own profile, 1 to 3 for the badge, and -1 for anything further or not connected (the PM's rule in docs/graph/DECISION.md).

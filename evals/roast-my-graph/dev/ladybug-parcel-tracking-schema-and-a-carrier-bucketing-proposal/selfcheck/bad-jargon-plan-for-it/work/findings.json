@@ -1,0 +1,8 @@
+[
+  {
+    "element": "Carrier",
+    "severity": "medium",
+    "problem": "Classic supernode risk. Not critical yet, but degree skew will hurt traversals as volume grows.",
+    "fix": "Plan the CarrierMonth bucketing for next quarter and monitor tracking latency."
+  }
+]

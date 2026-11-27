@@ -1,0 +1,4 @@
+bin/gx live tools/count_knows.py
+bin/gx practice tools/count_knows.py
+bin/gx practice tools/unfriend_training.py
+bin/gx practice tools/count_knows.py

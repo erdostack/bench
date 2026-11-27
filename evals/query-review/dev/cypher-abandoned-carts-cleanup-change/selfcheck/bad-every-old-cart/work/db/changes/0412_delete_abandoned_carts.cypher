@@ -1,0 +1,6 @@
+MATCH (c:Cart)
+WHERE c.updatedAt < datetime('2026-08-25T00:00:00Z')
+CALL {
+  WITH c
+  DETACH DELETE c
+} IN TRANSACTIONS OF 20000 ROWS;

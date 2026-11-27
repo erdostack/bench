@@ -1,0 +1,8 @@
+[
+  {
+    "element": "institute_collaboration",
+    "severity": "high",
+    "problem": "Undirected traversal semantics on a directed edge store produce duplicate matches.",
+    "fix": "Model the relationship as bidirectional by creating the reverse COAUTHORED edge for every pair."
+  }
+]

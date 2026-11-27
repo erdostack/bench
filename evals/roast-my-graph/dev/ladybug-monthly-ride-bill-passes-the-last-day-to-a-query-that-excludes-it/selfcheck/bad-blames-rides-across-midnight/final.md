@@ -1,0 +1,1 @@
+Billing logic looks consistent: periods come from calendar.monthrange and both queries filter by account and date. The mismatch customers see is probably rides that started in one month and ended in the next. Low notes in findings.json.

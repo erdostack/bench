@@ -1,0 +1,3 @@
+CREATE CONSTRAINT specimen_catalog IF NOT EXISTS FOR (s:Specimen) REQUIRE s.catalogNumber IS UNIQUE;
+CREATE CONSTRAINT image_url IF NOT EXISTS FOR (i:Image) REQUIRE i.url IS UNIQUE;
+CREATE CONSTRAINT collector_id IF NOT EXISTS FOR (c:Collector) REQUIRE c.id IS UNIQUE;

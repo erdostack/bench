@@ -1,0 +1,2 @@
+bin/labs scratch run changes/merge31.py
+python3 reports/lab_spend.py scratch/labs.graphml

@@ -1,0 +1,8 @@
+[
+  {
+    "element": "Booking.day",
+    "severity": "low",
+    "problem": "day is stored and compared as a string; consistent everywhere, so it works.",
+    "fix": "Optional: store it as a date."
+  }
+]

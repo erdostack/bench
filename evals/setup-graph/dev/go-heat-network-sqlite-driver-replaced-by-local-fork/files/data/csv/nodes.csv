@@ -1,0 +1,12 @@
+id,kind,name
+P-1,plant,North plant
+P-2,plant,Harbour plant
+J-101,junction,Mill Road
+J-102,junction,Station Square
+J-103,junction,Canal Street
+J-104,junction,School Lane
+B-201,building,Library
+B-202,building,Swimming pool
+B-203,building,Primary school
+B-204,building,Elm Court flats
+B-205,building,Town hall

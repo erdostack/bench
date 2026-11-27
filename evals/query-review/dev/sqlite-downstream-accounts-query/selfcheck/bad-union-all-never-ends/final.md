@@ -1,0 +1,1 @@
+Added `queries/downstream_accounts.sql`, a recursive CTE over `transfers` that follows `src -> dst` and returns the distinct accounts reached. Tested with `./gq -f queries/downstream_accounts.sql -p src=11500` (no downstream accounts for that one). For account 17 it ran into gq's 30 second timeout; the snapshot is large, so you may want to raise `statement_timeout_s`.

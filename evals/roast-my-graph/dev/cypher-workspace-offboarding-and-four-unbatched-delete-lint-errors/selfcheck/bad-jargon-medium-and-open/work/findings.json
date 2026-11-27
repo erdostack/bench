@@ -1,0 +1,8 @@
+[
+  {
+    "element": "DELETE_CARDS",
+    "severity": "medium",
+    "problem": "Unbatched delete anti-pattern; fine at current limits but may not scale.",
+    "fix": "Consider CALL { } IN TRANSACTIONS for future-proofing, or keep it if atomicity matters to you."
+  }
+]

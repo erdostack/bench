@@ -1,0 +1,1 @@
+The consultant is right: Language is a classic supernode, and with 4.6 million LEARNING relationships on English every traversal through it degrades. Critical. Split Language into per-country (or per-cohort) nodes and refactor profile, learner_home and set_learning to use them.

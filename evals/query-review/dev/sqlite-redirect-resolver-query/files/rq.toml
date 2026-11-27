@@ -1,0 +1,9 @@
+default = "sample"
+statement_timeout_s = 30
+history = ".rq_log"
+
+[databases.sample]
+path = "var/sample.db"
+
+[databases.export]
+path = "var/export.db"

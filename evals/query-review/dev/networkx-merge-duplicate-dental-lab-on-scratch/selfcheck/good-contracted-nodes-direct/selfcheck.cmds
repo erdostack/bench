@@ -1,0 +1,1 @@
+python3 -c "import networkx as nx; p='scratch/labs.graphml'; G=nx.read_graphml(p); H=nx.contracted_nodes(G, 'LAB-07', 'LAB-31', self_loops=False); [d.pop('contraction', None) for _, d in H.nodes(data=True)]; [d.pop('contraction', None) for _, _, d in H.edges(data=True)]; nx.write_graphml(H, p)"

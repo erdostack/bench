@@ -1,0 +1,32 @@
+[
+  {
+    "element": "load",
+    "severity": "critical",
+    "problem": "import_refs.py opens sqlite3.connect(db_path) and never runs PRAGMA foreign_keys = ON, and nothing else in the repo does (SQLite leaves it off on a new connection). So the REFERENCES paper(id) on cites.cited_id is not enforced, and the README's promise that references to papers outside the corpus are skipped is false. In the shipped cites.db, 15,708 of 66,059 cites rows (24%) point at 1,493 cited_id values that are not in paper (PRAGMA foreign_key_check reports them). The only rows skipped are the 101 repeated pairs in data/refs.csv (66,160 rows, 66,059 distinct), so the importer prints 'resolved 66059 of 66160 references (99.8%)' when the real coverage is 50,351 of 66,160 (76.1%).",
+    "fix": "Run con.execute('PRAGMA foreign_keys = ON') right after sqlite3.connect (outside any transaction), and count the two rejection reasons separately, because the FK failure and the duplicate PK failure are both sqlite3.IntegrityError: check paper membership first, e.g. skip when cited_id/citing_id is not in a set loaded from SELECT id FROM paper (count as unresolved), and let the PK violation count as duplicate. Report resolved/unresolved/duplicate separately. Migration for cites.db: DELETE FROM cites WHERE cited_id NOT IN (SELECT id FROM paper); then re-run export_edges.py and ranking/rank.py. Verify with PRAGMA foreign_key_check returning no rows."
+  },
+  {
+    "element": "main",
+    "severity": "high",
+    "problem": "ranking/rank.py builds the graph from edges.tsv, which export_edges.py fills from every row of cites, including the 15,708 dangling edges. nx.pagerank therefore runs over 13,493 nodes, of which 1,493 are not papers, and all 25 of the top 25 printed are ghost ids (e.g. 414727, 640823, 881501, 536099, 876276) that print with the title '?'. This is why the syllabus ranking looked odd: it is the data, not the papers. Ranking only the 12,000 real papers puts 205763, 176687 and 312376 on top.",
+    "fix": "Fix the data first (see load), then re-run export_edges.py so edges.tsv has no dangling edges. As a guard in rank.py, drop ids missing from titles before ranking: g.remove_nodes_from([n for n in list(g) if n not in titles]), and fail loudly if any were removed. Re-run nx.pagerank on the cleaned graph."
+  },
+  {
+    "element": "main",
+    "severity": "medium",
+    "problem": "export_edges.py main writes every row of cites to edges.tsv with no check that both endpoints exist in paper, so it carries the dangling edges straight into the ranking input and nothing downstream can tell.",
+    "fix": "Select through the papers: SELECT c.citing_id, c.cited_id FROM cites c JOIN paper a ON a.id = c.citing_id JOIN paper b ON b.id = c.cited_id ORDER BY c.citing_id, c.cited_id. After the cites cleanup this returns the same rows, and it keeps the export correct if bad rows ever get in again."
+  },
+  {
+    "element": "reference_list.sql",
+    "severity": "low",
+    "problem": "queries/reference_list.sql uses LEFT JOIN paper on cited_id, which exists only to survive cited_id values with no paper row. On the shipped cites.db it returns those rows with NULL title and year, and ORDER BY p.year puts them first on the paper page. Once cites holds only resolved references the LEFT JOIN is never needed, and it is inconsistent with the REFERENCES constraint and with most_cited.sql, which uses an inner join.",
+    "fix": "After cleaning cites, change LEFT JOIN to JOIN paper p ON p.id = c.cited_id in queries/reference_list.sql, and select p.id instead of c.cited_id."
+  },
+  {
+    "element": "load",
+    "severity": "low",
+    "problem": "import_refs.py commits once per CSV row (with con: inside the loop), 66,160 transactions for one import. It is a rare batch job and finishes, so this is only slow, not wrong.",
+    "fix": "Optional: wrap the loop in one with con: block, or use executemany, and handle rejects before the insert as described in the first finding."
+  }
+]

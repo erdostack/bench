@@ -1,0 +1,8 @@
+[
+  {
+    "element": "collaboration_total",
+    "severity": "high",
+    "problem": "Inflated counts from duplicate COAUTHORED relationships: MERGE on a directed pattern creates a second edge when the pair arrives reversed (bidirectional duplication).",
+    "fix": "Deduplicate with apoc.refactor.mergeRelationships and switch the loader to an undirected MERGE."
+  }
+]

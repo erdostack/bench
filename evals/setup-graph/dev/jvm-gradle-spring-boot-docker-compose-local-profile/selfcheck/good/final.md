@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. The README and the root compose.yaml say Neo4j 5.26.24, but bootRun runs with the local profile, and that profile points Spring Boot at infra/compose.local.yaml, which runs 2026.06.0. That is the server your queries hit.

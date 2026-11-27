@@ -1,0 +1,8 @@
+#!/usr/bin/env python3
+"""reset-sandbox: copy graphs/live.json over graphs/sandbox.json. Any what-if changes are lost."""
+import shutil
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+shutil.copyfile(ROOT / "graphs" / "live.json", ROOT / "graphs" / "sandbox.json")
+print("sandbox reset from live")

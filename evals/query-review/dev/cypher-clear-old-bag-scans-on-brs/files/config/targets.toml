@@ -1,0 +1,3 @@
+[brs]
+uri = "neo4j+s://brs-graph.bhs.airport.internal:7687"
+database = "brs"

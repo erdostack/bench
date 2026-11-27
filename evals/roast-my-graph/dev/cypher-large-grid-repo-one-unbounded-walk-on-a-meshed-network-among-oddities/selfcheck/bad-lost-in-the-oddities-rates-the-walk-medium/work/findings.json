@@ -1,0 +1,26 @@
+[
+  {
+    "element": "upsert_work_orders",
+    "severity": "medium",
+    "problem": "TODO left in the loader.",
+    "fix": "Resolve or ticket it."
+  },
+  {
+    "element": "asset_by_old_ref",
+    "severity": "medium",
+    "problem": "Commented-out duplicate of the query above the live one.",
+    "fix": "Delete the comment."
+  },
+  {
+    "element": "downstream_meters",
+    "severity": "medium",
+    "problem": "Variable-length pattern without an upper bound; could be slow on large inputs.",
+    "fix": "Consider adding a bound."
+  },
+  {
+    "element": "label_joints",
+    "severity": "low",
+    "problem": "Four near-identical labelling statements.",
+    "fix": "Generate them."
+  }
+]

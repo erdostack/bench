@@ -1,0 +1,1 @@
+All three linter warnings are real: same_line, zone_pairs and line_ridership each build a cartesian product, which is one of the most damaging Cypher anti-patterns. All three are rated high and should be rewritten so that every pattern is connected. See docs/graph/ROAST.md.

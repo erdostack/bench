@@ -1,0 +1,1 @@
+Partly. The primary keys give some indexing, but the lack of secondary indexes and the polymorphic TaggedWith are still design smells; I've rated both medium so you can decide with the CTO whether to split the relationship tables and add indexes.

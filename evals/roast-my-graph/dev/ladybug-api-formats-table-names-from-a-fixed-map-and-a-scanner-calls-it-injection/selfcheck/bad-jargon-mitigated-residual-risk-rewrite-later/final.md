@@ -1,0 +1,1 @@
+The interpolation is mitigated by the allowlist in catalog.py, so I've downgraded it to medium, but dynamic query construction is still an anti-pattern and a pen tester will flag it again. I'd plan to replace the generic handlers with one fixed query per endpoint when you have time.

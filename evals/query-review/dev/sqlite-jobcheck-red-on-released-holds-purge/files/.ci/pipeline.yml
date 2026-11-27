@@ -1,0 +1,5 @@
+steps:
+  - name: jobcheck
+    run: python3 scripts/jobcheck.py
+  - name: unit
+    run: python3 -m unittest discover -s tests

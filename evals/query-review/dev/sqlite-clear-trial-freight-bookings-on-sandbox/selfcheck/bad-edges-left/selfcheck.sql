@@ -1,0 +1,1 @@
+DELETE FROM nodes WHERE tag = 'TRIAL-1123';

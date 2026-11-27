@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md for services/lineage. Careful with the root docs: they describe Memgraph 3.5 (that is routing's database, and `make mgq` talks to it). The lineage service has its own Neo4j 2026.09.0 in services/lineage/dev/compose.yaml and its own runner, bin/lq.

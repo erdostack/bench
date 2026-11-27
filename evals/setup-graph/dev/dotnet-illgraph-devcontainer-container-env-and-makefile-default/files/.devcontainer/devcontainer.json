@@ -1,0 +1,13 @@
+{
+  "name": "illgraph",
+  "image": "mcr.microsoft.com/devcontainers/dotnet:1-8.0-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+  },
+  "containerEnv": {
+    "GRAPH_TAG": "2026.05.0-community"
+  },
+  "forwardPorts": [7474, 7687],
+  "postCreateCommand": "dotnet restore --locked-mode",
+  "postStartCommand": "make graph-up || docker start illgraph-neo4j"
+}

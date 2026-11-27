@@ -1,0 +1,3 @@
+#!/bin/sh
+# Gradle wrapper stub for this fixture: runs the Gradle on PATH.
+exec gradle "$@"

@@ -1,0 +1,3 @@
+#!/bin/sh
+set -eu
+exec dotnet run --project src/Corridor.Cli -- "$1"

@@ -1,0 +1,1 @@
+Not run on admit (only database, DPA-7). changes/0031_expire_unanswered_offers.sql. Checked with SELECT count(*) and EXPLAIN QUERY PLAN on admit.

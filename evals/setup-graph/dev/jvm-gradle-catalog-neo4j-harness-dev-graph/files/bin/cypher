@@ -1,0 +1,4 @@
+#!/bin/sh
+# Run one Cypher file against a fresh in-process dev graph: bin/cypher queries/lineage.cypher lot=L-0412
+cd "$(dirname "$0")/.." || exit 1
+exec ./gradlew -q run --args="$*"

@@ -1,0 +1,26 @@
+[
+  {
+    "element": "stop_sequence",
+    "severity": "critical",
+    "problem": "route.stop_sequence packs each route's stops into one comma-separated text value, and both routes_at_stop.sql and planner.py match and parse it as text. On the shipped copy, 35,245 of the 46,432 (stop, route) rows the stop page returns for stops 1 to 4800 name a route that does not call at that stop. Stop 1's page lists all 310 routes, and only 2 call there. Nothing can check that the listed stop ids exist, and a LIKE match finds ids inside longer ids.",
+    "fix": "Replace the column with a route_stop table: route_id, seq, stop_id, PRIMARY KEY (route_id, seq), and CREATE INDEX route_stop_by_stop ON route_stop (stop_id, route_id). Migrate with INSERT INTO route_stop (route_id, seq, stop_id) SELECT r.id, j.key + 1, CAST(j.value AS INTEGER) FROM route r, json_each('[' || r.stop_sequence || ']') j; then drop stop_sequence. Verified in memory on SQLite 3.53.1 against the copy: 11,187 rows migrated, and the join returns the exact route list for all 4,800 stops. Put the migration in the nightly rebuild, since that rebuilds the file."
+  },
+  {
+    "element": "routes_at_stop.sql",
+    "severity": "critical",
+    "problem": "The stop page runs stop_sequence LIKE '%' || :stop_id || '%', so a stop id matches inside longer ids. On the shipped copy this gives wrong rows for 999 of the 4,800 stops, and 35,245 of 46,432 returned rows are wrong. The stop page is customer-facing and the README says it lists the routes that call at the stop.",
+    "fix": "Stopgap only: WHERE ',' || stop_sequence || ',' LIKE '%,' || :stop_id || ',%'. On the copy this returns the exact list for all 4,800 stops, but the packed text stays the only record of the relationship. The structural fix is the route_stop table under stop_sequence, and this statement then becomes a join on route_stop.stop_id."
+  },
+  {
+    "element": "one_change",
+    "severity": "medium",
+    "problem": "one_change calls stops_of inside the loop over destination routes, once for every origin route and destination route pair. Its candidate lists come from the same LIKE match, so for origin stop 1 it makes 928 text-parsing queries per search, against 2 routes that really call there. The journeys it returned were correct in all 60 random pairs checked, because its own origin and destination guards drop the false matches. The cost is in the search, not the answer.",
+    "fix": "After the route_stop migration, get the candidate routes with a join on stop_id, and fetch each route's stops once before the origin loop instead of inside it. The after_origin and before_dest walk can stay as it is."
+  },
+  {
+    "element": "headway",
+    "severity": "low",
+    "problem": "No file in the repo reads headway, so the table is either read by something outside this repo or stored for nothing. This is a question to confirm. Nothing in the copy is broken: PRAGMA foreign_key_check returns no rows.",
+    "fix": "Confirm what reads headway. If nothing does, drop it in the migration. If it stays, confirm that the nightly build turns foreign_keys on, since SQLite leaves it off on a new connection."
+  }
+]

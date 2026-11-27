@@ -1,0 +1,1 @@
+docs/graph/ROAST.md and findings.json written. services_on_host has a relationship-direction smell (directed patterns cost more; add a LIMIT) and host_by_serial has no index anchor (look up by name instead).

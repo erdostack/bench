@@ -1,0 +1,9 @@
+[package]
+name = "dockq"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+dockflow-core = { path = "../core" }
+neo4rs = { workspace = true }
+tokio = { workspace = true }

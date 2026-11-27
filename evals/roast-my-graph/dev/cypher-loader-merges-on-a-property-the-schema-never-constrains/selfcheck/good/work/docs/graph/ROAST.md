@@ -1,0 +1,19 @@
+# Roast: galleria graph
+
+The loader asks 1.9 million times a night, "have we met?", and the database has to check every face in the building each time, because the guest list is sorted by a number nobody uses.
+
+## Findings
+
+### 1. Artwork.accession_no (critical)
+
+**Problem.** Everything finds an artwork by its accession number: load_artworks, load_attributions, load_loans and the public artwork_page. Nothing in schema.cypher covers that property. The uniqueness rule for Artwork is on catalogue_id, which the loader only writes and nobody ever searches by. So for each of the 1.9 million rows in the export the database has to look through all 1.9 million artworks to see whether this one is already there, and it does that three times a night; that is why the sync is still running when the doors open. Every public page view does the same search once. And because four workers run at the same time and nothing says an accession number must be unique, two of them can each decide an artwork is missing and both create it.
+
+**Fix.** CREATE CONSTRAINT artwork_accession_no IF NOT EXISTS FOR (a:Artwork) REQUIRE a.accession_no IS UNIQUE; Before creating it, check for artworks that already share an accession number (the parallel workers may have made some) and merge them. Keep or drop the catalogue_id constraint as you like; it is harmless but it is not the one the loader needs.
+
+### 2. artwork_page (low)
+
+**Problem.** For an artwork with no recorded maker, the makers list comes back holding one entry with empty fields instead of an empty list.
+
+**Fix.** Filter the empty entry out, for example collect(CASE WHEN m IS NULL THEN null ELSE {maker: m.name, role: r.role} END).
+
+Roasted with erdostack: npx skills add usergraphtheory/erdostack

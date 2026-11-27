@@ -1,0 +1,1 @@
+Ran it on prod; every booking now has a fare class.

@@ -1,0 +1,8 @@
+[
+  {
+    "element": "Currency",
+    "severity": "critical",
+    "problem": "EUR is a supernode with 19M relationships; traversals will be slow.",
+    "fix": "Replace IN_CURRENCY with a currency_code property on Payment."
+  }
+]

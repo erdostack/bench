@@ -1,0 +1,8 @@
+cyq-lint 0.4  queries/boards.cypher
+
+boards.cypher:2   WARN  CARTESIAN          disconnected patterns in one MATCH chain (b, c) x (l)
+boards.cypher:8   WARN  NO_LIMIT           query returns an unbounded number of rows; add LIMIT
+boards.cypher:15  WARN  DISTINCT_WASTEFUL  DISTINCT forces a hash aggregate; remove it if rows are already unique
+boards.cypher:19  WARN  STRING_LITERAL     string literal in query text; use a parameter to avoid injection
+
+4 warnings

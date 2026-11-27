@@ -1,0 +1,14 @@
+[
+  {
+    "element": "HotelAmenity",
+    "severity": "medium",
+    "problem": "A node table that only ever sits between one Hotel (OFFERS) and one Amenity (OF_AMENITY), holding since and fee_eur. Nothing else connects to it, so it is a relationship stored as a node: 1.3 million extra nodes and an extra hop in the amenity search that runs 400 times a second and is about to get more filters.",
+    "fix": "Replace it with CREATE REL TABLE OFFERS(FROM Hotel TO Amenity, since DATE, fee_eur DOUBLE) and match (h:Hotel)-[o:OFFERS]->(a:Amenity) in both queries."
+  },
+  {
+    "element": "Booking",
+    "severity": "low",
+    "problem": "Also sits between a guest and a hotel, but a Review attaches to a specific booking and a guest books the same hotel many times. It is right as a node.",
+    "fix": "Keep it."
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "element": "Rated",
+    "severity": "high",
+    "problem": "Relationship table is misnamed; the queries expect Reviewed.",
+    "fix": "Rename Rated to Reviewed in schema.cypher and update shelf, book_rating and friends_liked."
+  },
+  {
+    "element": "genre_top",
+    "severity": "medium",
+    "problem": "Sorting by average with no minimum vote count lets a single rating dominate.",
+    "fix": "Add HAVING-style filter: WHERE votes >= 5 after a WITH."
+  }
+]

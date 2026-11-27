@@ -1,0 +1,38 @@
+[
+  {
+    "element": "member_by_handle.sql",
+    "severity": "high",
+    "problem": "The lookup filters on lower(trim(handle)), but the only index is member_handle_ci on lower(handle). The planner cannot use the index, so each @mention scans the whole member table (EXPLAIN QUERY PLAN shows 'SCAN member'). On the 30,000-member sample one lookup takes about 6.4 ms; at 350,000 members that grows roughly linearly, and every mention in every forum message pays it.",
+    "fix": "Change the filter to lower(handle) = lower(:handle) and trim the input in Python. signup.py already stores handles trimmed and the mention regex never captures spaces. EXPLAIN QUERY PLAN then shows 'SEARCH member USING INDEX member_handle_ci', and the 20-mention test dropped from 0.128 s to 0.0002 s on the sample."
+  },
+  {
+    "element": "resolve_mentions",
+    "severity": "medium",
+    "problem": "resolve_mentions runs one lookup per @mention occurrence. MENTION.findall keeps duplicates, so a message that mentions the same handle ten times runs ten identical queries, and a message with many mentions runs one query for each of them inside the request.",
+    "fix": "Deduplicate the handles before querying (for example, dict.fromkeys over the findall result), and resolve them in one query with IN (...) or a temporary table once the lookup uses the index."
+  },
+  {
+    "element": "mentor_line",
+    "severity": "medium",
+    "problem": "The recursive CTE uses UNION ALL and has no depth limit or cycle guard. It stays finite only because the triggers in 003 reject mentor edges that do not run forward in joined_on. Nothing stops a later UPDATE member SET joined_on = ... from breaking that order: that change fires no trigger, and a loop of mentors would then make the profile query recurse without end.",
+    "fix": "Add a depth cap (WHERE l.depth < 50, or similar), or use UNION with the id as a cycle guard. Add a trigger on UPDATE OF joined_on on member that rechecks the lineage, or make joined_on immutable."
+  },
+  {
+    "element": "mentoring_mentor_joined_first",
+    "severity": "medium",
+    "problem": "The trigger compares the two joined_on subqueries, so when mentor_id names a member that does not exist, both sides of the comparison are NULL and the trigger does not fire. Nothing in the repo turns on foreign keys, so the REFERENCES clause does not stop it. I confirmed in a scratch database that a mentoring row with mentor_id 999 is accepted.",
+    "fix": "Add an explicit check that the mentor and mentee rows exist (RAISE(ABORT, ...) when either subquery returns NULL), and make the foreign-key pragma part of the connection helper the apps use."
+  },
+  {
+    "element": "mentoring",
+    "severity": "low",
+    "problem": "The since column has no check against the mentee's joined_on. In guild.db, 1,099 mentoring rows have since earlier than the mentee's joined_on, which is impossible if since means the date the mentoring began.",
+    "fix": "Confirm what since means. If it is the start of mentoring, add a trigger or a data cleanup that rejects or corrects rows where since is before the mentee joined."
+  },
+  {
+    "element": "sign_up",
+    "severity": "low",
+    "problem": "A handle that differs only in case from an existing one fails at the unique index with a raw sqlite3.IntegrityError, not the ValueError the handle check raises. Callers that catch ValueError for bad input will miss this case.",
+    "fix": "Catch sqlite3.IntegrityError inside sign_up and raise a ValueError such as 'handle already taken', so callers see one kind of error for bad handles."
+  }
+]

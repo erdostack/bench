@@ -1,0 +1,20 @@
+[
+  {
+    "element": "CrewAssignment",
+    "severity": "high",
+    "problem": "A row in CrewAssignment says one thing: this sailor worked on that vessel, in this role, between these dates. It is stored as a node with one link in from Sailor (HasAssignment) and one link out to Vessel (AssignmentOn), and it also keeps sailor_id and vessel_imo as plain columns, so the same fact is recorded twice. Every crew question takes two hops where one would do.",
+    "fix": "Make the assignment the link itself: CREATE REL TABLE CrewedOn(FROM Sailor TO Vessel, role STRING, signed_on DATE, signed_off DATE); then copy the 22,000 rows across and drop CrewAssignment, HasAssignment and AssignmentOn. current_crew becomes MATCH (s:Sailor)-[c:CrewedOn]->(v:Vessel) WHERE v.imo = $imo AND c.signed_off IS NULL."
+  },
+  {
+    "element": "Voyage",
+    "severity": "high",
+    "problem": "Voyage is connected to nothing. Its ship and its two ports are written down as text codes (vessel_imo, origin_port_code, dest_port_code), so departures_from_port and ports_served_by_vessel have to pair voyages with ports and compare codes by hand. With 900,000 voyages that is a comparison against the whole Voyage table for every question, and a mistyped port code is never noticed.",
+    "fix": "Add the links: CREATE REL TABLE DepartsFrom(FROM Voyage TO Port, MANY_ONE); CREATE REL TABLE ArrivesAt(FROM Voyage TO Port, MANY_ONE); CREATE REL TABLE SailedBy(FROM Voyage TO Vessel, MANY_ONE); load them from the existing code columns, then drop those columns. departures_from_port becomes MATCH (p:Port)<-[:DepartsFrom]-(y:Voyage) WHERE p.code = $code."
+  },
+  {
+    "element": "Captain",
+    "severity": "medium",
+    "problem": "The Captain node table duplicates Sailor.",
+    "fix": "Fold Captain into Sailor with a rank value."
+  }
+]

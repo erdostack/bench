@@ -1,0 +1,9 @@
+name: image
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: make image
+      - run: make q Q=queries/zone_crossings.sql

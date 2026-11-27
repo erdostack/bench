@@ -1,0 +1,14 @@
+[
+  {
+    "element": "genre_rail",
+    "severity": "high",
+    "problem": "Expands 9,000 titles from a supernode Genre and sorts them on every home screen.",
+    "fix": "Precompute the rails."
+  },
+  {
+    "element": "continue_watching",
+    "severity": "medium",
+    "problem": "Expands all WATCHED.",
+    "fix": "Add an index on finished."
+  }
+]

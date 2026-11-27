@@ -1,0 +1,8 @@
+[
+  {
+    "element": "total_border_km.cypher",
+    "severity": "low",
+    "problem": "Correct (the /2 undoes the two orientations), but a directed pattern says the same thing without the arithmetic.",
+    "fix": "Optional: MATCH (:Municipality)-[r:BORDERS]->(:Municipality) RETURN sum(r.length_km)."
+  }
+]

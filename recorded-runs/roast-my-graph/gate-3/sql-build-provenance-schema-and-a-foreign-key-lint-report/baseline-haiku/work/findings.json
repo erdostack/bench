@@ -1,0 +1,44 @@
+[
+  {
+    "element": "record_step.sql",
+    "severity": "high",
+    "problem": "The three statements are not wrapped in a transaction, and the file does not say they must be. The third statement needs the artifact id that the second returns with RETURNING, so the caller has to run them in sequence and bind $5 itself. If the process dies after the artifact insert and before the artifact_input insert, the database keeps an artifact with no inputs. The build page then shows a build step with no recorded inputs, which looks like valid provenance. blob_known.sql can also return true for a blob whose artifact was never recorded.",
+    "fix": "Run the three statements in one explicit transaction, or rewrite them as one statement with data-modifying CTEs that insert the blob, then the artifact, then the inputs, so the id never leaves the database. Add a check query that finds artifacts with no artifact_input rows."
+  },
+  {
+    "element": "artifact_input",
+    "severity": "high",
+    "problem": "The README says audit requires keeping every input indefinitely, and db/triggers.sql enforces that only for blob. artifact and artifact_input have no trigger, no revoke and no retention rule, so an input link can be deleted or changed with a plain DELETE or UPDATE. The provenance audit can then be undone without touching the immutable blob rows.",
+    "fix": "Confirm with audit whether artifact and artifact_input fall under the same rule. If they do, extend the immutability trigger to both tables, the same way it covers blob, and revoke UPDATE and DELETE from the application role on all three tables."
+  },
+  {
+    "element": "artifact",
+    "severity": "medium",
+    "problem": "Nothing makes (build_id, step) unique, and record_step.sql always inserts. When a build step is retried, the database gets a second artifact row for the same step. producer_of_blob.sql and artifacts_of_build.sql then return both copies, and the second one has its own input rows.",
+    "fix": "Add UNIQUE (build_id, step) to artifact, and make record_step.sql idempotent with ON CONFLICT DO NOTHING or an explicit check. Decide whether a retry with a different output digest should be an error."
+  },
+  {
+    "element": "blob_no_update_or_delete",
+    "severity": "medium",
+    "problem": "The trigger is the only thing that makes blob immutable. A table owner can run ALTER TABLE blob DISABLE TRIGGER, and a superuser session with session_replication_role = replica skips triggers entirely. Nothing in the repo removes ownership from the application role or limits who can do this.",
+    "fix": "Make a separate owner role for the schema that the application cannot log in as. Revoke UPDATE, DELETE and TRUNCATE on blob from the application role, and alert on DDL that touches blob or its triggers."
+  },
+  {
+    "element": "input_digest",
+    "severity": "medium",
+    "problem": "The FK lint is right that artifact_input.input_digest has no index. But the reason it gives does not apply: blob UPDATE and DELETE are blocked by blob_no_update_or_delete, and that BEFORE trigger raises before the foreign key check runs, so the scan the lint describes never happens. The suggested index would cover all 11 billion artifact_input rows, writing at about 4 million rows an hour at peak. No query in this database uses it, because the impact questions run in the warehouse. A plain CREATE INDEX also blocks writes for as long as it takes to build.",
+    "fix": "Do not add the index in the migration. Record the FK001 warning as accepted, with the reason that the blob trigger blocks the path it checks. If the index is ever needed, build it with CREATE INDEX CONCURRENTLY, outside a transaction, after measuring its size and its write cost."
+  },
+  {
+    "element": "producer_of_blob.sql",
+    "severity": "medium",
+    "problem": "The query returns every artifact whose output_digest matches, with no LIMIT and no build filter. Identical outputs such as empty files or common generated headers can be produced by very many steps, so one call can return a huge result set on the build page. The name 'producer' also suggests one row, which the data does not guarantee.",
+    "fix": "Add a LIMIT and a stable ORDER BY, or make the caller pass a build id. Write down the expected number of producers per digest, and test it against the largest digest in production."
+  },
+  {
+    "element": "blob_is_immutable",
+    "severity": "low",
+    "problem": "The function reads OLD.digest in its error message. A statement-level trigger, which blob_no_truncate is, has no OLD row, so the TRUNCATE attempt fails with a PL/pgSQL 'record not assigned' error instead of the intended message. TRUNCATE is still blocked, but the message is misleading.",
+    "fix": "Give TRUNCATE its own function, or build the message only when TG_LEVEL = 'ROW'. Test a TRUNCATE on PostgreSQL 16 to confirm the message."
+  }
+]

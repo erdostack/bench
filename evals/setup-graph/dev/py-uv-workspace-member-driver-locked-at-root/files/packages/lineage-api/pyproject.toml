@@ -1,0 +1,15 @@
+[project]
+name = "lineage-api"
+version = "1.4.0"
+requires-python = ">=3.11"
+dependencies = [
+    "neo4j>=5.20,<6",
+    "ingest-common",
+]
+
+[tool.uv.sources]
+ingest-common = { workspace = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

@@ -1,0 +1,5 @@
+[regdb]
+path = "/srv/cfa/regdb.sqlite3"
+
+[scratch]
+path = "var/scratch.db"

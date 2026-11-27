@@ -1,0 +1,7 @@
+cypherlint 0.9.4  db/changes/0033_unlink_leavers.cypher
+
+  2:1   error  CL017 unbounded-write
+        MATCH feeding a write has no LIMIT: the statement can touch an unbounded number of rows.
+        Bound it, e.g. `WITH m LIMIT 10000` before the write.
+
+1 error. Exit 1.

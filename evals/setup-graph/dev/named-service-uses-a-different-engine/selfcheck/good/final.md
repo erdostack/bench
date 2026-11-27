@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md for services/atlas. Note that atlas does not use the Neo4j from the root README: it has its own embedded LadybugDB file (@ladybugdb/core 0.22.3), so queries for it must be written for LadybugDB.

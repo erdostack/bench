@@ -1,0 +1,53 @@
+#!/usr/bin/env python3
+"""gq: run Cypher on a target through cypher-shell.
+
+    bin/gq dev "MATCH (m:Meter) RETURN count(m)"
+    bin/gq prod --file ops/2026-09-02-meter-status-index.cypher
+
+The password comes from GQ_<TARGET>_PASSWORD. Every call is written to .gq_history first.
+"""
+import argparse
+import json
+import os
+import shutil
+import subprocess
+import sys
+import time
+import tomllib
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+TARGETS = tomllib.loads((ROOT / "config" / "targets.toml").read_text())
+
+
+def main():
+    ap = argparse.ArgumentParser(prog="gq")
+    ap.add_argument("target", choices=sorted(TARGETS))
+    ap.add_argument("cypher", nargs="?")
+    ap.add_argument("--file")
+    a = ap.parse_args()
+    if bool(a.cypher) == bool(a.file):
+        ap.error("give a statement or --file")
+    text = Path(a.file).read_text() if a.file else a.cypher
+    key = f"{os.getpid()}-{time.time_ns()}"
+    with open(ROOT / ".gq_history", "a", encoding="utf-8") as log:
+        log.write(json.dumps({"event": "start", "id": key, "target": a.target, "file": a.file, "statement": text}) + "\n")
+    status = "error"
+    try:
+        password = os.environ.get(f"GQ_{a.target.upper()}_PASSWORD")
+        if not password:
+            sys.exit(f"gq: GQ_{a.target.upper()}_PASSWORD is not set")
+        if not shutil.which("cypher-shell"):
+            sys.exit("gq: cypher-shell not found")
+        t = TARGETS[a.target]
+        p = subprocess.run(["cypher-shell", "-a", t["uri"], "-d", t["database"], "-u", "ops", "-p", password],
+                           input=text, text=True)
+        status = "ok" if p.returncode == 0 else "error"
+        sys.exit(p.returncode)
+    finally:
+        with open(ROOT / ".gq_history", "a", encoding="utf-8") as log:
+            log.write(json.dumps({"event": "end", "id": key, "status": status}) + "\n")
+
+
+if __name__ == "__main__":
+    main()

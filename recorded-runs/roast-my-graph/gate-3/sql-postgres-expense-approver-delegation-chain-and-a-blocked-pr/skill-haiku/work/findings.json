@@ -1,0 +1,14 @@
+[
+  {
+    "element": "queries/final_approver.sql",
+    "severity": "low",
+    "problem": "The query does not exclude the claimant. If a manager on leave delegates to one of their own reports, and that report is the claimant, the walk can end on the claimant, who would approve their own claim. The files do not say whether self-approval is allowed. Question to confirm.",
+    "fix": "If self-approval is not allowed, add AND d.delegate_id <> $2 to the recursive join or check it in the application, and return the next person up or reject the claim. If it is allowed, document that in the README."
+  },
+  {
+    "element": "delegate_by_delegate",
+    "severity": "low",
+    "problem": "The index on delegate (delegate_id) is not used by any query in the repo. final_approver.sql finds each hop by user_id, which the primary key already serves. The index adds write cost on delegation changes with no read that uses it.",
+    "fix": "DROP INDEX delegate_by_delegate; unless a query filtering on delegate_id is added. If one is added, keep the index and confirm the plan with EXPLAIN."
+  }
+]

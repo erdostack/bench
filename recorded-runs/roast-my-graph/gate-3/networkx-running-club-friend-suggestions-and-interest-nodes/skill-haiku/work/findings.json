@@ -1,0 +1,26 @@
+[
+  {
+    "element": "suggest",
+    "severity": "high",
+    "problem": "suggest() walks every neighbour of the user, including interest nodes, and then every user linked to each interest. The README says music is liked by about 1.3 million users, so one call iterates that many nodes. Synthetic timing on this machine: 65 ms for 100,000 fans, 275 ms for 300,000 (about 0.9 microseconds per fan), so music alone is about 1.2 s per call (extrapolated) against the 100 ms budget in the README.",
+    "fix": "Walk friend edges only: skip any neighbour, at both levels of the loop, whose edge kind is not 'friend'. Measured in memory on a 300,000-fan hub: 0.06 ms. If shared-interest suggestions are still wanted, precompute them offline per user."
+  },
+  {
+    "element": "suggest",
+    "severity": "medium",
+    "problem": "The score counts a shared interest the same as a mutual friend (both are two-step paths through a neighbour). The docstring says 'ranked by how many neighbours they share' and the README says 'friend suggestions', so the files disagree on the purpose. Sample: 32 of 2,000 suggestions (1.6%) have no mutual friend, and the top-ten order changes for many users once interests are removed.",
+    "fix": "Decide what the box is for. For friend suggestions, score mutual friends only. If shared interests should count, rank by mutual friends first and use shared interests as a tie-break, and say so in the docstring."
+  },
+  {
+    "element": "suggest",
+    "severity": "medium",
+    "problem": "Counter.most_common(k) breaks ties by first-seen order. Most candidates score 1, so the top ten are whoever appears first in the adjacency walk, which follows the row order in data/friendships.csv. Synthetic check: with 300,000 candidates tied at score 1, the top three were the first three loaded. This is the likely cause of the 'random' suggestions.",
+    "fix": "Sort candidates by (-score, candidate id), or by a real secondary signal such as shared interests, before taking the top k."
+  },
+  {
+    "element": "small",
+    "severity": "low",
+    "problem": "tests/test_suggest.py builds a four-user path graph with no interest nodes, so neither the interest walk nor the tie-break is tested. Both the speed and the ranking problems pass the current tests.",
+    "fix": "Add a test where a friend-of-friend must rank above a stranger who shares two interests, and a test with an interest hub of a few thousand users that asserts the call finishes within a set time."
+  }
+]

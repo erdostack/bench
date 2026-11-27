@@ -1,0 +1,14 @@
+[
+  {
+    "element": "Country",
+    "severity": "critical",
+    "problem": "US is a supernode with 1.6M AVAILABLE_IN relationships.",
+    "fix": "Replace the Country table with a country column on Guide."
+  },
+  {
+    "element": "related_guides",
+    "severity": "high",
+    "problem": "Walks through the general topic with 2.4M guides.",
+    "fix": "Exclude general from the walk."
+  }
+]

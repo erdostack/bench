@@ -1,0 +1,13 @@
+services:
+  graph:
+    build: ./infra/neo4j
+    environment:
+      NEO4J_AUTH: neo4j/${GRAPH_PASSWORD}
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - catalogue:/data
+
+volumes:
+  catalogue:

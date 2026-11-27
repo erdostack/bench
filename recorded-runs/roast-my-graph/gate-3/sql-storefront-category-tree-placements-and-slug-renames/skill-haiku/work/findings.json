@@ -1,0 +1,14 @@
+[
+  {
+    "element": "category.slug",
+    "severity": "high",
+    "problem": "category.slug is the primary key and the foreign-key target for placement.category_slug and category.parent_slug, both declared ON UPDATE CASCADE. Renaming a slug (sql/rename_category.sql, about 40 renames per working day per the README) rewrites every placement row of that category. placement.category_slug has no index (the placement primary key leads with product_id), so the cascade has to read the whole placement table (60 million rows per the README) on each rename. Admin requests time out after 30 seconds, so a rename can fail on a normal working day. The statement is not wrong; it cannot finish in time at the stated size.",
+    "fix": "Use a surrogate key: add category.id bigint primary key, keep slug as UNIQUE, and point placement.category_id and category.parent_id at it. A rename then updates one category row and no placement rows. Migration: add the id column, backfill it, add the new foreign keys and indexes, switch the sql/ statements to category_id, then drop the slug-based foreign keys. Stopgap only, labelled as such: CREATE INDEX placement_category_slug ON placement (category_slug). That makes the cascade a search rather than a scan, but it still rewrites every placement row of the renamed category."
+  },
+  {
+    "element": "category.parent_slug",
+    "severity": "low",
+    "problem": "Question to confirm: the category tree is an adjacency list (parent_slug REFERENCES category (slug)) with no check that stops a category from being its own ancestor. Nothing in schema/ or sql/ walks the tree recursively; sql/child_categories.sql loads one level at a time, so a cycle would not be visible or harmful in these files. Is any recursive walk planned?",
+    "fix": "If a recursive walk is ever added, first add a guard for loops (a depth limit or a cycle check in that query), or a trigger that rejects a parent_slug change that creates a cycle. No change is needed for the current queries."
+  }
+]

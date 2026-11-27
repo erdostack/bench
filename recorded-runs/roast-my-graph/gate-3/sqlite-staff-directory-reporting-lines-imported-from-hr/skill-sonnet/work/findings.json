@@ -1,0 +1,20 @@
+[
+  {
+    "element": "manager_email",
+    "severity": "critical",
+    "problem": "import/import.py stores email as .strip().lower() but manager_email as .strip() or None, so manager_email keeps HR's case. In directory.db 24,150 of 60,000 rows have a non-lowercase manager_email (e.g. one manager's 46 reports use three spellings: 30 / 9 / 7). Every join from manager_email to email either returns wrong rows (direct_reports.sql) or cannot use index employee_manager (org_below.sql).",
+    "fix": "In load() change the manager_email parameter to row[\"manager_email\"].strip().lower() or None. The directory is rebuilt nightly so the next load fixes the data; before that run UPDATE employee SET manager_email = lower(manager_email) WHERE manager_email <> lower(manager_email); (tried on a copy: 24,150 rows, no manager missing). Optional: CHECK (manager_email IS NULL OR manager_email = lower(manager_email)) in db/schema.sql."
+  },
+  {
+    "element": "org_below.sql",
+    "severity": "critical",
+    "problem": "The recursive step JOIN below b ON lower(e.manager_email) = lower(b.email) cannot use index employee_manager (plan shows SCAN e and an automatic index). On a copy of directory.db (60,000 people) the top manager (59,999 below), a 14,217-person org and a 7,580-person org did not finish in 60 s; an 881-person org took 16.3 s, a 59-person org 0.7 s. The Everyone under me panel cannot finish for senior managers at the stated size.",
+    "fix": "After lowercasing manager_email at import, join the columns directly: replace the recursive join with JOIN below b ON e.manager_email = b.email (keep lower(:email) for the start row). On a normalised copy the plan uses SEARCH e USING INDEX employee_manager and the whole company returns 59,999 rows in 0.55 s, 14,217 in 0.09 s, 881 in 0.006 s, same counts as before. Alternative without a data change: COLLATE NOCASE on manager_email and its index."
+  },
+  {
+    "element": "direct_reports.sql",
+    "severity": "high",
+    "problem": "WHERE manager_email = :email is case-sensitive against a column that keeps HR's case, so it misses reports stored under another spelling. On directory.db for chen.moreau1350@corp.example 46 people report to them, the query returns 30. README says addresses are case-insensitive. (Whether a page calls this query is not stated.)",
+    "fix": "After normalising manager_email at import, use WHERE manager_email = lower(:email); tested on a normalised copy: 46 rows. Stopgap before the data change: WHERE lower(manager_email) = lower(:email) (correct but scans all rows)."
+  }
+]

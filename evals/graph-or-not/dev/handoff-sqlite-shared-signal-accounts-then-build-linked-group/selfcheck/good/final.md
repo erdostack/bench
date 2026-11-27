@@ -1,0 +1,1 @@
+Added moderation/linked.py: linked_accounts(conn, account_id) builds the graph from shared device and card values only (never IP, as recorded in docs/graph/DECISION.md) and returns the whole connected group, sorted, with no depth limit.

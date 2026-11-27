@@ -1,0 +1,14 @@
+[
+  {
+    "element": "Rating",
+    "severity": "medium",
+    "problem": "A Rating connects exactly one reader to exactly one book and nothing else ever attaches to it; it just holds stars and a date. That makes it a relationship stored as a node: 18 million extra nodes, and every query that uses ratings walks two hops instead of one. loved_also_loved on the book page walks four hops where two would do.",
+    "fix": "Model it as (:Reader)-[:RATED {stars, rated_at}]->(:Book). rate becomes MATCH both, MERGE (u)-[r:RATED]->(b) SET r.stars = $stars, r.rated_at = datetime(); loved_also_loved becomes (b)<-[r1:RATED]-(u)-[r2:RATED]->(other)."
+  },
+  {
+    "element": "loved_also_loved",
+    "severity": "medium",
+    "problem": "For a very popular book this reads every 4-5 star reader's ratings on each page view.",
+    "fix": "Precompute the list nightly for books with many ratings."
+  }
+]

@@ -1,0 +1,11 @@
+name: nightly
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+jobs:
+  graph:
+    uses: ./.github/workflows/graph-job.yml
+    with:
+      neo4j-image: neo4j:2026.05.0-community

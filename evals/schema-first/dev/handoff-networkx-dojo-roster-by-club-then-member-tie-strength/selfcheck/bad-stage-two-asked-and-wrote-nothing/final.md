@@ -1,0 +1,1 @@
+I haven't written dojo/ties.py: data/dojo.graphml isn't here and nothing in the repo says what the tie weight attribute is called in this export. Can you tell me the edge attribute name, or run nx.read_graphml on it and paste one edge?

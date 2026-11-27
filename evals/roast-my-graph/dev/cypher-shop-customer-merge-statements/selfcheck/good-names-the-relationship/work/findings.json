@@ -1,0 +1,8 @@
+[
+  {
+    "element": "SUBSCRIBED_TO",
+    "severity": "high",
+    "problem": "Never moved by the merge, so drop_duplicate's detach delete cancels the duplicate's subscriptions. Same for WROTE: reviews become authorless.",
+    "fix": "Add move statements for SUBSCRIBED_TO (copying properties) and WROTE, or use apoc.refactor.mergeNodes([keep, dup], {properties: 'discard', mergeRels: true})."
+  }
+]

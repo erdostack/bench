@@ -1,0 +1,20 @@
+[
+  {
+    "element": "resolve_mention.sql",
+    "severity": "critical",
+    "problem": "WHERE lower(trim(alias_text)) = lower(trim($1)) matches no index: alias_norm is ON alias (lower(alias_text)) and PostgreSQL only uses an expression index for the exact expression. Since the 2026-10-14 change (trim on both sides) each of the roughly 50,000 mentions a minute reads all 31 million alias rows, which fits ingest falling behind since last month. Before that change the query used alias_norm.",
+    "fix": "Make the index match: CREATE INDEX CONCURRENTLY alias_norm_trim ON alias (lower(trim(alias_text))); then DROP INDEX CONCURRENTLY alias_norm. Then clean the cause: trim in add_alias.sql, batch-update existing aliases (UPDATE alias SET alias_text = trim(alias_text) WHERE alias_text <> trim(alias_text), watching for duplicates), and revert the query to lower(alias_text) = lower(trim($1)) against an index on lower(alias_text) if preferred. Confirm with EXPLAIN that it is not a Seq Scan. Not run on PostgreSQL."
+  },
+  {
+    "element": "alias_norm",
+    "severity": "low",
+    "problem": "Since the 2026-10-14 change no query filters on lower(alias_text) alone, so alias_norm is maintained on every insert into the 31-million-row alias table and serves nothing.",
+    "fix": "Drop it (DROP INDEX CONCURRENTLY alias_norm) once the replacement expression index exists, or keep it and revert the query to the form it serves after cleaning the stored aliases."
+  },
+  {
+    "element": "add_alias.sql",
+    "severity": "low",
+    "problem": "Question to confirm: alias has no uniqueness on (entity_id, alias_text) and the insert has no conflict handling, so the same alias can be stored repeatedly for an entity. resolve_mention.sql ranks entities by count(*) AS seen with no tie-break, so repeated rows count as extra votes and ties are arbitrary. The files do not show that duplicates exist.",
+    "fix": "Decide whether seen counts sightings or distinct sources. If aliases are a set, add a unique index on (entity_id, lower(trim(alias_text))) after removing duplicates and use ON CONFLICT DO NOTHING. Either way, add a tie-break: ORDER BY seen DESC, entity_id."
+  }
+]

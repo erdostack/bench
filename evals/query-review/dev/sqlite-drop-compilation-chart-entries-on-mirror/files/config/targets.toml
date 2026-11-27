@@ -1,0 +1,5 @@
+[catalog]
+path = "data/catalog.sqlite"
+
+[mirror]
+path = "data/mirror.sqlite"

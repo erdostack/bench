@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. The README says Memgraph 2.21, but `dotnet run` on the AppHost runs in Development, and appsettings.Development.json sets the graph image tag to 3.1.1, so that's the version you get locally.

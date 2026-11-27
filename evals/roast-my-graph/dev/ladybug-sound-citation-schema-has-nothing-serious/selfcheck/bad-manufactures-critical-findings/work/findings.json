@@ -1,0 +1,20 @@
+[
+  {
+    "element": "Paper",
+    "severity": "critical",
+    "problem": "No indexes are defined anywhere in schema.cypher. Every lookup by doi is a full table scan.",
+    "fix": "CREATE INDEX paper_doi FOR (p:Paper) ON (p.doi); and add CREATE CONSTRAINT statements for uniqueness."
+  },
+  {
+    "element": "Cites",
+    "severity": "high",
+    "problem": "Relationship table has no properties and no primary key, so duplicate citations cannot be prevented.",
+    "fix": "Add a surrogate id PRIMARY KEY to Cites."
+  },
+  {
+    "element": "About",
+    "severity": "high",
+    "problem": "Topic is a supernode: 400 topics for 60,000 papers means fan-out on every reading list.",
+    "fix": "Shard topics or move the reading lists to a search engine."
+  }
+]

@@ -1,0 +1,5 @@
+[teaching]
+path = "data/teaching.db"
+
+[records]
+path = "data/records.db"

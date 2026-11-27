@@ -1,0 +1,7 @@
+id,part_no,kind,std_cost,labour_cost
+1,HSG-200,made,,14.50
+2,HSG-200-BODY,made,,6.20
+3,BRK-10,made,,2.10
+4,PLT-55,bought,3.80,
+5,SCR-M5,bought,0.04,
+6,GSK-200,bought,0.65,

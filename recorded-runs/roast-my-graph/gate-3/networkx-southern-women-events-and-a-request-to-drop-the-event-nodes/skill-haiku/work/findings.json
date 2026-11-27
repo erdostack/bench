@@ -1,0 +1,14 @@
+[
+  {
+    "element": "events_shared",
+    "severity": "low",
+    "problem": "The sort key int(e[1:]) assumes every event is named 'E' followed by digits. The shipped names all fit, so this only fails if a differently named event is added (for example 'Picnic' raises ValueError). The README does not state a naming rule. This is a question to confirm, not a defect in the shipped data.",
+    "fix": "Sort by the event's position in the events list passed in, or sort by plain name, so the function does not depend on the naming scheme."
+  },
+  {
+    "element": "closest_pairs",
+    "severity": "low",
+    "problem": "The tie-break sorts on e[0] and e[1], which are the endpoint order stored by the projection, not alphabetical order. Equal-weight pairs display some names later-first, for example ('Laura Mandeville', 'Brenda Rogers', 6). The ranking is deterministic and numerically correct; the display is inconsistent.",
+    "fix": "Normalise each pair before sorting (for example tuple(sorted((u, v)))) so names always appear in alphabetical order within a pair."
+  }
+]

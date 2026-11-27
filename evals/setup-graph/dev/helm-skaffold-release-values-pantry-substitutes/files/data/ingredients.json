@@ -1,0 +1,50 @@
+[
+  {
+    "name": "buttermilk",
+    "subs": [
+      {
+        "name": "milk and lemon juice",
+        "ratio": 1.0
+      },
+      {
+        "name": "plain yogurt",
+        "ratio": 0.75
+      }
+    ]
+  },
+  {
+    "name": "egg",
+    "subs": [
+      {
+        "name": "flax egg",
+        "ratio": 1.0
+      },
+      {
+        "name": "applesauce",
+        "ratio": 0.25
+      }
+    ]
+  },
+  {
+    "name": "butter",
+    "subs": [
+      {
+        "name": "olive oil",
+        "ratio": 0.75
+      },
+      {
+        "name": "coconut oil",
+        "ratio": 1.0
+      }
+    ]
+  },
+  {
+    "name": "sour cream",
+    "subs": [
+      {
+        "name": "plain yogurt",
+        "ratio": 1.0
+      }
+    ]
+  }
+]

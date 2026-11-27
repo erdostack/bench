@@ -1,0 +1,5 @@
+[sandbox]
+path = "var/sandbox.db"
+
+[tops]
+path = "/srv/tops/formations.db"

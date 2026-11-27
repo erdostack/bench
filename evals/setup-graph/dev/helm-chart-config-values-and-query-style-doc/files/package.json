@@ -1,0 +1,16 @@
+{
+  "name": "vintrace",
+  "private": true,
+  "type": "module",
+  "packageManager": "yarn@4.5.3",
+  "scripts": {
+    "cluster:up": "helm upgrade --install vintrace-graph deploy/chart -f deploy/values/dev.yaml",
+    "cypher": "tsx src/cypher.ts"
+  },
+  "dependencies": {
+    "neo4j-driver": "^5.27.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2"
+  }
+}

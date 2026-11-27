@@ -1,0 +1,1 @@
+Batched 0093: stores move 500 per transaction, then the label. EXPLAIN it first.

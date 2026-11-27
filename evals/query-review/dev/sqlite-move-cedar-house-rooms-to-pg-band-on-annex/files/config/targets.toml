@@ -1,0 +1,5 @@
+[residences]
+path = "var/residences.db"
+
+[annex]
+path = "var/annex.db"

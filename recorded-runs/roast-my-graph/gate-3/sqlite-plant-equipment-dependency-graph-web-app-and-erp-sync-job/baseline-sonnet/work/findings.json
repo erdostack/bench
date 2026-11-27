@@ -1,0 +1,32 @@
+[
+  {
+    "element": "sync",
+    "severity": "critical",
+    "problem": "jobs/sync_from_erp.py opens its own connection with sqlite3.connect and never runs PRAGMA foreign_keys = ON (only app/db.py does). SQLite ignores ON DELETE CASCADE unless that pragma is on for the connection, so the nightly DELETE FROM equipment leaves the depends_on and installed_in rows behind. The comment \"its depends_on and installed_in rows go with it (ON DELETE CASCADE)\" is wrong. In the morning copy of plant.db there are 571 depends_on rows with a missing src_id, 619 with a missing dst_id, 78 installed_in rows with a missing part_id and 54 with a missing assembly_id (258 distinct missing equipment ids; PRAGMA foreign_key_check reports them).",
+    "fix": "Run con.execute(\"PRAGMA foreign_keys = ON\") right after connect in sync (best: share one connect() helper with app/db.py so the setting cannot be forgotten). Then clean up the existing orphans once: DELETE FROM depends_on WHERE src_id NOT IN (SELECT id FROM equipment) OR dst_id NOT IN (SELECT id FROM equipment); and the same for installed_in. Add a check on PRAGMA foreign_key_check to the nightly job."
+  },
+  {
+    "element": "impact.sql",
+    "severity": "high",
+    "problem": "The recursive step walks depends_on without checking that the rows point at existing equipment, and it only joins equipment at the end. With the orphaned rows left by the sync, the walk passes through equipment that was decommissioned, so the planners see things 'stopping' that only depended on the failed item through a piece of equipment that no longer exists. In the morning copy, ignoring paths through missing equipment changes the impact list for 419 of the first 600 equipment ids I tried.",
+    "fix": "Fix the cause (foreign keys on in the sync, orphans deleted). Optionally join equipment inside the recursive step so the query is correct even if bad rows reappear."
+  },
+  {
+    "element": "equipment",
+    "severity": "medium",
+    "problem": "id is INTEGER PRIMARY KEY without AUTOINCREMENT, so SQLite reuses the id of the highest row once it is deleted. Combined with the orphan rows left by the sync, a new piece of equipment can silently inherit the dependencies and assembly of a decommissioned one, which is worse than a dangling row because it looks valid.",
+    "fix": "Delete the orphans (above) so no stale ids exist, and either declare id INTEGER PRIMARY KEY AUTOINCREMENT in schema.sql or keep foreign keys on so the rows cannot outlive the equipment."
+  },
+  {
+    "element": "dependency_counts.sql",
+    "severity": "low",
+    "problem": "The join to equipment drops counts for missing equipment, so orphan rows are hidden here instead of flagged, and ORDER BY dependants DESC LIMIT 20 has no tie-breaker so ties at the cutoff can change between runs.",
+    "fix": "Clean the orphans and add e.tag as a secondary ORDER BY key."
+  },
+  {
+    "element": "DB_PATH",
+    "severity": "low",
+    "problem": "The database path /srv/plant/plant.db is defined separately in jobs/sync_from_erp.py and app/db.py, and the two modules open the database differently (only app/db.py sets the foreign key pragma). That duplication is how the pragma was missed.",
+    "fix": "Have the job import connect from app.db (or move it to a shared module)."
+  }
+]

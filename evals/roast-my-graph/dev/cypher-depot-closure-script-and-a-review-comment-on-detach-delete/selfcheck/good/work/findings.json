@@ -1,0 +1,8 @@
+[
+  {
+    "element": "tools/close_depot.py",
+    "severity": "low",
+    "problem": "Statements are found by splitting closure.cypher on ';' and picked by position (STATEMENTS[:2], STATEMENTS[2]); reordering the file or adding a ';' inside a comment would run the wrong statement.",
+    "fix": "Pick statements by their // name: comment, or keep them as named constants in the tool."
+  }
+]

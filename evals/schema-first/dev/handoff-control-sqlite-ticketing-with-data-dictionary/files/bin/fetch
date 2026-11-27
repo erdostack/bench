@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Download the latest export from the ticketing provider.
+set -euo pipefail
+mkdir -p data
+curl -fsS "$TICKETING_EXPORT_URL" -o data/tickets.db

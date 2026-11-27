@@ -1,0 +1,8 @@
+[
+  {
+    "element": "upstream_ids",
+    "severity": "high",
+    "problem": "Which feeder feeds a transformer and which transformer feeds a meter are kept as lists of ids on the nodes. The outage queries therefore cannot start at the tripped asset and follow its links: they read all 2.1 million meters (and 380 thousand transformers for a feeder) and check each list, with an operator waiting. Nothing checks that the ids in the lists exist either.",
+    "fix": "Load the links as relationships: (f:Feeder)-[:SUPPLIES]->(t:Transformer) for each feeder id and (t)-[:SUPPLIES]->(m:Meter). Then outage_by_feeder is MATCH (:Feeder {id: $feeder_id})-[:SUPPLIES]->(t)-[:SUPPLIES]->(m) RETURN count(DISTINCT t), count(m)."
+  }
+]

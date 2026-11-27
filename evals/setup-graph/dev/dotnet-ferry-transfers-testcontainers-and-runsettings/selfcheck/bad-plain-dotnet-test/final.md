@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. The README says Neo4j 5.26.24 (the code default), but tests/graph.runsettings sets GRAPH_IMAGE to neo4j:2026.08.1-community and Directory.Build.props makes dotnet test use it.

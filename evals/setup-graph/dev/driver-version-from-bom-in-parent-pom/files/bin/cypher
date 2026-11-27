@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# bin/cypher <file.cypher>: run a saved query through the cli module (read-only).
+set -euo pipefail
+root="$(cd "$(dirname "$0")/.." && pwd)"
+file="$(cd "$(dirname "${1:?usage: bin/cypher <file.cypher>}")" && pwd)/$(basename "$1")"
+cd "$root"
+exec ./mvnw -q -pl cli -am compile exec:java -Dexec.args="$file"

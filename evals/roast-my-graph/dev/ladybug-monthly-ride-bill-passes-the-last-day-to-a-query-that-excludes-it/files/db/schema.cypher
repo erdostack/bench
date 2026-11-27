@@ -1,0 +1,7 @@
+CREATE NODE TABLE Account(id STRING PRIMARY KEY, company STRING, rate_cents_per_minute INT64);
+CREATE NODE TABLE Rider(id STRING PRIMARY KEY, name STRING);
+CREATE NODE TABLE Ride(id STRING PRIMARY KEY, started_on DATE, ended_on DATE, minutes INT64);
+
+CREATE REL TABLE RodeOn(FROM Rider TO Ride, MANY_ONE);
+CREATE REL TABLE BilledTo(FROM Ride TO Account, MANY_ONE);
+CREATE REL TABLE Employs(FROM Account TO Rider);

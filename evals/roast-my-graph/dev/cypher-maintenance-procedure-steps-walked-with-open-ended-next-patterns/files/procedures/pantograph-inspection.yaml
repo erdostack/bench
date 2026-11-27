@@ -1,0 +1,9 @@
+id: pantograph-inspection
+version: 7
+title: Pantograph visual inspection
+steps:
+  - Confirm the overhead line is isolated and earthed.
+  - Lower the pantograph and lock it down.
+  - Inspect the carbon strips for wear and cracks.
+  - Check the horns and the head for damage.
+  - Unlock, raise and test the pantograph.

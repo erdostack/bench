@@ -1,0 +1,86 @@
+#!/usr/bin/env python3
+"""gx: run Python against a graph target from config/targets.toml, with NetworkX.
+
+    bin/gx <target> --info                 node and edge counts
+    bin/gx <target> -c "<python>"          run code with G bound to the target's graph (and nx imported)
+    bin/gx <target> <script.py>            the same, from a file
+
+The graph is loaded from the target's file (node-link JSON or GraphML, by extension). If the code changes G,
+G is written back to the same file when the code finishes; if the code raises, nothing is written. Every call
+is logged to .gx_history before it runs, and its end (with whether the file was saved) after.
+"""
+import argparse
+import json
+import os
+import sys
+import time
+import tomllib
+from pathlib import Path
+
+import networkx as nx
+
+ROOT = Path(__file__).resolve().parent.parent
+TARGETS = tomllib.loads((ROOT / "config" / "targets.toml").read_text())
+
+
+def load(path: Path):
+    if path.suffix == ".graphml":
+        return nx.read_graphml(path)
+    return nx.node_link_graph(json.loads(path.read_text()), edges="links")
+
+
+def save(G, path: Path):
+    tmp = path.with_name(path.name + ".tmp")
+    if path.suffix == ".graphml":
+        nx.write_graphml(G, tmp)
+    else:
+        tmp.write_text(json.dumps(nx.node_link_data(G, edges="links"), indent=1, sort_keys=True))
+    os.replace(tmp, path)
+
+
+def _attrs(d):
+    return repr(sorted((str(k), repr(v)) for k, v in d.items()))
+
+
+def fingerprint(G):
+    return (sorted((str(n), _attrs(d)) for n, d in G.nodes(data=True)),
+            sorted((tuple(sorted((str(u), str(v)))) if not G.is_directed() else (str(u), str(v)), _attrs(d))
+                   for u, v, d in G.edges(data=True)))
+
+
+ap = argparse.ArgumentParser(prog="gx")
+ap.add_argument("target", choices=sorted(TARGETS))
+ap.add_argument("script", nargs="?")
+ap.add_argument("-c", dest="code")
+ap.add_argument("--info", action="store_true")
+a = ap.parse_args()
+if a.info:
+    code = "print(f'{G.number_of_nodes()} nodes, {G.number_of_edges()} edges')"
+elif a.code is not None:
+    code = a.code
+elif a.script:
+    code = Path(a.script).read_text()
+else:
+    ap.error("give -c CODE, a script, or --info")
+key = f"{os.getpid()}-{time.time_ns()}"
+with open(ROOT / ".gx_history", "a") as log:
+    log.write(json.dumps({"event": "start", "id": key, "target": a.target, "sql": code}) + "\n")
+status, saved = "error", False
+try:
+    path = Path(TARGETS[a.target]["path"])
+    path = path if path.is_absolute() else ROOT / path
+    G = load(path)
+    before = fingerprint(G)
+    env = {"G": G, "nx": nx, "__name__": "__gx__"}
+    exec(compile(code, a.script or "<gx>", "exec"), env)
+    G = env["G"]
+    if fingerprint(G) != before:
+        save(G, path)
+        saved = True
+        print(f"gx: saved {a.target} ({G.number_of_nodes()} nodes, {G.number_of_edges()} edges)")
+    status = "ok"
+except Exception as exc:  # noqa: BLE001
+    sys.exit(f"gx: {type(exc).__name__}: {exc}")
+finally:
+    with open(ROOT / ".gx_history", "a") as log:
+        log.write(json.dumps({"event": "end", "id": key, "status": status, "saved": saved}) + "\n")

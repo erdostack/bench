@@ -1,0 +1,17 @@
+# Roast: approvals-graph
+
+## Findings
+
+### 1. remove_leaver (critical)
+
+**Problem.** DETACH DELETE removes every relationship the leaver has, and only OWNS was handed over. That includes APPROVED and SUBMITTED on every claim they ever touched, so audit_trail shows nobody as approver or submitter (policy rule 1 needs seven years), and AWAITS on claims waiting for them, which simply vanish from every queue (rule 2). Run by HR for every leaver, this erases audit history continuously.
+
+**Fix.** Never delete employees. Replace remove_leaver with: move pending claims (MATCH (c:Claim)-[w:AWAITS]->(e:Employee {staff_no: $staff_no})-[:REPORTS_TO]->(m) CREATE (c)-[:AWAITS]->(m) DELETE w), then SET e:Former, e.left_on = date() and delete only REPORTS_TO if needed. Exclude :Former in next_approver. Check what has already been lost from backups.
+
+### 2. cost_center (low)
+
+**Problem.** Alias spelled differently from the CostCentre label.
+
+**Fix.** Rename to cost_centre.
+
+Roasted with erdostack: npx skills add usergraphtheory/erdostack

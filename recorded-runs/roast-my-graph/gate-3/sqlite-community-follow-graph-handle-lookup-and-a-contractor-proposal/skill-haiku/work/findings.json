@@ -1,0 +1,14 @@
+[
+  {
+    "element": "0003_follow_created.sql",
+    "severity": "low",
+    "problem": "Question to confirm: ADD COLUMN created_at with DEFAULT '1970-01-01T00:00:00Z' stamps every existing follow with that time. If production follows existed when this ran (the README says 3 million), they are stored as 1970 and followers_page.sql orders them by follower_id, not by when they happened. The same default also fills silently for any insert that leaves created_at out.",
+    "fix": "Confirm the migration ran on an empty follow table, or backfill real times from another source. Use NOT NULL with no default for new writes, or make the writer always set created_at."
+  },
+  {
+    "element": "account_handle_ci",
+    "severity": "low",
+    "problem": "Question to confirm: SQLite lower() folds only ASCII letters unless an ICU build is used, and the files do not say which characters handles may use. If non-ASCII letters are allowed, 'Émile' and 'émile' would be two accounts, breaking the case-insensitive rule the README states. The sample has no non-ASCII handles.",
+    "fix": "Check the allowed handle characters. If non-ASCII is allowed, pick one folding rule, apply it in the application so the unique index and the query use the same stored value, and verify the production SQLite build's lower() behaviour first."
+  }
+]

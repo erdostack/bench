@@ -1,0 +1,14 @@
+[
+  {
+    "element": "Enrollment",
+    "severity": "low",
+    "problem": "Enrollment could arguably be a relationship rather than a node, but it works.",
+    "fix": "Consider revisiting if the model is ever refactored."
+  },
+  {
+    "element": "classmates",
+    "severity": "high",
+    "problem": "No LIMIT pushdown before the aggregation.",
+    "fix": "Aggregate in a subquery."
+  }
+]

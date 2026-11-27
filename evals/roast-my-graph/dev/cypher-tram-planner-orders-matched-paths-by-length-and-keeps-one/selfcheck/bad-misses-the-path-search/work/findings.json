@@ -1,0 +1,14 @@
+[
+  {
+    "element": "schema/load.cypher",
+    "severity": "medium",
+    "problem": "The stop rows MERGE on id and then SET the name, so a renamed stop silently keeps one node; fine, but log renames.",
+    "fix": "Record the previous name."
+  },
+  {
+    "element": "line_stops.cypher",
+    "severity": "low",
+    "problem": "Sorts by seq without a tiebreak.",
+    "fix": "Add id."
+  }
+]

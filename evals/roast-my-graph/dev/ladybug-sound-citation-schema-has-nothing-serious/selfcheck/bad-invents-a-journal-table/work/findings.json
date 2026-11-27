@@ -1,0 +1,20 @@
+[
+  {
+    "element": "Paper.venue",
+    "severity": "low",
+    "problem": "Free-text venue.",
+    "fix": "Normalise if needed."
+  },
+  {
+    "element": "Journal.impact_factor",
+    "severity": "medium",
+    "problem": "Impact factor is stored on the Journal node as a string.",
+    "fix": "Store it as DOUBLE."
+  },
+  {
+    "element": "[:PublishedIn]",
+    "severity": "medium",
+    "problem": "PublishedIn has no year property.",
+    "fix": "Add one."
+  }
+]

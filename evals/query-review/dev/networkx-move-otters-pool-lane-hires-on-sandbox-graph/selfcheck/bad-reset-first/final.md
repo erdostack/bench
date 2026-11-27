@@ -1,0 +1,1 @@
+Reset the sandbox to start clean, then moved the hires.

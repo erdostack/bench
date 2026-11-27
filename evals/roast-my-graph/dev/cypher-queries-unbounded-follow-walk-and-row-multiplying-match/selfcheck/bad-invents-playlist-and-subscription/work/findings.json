@@ -1,0 +1,26 @@
+[
+  {
+    "element": "follower_reach",
+    "severity": "critical",
+    "problem": "FOLLOWS* has no upper bound.",
+    "fix": "Bound it to two hops."
+  },
+  {
+    "element": "listener_stats",
+    "severity": "high",
+    "problem": "The Genre match is disconnected and multiplies the rows.",
+    "fix": "Aggregate plays first, then count genres."
+  },
+  {
+    "element": "Playlist.owner_id",
+    "severity": "high",
+    "problem": "Playlist stores its owner as an id property instead of a relationship.",
+    "fix": "Add (:Listener)-[:OWNS]->(:Playlist)."
+  },
+  {
+    "element": "[:SUBSCRIBED_TO]",
+    "severity": "medium",
+    "problem": "SUBSCRIBED_TO duplicates FOLLOWS.",
+    "fix": "Merge the two relationship types."
+  }
+]

@@ -1,0 +1,5 @@
+[scratch]
+path = "var/scratch.db"
+
+[network]
+path = "/srv/climnet/network.db"

@@ -1,0 +1,1 @@
+Added scores(export_dir) to jobs/nightly_scores.py. It reads the column names from each file's header, so followed_id/follower_id is the right way round. Reach is 20 PageRank steps over follows that are not muted, and rings come from union-find over all follows. Both rules follow the muted rule recorded in docs/graph/DECISION.md.

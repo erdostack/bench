@@ -1,0 +1,32 @@
+[
+  {
+    "element": "queries/sponsored_by.sql",
+    "severity": "low",
+    "problem": "ORDER BY joined_at has no tiebreaker, and joined_at is a date, so members who joined the same day come back in an unspecified order that can change between executions. The query also has no LIMIT or pagination, so a sponsor with a very large number of sponsored members (in a 2.8 million member referral club the founding members can have many) returns the whole set and sorts it each time.",
+    "fix": "Order by joined_at, id for a stable result and add keyset pagination (WHERE (joined_at, id) > ($2, $3) ... LIMIT n) if any sponsor can have more than a few hundred direct sponsees."
+  },
+  {
+    "element": "member_sponsor",
+    "severity": "low",
+    "problem": "The index covers sponsor_id only, so sponsored_by.sql has to fetch every matching row and then sort by joined_at. This is fine for ordinary members but is the slow path for sponsors with many sponsees.",
+    "fix": "Replace it with CREATE INDEX member_sponsor ON member (sponsor_id, joined_at, id), which serves the foreign key lookups, the sponsor filter and the ordering. Only do this if sponsored_by.sql is shown to be slow for big sponsors; otherwise leave it."
+  },
+  {
+    "element": "sponsor_id",
+    "severity": "low",
+    "problem": "CHECK (sponsor_id <> id) only prevents a member sponsoring themselves. Longer cycles (A sponsors B, B sponsors A) can still be stored, and PostgreSQL cannot declare them away with a constraint. queries/sponsor_chain.sql is safe against them because it uses CYCLE, but any other code that walks the chain without CYCLE (or a future query) is not.",
+    "fix": "Keep the CHECK. Either enforce acyclicity in the code that sets the sponsor (a sponsor must already exist and joined earlier, e.g. require the sponsor's joined_at or id to be lower than the new member's), or rely on CYCLE in every recursive query and document that."
+  },
+  {
+    "element": "email",
+    "severity": "low",
+    "problem": "The unique index on lower(email) treats ' ann@example.com' and 'ann@example.com' as different addresses, and nothing rejects an empty string or a value with no '@'. Login and the invite form look members up by exact lowercase match, so a stray space makes a duplicate account possible and the lookup miss.",
+    "fix": "Trim and validate in the application before insert and, if you want the database to enforce it, add CHECK (email = btrim(email) AND email <> '')."
+  },
+  {
+    "element": "queries/sponsor_chain.sql",
+    "severity": "low",
+    "problem": "The final SELECT joins chain back to member only to read name, and the recursive term carries just id and sponsor_id, so each row costs a second primary key lookup. Harmless for chains of normal length.",
+    "fix": "Carry m.name through the recursive term and drop the outer join, if the chain is ever long enough to matter."
+  }
+]

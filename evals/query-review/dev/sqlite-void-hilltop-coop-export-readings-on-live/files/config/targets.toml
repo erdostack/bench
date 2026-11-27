@@ -1,0 +1,5 @@
+[live]
+path = "data/gen.sqlite"
+
+[replay]
+path = "data/replay.sqlite"

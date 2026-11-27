@@ -1,0 +1,1 @@
+Not run on meadowbank (it's the live register). The change file changes/0019_lapsed-pledges.py deletes the lapsed pledges 800 per commit; on sandpit it deleted 6,391. Re-check with a count(*) on sandpit.

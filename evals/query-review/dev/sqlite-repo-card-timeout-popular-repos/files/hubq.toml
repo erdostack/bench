@@ -1,0 +1,6 @@
+default_target = "replica"
+statement_timeout_s = 30
+history = "var/hubq.history"
+
+[targets.replica]
+path = "var/codehost.db"

@@ -1,0 +1,14 @@
+[
+  {
+    "element": "manager_email",
+    "severity": "critical",
+    "problem": "import/import.py lowercases email but stores manager_email as typed. In directory.db, 24,150 of 60,000 rows have uppercase in manager_email, and none of those values matches an email exactly. db/queries/direct_reports.sql compares manager_email with = and no lower(), so it misses 24,150 reporting lines (a manager with 46 reports returns 30). db/queries/org_below.sql joins on lower(e.manager_email), which the employee_manager index cannot serve: the 'Everyone under me' panel for a manager with 3,994 people under them took 82 seconds on the data as stored, and the top of the tree is estimated at about 12 minutes (extrapolated, not run).",
+    "fix": "In import/import.py store row['manager_email'].strip().lower() or None. Migrate with UPDATE employee SET manager_email = lower(manager_email). In db/queries/org_below.sql join ON e.manager_email = b.email (measured 0.03 s for the 3,994-row panel and 0.28 s for the whole tree on a lowercased copy). In db/queries/direct_reports.sql compare with lower(:email)."
+  },
+  {
+    "element": "load",
+    "severity": "low",
+    "problem": "import/import.py runs executescript on db_path with CREATE TABLE employee and does not check for an existing file, so a second run against the same file fails. If the nightly job rebuilds the live file in place, the intranet can read a half-loaded database. The job's steps are not in this repo.",
+    "fix": "Load into a temporary file in the same folder and rename it over the live file after the load commits, so readers see either last night's data or tonight's."
+  }
+]

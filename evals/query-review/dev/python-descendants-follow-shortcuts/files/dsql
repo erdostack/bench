@@ -1,0 +1,99 @@
+#!/usr/bin/env python3
+"""dsql - run SQL against one of the databases listed in dsql.toml.
+
+    ./dsql "SELECT count(*) FROM folders"            one statement on the default target
+    ./dsql -f sql/top_level.sql -p min_children=3     a statement file with named parameters (:name)
+    ./dsql -t <target> "..."                        a different target
+
+Every statement is written to .dsql_history before it runs and again when it finishes.
+Statements that run longer than statement_timeout_s are interrupted.
+"""
+import argparse
+import json
+import os
+import sqlite3
+import sys
+import time
+import tomllib
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent
+CONFIG = tomllib.loads((ROOT / "dsql.toml").read_text())
+
+
+def statements(text):
+    out, cur = [], ""
+    for line in text.splitlines(keepends=True):
+        cur += line
+        if sqlite3.complete_statement(cur):
+            out.append(cur.strip())
+            cur = ""
+    if cur.strip():
+        out.append(cur.strip())
+    return [s for s in out if s.strip("; \n")]
+
+
+def log(record):
+    path = ROOT / CONFIG.get("history", ".dsql_history")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "a", encoding="utf-8") as fh:
+        fh.write(json.dumps(record) + "\n")
+
+
+def main():
+    ap = argparse.ArgumentParser(prog="dsql", description="Run SQL against a configured database.")
+    ap.add_argument("sql", nargs="?", help="statement to run")
+    ap.add_argument("-f", "--file", help="read the statement(s) from a file")
+    ap.add_argument("-p", "--param", action="append", default=[], metavar="NAME=VALUE", help="named parameter")
+    ap.add_argument("-t", "--target", dest="target", default=CONFIG.get("default_target", "staging-copy"))
+    ap.add_argument("--max-rows", type=int, default=40, help="rows to print (all rows are still fetched)")
+    args = ap.parse_args()
+    if bool(args.sql) == bool(args.file):
+        ap.error("give a statement or -f FILE")
+    targets = CONFIG.get("targets", {})
+    if args.target not in targets:
+        ap.error(f"unknown target {args.target!r}; known: {', '.join(targets)}")
+    text = Path(args.file).read_text() if args.file else args.sql
+    params = {}
+    for item in args.param:
+        key, _, value = item.partition("=")
+        params[key] = int(value) if value.lstrip("-").isdigit() else value
+    timeout = float(CONFIG.get("statement_timeout_s", 30))
+    conn = sqlite3.connect(ROOT / targets[args.target]["path"])
+    code = 0
+    for sql in statements(text):
+        entry = f"{os.getpid()}-{time.time_ns()}"
+        log({"event": "start", "id": entry, "target": args.target, "sql": sql, "params": params})
+        started = time.time()
+        conn.set_progress_handler(lambda: 1 if time.time() - started > timeout else 0, 20000)
+        try:
+            cur = conn.execute(sql, params)
+            rows = cur.fetchall()
+            conn.commit()
+        except sqlite3.OperationalError as exc:
+            timed_out = "interrupted" in str(exc)
+            log({"event": "end", "id": entry, "status": "timeout" if timed_out else "error", "error": str(exc),
+                 "ms": int((time.time() - started) * 1000)})
+            print(f"dsql: {'statement timeout after %gs' % timeout if timed_out else exc}", file=sys.stderr)
+            code = 1
+            break
+        except sqlite3.Error as exc:
+            log({"event": "end", "id": entry, "status": "error", "error": str(exc), "ms": int((time.time() - started) * 1000)})
+            print(f"dsql: {exc}", file=sys.stderr)
+            code = 1
+            break
+        log({"event": "end", "id": entry, "status": "ok", "rows": len(rows), "ms": int((time.time() - started) * 1000)})
+        if cur.description:
+            print("\t".join(d[0] for d in cur.description))
+        for row in rows[:args.max_rows]:
+            print("\t".join("" if v is None else str(v) for v in row))
+        if len(rows) > args.max_rows:
+            print(f"... {len(rows) - args.max_rows} more rows")
+        elif not cur.description:
+            print(f"ok ({conn.total_changes} rows changed)")
+    conn.close()
+    sys.exit(code)
+
+
+if __name__ == "__main__":
+    main()

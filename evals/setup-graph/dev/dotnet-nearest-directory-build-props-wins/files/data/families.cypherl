@@ -1,0 +1,3 @@
+CREATE (:Language {code: "pie", name: "Proto-Sample"});
+CREATE (:Language {code: "gmc", name: "Sample Germanic"});
+MATCH (a:Language {code: "pie"}), (b:Language {code: "gmc"}) CREATE (a)-[:PARENT_OF]->(b);

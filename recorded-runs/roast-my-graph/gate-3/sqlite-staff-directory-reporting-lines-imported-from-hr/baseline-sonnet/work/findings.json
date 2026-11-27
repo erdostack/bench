@@ -1,0 +1,50 @@
+[
+  {
+    "element": "db/queries/org_below.sql",
+    "severity": "critical",
+    "problem": "The recursive step joins on `lower(e.manager_email) = lower(b.email)`. Wrapping the column in lower() stops SQLite using the employee_manager index, so every level of the recursion does a full scan of all 60,000 employee rows (EXPLAIN QUERY PLAN shows `SCAN e` inside the RECURSIVE STEP, with an automatic index built on b). The cost grows with the size of the subtree times the table size: on last night's copy a manager with 30 reports below them took 0.6 s, 299 took 5.6 s and 2,859 took 56 s, and the query for the CEO (59,999 people) did not finish in over two minutes. That is the 'everyone under me' complaint.",
+    "fix": "Compare the columns directly so the index can be used: `JOIN below b ON e.manager_email = b.email`, once manager_email is stored lower-case (see import/import.py). With that change the same data runs the CEO query in under a second (0.83 s measured on a copy) and the plan shows `SEARCH e USING INDEX employee_manager`."
+  },
+  {
+    "element": "manager_email",
+    "severity": "high",
+    "problem": "Addresses are meant to be case-insensitive (README), but the column is stored as typed. In directory.db 24,150 of 60,000 rows have a manager_email that differs from the manager's stored (lower-case) email, for example one manager appears as `CHEN.MOREAU1350@CORP.EXAMPLE`, `Chen.Moreau1350@Corp.Example` and `chen.moreau1350@corp.example`. Anything that compares it exactly gets wrong results, and the lower() calls in the queries are workarounds that cost performance.",
+    "fix": "Normalise at load time (store `lower(trim(manager_email))`) so the column always matches employee.email, and add `CHECK (manager_email = lower(manager_email))` or `COLLATE NOCASE` to the schema so it cannot drift back."
+  },
+  {
+    "element": "db/queries/direct_reports.sql",
+    "severity": "high",
+    "problem": "`WHERE manager_email = :email` is a case-sensitive exact comparison against a column that holds mixed case. It returns only the reports whose spelling happens to match the parameter. In directory.db the manager chen.moreau1350@corp.example has 46 direct reports, but this query given the lower-case address returns only 30, so 16 people are missing from their manager's list with no error.",
+    "fix": "Normalise manager_email on import (see manager_email) and lower-case the parameter (`WHERE manager_email = lower(:email)`), or declare the column COLLATE NOCASE so the existing index serves the comparison."
+  },
+  {
+    "element": "import/import.py",
+    "severity": "high",
+    "problem": "The loader lower-cases and strips `email` but only strips `manager_email`, which is the root cause of the 24,150 mismatched manager addresses. It also trusts the CSV completely: no check that a manager exists in the file, no check for a manager cycle or a self-managed row, and a duplicate email aborts the whole load with an IntegrityError after the schema script has already run.",
+    "fix": "Store `row[\"manager_email\"].strip().lower() or None`, and after loading validate (every manager_email exists, exactly one root, no cycles) and fail the run with a clear message before the new database goes live."
+  },
+  {
+    "element": "import/import.py",
+    "severity": "medium",
+    "problem": "The nightly load is not safe to re-run or to run against the live file. `con.executescript(open(\"db/schema.sql\").read())` fails with 'table employee already exists' if the database file exists (so the job must delete or replace it first), and if it writes straight into the file the intranet reads, readers see a missing or half-loaded directory during the load. The schema path is relative to the current directory, so the job only works when started from the repo root, and there is no log of how many rows were loaded.",
+    "fix": "Build into a new file (directory.db.new), validate it, and `os.replace` it over directory.db. Resolve the schema path from `__file__`, and print or log the row count."
+  },
+  {
+    "element": "employee_manager",
+    "severity": "medium",
+    "problem": "The index on manager_email is the right index for these queries but is never used by org_below.sql because of the lower() call, and direct_reports.sql can use it only for exact-case matches. Today it is an unused cost on every nightly load. There is also no foreign key from manager_email to employee(email), so nothing in the schema catches a dangling or misspelled manager.",
+    "fix": "Keep the index after normalising manager_email and fixing the queries, and add `FOREIGN KEY (manager_email) REFERENCES employee (email)` (with foreign_keys on in the loader) or the validation step described above."
+  },
+  {
+    "element": "db/queries/managers_above.sql",
+    "severity": "low",
+    "problem": "Works and uses the unique index on email (`e.email = lower(a.manager_email)`), but the lower() on the stored manager_email only exists to cope with the un-normalised data, and the result is an unordered list of addresses with no name, title or level, so the profile page has to look every manager up again and cannot show the chain in order.",
+    "fix": "Once manager_email is normalised drop lower(), carry a level column in the CTE, and return name, title and level ordered by level."
+  },
+  {
+    "element": "db/queries/org_below.sql",
+    "severity": "low",
+    "problem": "Besides the speed, the result has no level or manager column, so the panel cannot show the hierarchy, and it returns the whole subtree in one result (59,999 rows for the CEO), which is far more than a profile page can show. ORDER BY e.name is not stable for people with the same name.",
+    "fix": "Add a depth column, add `e.email` as a second ORDER BY key, and paginate or cap the panel (for example direct reports plus a count of the rest)."
+  }
+]

@@ -1,0 +1,3 @@
+#!/bin/sh
+# Maven wrapper launcher (trimmed): runs the Maven version named in .mvn/wrapper/maven-wrapper.properties.
+exec mvn "$@"

@@ -1,0 +1,1 @@
+The loader's problem is transaction sizing and writer contention: the Artwork constraint already backs the MERGE, so use CALL IN TRANSACTIONS with smaller batches and a single worker. One high finding in docs/graph/ROAST.md and findings.json.

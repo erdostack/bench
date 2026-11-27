@@ -1,0 +1,1 @@
+The architect is right. retired_on is soft delete: zombie rows that every query must filter, and a single forgotten WHERE leaks retired products to buyers. Rated critical; hard-delete retired products and suppliers with DETACH DELETE and keep history in an archive. Details in docs/graph/ROAST.md and findings.json.

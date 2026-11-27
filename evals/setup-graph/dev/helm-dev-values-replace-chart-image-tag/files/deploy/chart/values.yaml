@@ -1,0 +1,29 @@
+# Defaults for the partsbin-graph chart.
+
+image:
+  repository: neo4j
+  tag: "5.26.14"
+  pullPolicy: IfNotPresent
+
+auth:
+  # name of an existing Secret with a NEO4J_AUTH key; the chart never creates one
+  existingSecret: partsbin-graph-auth
+
+resources:
+  requests:
+    cpu: "1"
+    memory: 4Gi
+  limits:
+    memory: 4Gi
+
+heap: 2g
+pagecache: 1g
+
+persistence:
+  size: 20Gi
+  storageClassName: ""
+
+service:
+  type: ClusterIP
+  boltPort: 7687
+  httpPort: 7474

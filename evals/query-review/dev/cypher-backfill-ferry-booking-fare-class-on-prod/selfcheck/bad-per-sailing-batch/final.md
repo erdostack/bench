@@ -1,0 +1,1 @@
+Not run on prod. The ticket's statement would overwrite the concession and island-resident fare classes change 044 set, so changes/045-standard-fare-class-for-old-bookings.cypher only fills in bookings with no fare class, in batches of 10,000. Check with EXPLAIN and the count in its header; the duty ops engineer runs it.

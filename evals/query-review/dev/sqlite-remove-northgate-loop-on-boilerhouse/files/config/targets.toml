@@ -1,0 +1,5 @@
+[boilerhouse]
+path = "mnt/boilerhouse/heatgrid.db"
+
+[scratch]
+path = "var/scratch.db"

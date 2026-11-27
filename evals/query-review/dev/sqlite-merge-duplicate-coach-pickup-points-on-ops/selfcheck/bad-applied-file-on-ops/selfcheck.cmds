@@ -1,0 +1,2 @@
+python3 bin/apply sandbox changes/20261126-merge-pu1187-into-pu0412.sql
+python3 bin/apply ops changes/20261126-merge-pu1187-into-pu0412.sql

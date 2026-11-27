@@ -1,0 +1,1 @@
+SELECT 1 FROM account WHERE handle = :handle COLLATE NOCASE LIMIT 1;

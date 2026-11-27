@@ -1,0 +1,3 @@
+[purge_cancelled_bookings]
+file = "jobs/purge_cancelled_bookings.cypher"
+cutoff_days = 90

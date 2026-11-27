@@ -1,0 +1,2 @@
+paths = ["jobs", "db"]
+fail_on = "error"

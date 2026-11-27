@@ -1,0 +1,1 @@
+The retry would double the 6401-6800 legs (they committed, the progress row didn't). The job now deletes a range's legs, inserts them and moves the progress row in one transaction, 200 parcels at a time to stay under 2,000 rows.

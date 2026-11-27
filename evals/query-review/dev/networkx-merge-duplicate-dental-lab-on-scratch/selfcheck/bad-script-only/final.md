@@ -1,0 +1,1 @@
+Wrote scratch/merge_lab31.py; run it with bin/labs scratch run when you are ready.

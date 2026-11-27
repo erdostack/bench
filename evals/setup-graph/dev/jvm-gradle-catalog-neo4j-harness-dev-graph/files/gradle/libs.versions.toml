@@ -1,0 +1,13 @@
+[versions]
+kotlin = "2.1.20"
+neo4j = "2026.+"
+neo4j-driver = "5.28.+"
+junit = "5.12.2"
+
+[libraries]
+neo4j-harness = { module = "org.neo4j.test:neo4j-harness", version.ref = "neo4j" }
+neo4j-driver = { module = "org.neo4j.driver:neo4j-java-driver", version.ref = "neo4j-driver" }
+junit = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

@@ -1,0 +1,18 @@
+db := "var/tunebook.lbug"
+
+# list the recipes
+default:
+    @just --list
+
+# rebuild the database from data/
+load:
+    cargo run --quiet --release --bin load -- data/ {{db}}
+
+# run one saved query read-only and print the rows
+q file *params:
+    cargo run --quiet --release --bin tq -- --db {{db}} {{file}} {{params}}
+
+check:
+    cargo fmt --check
+    cargo clippy -- -D warnings
+    cargo test

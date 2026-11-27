@@ -1,0 +1,14 @@
+[
+  {
+    "element": "Ride.started_on",
+    "severity": "low",
+    "problem": "Rides spanning midnight at month end appear in the month they end, which can surprise customers.",
+    "fix": "Explain the rule on the statement."
+  },
+  {
+    "element": "Employs",
+    "severity": "low",
+    "problem": "Unused by billing.",
+    "fix": "Remove it or document it."
+  }
+]

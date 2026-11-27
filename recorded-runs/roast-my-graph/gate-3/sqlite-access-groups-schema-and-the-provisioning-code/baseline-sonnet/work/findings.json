@@ -1,0 +1,56 @@
+[
+  {
+    "element": "connect",
+    "severity": "critical",
+    "problem": "SQLite does not enforce foreign keys unless `PRAGMA foreign_keys = ON` is set on every connection, and connect() in app/db.py only sets busy_timeout. Every ON DELETE CASCADE in sql/schema.sql is therefore ignored. The README says removing a group removes its memberships, nestings and grants, and sync.py and delete_group rely on that, but it never happens. A deleted group keeps its member, nests and access_grant rows, and effective_grants keeps honouring them, because it never checks that the group still exists. In access.db (PRAGMA foreign_keys returns 0), 4 deleted groups (ids 7, 19, 33, 41) still have 89 member rows, 4 access_grant rows (on doc/vendors, doc/handbook, doc/roadmap and doc/vendors) and 2 nests rows. About 84 users still read documents through groups HR removed, roughly 87 user and resource pairs that should not exist.",
+    "fix": "Run `con.execute(\"PRAGMA foreign_keys = ON\")` in connect() before returning, so the cascades work, and add a test that deletes a group through delete_group and asserts the child rows are gone. Then delete the existing orphans (member, nests and access_grant rows whose group id is not in grp) in a reviewed migration, and run `PRAGMA foreign_key_check` in CI and at start-up so it cannot come back unseen."
+  },
+  {
+    "element": "effective_grants",
+    "severity": "high",
+    "problem": "EFFECTIVE walks member and nests and joins access_grant without ever joining grp, so it does not check that a group still exists. Any orphan row (and there are some, see connect) turns into live access. For an audit that matters because the answer to who can open this document includes people through groups that no longer exist. Nested chains are followed through a deleted child to its parent (nests rows 33 -> 56 and 7 -> 57 in access.db), so one stale row inherits a live group's grants.",
+    "fix": "Join grp in the recursive part and the grant lookup (JOIN grp ON grp.id = member.group_id, and the same for each nests hop), so a missing group can never give access, even if an orphan slips in. Keep the foreign key fix as the primary control."
+  },
+  {
+    "element": "grp.id",
+    "severity": "high",
+    "problem": "grp.id is a plain INTEGER PRIMARY KEY with no AUTOINCREMENT, so SQLite hands out max(id)+1 and reuses the id of the highest group once it is deleted. Combined with the orphan rows left behind (cascades are off), a group created after the top group is deleted gets the old id and silently inherits the old group's memberships, nestings and grants. The sync creates and deletes groups all day, so this is likely to happen at some point. Today the maximum id is 60 with 56 groups.",
+    "fix": "Declare `id INTEGER PRIMARY KEY AUTOINCREMENT` in sql/schema.sql so ids are never reused (needs a table rebuild in SQLite), and keep foreign keys on so nothing is left to inherit."
+  },
+  {
+    "element": "sync",
+    "severity": "high",
+    "problem": "sync deletes every group that is not in hr_groups, with no sanity check. If the HR feed comes back empty or truncated (outage, bad export, wrong filter), all groups are deleted in one run, which removes everyone's access (or, with foreign keys off as now, leaves a pile of orphans). Each delete_group and create_group commits on its own, so a crash half way leaves a partially synced state. A group HR renames is treated as delete plus create, which drops its memberships, nestings and grants, because the group is matched by name and not by a stable HR id. The connection is also not closed if an exception happens.",
+    "fix": "Refuse to run when the incoming list is empty or would delete more than a set share of groups, do the whole sync in one transaction (and close the connection in a try/finally), and match groups on a stable HR id stored in grp instead of on name. Log what was deleted."
+  },
+  {
+    "element": "access_grant",
+    "severity": "medium",
+    "problem": "There is no history of who gave a group access, when, or what the previous level was, and grant() uses INSERT OR REPLACE, which overwrites an existing level without a trace (so write can be swapped for admin, or admin for read, silently). The table has no created_by, created_at or removed_at columns and rows are hard deleted by the cascade, so an auditor cannot reconstruct who could open what on a past date.",
+    "fix": "Add an append-only grant_log table (group_id, resource, old_level, new_level, changed_by, changed_at) written in the same transaction as every grant, revoke and group delete, and use it to answer audit questions. Replace INSERT OR REPLACE with an explicit UPSERT that records the change."
+  },
+  {
+    "element": "access_grant.resource",
+    "severity": "medium",
+    "problem": "resource is free text with no resources table behind it, so a typo in a resource name creates a grant that applies to nothing and nobody notices, and a document that is renamed or removed leaves its grants behind. The schema also has no way to list the resources that exist, so an access review cannot say which documents have no grant.",
+    "fix": "Add a resource table and make access_grant.resource reference it (with ON DELETE CASCADE), or at least validate names against the document store in grant()."
+  },
+  {
+    "element": "nests",
+    "severity": "low",
+    "problem": "CHECK (child <> parent) only blocks a group nested in itself. Longer cycles (A in B in A) are allowed. effective_grants still terminates because the recursive CTE uses UNION, so this is not exploitable today, but cycles make the access graph hard to review and any later query that uses UNION ALL would loop forever. There are no cycles in access.db at the moment.",
+    "fix": "Check for a cycle in nest() before inserting (look for the parent among the child's descendants) and reject it, and keep UNION in EFFECTIVE."
+  },
+  {
+    "element": "DB_PATH",
+    "severity": "low",
+    "problem": "DB_PATH = \"access.db\" is relative to the current working directory, so a job started from another directory silently opens (and creates) a different, empty database, where every user has no access and sync would create all groups from scratch. connect() also has no check that the file exists.",
+    "fix": "Resolve the path from an environment variable or from the file location, and open with `file:...?mode=rw` so a wrong path fails instead of creating an empty database."
+  },
+  {
+    "element": "grant",
+    "severity": "low",
+    "problem": "grant(), add_member() and nest() use INSERT OR IGNORE / OR REPLACE with no existence check, and with foreign keys off (see connect) nothing stops them from writing rows for a group or user id that does not exist. They also hide real errors, such as a typo in the level (the CHECK fails, which is fine) or a duplicate that was meant to change something.",
+    "fix": "Once foreign keys are on, drop the OR IGNORE where a conflict means a bug, and let the helpers raise on unknown ids."
+  }
+]

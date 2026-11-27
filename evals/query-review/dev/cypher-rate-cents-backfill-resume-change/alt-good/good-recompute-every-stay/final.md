@@ -1,0 +1,1 @@
+0041's stays have truncated cents; 0042 now recomputes all 3.4M stays with round(). Check with count().

@@ -1,0 +1,3 @@
+-- db: data/main.db
+DELETE FROM edges WHERE src IN (30117, 30452, 30991) OR dst IN (30117, 30452, 30991);
+DELETE FROM nodes WHERE id IN (30117, 30452, 30991);

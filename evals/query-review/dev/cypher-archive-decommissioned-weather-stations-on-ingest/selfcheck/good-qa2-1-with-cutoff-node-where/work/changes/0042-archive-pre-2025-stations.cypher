@@ -1,0 +1,5 @@
+// archive stations decommissioned before 2025 (they stay on the map otherwise); count: MATCH (s:Station {status: 'decommissioned'}) WHERE s.decommissionedOn < date('2025-01-01') RETURN count(s);
+WITH date('2025-01-01') AS cutoff
+MATCH (s:Station WHERE s.status = 'decommissioned' AND s.decommissionedOn < cutoff)
+SET s:ArchivedStation
+REMOVE s:Station;

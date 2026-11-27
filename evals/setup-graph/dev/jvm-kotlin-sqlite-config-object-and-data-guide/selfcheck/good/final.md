@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. Two problems: the README's sqlite-jdbc 3.47.0.0 is stale (the catalog pins 3.49.1.0), and the foreign keys docs/DATA.md relies on are not enforced - the SQLiteConfig in Db.kt is never passed to getConnection, and routes.db already has legs to centres that were retired.

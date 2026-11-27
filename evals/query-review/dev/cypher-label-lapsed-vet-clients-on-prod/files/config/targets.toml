@@ -1,0 +1,7 @@
+[prod]
+uri = "https://graph-prod.brookfield.example:7473"
+database = "clients"
+
+[qa]
+uri = "https://graph-qa.brookfield.example:7473"
+database = "clients"

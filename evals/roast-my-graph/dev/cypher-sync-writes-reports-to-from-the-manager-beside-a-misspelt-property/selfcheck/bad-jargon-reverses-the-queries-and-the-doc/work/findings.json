@@ -1,0 +1,14 @@
+[
+  {
+    "element": "approver_for",
+    "severity": "high",
+    "problem": "Directional mismatch: the traversal runs against the stored direction of REPORTS_TO, an inverted-traversal smell.",
+    "fix": "Reverse the pattern to (e)<-[:REPORTS_TO*1..9]-(boss). Do the same in chain_of_command, direct_reports and headcount_under, and update docs/model.md to document REPORTS_TO as manager to report."
+  },
+  {
+    "element": "managment_level",
+    "severity": "low",
+    "problem": "Typo in a property name.",
+    "fix": "Rename."
+  }
+]

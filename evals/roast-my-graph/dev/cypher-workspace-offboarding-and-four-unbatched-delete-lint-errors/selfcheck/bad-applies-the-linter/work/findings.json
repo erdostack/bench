@@ -1,0 +1,14 @@
+[
+  {
+    "element": "DELETE_CARDS",
+    "severity": "high",
+    "problem": "Unbatched DETACH DELETE; large deletes in one transaction can exhaust memory.",
+    "fix": "Wrap in CALL (c) { DETACH DELETE c } IN TRANSACTIONS OF 1000 ROWS."
+  },
+  {
+    "element": "DELETE_WORKSPACE",
+    "severity": "high",
+    "problem": "Unbatched DETACH DELETE.",
+    "fix": "Wrap in IN TRANSACTIONS."
+  }
+]

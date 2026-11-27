@@ -1,0 +1,5 @@
+[drill]
+path = "var/drill.db"
+
+[plantroom]
+path = "/srv/plantroom/plantroom.db"

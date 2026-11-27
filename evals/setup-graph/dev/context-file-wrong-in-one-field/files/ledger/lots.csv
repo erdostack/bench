@@ -1,0 +1,7 @@
+code,variety,year,parent
+L-2019-003,Amber Flint,2019,
+L-2021-011,Amber Flint,2021,L-2019-003
+L-2023-004,Amber Flint,2023,L-2021-011
+L-2024-017,Amber Flint,2024,L-2023-004
+L-2022-008,Blue Podded Pea,2022,
+L-2024-002,Blue Podded Pea,2024,L-2022-008

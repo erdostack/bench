@@ -1,0 +1,7 @@
+[sandbox]
+uri = "neo4j://devgraph-sandbox.trust.internal:7687"
+database = "devices"
+
+[biomed]
+uri = "neo4j+s://devgraph.trust.internal:7687"
+database = "devices"

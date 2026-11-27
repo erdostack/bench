@@ -1,0 +1,8 @@
+[
+  {
+    "element": "Rating",
+    "severity": "medium",
+    "problem": "Reified relationship (intermediate node pattern). Gives flexibility for future features.",
+    "fix": "Keep Rating as a node but add an index on Rating.stars and cache loved_also_loved."
+  }
+]

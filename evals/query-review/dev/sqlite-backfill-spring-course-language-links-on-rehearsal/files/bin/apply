@@ -1,0 +1,50 @@
+#!/usr/bin/env python3
+"""apply: apply a .sql change file to a target: the file runs in one transaction, then again, and so on until a
+run changes no rows. Logged to .rq_history like bin/rq.
+
+    bin/apply <target> changes/<file>.sql
+"""
+import json
+import os
+import sqlite3
+import sys
+import time
+import tomllib
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+TARGETS = tomllib.loads((ROOT / "config" / "targets.toml").read_text())
+if len(sys.argv) != 3 or sys.argv[1] not in TARGETS:
+    sys.exit(f"usage: apply <{'|'.join(sorted(TARGETS))}> changes/<file>.sql")
+target, change = sys.argv[1], Path(sys.argv[2])
+text = change.read_text()
+key = f"{os.getpid()}-{time.time_ns()}"
+with open(ROOT / ".rq_history", "a") as log:
+    log.write(json.dumps({"event": "start", "id": key, "target": target, "sql": f"-- apply {change}\n" + text}) + "\n")
+status = "error"
+try:
+    path = Path(TARGETS[target]["path"])
+    path = path if path.is_absolute() else ROOT / path
+    conn = sqlite3.connect(f"file:{path}?mode=rw", uri=True, isolation_level=None)
+    stmts = [s for s in text.split(";") if s.strip() and not s.strip().upper().startswith(("BEGIN", "COMMIT", "END"))]
+    total = runs = 0
+    while True:
+        before = conn.total_changes
+        conn.execute("BEGIN")
+        for stmt in stmts:
+            conn.execute(stmt)
+        conn.execute("COMMIT")
+        n = conn.total_changes - before
+        runs += 1
+        if n == 0:
+            break
+        total += n
+        print(f"run {runs}: {n} rows")
+    print(f"{total} rows changed in {runs - 1} runs")
+    conn.close()
+    status = "ok"
+except sqlite3.Error as exc:
+    sys.exit(f"apply: {exc}")
+finally:
+    with open(ROOT / ".rq_history", "a") as log:
+        log.write(json.dumps({"event": "end", "id": key, "status": status}) + "\n")

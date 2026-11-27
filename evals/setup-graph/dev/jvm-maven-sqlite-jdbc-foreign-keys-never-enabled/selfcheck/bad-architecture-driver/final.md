@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. Two things are off: the architecture note's driver version is old, and the foreign-key guarantee in README/ARCHITECTURE does not hold - enforcement is never switched on, and some lines already reference decommissioned substations.

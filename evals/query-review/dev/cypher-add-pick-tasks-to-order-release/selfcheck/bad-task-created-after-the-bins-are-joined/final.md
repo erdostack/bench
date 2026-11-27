@@ -1,0 +1,1 @@
+Added the task creation to `cypher/release_order.cypher`: each line now gets a `PickTask` with status 'open' and the current time, attached with `HAS_TASK`. The statement is still a single call and returns the same columns.

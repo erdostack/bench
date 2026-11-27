@@ -1,0 +1,17 @@
+services:
+  graph:
+    image: neo4j:${NEO4J_TAG:-5.26.24}-community
+    environment:
+      NEO4J_AUTH: neo4j/${NEO4J_PASSWORD}
+    ports:
+      - "7474:7474"
+      - "${BOLT_PORT:-7687}:7687"
+    volumes:
+      - graph-data:/data
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:7474"]
+      interval: 5s
+      retries: 20
+
+volumes:
+  graph-data:

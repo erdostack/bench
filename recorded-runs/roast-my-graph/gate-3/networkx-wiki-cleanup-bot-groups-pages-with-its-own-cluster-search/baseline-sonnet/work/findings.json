@@ -1,0 +1,38 @@
+[
+  {
+    "element": "clusters",
+    "severity": "critical",
+    "problem": "clusters() walks G.neighbors(p), which on a networkx DiGraph returns only successors (outgoing links). The README defines a cluster as connected in either direction, but this follows links one way only. Pages are visited in sorted order, so a page with no outgoing links (every content page, per the README) that sorts before the index page linking to it is closed off as its own one-page cluster, and then `q not in seen` stops anyone else from claiming it. On the real data this lists 53 pages for archive, but only 37 are in clusters smaller than three by the README's own definition: 16 pages are wrongly archived. Examples: Astast (linked from Briuv), Astbri (from Lomo), Astin (from Mika-Lovo and Shura-Inqua), Astka (from Bridor-Mika and Mopel-Astvo), Astka-Pelten (from Bribri-Astdor), and also the three-page chain Quara-Milo -> Tensen -> Astlo-Astvo, which is a valid size-3 cluster that is partly archived. The wrongly archived pages are linked from the main 380-page cluster, i.e. live content. The result also depends on sort order, so it is not stable under renames.",
+    "fix": "Compute weakly connected components instead of a hand-rolled one-direction DFS: return [set(c) for c in nx.weakly_connected_components(G)] (or traverse both G.successors and G.predecessors, or call G.to_undirected()). Keep one place for this logic and have archive_list use it."
+  },
+  {
+    "element": "tests/test_clusters.py",
+    "severity": "high",
+    "problem": "Both tests build graphs where the edge direction happens to run in sorted-name order (a -> b -> c, x -> y), which is the only case the one-way traversal gets right. There is no test with an index page linked to content pages that sort before it, no test of a hub, and no check against the real data. That is why the suite is green while 16 live pages would be archived. test_archive_small also encodes ('x', 'y') and 'lonely' as expected, which is correct but not enough.",
+    "fix": "Add regression tests: DiGraph([('idx','a'),('idx','b'),('idx','c')]) must archive nothing and clusters must return one group of four; a chain whose edges point against alphabetical order (for example ('z','a') and ('a','b')) must give one cluster; a three-page cluster is kept and a two-page one archived. Add a property test that archive_list equals the pages in nx.weakly_connected_components smaller than min_size, for random directed graphs."
+  },
+  {
+    "element": "archive_list",
+    "severity": "high",
+    "problem": "There is no safety net before an irreversible-looking, scheduled action. A bad load (empty or truncated links.csv, a renamed column, a wiki export that failed halfway) makes every page its own cluster and the output lists the whole wiki; the bot reads it on Sunday at 23:00 with nobody watching. Pages with no links at all are archived with no check on age, recent edits, or whether the page is an index/landing page itself. The first real run will also include 37 pages the author has never reviewed.",
+    "fix": "Add a guard that refuses to write the file if the list is more than a small fraction of the wiki (for example more than 10 percent, or more than N pages) or if either CSV has fewer rows than expected. Print the cluster sizes and a sample so someone can eyeball the first run, and allow an exclusion list (index pages, pinned pages). Run it once in dry-run and review the diff before the bot is pointed at it."
+  },
+  {
+    "element": "wikiprune/__main__.py",
+    "severity": "medium",
+    "problem": "The output path is relative to the current directory (Path('out/archive.txt')), so running from a different directory, or from cron, writes a different out/ than the bot reads, or leaves a stale file the bot still picks up. The write is not atomic: the bot could read a half-written file. A failed or crashed run leaves the previous week's archive.txt in place and the bot will archive that list again. out/ is created with mkdir(exist_ok=True) but not parents.",
+    "fix": "Resolve the path relative to the repo (as wiki.py does for DATA) or take it as an argument. Write to a temp file in the same directory and os.replace it. Delete or stamp the old file at the start of a run, and write the generation date into a side file the bot can check."
+  },
+  {
+    "element": "load",
+    "severity": "medium",
+    "problem": "Titles are used exactly as they appear in the CSVs: no strip, no case or Unicode normalisation, no handling of blank rows. A link row whose target differs by whitespace or case from the page title silently creates a new node that is not in pages.csv (add_edges_from adds missing nodes), and that phantom node could be written to archive.txt as a page that does not exist or could make a real page look isolated. Today every link endpoint is in pages.csv, so this is latent, not live. There is also no check on missing columns (a KeyError with no context).",
+    "fix": "Strip titles, normalise consistently, and after loading assert that every link endpoint is in pages.csv (fail loudly, or drop and report the dangling links). Only list titles that exist in pages.csv."
+  },
+  {
+    "element": "MIN_SIZE",
+    "severity": "low",
+    "problem": "The threshold 3 is a magic number, encoded only in code and prose; a cluster of exactly three, such as a stub with an index page and one child, is kept while a two-page cluster is archived. The README states the rule but not the reason, and there is no way to change it from the command line for the first run.",
+    "fix": "Expose it as a --min-size option on __main__ and document the reasoning; consider reporting how many pages would be archived at 2, 3 and 4 so the choice is visible."
+  }
+]

@@ -1,0 +1,2 @@
+q file:
+    cargo run -q -p dockq -- {{file}}

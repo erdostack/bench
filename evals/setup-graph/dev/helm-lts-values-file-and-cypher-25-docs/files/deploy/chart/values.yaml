@@ -1,0 +1,6 @@
+image:
+  repository: neo4j
+  tag: "2026.08.1-enterprise"
+licenseAccepted: true
+storage:
+  size: 10Gi

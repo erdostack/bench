@@ -1,0 +1,14 @@
+[
+  {
+    "element": "Visit",
+    "severity": "critical",
+    "problem": "Classic reified relationship: an intermediate node whose only job is to connect an Animal to a Vet. It doubles the hop count of every traversal and adds 1.3 million nodes that are really edges.",
+    "fix": "Replace it with (:Animal)-[:SEEN_BY {day, slot, reason, notes, weight_kg}]->(:Vet) and store prescriptions as a list property on that relationship."
+  },
+  {
+    "element": "FOLLOW_UP_OF",
+    "severity": "high",
+    "problem": "Visit-to-visit chains are a symptom of the reification; they disappear once Visit is a relationship.",
+    "fix": "Keep a follow_up_of_day property on the SEEN_BY relationship instead."
+  }
+]

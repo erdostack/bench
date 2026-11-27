@@ -1,0 +1,2 @@
+# <query file>: <table alias> <why a scan of it is acceptable>
+queries/latest_endorsements.sql: e walks the primary key backwards and stops after LIMIT 25 rows; reads 25 endorsements whatever the table size

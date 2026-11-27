@@ -1,0 +1,1 @@
+Done on scratch: removed the 14 TMP- bays and their 48 walking links (409 nodes, 1,664 edges before; 395 and 1,616 after). B-0901..B-0903 and the rest of your trial are untouched, and nothing was saved to published.

@@ -1,0 +1,38 @@
+[
+  {
+    "element": "name TEXT NOT NULL UNIQUE",
+    "severity": "critical",
+    "problem": "The UNIQUE constraint on tag.name creates a case-sensitive BINARY index (sqlite_autoindex_tag_1). Both lookups in queries/tag_id.sql and queries/related_tags.sql use `name = :tag COLLATE NOCASE`, which cannot use that index. EXPLAIN QUERY PLAN shows `SCAN tag` (full table scan) for tag_id.sql. Every tag page therefore scans all tag rows before it does anything else. On the sample this is 30,000 rows; in production it is about 450,000. The related_tags CTE also pulls its tag id through the same unindexed lookup.",
+    "fix": "Add an index that matches the collation the queries use: CREATE INDEX tag_name_nocase ON tag(name COLLATE NOCASE); With that index, the plan changes to `SEARCH tag USING COVERING INDEX tag_name_nocase (name=?)` (checked on an in-memory copy of marks.db). The longer-term fix is to declare the column as `name TEXT NOT NULL UNIQUE COLLATE NOCASE` after merging case-duplicate rows (see the tag entry below)."
+  },
+  {
+    "element": "queries/tag_id.sql",
+    "severity": "high",
+    "problem": "`SELECT id FROM tag WHERE name = :tag COLLATE NOCASE ORDER BY id LIMIT 1` returns only one of the case variants. In marks.db, /tag/python resolves to id 25 ('PYTHON'), which has 171 bookmarks. Ids 28 ('Python') and 19390 ('python') hold another 421 bookmarks between them, and 592 distinct bookmarks carry some variant. The tag page therefore silently shows a partial list, even though the README says tag pages are case-insensitive.",
+    "fix": "Return every matching id, not one, and let the bookmark query use all of them. For example, use `WHERE bt.tag_id IN (SELECT id FROM tag WHERE name = :tag COLLATE NOCASE)` in queries/bookmarks_for_tag.sql, and drop the LIMIT 1 resolve step, or keep it only for the canonical display name. Once case duplicates are merged (see the tag entry), this problem goes away."
+  },
+  {
+    "element": "queries/bookmarks_for_tag.sql",
+    "severity": "high",
+    "problem": "The query takes one `:tag_id` and filters `bt.tag_id = :tag_id`. Because the API passes it the single id from tag_id.sql, the newest-50 list is drawn from one case variant only. For /tag/python, the newest 50 come from id 25 and the newest bookmarks on ids 28 and 19390 are missing (for example, bookmark 39946 on id 28 and bookmark 39735 on id 19390 do not appear).",
+    "fix": "Replace the equality filter with `WHERE bt.tag_id IN (SELECT id FROM tag WHERE name = :tag COLLATE NOCASE)` and pass the tag name, not the id. Checked on an in-memory copy: this returns 50 rows, uses `SEARCH bt USING COVERING INDEX bookmark_tag_by_tag (tag_id=?)` and `SEARCH tag USING COVERING INDEX tag_name_nocase`, and runs in about 1 ms on the sample. With the index in place, its ORDER BY is served by a temp sort of the matching rows, which stays cheap for the largest tag."
+  },
+  {
+    "element": "queries/related_tags.sql",
+    "severity": "high",
+    "problem": "Two problems. (1) Before the index exists, the CTE is joined to bookmark_tag with `SCAN bt USING COVERING INDEX bookmark_tag_by_tag`, which reads all 30 million rows in production on each request, because the planner cannot seek on t.id. (2) Even after the index is added, every request re-aggregates every bookmark on the tag: the largest tag is on about 40,000 bookmarks, which is roughly 150,000 join rows (40,000 times about 3.75 tags per bookmark, from the README's 30M rows over 8M bookmarks), grouped with a temp B-tree on each page view. The query also lists case variants of other tags as separate entries, so 'python' and 'Python' can both appear in the related-tags box.",
+    "fix": "Short term: rewrite as `FROM bookmark_tag bt JOIN bookmark_tag bt2 ON ... WHERE bt.tag_id IN (SELECT id FROM tag WHERE name = :tag COLLATE NOCASE)`, which seeks on bookmark_tag_by_tag and cut the sample time from about 14 ms to about 1.4 ms on a single run (indicative only). Also group by the canonical name, not other.id. Longer term: precompute a co-occurrence table keyed by canonical tag, or cache the result per tag with a TTL, and refresh it asynchronously."
+  },
+  {
+    "element": "tag",
+    "severity": "high",
+    "problem": "The table has 20 groups of tag rows that differ only by case in marks.db (for example 'PYTHON', 'Python' and 'python' are three rows, ids 25, 28 and 19390). The UNIQUE constraint is case-sensitive, so the schema allows these duplicates. The duplicates make the id resolution ambiguous and split bookmarks across rows, which is the root of the findings on tag_id.sql, bookmarks_for_tag.sql and related_tags.sql.",
+    "fix": "Normalise tag names on write, by storing a canonical lowercase or case-folded name, or by declaring `COLLATE NOCASE` on the UNIQUE column. Before adding that constraint, migrate the existing case groups: move bookmark_tag rows to the surviving id with INSERT OR IGNORE (the composite primary key will reject true duplicates), then delete the emptied tag rows. Run the migration in a transaction and keep a backup of marks.db."
+  },
+  {
+    "element": "tag",
+    "severity": "low",
+    "problem": "777 of the 30,000 tag rows in marks.db have no bookmark_tag rows. Nothing in the schema or the queries removes unused tags, so orphaned tag rows accumulate and inflate the name index and the tag lookup over time.",
+    "fix": "Delete tags with no bookmark_tag rows as part of the bookmark-delete path, or in a periodic cleanup job. Do this after the case-dedupe migration, so you do not delete tags that the migration is about to merge."
+  }
+]

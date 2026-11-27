@@ -1,0 +1,62 @@
+[
+  {
+    "element": "queries/fewest_stops.sql",
+    "severity": "critical",
+    "problem": "The recursive CTE enumerates every simple path from :from_stop (it only forbids revisiting a stop within one path) and only filters to :to_stop afterwards, then sorts and takes LIMIT 1. On a 144-stop grid with 12 crossing lines the number of simple paths is astronomically large, so the query never finishes. On a copy of tram.db it was still running after 10 seconds even for stop 1 to its direct neighbour 13 (1 hop), and for every other target tried. SQLite cannot stop early, because ORDER BY hops LIMIT 1 forces the whole recursion to complete. This is the cause of the slow kiosks.",
+    "fix": "Do a breadth-first search over stops instead of paths: WITH RECURSIVE walk(stop,hops) AS (SELECT :from_stop,0 UNION SELECT l.to_stop,w.hops+1 FROM walk w JOIN link l ON l.from_stop=w.stop WHERE w.hops < :max_hops) SELECT MIN(hops) FROM walk WHERE stop=:to_stop. UNION removes duplicate (stop,hops) rows, so work is bounded by stops x depth. Tested on the copy: 1 to 13 gives 1 hop, 1 to 2 gives 3, 1 to 100 gives 11, each in about 0.05 s. Always pass a depth cap (the network has 144 stops so 143 is a hard ceiling). If the kiosk needs the actual route, keep one parent per stop (for example with a visited-stop table in application code) or run the search in the app rather than in SQL."
+  },
+  {
+    "element": "path",
+    "severity": "high",
+    "problem": "The path column in fewest_stops.sql is a comma-joined string that is extended on every step and searched with instr() for each candidate link. It is O(path length) work per row, defeats any dedup (every row is unique because it carries its whole history), and is the reason the walk table explodes instead of collapsing to one row per stop.",
+    "fix": "Drop the path string from the recursive CTE. Dedup on (stop,hops) as in the BFS fix. If the route itself is wanted, reconstruct it afterwards from per-stop parent links, not by carrying the history in every row."
+  },
+  {
+    "element": "queries/fewest_stops.sql",
+    "severity": "medium",
+    "problem": "The query returns no row at all when :to_stop is unreachable, and it has no depth bound, so any future change that drops the revisit check turns it into an infinite loop. The header comment 'cannot loop' is true but hides that it is exponential, not safe.",
+    "fix": "Bound the recursion with a hops limit, and have the caller treat an empty result as 'no route'. Update the comment to say it is a BFS with a depth cap."
+  },
+  {
+    "element": "link_to",
+    "severity": "low",
+    "problem": "Index link_to on link(to_stop) is not used by any of the three queries (all of them join on from_stop, which the primary key covers). Because every link is stored in both directions, to_stop lookups are never needed. It costs space on a 40 KB file copied to every kiosk and slows the nightly rebuild.",
+    "fix": "Drop link_to unless a query that looks up by to_stop is added."
+  },
+  {
+    "element": "link_line",
+    "severity": "low",
+    "problem": "Index link_line on link(line) has only 12 distinct values over 420 rows. It is used by line_stops.sql (planner reports a covering index search), so it is not harmful, but it is low selectivity and the gain over a scan of 420 rows is negligible at this size.",
+    "fix": "Keep it only if the table grows; otherwise it can be dropped. No change needed for performance today."
+  },
+  {
+    "element": "queries/line_stops.sql",
+    "severity": "low",
+    "problem": "Uses SELECT DISTINCT plus ORDER BY s.name, which makes SQLite build two temporary b-trees (one for DISTINCT, one for ORDER BY). The DISTINCT is needed because a stop has several outgoing links on the same line, but it is done on joined rows rather than on stop ids. With 28 to 42 links per line this is not a measurable cost today.",
+    "fix": "Optionally rewrite as SELECT s.id, s.name FROM stop s WHERE EXISTS (SELECT 1 FROM link l WHERE l.from_stop = s.id AND l.line = :line) ORDER BY s.name, or add an index on stop(name) usage. Not a cause of the slow kiosks."
+  },
+  {
+    "element": "queries/stops_within.sql",
+    "severity": "low",
+    "problem": "No real problem found. The recursive CTE uses UNION (so duplicate (stop,hops) rows collapse) and a hops < :n bound, so it is bounded and returns correct results quickly (stop 1 with n=2 returned 3 stops in under 10 ms). It does scan near on each recursive step, which is fine for n of 1 or 2.",
+    "fix": "Leave as is. Optionally cap :n in the app so a caller cannot pass a large n."
+  },
+  {
+    "element": "link",
+    "severity": "low",
+    "problem": "PRIMARY KEY (from_stop, to_stop) allows only one line per pair of adjacent stops, so two lines sharing a segment cannot both be stored. No data currently conflicts with it, and the table is symmetric by convention only (nothing enforces that the reverse link exists or carries the same line).",
+    "fix": "If lines may share segments, make the key (from_stop, to_stop, line). Add a check in the nightly build that every link has its reverse with the same line."
+  },
+  {
+    "element": "link.line",
+    "severity": "low",
+    "problem": "line is free text with no constraint; a typo such as 't1' or 'T 1' would silently create a thirteenth line and line_stops.sql would return nothing for it.",
+    "fix": "Add a CHECK constraint or a small line table with a foreign key."
+  },
+  {
+    "element": "schema.sql",
+    "severity": "low",
+    "problem": "REFERENCES stop(id) on link.from_stop and link.to_stop is only enforced when the connection runs PRAGMA foreign_keys=ON, which SQLite does not do by default. The shipped data has no orphan links (checked), so this is hygiene rather than a bug.",
+    "fix": "Set PRAGMA foreign_keys=ON in the build script, or validate in the nightly refresh."
+  }
+]

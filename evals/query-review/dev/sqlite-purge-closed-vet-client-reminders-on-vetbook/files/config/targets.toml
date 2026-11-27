@@ -1,0 +1,5 @@
+[vetbook]
+path = "data/vetbook.db"
+
+[nightly]
+path = "data/nightly.db"

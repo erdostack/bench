@@ -1,0 +1,8 @@
+[project]
+name = "tidepool-accounts"
+version = "2.4.1"
+requires-python = ">=3.12"
+dependencies = ["fastapi>=0.115", "psycopg[binary]>=3.2"]
+
+[dependency-groups]
+dev = ["pytest>=8.3"]

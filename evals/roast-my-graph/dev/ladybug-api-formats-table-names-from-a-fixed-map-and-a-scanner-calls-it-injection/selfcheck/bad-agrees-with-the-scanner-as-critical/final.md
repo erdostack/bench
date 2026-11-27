@@ -1,0 +1,1 @@
+The scanner is right. list_nodes, get_node and follow build Cypher with f-strings, which is injection by construction. Critical. Rewrite them with parameters for every part of the query, including the table name.

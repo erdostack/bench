@@ -1,0 +1,1 @@
+["bin/gx", "scratch", "-c", "print(sum(1 for n in G if n.startswith('TMP-')), G.number_of_nodes(), G.number_of_edges())"]

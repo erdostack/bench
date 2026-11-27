@@ -1,0 +1,56 @@
+[
+  {
+    "element": "PRAGMA foreign_keys = ON;",
+    "severity": "critical",
+    "problem": "foreign_keys is a per-connection setting and is not stored in the database file. In migrations/001_init.sql it only affects the one connection migrate.py happens to use, and connect_db() in trailmap/repo.py never turns it on. So ON DELETE CASCADE never fires at runtime. I confirmed on a copy of trails.db that PRAGMA foreign_keys returns 0 and that close_junction('J0000') deleted the junction and left its segment in place. The README claim that closing a junction removes its segments and that the planner can never route through a closed junction is false.",
+    "fix": "Run PRAGMA foreign_keys = ON on every connection in connect_db() (and in migrate.py), and remove the misleading pragma from the migration. Then clean up the existing orphans (see segment)."
+  },
+  {
+    "element": "segment",
+    "severity": "critical",
+    "problem": "The live trails.db already has 14 orphaned segments (PRAGMA foreign_key_check reports 15 violations) pointing at junction ids 248, 433, 434 and 681 that no longer exist. These are closed junctions that were deleted without their segments. integrity_check says ok, so nothing flags it.",
+    "fix": "After fixing the pragma, delete segments whose from_junction or to_junction has no matching junction (DELETE FROM segment WHERE from_junction NOT IN (SELECT id FROM junction) OR to_junction NOT IN (SELECT id FROM junction)) in a new migration, and add a test or check that PRAGMA foreign_key_check returns no rows."
+  },
+  {
+    "element": "route",
+    "severity": "high",
+    "problem": "route() builds its graph from every row in segment, so it walks through orphaned segments. On a copy of the live db, route('J0007','J2800') returns a path through the closed junction 248, and the output shows it as the bare string '248' because codes.get(j, str(j)) masks the missing junction. Hikers are routed through a closed junction. The same masking would hide any future data corruption.",
+    "fix": "Join segment to junction on both ends (or skip any node not in ids) so closed junctions are never traversed, and drop the str(j) fallback so a missing junction fails loudly. Also raise a clear error or return None for unknown codes: ids[from_code] currently throws KeyError."
+  },
+  {
+    "element": "close_junction",
+    "severity": "high",
+    "problem": "It relies entirely on cascade for cleanup, which is not active (see PRAGMA foreign_keys = ON;). It also hard-deletes the junction, so a reopened bridge loses its row, id, name and elevation, and all its segments are gone for good. A code that does not exist is silently ignored.",
+    "fix": "Either delete the segments explicitly in the same transaction, or better, add a closed flag on junction (and filter on it in route()) so closures are reversible. Report whether any row was affected."
+  },
+  {
+    "element": "migrate",
+    "severity": "high",
+    "problem": "executescript() commits and runs the script statement by statement, outside any single transaction, and PRAGMA user_version is set afterwards in a separate step. If a script fails midway or the process dies, the schema is half-applied while user_version is stale, and the next run re-applies the whole script and fails. There is no backup step even though trails.db is the live map. The version is also never committed explicitly, relying on close() semantics.",
+    "fix": "Wrap each migration in BEGIN/COMMIT with the user_version update inside the same transaction (executescript('BEGIN; ...; PRAGMA user_version=N; COMMIT;') or explicit con.execute calls), roll back on error, and take a file copy before migrating the live db."
+  },
+  {
+    "element": "002_surface.sql",
+    "severity": "medium",
+    "problem": "The migration adds surface with DEFAULT 'dirt', which silently labels every existing segment as dirt. The live data now contains 723 dirt, 338 gravel, 327 boardwalk and no paved, and the 'dirt' default is indistinguishable from real data. Also 'paved' is allowed by the CHECK but never used, so it may be wrong data for the boardwalk and paved sections. The resulting schema in sqlite_master also has the column and its CHECK appended oddly after difficulty.",
+    "fix": "Backfill surface from real data, or add the column nullable (with a CHECK allowing NULL) so unknown is representable, and drop the default once populated."
+  },
+  {
+    "element": "add_segment",
+    "severity": "medium",
+    "problem": "It uses INSERT ... SELECT from a cross join on codes. If either code is unknown, zero rows are inserted and no error is raised (confirmed: add_segment(con,'NOPE',...) is a silent no-op). Duplicate segments between the same pair are allowed since nothing is unique, and A to B and B to A can both exist because route() treats every segment as bidirectional.",
+    "fix": "Look up both ids first and raise on a missing code, check cursor.rowcount, and add a unique index on (min(from_junction,to_junction), max(from_junction,to_junction)) via an expression index."
+  },
+  {
+    "element": "route",
+    "severity": "low",
+    "problem": "Every call reloads all junctions and all segments into Python and rebuilds the graph. At about 900 junctions and 1,400 segments this is fine for now, but it runs per request on kiosks and the web page. Also, the stop-at-goal Dijkstra reconstructs the path from prev without handling start == goal edge cases or unreachable nodes beyond returning None.",
+    "fix": "Cache the adjacency structure and invalidate it on add_segment and close_junction, or just leave it, since the size does not justify more work yet."
+  },
+  {
+    "element": "README.md",
+    "severity": "low",
+    "problem": "The README states behaviour that does not hold: foreign keys are 'switched on in migration 001' and the planner 'can never send anyone through a closed junction'. Anyone trusting it will not look for the bug.",
+    "fix": "Update the README after fixing connect_db()."
+  }
+]

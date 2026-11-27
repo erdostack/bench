@@ -1,0 +1,8 @@
+[
+  {
+    "element": "liner_notes",
+    "severity": "medium",
+    "problem": "Denormalised multi-valued attribute duplicating the CREDITED_ON edge set; violates single source of truth and risks drift.",
+    "fix": "Deprecate the property and render the as-printed section from CREDITED_ON."
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "element": "db/queries/resolve_mention.sql (SELECT ... WHERE handle = :handle COLLATE NOCASE)",
+    "severity": "critical",
+    "problem": "The NOCASE comparison cannot use the BINARY unique index that backs account.handle, so EXPLAIN QUERY PLAN shows a full SCAN of account (SCAN account USING COVERING INDEX sqlite_autoindex_account_1). At launch scale (1.2M accounts) and peak (about 300 posts/s with two mentions each, so about 600 lookups/s), every mention lookup reads the whole account table in app/mentions.py record_mentions.",
+    "fix": "Add CREATE UNIQUE INDEX account_handle_nocase ON account (handle COLLATE NOCASE) and make the lookup use it. In an in-memory test with the same query, the plan changes to SEARCH account USING COVERING INDEX account_handle_nocase (handle=?). Verify the plan on a 1.2M-row copy before launch."
+  },
+  {
+    "element": "db/queries/handle_taken.sql (SELECT 1 FROM account WHERE handle = :handle COLLATE NOCASE LIMIT 1)",
+    "severity": "high",
+    "problem": "The same non-indexable NOCASE predicate makes the signup availability check a full scan of account (plan shows SCAN account). Every signup pays for a scan of the whole table, and this check runs inside the write transaction in app/signup.py create_account.",
+    "fix": "Fixed by the case-insensitive index in resolve_mention.sql. Re-check the plan after the change: it should be a SEARCH on that index."
+  },
+  {
+    "element": "account.handle (UNIQUE constraint in db/schema.sql)",
+    "severity": "high",
+    "problem": "The UNIQUE constraint is case-sensitive (BINARY), so the database accepts 'Ada' and 'ada' as two different accounts. The README says these are the same person, and only the app check in db/queries/handle_taken.sql in app/signup.py create_account prevents duplicates. Any migration, import or second write path bypasses that check. The sample has no case duplicates now, but the schema does not stop them.",
+    "fix": "Make the case-insensitive index from resolve_mention.sql UNIQUE and use it as the constraint, so the database enforces the rule the README describes. Check for case collisions in the 1.2M migrated accounts before creating it."
+  },
+  {
+    "element": "post.posted_at (TEXT NOT NULL in db/schema.sql); db/queries/timeline.sql ORDER BY p.posted_at DESC",
+    "severity": "high",
+    "problem": "posted_at holds only a date (YYYY-MM-DD). All 60,000 posts in chirp.db have length 10, and there are only 22 distinct values. The timeline sorts on it with LIMIT 50, so the order within a day is undefined (ties), and there is no sub-day order or cursor to page with. Users get an arbitrary 50 posts from the newest day rather than the newest posts.",
+    "fix": "Store a full timestamp (ISO 8601 with time, or an integer epoch in ms), and add a tiebreaker such as ORDER BY p.posted_at DESC, p.id DESC. Use keyset pagination (posted_at, id) for the timeline instead of a fixed LIMIT."
+  },
+  {
+    "element": "db/queries/timeline.sql",
+    "severity": "medium",
+    "problem": "The timeline is a fan-out on read. The plan shows a SEARCH on follow, a SEARCH on post by author for each followee, then USE TEMP B-TREE FOR ORDER BY. The query reads every post of every followed account and sorts them to return 50. Cost grows with the number of follows and the posting volume of each followee. The sample's maximum is 19 follows, but the launch graph averages about 33 follows per account (40M edges over 1.2M accounts), and heavy followers will be much worse.",
+    "fix": "Measure p95 timeline latency on a scaled copy. If it is too slow, move to fan-out on write (a per-follower timeline table written at post time), or cap the fan-out and paginate by keyset."
+  },
+  {
+    "element": "db/queries/followers.sql",
+    "severity": "medium",
+    "problem": "LIMIT 100 has no ORDER BY, so the returned 100 followers are arbitrary and can change between calls. There is no way to page through the list, so accounts with more than 100 followers can never see the rest.",
+    "fix": "Add ORDER BY a.id (or a sort key the UI uses) plus keyset paging on follower_id, for example WHERE f.followee_id = :account_id AND f.follower_id > :after ORDER BY f.follower_id LIMIT 100."
+  },
+  {
+    "element": "app/mentions.py record_mentions() (HANDLE = re.compile(r\"@([A-Za-z0-9_]{2,30})\"))",
+    "severity": "medium",
+    "problem": "The regex has no boundary before the @, so an email address or URL such as 'mail me@ada.com' or 'https://x.com/a@ada' creates a mention of @ada. The mention notifies or links an account that was not addressed. record_mentions also has no commit or transaction of its own; the caller must supply one.",
+    "fix": "Require a non-word character or start of string before the @ (for example (?<![A-Za-z0-9_.])@), skip matches inside URLs, and document the transaction contract on record_mentions."
+  },
+  {
+    "element": "db/schema.sql: foreign keys on follow, post and mention (REFERENCES ...)",
+    "severity": "high",
+    "problem": "The REFERENCES clauses are declared, but nothing in the code sets PRAGMA foreign_keys = ON, and the sample reports it as 0. The current data has no dangling rows, but a delete or a bad import would leave orphans without an error.",
+    "fix": "Set PRAGMA foreign_keys = ON on every connection in the pool, and add a startup check that fails if it is off. Run an orphan-row check after each migration."
+  },
+  {
+    "element": "follow (db/schema.sql table definition)",
+    "severity": "low",
+    "problem": "There is no CHECK (follower_id <> followee_id) on the follow table. The sample has no self-follows, but the constraint is not enforced, and a self-follow would put the author in their own timeline.",
+    "fix": "Add CHECK (follower_id <> followee_id) to the follow table definition. This needs a table rebuild, so do it before launch data is loaded."
+  }
+]

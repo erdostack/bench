@@ -1,0 +1,2 @@
+CREATE CONSTRAINT species_name IF NOT EXISTS FOR (s:Species) REQUIRE s.name IS UNIQUE;
+CREATE CONSTRAINT variety_name IF NOT EXISTS FOR (v:Variety) REQUIRE v.name IS UNIQUE;

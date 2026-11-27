@@ -1,0 +1,26 @@
+[
+  {
+    "element": "SITE_SUMMARY",
+    "severity": "high",
+    "problem": "Deprecated importing WITH.",
+    "fix": "Rewrite as CALL (s) { ... }."
+  },
+  {
+    "element": "APPLICANT_OVERVIEW",
+    "severity": "high",
+    "problem": "Deprecated importing WITH.",
+    "fix": "Rewrite as CALL (a) { ... }."
+  },
+  {
+    "element": "WAITING_LIST_POSITION",
+    "severity": "high",
+    "problem": "Deprecated importing WITH.",
+    "fix": "Rewrite as CALL (w, s) { ... }."
+  },
+  {
+    "element": "FREE_PLOTS_BY_SITE",
+    "severity": "high",
+    "problem": "Deprecated importing WITH.",
+    "fix": "Rewrite as CALL (s) { ... }."
+  }
+]

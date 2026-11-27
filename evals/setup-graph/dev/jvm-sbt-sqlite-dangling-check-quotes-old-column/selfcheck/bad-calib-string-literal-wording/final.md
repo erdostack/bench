@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. checks/dangling.sql is a false negative: "port_code" is not a column, so SQLite's double-quoted-string fallback makes the predicate constant and the check returns zero rows.

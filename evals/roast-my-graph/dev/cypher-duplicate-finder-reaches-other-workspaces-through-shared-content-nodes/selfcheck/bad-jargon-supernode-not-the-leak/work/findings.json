@@ -1,0 +1,14 @@
+[
+  {
+    "element": "duplicates_of",
+    "severity": "high",
+    "problem": "Supernode expansion: a Blob for a popular template has hundreds of thousands of HAS_CONTENT relationships and this query expands all of them before applying LIMIT.",
+    "fix": "Add a relationship index or cap the expansion; consider precomputing duplicate counts per Blob."
+  },
+  {
+    "element": "File.ws",
+    "severity": "medium",
+    "problem": "Denormalised tenant discriminator duplicating the IN relationship.",
+    "fix": "Remove it and traverse from Workspace."
+  }
+]

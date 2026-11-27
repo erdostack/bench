@@ -1,0 +1,4 @@
+apiVersion: v2
+name: vintrace-graph
+version: 1.2.0
+appVersion: "2026.08.1"

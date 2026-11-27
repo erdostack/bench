@@ -1,0 +1,38 @@
+[
+  {
+    "element": "queries/person_by_email.sql",
+    "severity": "critical",
+    "problem": "WHERE lower(email) = lower(:email) wraps the column in a function, so SQLite cannot use the UNIQUE index on email and runs SCAN person (confirmed with EXPLAIN QUERY PLAN on intro.db). On the 60,000-person sample a lookup takes about 11.5 ms. Scanning cost is linear in rows, so at 1.2 million people the same scan is roughly 20 times longer, about 230 ms on this machine. That alone is larger than the 80 ms p95 budget, and it runs on every sidebar request. This is the likely cause of the latency problem.",
+    "fix": "Add an index on the expression: CREATE UNIQUE INDEX person_lower_email ON person (lower(email)); and keep the query as it is. In an in-memory copy of intro.db the plan became SEARCH person USING INDEX person_lower_email, and the lookup took about 0.004 ms. Before creating a unique index, check for case-only duplicates in production. The sample has none. If production runs a different engine, use that engine's functional-index syntax, or store a normalized email column that is written lowercase and indexed."
+  },
+  {
+    "element": "email",
+    "severity": "high",
+    "problem": "The UNIQUE constraint on person.email is case-sensitive. 17,846 of the 60,000 sample rows contain uppercase letters, so the database accepts Ann@x.com and ann@x.com as two different people. The sample has no case-only duplicates today, but nothing prevents them, and person_by_email.sql treats them as one person, so lookups become ambiguous once they appear.",
+    "fix": "Replace the constraint with a unique index on lower(email), or store a normalized lowercase email column and make that column UNIQUE. Run a duplicate check on production before the change, and normalize at write time in the CRM sync."
+  },
+  {
+    "element": "knows",
+    "severity": "medium",
+    "problem": "knows stores every relationship in both directions, and the query depends on that. mutual_connections.sql needs k1 (me to X) and k2 (X to target), and if the loader ever writes only one direction, that path is silently missing from the sidebar. The schema has no constraint or check that the reverse row exists. The sample is symmetric (0 one-way rows), so the invariant holds today but is not enforced. Storing both directions also doubles the row count, to 9 million for production.",
+    "fix": "Enforce symmetry in one place: either write both rows in the same transaction in the loader and add a nightly check that counts one-way rows, or store one row with a < b and have the query match either direction. The second option halves the table, but the query needs a UNION or an OR join."
+  },
+  {
+    "element": "mutual_connections.sql",
+    "severity": "low",
+    "problem": "The mutual-connections query is fast as it stands. EXPLAIN QUERY PLAN shows SEARCH k1 USING PRIMARY KEY (a=?), SEARCH k2 USING PRIMARY KEY (a=? AND b=?), and SEARCH p by rowid, and on the sample it averages about 0.02 ms per call. The graph part is not the problem. The only exposure is a rep with a very large contact list, since every row of k1 is probed. The sample's maximum degree is 20, so production degree distribution is the thing to check. ORDER BY score DESC LIMIT 10 also has no tie-breaker, so the order of equal scores can change between requests.",
+    "fix": "Leave the query as it is. Add a tie-breaker to the ORDER BY, such as p.id, so results are stable. Check the degree distribution in production to see whether any reps have contact lists large enough to matter."
+  },
+  {
+    "element": "queries/team_by_name.sql",
+    "severity": "low",
+    "problem": "WHERE lower(name) = lower(:name) has the same function-on-column problem as the email lookup, so it cannot use the UNIQUE index on team.name. With 30 teams this is harmless, and it is only on the admin settings page, not the sidebar.",
+    "fix": "Add CREATE UNIQUE INDEX team_lower_name ON team (lower(name)) for consistency. It is optional."
+  },
+  {
+    "element": "api/sidebar.py",
+    "severity": "low",
+    "problem": "intro_candidates makes two round trips per request: one to resolve the email and one for the mutual query. Each round trip costs connection and statement overhead, which matters less than the scan but still adds to the budget. The function also runs with no caching of the resolved person id, which is fine for a sidebar that opens once per contact.",
+    "fix": "After the index fix, the round trip is cheap, so this is optional. If the budget stays tight, resolve the email and run the mutual query in a single statement with a subquery on person.id."
+  }
+]

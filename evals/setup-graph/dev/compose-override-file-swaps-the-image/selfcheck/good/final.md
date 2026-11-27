@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. The database is Neo4j 2026.09.0 (Enterprise): compose.override.yaml replaces the 5.26.25-community image from compose.yaml whenever the stack is started the documented way.

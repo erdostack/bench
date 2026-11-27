@@ -1,0 +1,5 @@
+[lab]
+path = "var/lab.db"
+
+[hq]
+path = "var/hq.db"

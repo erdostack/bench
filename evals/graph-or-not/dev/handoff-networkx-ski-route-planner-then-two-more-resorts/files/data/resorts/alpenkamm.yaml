@@ -1,0 +1,14 @@
+# Excerpt. Nodes are lift stations, piste junctions and points of interest; edges are lifts and piste sections.
+resort: alpenkamm
+nodes:
+  - {id: talstation, kind: lift_station}
+  - {id: mittelstation, kind: lift_station}
+  - {id: gipfel, kind: lift_station}
+  - {id: kreuzung-7, kind: junction}
+  - {id: huette-adlerhorst, kind: poi}
+edges:
+  - {from: talstation, to: mittelstation, kind: gondola, minutes: 6}
+  - {from: mittelstation, to: gipfel, kind: chair, minutes: 8}
+  - {from: gipfel, to: kreuzung-7, kind: piste, grade: red, minutes: 4}
+  - {from: kreuzung-7, to: huette-adlerhorst, kind: piste, grade: blue, minutes: 2}
+  - {from: kreuzung-7, to: talstation, kind: piste, grade: blue, minutes: 9}

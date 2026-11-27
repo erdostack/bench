@@ -1,0 +1,14 @@
+[
+  {
+    "element": "Room.number",
+    "severity": "high",
+    "problem": "Natural key anti-pattern: the business identifier is used as the node key under a uniqueness constraint. Natural keys are mutable (refurbishments renumber rooms) and cause cascading updates.",
+    "fix": "Introduce a surrogate key Room.id (UUID) and keep the uniqueness constraint on number as a secondary business rule."
+  },
+  {
+    "element": "load_rooms",
+    "severity": "medium",
+    "problem": "MERGE followed by SET rewrites every property on each load.",
+    "fix": "Use ON CREATE SET / ON MATCH SET."
+  }
+]

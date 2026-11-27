@@ -1,0 +1,2 @@
+CREATE NODE TABLE Page(path STRING PRIMARY KEY, title STRING, status INT16);
+CREATE REL TABLE LinksTo(FROM Page TO Page, anchor STRING);

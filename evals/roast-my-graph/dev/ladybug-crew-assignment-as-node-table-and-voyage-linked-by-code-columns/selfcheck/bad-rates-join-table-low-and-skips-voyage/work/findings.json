@@ -1,0 +1,14 @@
+[
+  {
+    "element": "CrewAssignment",
+    "severity": "low",
+    "problem": "Uses SERIAL for its key; a natural key might read better.",
+    "fix": "Optional."
+  },
+  {
+    "element": "Sailor.rank",
+    "severity": "medium",
+    "problem": "Rank is free text.",
+    "fix": "Restrict to a fixed list in the tool."
+  }
+]

@@ -1,0 +1,1 @@
+Added club/intro.py: introductions(conn, a, b) builds the graph from pairs with at least 3 encounter rows (the rule in docs/graph/DECISION.md) and returns the shortest-path length, 0 for the same member, None when there is no chain. I did not reuse club/graph.py: it keeps one edge per pair and loses the count.

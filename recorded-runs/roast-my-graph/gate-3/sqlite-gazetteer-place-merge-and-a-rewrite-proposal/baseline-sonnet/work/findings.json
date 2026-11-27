@@ -1,0 +1,44 @@
+[
+  {
+    "element": "backlog.csv",
+    "severity": "medium",
+    "problem": "41 of the 140 pairs have different kind values (parish vs town, for example 267/1209 and 670/1213), although the names match. merge_place.sql keeps only :keep's row, so the dup's kind is discarded silently. If a parish and a town of the same name are genuinely different places, the merge destroys a real place. The README says the pairs are the same place imported twice, but 41 pairs contradict that.",
+    "fix": "Review the 41 kind-mismatch pairs by hand and drop or correct the ones that are distinct places before running. Add a kind-equality check to tools/merge.py with an explicit override."
+  },
+  {
+    "element": "tools/merge.py",
+    "severity": "medium",
+    "problem": "The merge leaves no record of what was folded. After DELETE FROM place WHERE id = :dup, the old id is gone with no old-to-new mapping, so any external reference to the dup id (links, bookmarks, other systems) dangles or gets reused. There is no dry-run, no backup step and no batch mode. The 140 pairs mean 140 separate invocations, each opening a connection and committing independently.",
+    "fix": "Add a place_merge(dup_id, keep_id, merged_at) table written inside the same transaction. Add a batch mode that reads backlog.csv, takes a copy of gazetteer.db first, and prints a per-pair summary of borders and aliases moved and dropped."
+  },
+  {
+    "element": "merge",
+    "severity": "low",
+    "problem": "There is no existence check. If :dup does not exist (typo, or already merged), every statement matches zero rows and merge() returns normally with no output, so a re-run of a pair succeeds silently. A missing keep fails only incidentally through the foreign key. keep and dup are also not checked to be the same kind.",
+    "fix": "Before running the statements, SELECT both ids and raise if either is missing. Compare kinds and require an explicit flag to merge different kinds."
+  },
+  {
+    "element": "sql/merge_place.sql",
+    "severity": "low",
+    "problem": "INSERT OR IGNORE swallows every conflict, not just the intended primary-key collision. When keep already borders the same neighbour, the dup's km is dropped silently, even if it differs, as the comment documents. It would also hide a NOT NULL or CHECK failure if the select were ever changed. Step 4 also inserts the dup's name as an alias even when it is identical to keep's own name. In the sample, all 140 pairs share the same name, so about 131 redundant alias rows are created.",
+    "fix": "Use plain INSERT with ON CONFLICT (a, b) DO NOTHING, which ignores only the key collision. Add WHERE name <> (SELECT name FROM place WHERE id = :keep) to the alias insert."
+  },
+  {
+    "element": "statements",
+    "severity": "low",
+    "problem": "statements() splits the SQL file on every ';' and drops lines starting with '--'. A semicolon inside a string literal or trailing comment, or an inline comment, would split a statement wrongly. It works for the current file only because nothing triggers it.",
+    "fix": "Split using sqlite3.complete_statement, or keep each statement as a named entry in Python."
+  },
+  {
+    "element": "connect",
+    "severity": "low",
+    "problem": "The default path 'gazetteer.db' is relative to the current directory. Running python -m tools.merge from any other directory makes sqlite3 create an empty gazetteer.db there, and the merge then fails with 'no such table', leaving a stray empty file.",
+    "fix": "Resolve the default path relative to the repo root with pathlib, as tools/merge.py already does for the SQL file, or fail if the file does not exist."
+  },
+  {
+    "element": "lookup",
+    "severity": "low",
+    "problem": "The lookup query filters place.name and alias.name by equality, but there is no index on place(name) and alias's primary key is (place_id, name), so a lookup by name cannot use it. Both are scans, harmless at 1,500 places but not at scale.",
+    "fix": "Add CREATE INDEX place_name ON place (name) and CREATE INDEX alias_name ON alias (name)."
+  }
+]

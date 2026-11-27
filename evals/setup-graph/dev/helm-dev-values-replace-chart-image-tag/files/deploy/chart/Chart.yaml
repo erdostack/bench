@@ -1,0 +1,6 @@
+apiVersion: v2
+name: partsbin-graph
+description: Single-instance Neo4j for the partsbin workshop tools
+type: application
+version: 0.4.2
+appVersion: "5.26.14"

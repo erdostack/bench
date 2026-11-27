@@ -1,0 +1,5 @@
+[district]
+uri = "neo4j+s://graph.district-schoolrun.internal:7687"
+
+[sandbox]
+uri = "neo4j+s://sandbox.schoolrun.internal:7687"

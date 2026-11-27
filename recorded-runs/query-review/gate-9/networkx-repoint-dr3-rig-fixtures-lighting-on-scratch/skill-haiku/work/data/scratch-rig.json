@@ -1,0 +1,3587 @@
+{
+ "directed": true,
+ "multigraph": false,
+ "graph": {},
+ "nodes": [
+  {
+   "kind": "distro",
+   "id": "DISTRO-A"
+  },
+  {
+   "kind": "distro",
+   "id": "DISTRO-B"
+  },
+  {
+   "kind": "splitter",
+   "id": "SPLIT-1"
+  },
+  {
+   "kind": "splitter",
+   "id": "SPLIT-2"
+  },
+  {
+   "kind": "universe",
+   "id": "U-1"
+  },
+  {
+   "kind": "universe",
+   "id": "U-2"
+  },
+  {
+   "kind": "universe",
+   "id": "U-3"
+  },
+  {
+   "kind": "universe",
+   "id": "U-4"
+  },
+  {
+   "kind": "rack",
+   "id": "DR-1"
+  },
+  {
+   "kind": "rack",
+   "id": "DR-2"
+  },
+  {
+   "kind": "rack",
+   "id": "DR-3"
+  },
+  {
+   "kind": "rack",
+   "id": "DR-4"
+  },
+  {
+   "kind": "rack",
+   "id": "DR-5"
+  },
+  {
+   "kind": "rack",
+   "id": "DR-6"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX1",
+   "id": "F-0001"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX4",
+   "id": "F-0002"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "LX1",
+   "id": "F-0003"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "FOH",
+   "id": "F-0004"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "BOOM-L",
+   "id": "F-0005"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "LX2",
+   "id": "F-0006"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "LX2",
+   "id": "F-0007"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "LX3",
+   "id": "F-0008"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX1",
+   "id": "F-0009"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "LX3",
+   "id": "F-0010"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "LX2",
+   "id": "F-0011"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX3",
+   "id": "F-0012"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "LX4",
+   "id": "F-0013"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "LX3",
+   "id": "F-0014"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "BOOM-R",
+   "id": "F-0015"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "BOOM-R",
+   "id": "F-0016"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "LX1",
+   "id": "F-0017"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "BOOM-L",
+   "id": "F-0018"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX4",
+   "id": "F-0019"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "BOOM-L",
+   "id": "F-0020"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "LX2",
+   "id": "F-0021"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX4",
+   "id": "F-0022"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX2",
+   "id": "F-0023"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "BOOM-L",
+   "id": "F-0024"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "BOOM-R",
+   "id": "F-0025"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "BOOM-L",
+   "id": "F-0026"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "FOH",
+   "id": "F-0027"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX2",
+   "id": "F-0028"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "FOH",
+   "id": "F-0029"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX3",
+   "id": "F-0030"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "LX1",
+   "id": "F-0031"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX2",
+   "id": "F-0032"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "LX4",
+   "id": "F-0033"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX1",
+   "id": "F-0034"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "FOH",
+   "id": "F-0035"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "LX3",
+   "id": "F-0036"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX2",
+   "id": "F-0037"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "BOOM-R",
+   "id": "F-0038"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "FOH",
+   "id": "F-0039"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "LX4",
+   "id": "F-0040"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "LX4",
+   "id": "F-0041"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX3",
+   "id": "F-0042"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX2",
+   "id": "F-0043"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX3",
+   "id": "F-0044"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "BOOM-R",
+   "id": "F-0045"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX1",
+   "id": "F-0046"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "LX3",
+   "id": "F-0047"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "LX1",
+   "id": "F-0048"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "BOOM-L",
+   "id": "F-0049"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "LX4",
+   "id": "F-0050"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX2",
+   "id": "F-0051"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "LX2",
+   "id": "F-0052"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "LX2",
+   "id": "F-0053"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "LX1",
+   "id": "F-0054"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX4",
+   "id": "F-0055"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "LX3",
+   "id": "F-0056"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "LX1",
+   "id": "F-0057"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "BOOM-L",
+   "id": "F-0058"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "LX1",
+   "id": "F-0059"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "LX4",
+   "id": "F-0060"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "LX3",
+   "id": "F-0061"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "LX2",
+   "id": "F-0062"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX1",
+   "id": "F-0063"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "LX2",
+   "id": "F-0064"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "LX3",
+   "id": "F-0065"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "BOOM-L",
+   "id": "F-0066"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "BOOM-R",
+   "id": "F-0067"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "FOH",
+   "id": "F-0068"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "BOOM-L",
+   "id": "F-0069"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "LX2",
+   "id": "F-0070"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "LX3",
+   "id": "F-0071"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "BOOM-R",
+   "id": "F-0072"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "BOOM-L",
+   "id": "F-0073"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "BOOM-L",
+   "id": "F-0074"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "LX3",
+   "id": "F-0075"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "BOOM-R",
+   "id": "F-0076"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "BOOM-R",
+   "id": "F-0077"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "BOOM-R",
+   "id": "F-0078"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX1",
+   "id": "F-0079"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "LX1",
+   "id": "F-0080"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "BOOM-L",
+   "id": "F-0081"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX3",
+   "id": "F-0082"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "LX4",
+   "id": "F-0083"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX1",
+   "id": "F-0084"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX4",
+   "id": "F-0085"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "LX1",
+   "id": "F-0086"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "FOH",
+   "id": "F-0087"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "LX1",
+   "id": "F-0088"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "LX3",
+   "id": "F-0089"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "LX2",
+   "id": "F-0090"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "BOOM-L",
+   "id": "F-0091"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "FOH",
+   "id": "F-0092"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "LX1",
+   "id": "F-0093"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "BOOM-L",
+   "id": "F-0094"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "LX4",
+   "id": "F-0095"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "BOOM-L",
+   "id": "F-0096"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "LX2",
+   "id": "F-0097"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX3",
+   "id": "F-0098"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "LX4",
+   "id": "F-0099"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "LX2",
+   "id": "F-0100"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "LX4",
+   "id": "F-0101"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "LX4",
+   "id": "F-0102"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "FOH",
+   "id": "F-0103"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "BOOM-L",
+   "id": "F-0104"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "LX4",
+   "id": "F-0105"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "BOOM-L",
+   "id": "F-0106"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX2",
+   "id": "F-0107"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "BOOM-R",
+   "id": "F-0108"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "BOOM-R",
+   "id": "F-0109"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "LX1",
+   "id": "F-0110"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "BOOM-L",
+   "id": "F-0111"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX1",
+   "id": "F-0112"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX1",
+   "id": "F-0113"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "LX2",
+   "id": "F-0114"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX3",
+   "id": "F-0115"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "BOOM-R",
+   "id": "F-0116"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "BOOM-L",
+   "id": "F-0117"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX3",
+   "id": "F-0118"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX1",
+   "id": "F-0119"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "LX3",
+   "id": "F-0120"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX4",
+   "id": "F-0121"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX2",
+   "id": "F-0122"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "LX2",
+   "id": "F-0123"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "FOH",
+   "id": "F-0124"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX1",
+   "id": "F-0125"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX3",
+   "id": "F-0126"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "BOOM-L",
+   "id": "F-0127"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "BOOM-L",
+   "id": "F-0128"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "LX1",
+   "id": "F-0129"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX3",
+   "id": "F-0130"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "BOOM-R",
+   "id": "F-0131"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "LX4",
+   "id": "F-0132"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX3",
+   "id": "F-0133"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "LX4",
+   "id": "F-0134"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "BOOM-R",
+   "id": "F-0135"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX1",
+   "id": "F-0136"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "LX3",
+   "id": "F-0137"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "LX2",
+   "id": "F-0138"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "FOH",
+   "id": "F-0139"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "FOH",
+   "id": "F-0140"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "LX4",
+   "id": "F-0141"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "LX1",
+   "id": "F-0142"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "LX1",
+   "id": "F-0143"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "BOOM-R",
+   "id": "F-0144"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX2",
+   "id": "F-0145"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "FOH",
+   "id": "F-0146"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "BOOM-R",
+   "id": "F-0147"
+  },
+  {
+   "kind": "fixture",
+   "type": "fresnel",
+   "position": "LX2",
+   "id": "F-0148"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "LX1",
+   "id": "F-0149"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "BOOM-L",
+   "id": "F-0150"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "BOOM-L",
+   "id": "F-0151"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "LX1",
+   "id": "F-0152"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "LX4",
+   "id": "F-0153"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX3",
+   "id": "F-0154"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "BOOM-R",
+   "id": "F-0155"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "FOH",
+   "id": "F-0156"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX4",
+   "id": "F-0157"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "BOOM-L",
+   "id": "F-0158"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX3",
+   "id": "F-0159"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "FOH",
+   "id": "F-0160"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "BOOM-R",
+   "id": "F-0161"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX4",
+   "id": "F-0162"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "BOOM-R",
+   "id": "F-0163"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX4",
+   "id": "F-0164"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "BOOM-L",
+   "id": "F-0165"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "BOOM-L",
+   "id": "F-0166"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "LX3",
+   "id": "F-0167"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX1",
+   "id": "F-0168"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "LX3",
+   "id": "F-0169"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "FOH",
+   "id": "F-0170"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "BOOM-R",
+   "id": "F-0171"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "LX4",
+   "id": "F-0172"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX4",
+   "id": "F-0173"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "LX2",
+   "id": "F-0174"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX2",
+   "id": "F-0175"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "BOOM-R",
+   "id": "F-0176"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX2",
+   "id": "F-0177"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "BOOM-L",
+   "id": "F-0178"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "LX2",
+   "id": "F-0179"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "LX4",
+   "id": "F-0180"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "FOH",
+   "id": "F-0181"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "BOOM-L",
+   "id": "F-0182"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX1",
+   "id": "F-0183"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "LX3",
+   "id": "F-0184"
+  },
+  {
+   "kind": "fixture",
+   "type": "profile",
+   "position": "LX4",
+   "id": "F-0185"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX3",
+   "id": "F-0186"
+  },
+  {
+   "kind": "fixture",
+   "type": "cyc",
+   "position": "LX3",
+   "id": "F-0187"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "LX4",
+   "id": "F-0188"
+  },
+  {
+   "kind": "fixture",
+   "type": "led-par",
+   "position": "BOOM-L",
+   "id": "F-0189"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX4",
+   "id": "F-0190"
+  },
+  {
+   "kind": "fixture",
+   "type": "blinder",
+   "position": "LX3",
+   "id": "F-0191"
+  },
+  {
+   "kind": "fixture",
+   "type": "moving-head",
+   "position": "LX3",
+   "id": "F-0192"
+  }
+ ],
+ "links": [
+  {
+   "kind": "sends_data",
+   "source": "SPLIT-1",
+   "target": "DR-1"
+  },
+  {
+   "kind": "sends_data",
+   "source": "SPLIT-1",
+   "target": "DR-3"
+  },
+  {
+   "kind": "sends_data",
+   "source": "SPLIT-1",
+   "target": "DR-5"
+  },
+  {
+   "kind": "sends_data",
+   "source": "SPLIT-2",
+   "target": "DR-2"
+  },
+  {
+   "kind": "sends_data",
+   "source": "SPLIT-2",
+   "target": "DR-4"
+  },
+  {
+   "kind": "sends_data",
+   "source": "SPLIT-2",
+   "target": "DR-6"
+  },
+  {
+   "kind": "powered_from",
+   "way": 1,
+   "source": "DR-1",
+   "target": "DISTRO-A"
+  },
+  {
+   "kind": "powered_from",
+   "way": 2,
+   "source": "DR-2",
+   "target": "DISTRO-A"
+  },
+  {
+   "kind": "powered_from",
+   "way": 3,
+   "source": "DR-3",
+   "target": "DISTRO-A"
+  },
+  {
+   "kind": "powered_from",
+   "way": 4,
+   "source": "DR-4",
+   "target": "DISTRO-B"
+  },
+  {
+   "kind": "powered_from",
+   "way": 5,
+   "source": "DR-5",
+   "target": "DISTRO-B"
+  },
+  {
+   "kind": "powered_from",
+   "way": 6,
+   "source": "DR-6",
+   "target": "DISTRO-B"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 27,
+   "source": "F-0001",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 1,
+   "source": "F-0001",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 39,
+   "source": "F-0002",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 1,
+   "source": "F-0002",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 14,
+   "source": "F-0003",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 1,
+   "source": "F-0003",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 22,
+   "source": "F-0004",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 17,
+   "source": "F-0004",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 46,
+   "source": "F-0005",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 1,
+   "source": "F-0005",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 7,
+   "source": "F-0006",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 19,
+   "source": "F-0006",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 6,
+   "source": "F-0007",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 3,
+   "source": "F-0007",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 21,
+   "source": "F-0008",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 17,
+   "source": "F-0008",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 17,
+   "source": "F-0009",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 5,
+   "source": "F-0009",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 10,
+   "source": "F-0010",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 21,
+   "source": "F-0010",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 3,
+   "source": "F-0011",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 19,
+   "source": "F-0011",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 35,
+   "source": "F-0012",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 3,
+   "source": "F-0012",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 45,
+   "source": "F-0013",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 7,
+   "source": "F-0013",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 33,
+   "source": "F-0014",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 23,
+   "source": "F-0014",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 15,
+   "source": "F-0015",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 9,
+   "source": "F-0015",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 25,
+   "source": "F-0016",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 25,
+   "source": "F-0016",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 32,
+   "source": "F-0017",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 27,
+   "source": "F-0017",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 44,
+   "source": "F-0018",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 21,
+   "source": "F-0018",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 2,
+   "source": "F-0019",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 5,
+   "source": "F-0019",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 18,
+   "source": "F-0020",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 29,
+   "source": "F-0020",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 42,
+   "source": "F-0021",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 25,
+   "source": "F-0021",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 23,
+   "source": "F-0022",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 21,
+   "source": "F-0022",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 5,
+   "source": "F-0023",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 37,
+   "source": "F-0023",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 1,
+   "source": "F-0024",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 23,
+   "source": "F-0024",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 28,
+   "source": "F-0025",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 45,
+   "source": "F-0025",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 29,
+   "source": "F-0026",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 39,
+   "source": "F-0026",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 24,
+   "source": "F-0027",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 27,
+   "source": "F-0027",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 9,
+   "source": "F-0028",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 41,
+   "source": "F-0028",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 8,
+   "source": "F-0029",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 47,
+   "source": "F-0029",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 16,
+   "source": "F-0030",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 43,
+   "source": "F-0030",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 36,
+   "source": "F-0031",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 45,
+   "source": "F-0031",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 30,
+   "source": "F-0032",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 47,
+   "source": "F-0032",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 4,
+   "source": "F-0033",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 49,
+   "source": "F-0033",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 38,
+   "source": "F-0034",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 43,
+   "source": "F-0034",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 13,
+   "source": "F-0035",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 49,
+   "source": "F-0035",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 20,
+   "source": "F-0036",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 39,
+   "source": "F-0036",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 31,
+   "source": "F-0037",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 41,
+   "source": "F-0037",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 40,
+   "source": "F-0038",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 45,
+   "source": "F-0038",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 11,
+   "source": "F-0039",
+   "target": "DR-1"
+  },
+  {
+   "kind": "on_universe",
+   "address": 51,
+   "source": "F-0039",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 39,
+   "source": "F-0040",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 57,
+   "source": "F-0040",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 35,
+   "source": "F-0041",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 61,
+   "source": "F-0041",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 2,
+   "source": "F-0042",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 59,
+   "source": "F-0042",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 12,
+   "source": "F-0043",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 51,
+   "source": "F-0043",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 13,
+   "source": "F-0044",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 61,
+   "source": "F-0044",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 32,
+   "source": "F-0045",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 63,
+   "source": "F-0045",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 40,
+   "source": "F-0046",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 53,
+   "source": "F-0046",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 24,
+   "source": "F-0047",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 69,
+   "source": "F-0047",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 46,
+   "source": "F-0048",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 63,
+   "source": "F-0048",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 1,
+   "source": "F-0049",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 65,
+   "source": "F-0049",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 29,
+   "source": "F-0050",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 65,
+   "source": "F-0050",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 43,
+   "source": "F-0051",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 67,
+   "source": "F-0051",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 28,
+   "source": "F-0052",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 67,
+   "source": "F-0052",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 30,
+   "source": "F-0053",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 69,
+   "source": "F-0053",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 48,
+   "source": "F-0054",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 71,
+   "source": "F-0054",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 26,
+   "source": "F-0055",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 83,
+   "source": "F-0055",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 15,
+   "source": "F-0056",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 71,
+   "source": "F-0056",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 25,
+   "source": "F-0057",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 99,
+   "source": "F-0057",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 42,
+   "source": "F-0058",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 101,
+   "source": "F-0058",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 11,
+   "source": "F-0059",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 67,
+   "source": "F-0059",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 21,
+   "source": "F-0060",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 73,
+   "source": "F-0060",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 44,
+   "source": "F-0061",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 69,
+   "source": "F-0061",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 6,
+   "source": "F-0062",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 103,
+   "source": "F-0062",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 3,
+   "source": "F-0063",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 75,
+   "source": "F-0063",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 23,
+   "source": "F-0064",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 73,
+   "source": "F-0064",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 4,
+   "source": "F-0065",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 91,
+   "source": "F-0065",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 20,
+   "source": "F-0066",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 71,
+   "source": "F-0066",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 22,
+   "source": "F-0067",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 105,
+   "source": "F-0067",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 18,
+   "source": "F-0068",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 73,
+   "source": "F-0068",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 36,
+   "source": "F-0069",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 93,
+   "source": "F-0069",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 9,
+   "source": "F-0070",
+   "target": "DR-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 75,
+   "source": "F-0070",
+   "target": "U-2"
+  },
+  {
+   "kind": "on_universe",
+   "address": 75,
+   "source": "F-0071",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 31,
+   "source": "F-0071",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 95,
+   "source": "F-0072",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 38,
+   "source": "F-0072",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 77,
+   "source": "F-0073",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 46,
+   "source": "F-0073",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 79,
+   "source": "F-0074",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 41,
+   "source": "F-0074",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 107,
+   "source": "F-0075",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 34,
+   "source": "F-0075",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 109,
+   "source": "F-0076",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 30,
+   "source": "F-0076",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 111,
+   "source": "F-0077",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 27,
+   "source": "F-0077",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 113,
+   "source": "F-0078",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 35,
+   "source": "F-0078",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 77,
+   "source": "F-0079",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 28,
+   "source": "F-0079",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 81,
+   "source": "F-0080",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 23,
+   "source": "F-0080",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 79,
+   "source": "F-0081",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 21,
+   "source": "F-0081",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 97,
+   "source": "F-0082",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 24,
+   "source": "F-0082",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 83,
+   "source": "F-0083",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 45,
+   "source": "F-0083",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 113,
+   "source": "F-0084",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 37,
+   "source": "F-0084",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 115,
+   "source": "F-0085",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 29,
+   "source": "F-0085",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 129,
+   "source": "F-0086",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 33,
+   "source": "F-0086",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 117,
+   "source": "F-0087",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 39,
+   "source": "F-0087",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 81,
+   "source": "F-0088",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 44,
+   "source": "F-0088",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 83,
+   "source": "F-0089",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 22,
+   "source": "F-0089",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 85,
+   "source": "F-0090",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 40,
+   "source": "F-0090",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 85,
+   "source": "F-0091",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 32,
+   "source": "F-0091",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 87,
+   "source": "F-0092",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 25,
+   "source": "F-0092",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 119,
+   "source": "F-0093",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 47,
+   "source": "F-0093",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 131,
+   "source": "F-0094",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 48,
+   "source": "F-0094",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 121,
+   "source": "F-0095",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 42,
+   "source": "F-0095",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 133,
+   "source": "F-0096",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 36,
+   "source": "F-0096",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 89,
+   "source": "F-0097",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 26,
+   "source": "F-0097",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 91,
+   "source": "F-0098",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 43,
+   "source": "F-0098",
+   "target": "DR-5"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 20,
+   "source": "F-0099",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 123,
+   "source": "F-0099",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 41,
+   "source": "F-0100",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 93,
+   "source": "F-0100",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 19,
+   "source": "F-0101",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 87,
+   "source": "F-0101",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 6,
+   "source": "F-0102",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 95,
+   "source": "F-0102",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 45,
+   "source": "F-0103",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 135,
+   "source": "F-0103",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 11,
+   "source": "F-0104",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 89,
+   "source": "F-0104",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 40,
+   "source": "F-0105",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 97,
+   "source": "F-0105",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 42,
+   "source": "F-0106",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 99,
+   "source": "F-0106",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 48,
+   "source": "F-0107",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 137,
+   "source": "F-0107",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 22,
+   "source": "F-0108",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 101,
+   "source": "F-0108",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 13,
+   "source": "F-0109",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 125,
+   "source": "F-0109",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 25,
+   "source": "F-0110",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 103,
+   "source": "F-0110",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 4,
+   "source": "F-0111",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 105,
+   "source": "F-0111",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 29,
+   "source": "F-0112",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 139,
+   "source": "F-0112",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 9,
+   "source": "F-0113",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 107,
+   "source": "F-0113",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 16,
+   "source": "F-0114",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 91,
+   "source": "F-0114",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 1,
+   "source": "F-0115",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 109,
+   "source": "F-0115",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 27,
+   "source": "F-0116",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 125,
+   "source": "F-0116",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 18,
+   "source": "F-0117",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 155,
+   "source": "F-0117",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 14,
+   "source": "F-0118",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 141,
+   "source": "F-0118",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 39,
+   "source": "F-0119",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 157,
+   "source": "F-0119",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 38,
+   "source": "F-0120",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 157,
+   "source": "F-0120",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 30,
+   "source": "F-0121",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 127,
+   "source": "F-0121",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 35,
+   "source": "F-0122",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 93,
+   "source": "F-0122",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 32,
+   "source": "F-0123",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 109,
+   "source": "F-0123",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 7,
+   "source": "F-0124",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 159,
+   "source": "F-0124",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 47,
+   "source": "F-0125",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 159,
+   "source": "F-0125",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 34,
+   "source": "F-0126",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 111,
+   "source": "F-0126",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 37,
+   "source": "F-0127",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 161,
+   "source": "F-0127",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 3,
+   "source": "F-0128",
+   "target": "DR-4"
+  },
+  {
+   "kind": "on_universe",
+   "address": 127,
+   "source": "F-0128",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 12,
+   "source": "F-0129",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 129,
+   "source": "F-0129",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 19,
+   "source": "F-0130",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 129,
+   "source": "F-0130",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 13,
+   "source": "F-0131",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 131,
+   "source": "F-0131",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 10,
+   "source": "F-0132",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 175,
+   "source": "F-0132",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 5,
+   "source": "F-0133",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 131,
+   "source": "F-0133",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 15,
+   "source": "F-0134",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 177,
+   "source": "F-0134",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 18,
+   "source": "F-0135",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 133,
+   "source": "F-0135",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 1,
+   "source": "F-0136",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 163,
+   "source": "F-0136",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 17,
+   "source": "F-0137",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 179,
+   "source": "F-0137",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 2,
+   "source": "F-0138",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 181,
+   "source": "F-0138",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 11,
+   "source": "F-0139",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 183,
+   "source": "F-0139",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 3,
+   "source": "F-0140",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 135,
+   "source": "F-0140",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 8,
+   "source": "F-0141",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 179,
+   "source": "F-0141",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 4,
+   "source": "F-0142",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 181,
+   "source": "F-0142",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 14,
+   "source": "F-0143",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 147,
+   "source": "F-0143",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 9,
+   "source": "F-0144",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 183,
+   "source": "F-0144",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 20,
+   "source": "F-0145",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 149,
+   "source": "F-0145",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 16,
+   "source": "F-0146",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 165,
+   "source": "F-0146",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 7,
+   "source": "F-0147",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 167,
+   "source": "F-0147",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 6,
+   "source": "F-0148",
+   "target": "DR-5"
+  },
+  {
+   "kind": "on_universe",
+   "address": 183,
+   "source": "F-0148",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 25,
+   "source": "F-0149",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 185,
+   "source": "F-0149",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 19,
+   "source": "F-0150",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 187,
+   "source": "F-0150",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 43,
+   "source": "F-0151",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 203,
+   "source": "F-0151",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 29,
+   "source": "F-0152",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 185,
+   "source": "F-0152",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 2,
+   "source": "F-0153",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 205,
+   "source": "F-0153",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 38,
+   "source": "F-0154",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 185,
+   "source": "F-0154",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 1,
+   "source": "F-0155",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 201,
+   "source": "F-0155",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 4,
+   "source": "F-0156",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 137,
+   "source": "F-0156",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 47,
+   "source": "F-0157",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 139,
+   "source": "F-0157",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 15,
+   "source": "F-0158",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 207,
+   "source": "F-0158",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 17,
+   "source": "F-0159",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 187,
+   "source": "F-0159",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 42,
+   "source": "F-0160",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 209,
+   "source": "F-0160",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 41,
+   "source": "F-0161",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 203,
+   "source": "F-0161",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 16,
+   "source": "F-0162",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 225,
+   "source": "F-0162",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 32,
+   "source": "F-0163",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 205,
+   "source": "F-0163",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 7,
+   "source": "F-0164",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 155,
+   "source": "F-0164",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 11,
+   "source": "F-0165",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 207,
+   "source": "F-0165",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 36,
+   "source": "F-0166",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 227,
+   "source": "F-0166",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 31,
+   "source": "F-0167",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 203,
+   "source": "F-0167",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 12,
+   "source": "F-0168",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 229,
+   "source": "F-0168",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 33,
+   "source": "F-0169",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 205,
+   "source": "F-0169",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 23,
+   "source": "F-0170",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 207,
+   "source": "F-0170",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 20,
+   "source": "F-0171",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 231,
+   "source": "F-0171",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 10,
+   "source": "F-0172",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 157,
+   "source": "F-0172",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 28,
+   "source": "F-0173",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 247,
+   "source": "F-0173",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 13,
+   "source": "F-0174",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 159,
+   "source": "F-0174",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 22,
+   "source": "F-0175",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 209,
+   "source": "F-0175",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 46,
+   "source": "F-0176",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 225,
+   "source": "F-0176",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 34,
+   "source": "F-0177",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 209,
+   "source": "F-0177",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 18,
+   "source": "F-0178",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 227,
+   "source": "F-0178",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 8,
+   "source": "F-0179",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 211,
+   "source": "F-0179",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 35,
+   "source": "F-0180",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 229,
+   "source": "F-0180",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 14,
+   "source": "F-0181",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 249,
+   "source": "F-0181",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 39,
+   "source": "F-0182",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 161,
+   "source": "F-0182",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 44,
+   "source": "F-0183",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 163,
+   "source": "F-0183",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 26,
+   "source": "F-0184",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 231,
+   "source": "F-0184",
+   "target": "U-2"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 30,
+   "source": "F-0185",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 265,
+   "source": "F-0185",
+   "target": "U-3"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 6,
+   "source": "F-0186",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 213,
+   "source": "F-0186",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 48,
+   "source": "F-0187",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 229,
+   "source": "F-0187",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 40,
+   "source": "F-0188",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 179,
+   "source": "F-0188",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 24,
+   "source": "F-0189",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 181,
+   "source": "F-0189",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 45,
+   "source": "F-0190",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 183,
+   "source": "F-0190",
+   "target": "U-4"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 21,
+   "source": "F-0191",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 231,
+   "source": "F-0191",
+   "target": "U-1"
+  },
+  {
+   "kind": "fed_by",
+   "circuit": 5,
+   "source": "F-0192",
+   "target": "DR-6"
+  },
+  {
+   "kind": "on_universe",
+   "address": 233,
+   "source": "F-0192",
+   "target": "U-1"
+  }
+ ]
+}

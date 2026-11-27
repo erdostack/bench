@@ -1,0 +1,4 @@
+"""Mirror of part compatibility in Neo4j."""
+from neo4j import GraphDatabase
+
+driver = GraphDatabase.driver("bolt://localhost:7687")

@@ -1,0 +1,1 @@
+Done on sandbox: deleted the DEMO- performances and their bookings; count now 0.

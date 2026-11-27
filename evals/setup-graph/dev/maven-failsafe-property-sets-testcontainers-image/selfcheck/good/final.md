@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. Note: README.md says Neo4j 5.26 (and the code default is 5.26.24), but the failsafe plugin passes neo4j:2026.08.1-community, which is what the tests and bin/q actually start.

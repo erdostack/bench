@@ -1,0 +1,26 @@
+[
+  {
+    "element": "queries/connected_closures.sql",
+    "severity": "critical",
+    "problem": "The recursive walk never terminates. The recursive step joins span in both directions and carries no record of where it came from, so from closure 1 it steps 1 -> 2 -> 1 -> 2 and so on. UNION only drops rows that repeat both closure_id and hops, and hops grows on every step, so no row is ever a duplicate. The comment says the walk cannot come back, which is false. Measured on plant.db: the query was still running after 20 seconds and was killed by timeout (exit 124). The partial output shows closure 1 reached again at hops 2. The outage tool runs this during incidents with an operator waiting.",
+    "fix": "Carry the previous closure in the recursion, exclude it in the step (WHERE next <> COALESCE(r.prev, -1)), use UNION ALL, and add a hop cap (for example hops < 500) as a guard against any loop in future data. Checked on plant.db: the revised query matched a Python breadth-first search for 7 start closures (1, 2, 500, 1050, 1300, 1301, 2400) with no mismatches, and the slowest took 0.018 s."
+  },
+  {
+    "element": "queries/connected_closures.sql",
+    "severity": "critical",
+    "problem": "The result is not the blast radius of the fault. Because the walk is undirected, any closure reaches its exchange and then the whole of that exchange's tree. Measured on plant.db over 200 random non-exchange closures: every one reached all 1,300 closures in its area (North or East) and texted 4,944 (North) or 4,056 (East) customers. A single damaged pole would text the whole area.",
+    "fix": "Root each area's tree at its exchange closure (kind = 'exchange', codes N-0000 and E-0000) and store each closure's parent toward the exchange, either as a column or a small table filled in the load step. Then walk only to children of the faulted closure, so the result is the closures and customers downstream of the fault. Confirm with the team that downstream is the intended scope before wiring it into the outage tool."
+  },
+  {
+    "element": "queries/customers_on.sql",
+    "severity": "medium",
+    "problem": "The file says :ids is a JSON array of closure ids from connected_closures.sql, but connected_closures.sql returns rows of (id, code, hops), not a JSON array. Nothing in the repo turns one into the other, so the outage tool has to build the array itself and nothing tests that step.",
+    "fix": "Add a query or a helper that returns the JSON array from the walk (for example json_group_array over the ids), and document it in the comment. Add a test that runs the two queries together on plant.db."
+  },
+  {
+    "element": "queries/span_report.sql",
+    "severity": "low",
+    "problem": "The report groups each span by the exchange of its a_end closure only. This is correct today, because no span crosses exchanges (checked on plant.db: 0 spans), but no constraint or comment in schema.sql or the query says so. A future cross-area span would be counted under one area only.",
+    "fix": "Add a comment in the query that the rule depends on spans staying inside one exchange, or add a CHECK or load-time test that a_end and b_end have the same exchange."
+  }
+]

@@ -1,0 +1,8 @@
+[
+  {
+    "element": "(:Reader)-[:GAVE]->(:Rating)-[:OF]->(:Book)",
+    "severity": "high",
+    "problem": "An in-between node with no other connections; doubles the hops on the hot book-page traversals.",
+    "fix": "Collapse into one relationship Reader-[:RATED {stars, rated_at}]->Book and migrate the 18M ratings."
+  }
+]

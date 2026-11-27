@@ -1,0 +1,2 @@
+bin/gx practice tools/clear_trial.py
+bin/gx live tools/clear_trial.py

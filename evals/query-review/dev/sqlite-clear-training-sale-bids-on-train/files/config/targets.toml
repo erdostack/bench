@@ -1,0 +1,5 @@
+[train]
+path = "var/train.db"
+
+[yard]
+path = "/srv/ringside/yard.db"

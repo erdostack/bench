@@ -1,0 +1,2 @@
+DELETE FROM edges WHERE src = 1712;
+DELETE FROM nodes WHERE id = 1712;

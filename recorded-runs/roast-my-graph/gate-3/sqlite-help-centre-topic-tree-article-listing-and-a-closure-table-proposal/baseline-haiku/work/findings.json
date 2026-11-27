@@ -1,0 +1,68 @@
+[
+  {
+    "element": "docs/review.md (LIKE claim)",
+    "severity": "high",
+    "problem": "Says LIKE can never use an index in SQLite, so every topic page is a full scan. False for this schema: topic.path is declared COLLATE NOCASE, so the subtree LIKE becomes a range seek on the unique index (EXPLAIN QUERY PLAN: SEARCH t USING COVERING INDEX sqlite_autoindex_topic_1 (path>? AND path<?)). The closure-table recommendation rests on this wrong premise.",
+    "fix": "Withdraw the LIKE claim. Benchmark the topic page with EXPLAIN QUERY PLAN and timings on a production-sized tree before any schema change."
+  },
+  {
+    "element": "queries/subtree_articles.sql: ORDER BY a.updated_at DESC LIMIT 100",
+    "severity": "medium",
+    "problem": "The real cost is the sort, not the path match. The query collects every article under the prefix and sorts them (USE TEMP B-TREE FOR ORDER BY) to return 100 rows. article_topic (topic_id, updated_at) cannot order across topics, so work grows with subtree size, not with the 100 returned.",
+    "fix": "Measure on large subtrees (for example the biggest account root). If slow, keep a denormalised per-subtree recent-articles structure or an index that serves the ordering. A closure table does not remove this sort."
+  },
+  {
+    "element": "schema.sql: topic.path COLLATE NOCASE",
+    "severity": "medium",
+    "problem": "The index-backed LIKE depends on NOCASE collation and case_sensitive_like being off. With BINARY collation, or with PRAGMA case_sensitive_like=ON, the same query plans as SCAN t (verified on SQLite 3.53.1). Nothing in the schema or queries records this dependency.",
+    "fix": "Use an explicit range form (path >= :p AND path < :p || char(255)) that does not depend on LIKE rules, or document the dependency and add a test asserting the plan is SEARCH."
+  },
+  {
+    "element": "schema.sql: topic.path CHECK",
+    "severity": "medium",
+    "problem": "The CHECK allows empty segments. Paths such as '/a//' insert without error (verified), so the README's claim that CHECKs enforce a clean tree path is weaker than stated. A double slash creates a path that no real segment matches.",
+    "fix": "Add AND path NOT GLOB '*//*' to the CHECK, and add a test that inserts '/a//' and expects IntegrityError."
+  },
+  {
+    "element": "schema.sql: topic.parent_id (with queries/move_topic.sql and tree.py move_topic())",
+    "severity": "high",
+    "problem": "parent_id and path are stored separately with no constraint tying them together. move_topic() sets parent_id from its argument without checking it against new_path, and the SQL rewrites path. Verified: moving '/a/b/' to '/c/b/' with new_parent_id pointing at '/a/' succeeds, leaving parent_id on a row whose path is under '/c/'.",
+    "fix": "Derive the parent from the path in one place, or have move_topic() verify that the new parent's path is the prefix of new_path (and that it exists) before writing. Add an integrity query to the tests: every non-null parent_id row's path must start with its parent's path."
+  },
+  {
+    "element": "kb/tree.py: move_topic()",
+    "severity": "medium",
+    "problem": "Silent no-op. If old_path does not exist, the parent_id UPDATE matches zero rows and the MOVE statement matches nothing, but the function returns normally. The new parent id is also never checked to exist.",
+    "fix": "Check the rowcount of the parent_id UPDATE and raise if it is 0. Confirm new_parent_id exists in the same transaction."
+  },
+  {
+    "element": "kb/tree.py: PATH regex",
+    "severity": "low",
+    "problem": "Uses '$', which matches before a trailing newline, so '/a/\\n' passes validation (verified with re.match). The CHECK rejects that value on write, but articles_under() and move_topic() accept it as input.",
+    "fix": "Use PATH.fullmatch(...) or \\A and \\Z anchors."
+  },
+  {
+    "element": "kb/tree.py: PATH and articles_under()",
+    "severity": "low",
+    "problem": "The regex accepts '/' itself, so articles_under('/') builds the pattern '/%' and returns articles across every account tree, with no scoping or guard.",
+    "fix": "Require at least one segment in articles_under(), or make the root-wide query an explicit admin-only function."
+  },
+  {
+    "element": "schema.sql: INDEX topic_parent ON topic(parent_id)",
+    "severity": "low",
+    "problem": "No query in queries/ or kb/tree.py reads children by parent_id, so the index is maintained on every insert and move with no reader in this repo.",
+    "fix": "Confirm no other code reads children by parent_id, then drop the index. If the product needs child lookups, add a query that uses it."
+  },
+  {
+    "element": "schema.sql: article.updated_at",
+    "severity": "low",
+    "problem": "TEXT with no format CHECK. The ORDER BY in subtree_articles.sql assumes lexical order is chronological. All current sample rows are ISO dates (verified), but nothing enforces that.",
+    "fix": "Add a CHECK on the ISO-8601 shape, or store a unix integer."
+  },
+  {
+    "element": "queries/move_topic.sql: UPDATE topic SET path ...",
+    "severity": "low",
+    "problem": "One statement rewrites every descendant row and its unique index entry, so cost is proportional to subtree size. Acceptable for a few moves a month, but a large move on the 400k-topic production tree would hold a long write lock.",
+    "fix": "Time a move of the largest subtree on production-sized data. If it is too slow, batch the update or run it in a maintenance window."
+  }
+]

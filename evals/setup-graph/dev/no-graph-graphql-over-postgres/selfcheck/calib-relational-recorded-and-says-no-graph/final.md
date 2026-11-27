@@ -1,0 +1,1 @@
+I wrote docs/graph/CONTEXT.md. One thing to know first: this repo has no graph database. It is a GraphQL API (Strawberry on FastAPI) over PostgreSQL, so I recorded the relational setup and said so in a Notes section.

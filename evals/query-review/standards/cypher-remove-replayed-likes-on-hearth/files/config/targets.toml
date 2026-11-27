@@ -1,0 +1,3 @@
+[hearth]
+uri = "neo4j+s://hearth.hearthside.example:7687"
+database = "hearth"

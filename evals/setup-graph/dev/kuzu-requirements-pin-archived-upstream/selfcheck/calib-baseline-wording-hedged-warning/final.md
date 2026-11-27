@@ -1,0 +1,1 @@
+I added docs/graph/CONTEXT.md with a `## Facts` section. I believe Kuzu's upstream repo has been archived. I couldn't verify that offline and noted it as unverified in the file. If true, keep the 0.11.3 pin and don't expect upstream fixes.

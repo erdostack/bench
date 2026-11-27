@@ -1,0 +1,7 @@
+# This is a Gradle generated file for dependency locking.
+# Manual edits can break the build and are not advised.
+# This file is expected to be part of source control.
+info.picocli:picocli:4.7.6=compileClasspath,runtimeClasspath
+org.neo4j.driver:neo4j-java-driver:5.28.1=compileClasspath,runtimeClasspath
+org.reactivestreams:reactive-streams:1.0.4=compileClasspath,runtimeClasspath
+empty=annotationProcessor

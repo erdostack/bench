@@ -1,0 +1,1 @@
+Added sql/prerequisite_chain.sql: a recursive query over required and concurrent prerequisites (the registrar's rule in docs/graph/DECISION.md; recommended ones are never followed). It deduplicates on the course id, so the cross-listed loops end.

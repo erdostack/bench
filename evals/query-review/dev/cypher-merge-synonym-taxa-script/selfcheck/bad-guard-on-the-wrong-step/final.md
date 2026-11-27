@@ -1,0 +1,1 @@
+Added a guard so a taxon never becomes its own child. Check with count().

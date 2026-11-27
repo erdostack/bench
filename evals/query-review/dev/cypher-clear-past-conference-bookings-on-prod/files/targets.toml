@@ -1,0 +1,5 @@
+[prod]
+uri = "neo4j+s://talkgraph-prod.internal:7687"
+
+[stage]
+uri = "neo4j+s://talkgraph-stage.internal:7687"

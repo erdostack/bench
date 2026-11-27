@@ -1,0 +1,1 @@
+Your friend is right: Invoice.bill_to_name, bill_to_address and vat_number duplicate Customer, which is a classic update anomaly. Rated high. Drop the three columns and read them through BilledTo in print_invoice before adding delivery notes.

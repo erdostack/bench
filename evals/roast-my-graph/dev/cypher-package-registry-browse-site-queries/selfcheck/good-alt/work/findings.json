@@ -1,0 +1,8 @@
+[
+  {
+    "element": ":License / LICENSED_UNDER",
+    "severity": "high",
+    "problem": "The 'Similar packages' box traverses (p)-[:LICENSED_UNDER]->(l)<-[:LICENSED_UNDER]-(other), so for popular licenses every request fans out over more than a million packages.",
+    "fix": "Keep the license as a filter, not a hop: precompute candidates per category offline and filter on a license property, or cache the related list per package."
+  }
+]

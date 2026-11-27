@@ -1,0 +1,7 @@
+[staging]
+uri = "neo4j://staging-meterreads.internal.example:7687"
+database = "meterreads"
+
+[prod]
+uri = "neo4j+s://meterreads.internal.example:7687"
+database = "meterreads"

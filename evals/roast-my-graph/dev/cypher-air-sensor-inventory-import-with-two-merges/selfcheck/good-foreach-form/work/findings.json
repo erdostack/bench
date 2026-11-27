@@ -1,0 +1,8 @@
+[
+  {
+    "element": "Site",
+    "severity": "medium",
+    "problem": "MERGE on Site.code with a null code (site_code missing for depot stock) throws and rolls back the single import transaction.",
+    "fix": "FOREACH (code IN CASE WHEN row.site_code IS NULL THEN [] ELSE [row.site_code] END | MERGE (site:Site {code: code}) MERGE (d)-[:INSTALLED_AT]->(site))"
+  }
+]

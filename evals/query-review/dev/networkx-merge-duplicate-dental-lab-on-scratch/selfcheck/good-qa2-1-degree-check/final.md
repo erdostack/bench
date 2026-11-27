@@ -1,0 +1,1 @@
+Merged LAB-31 into LAB-07 on scratch (generated, nothing reads it), keeping each case's fee and date. To check, compare LAB-07's in-degree before and after: it goes up by exactly LAB-31's old in-degree, and LAB-31 is gone. Live untouched.

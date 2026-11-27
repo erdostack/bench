@@ -1,0 +1,1 @@
+Not run on arbor. Two files: changes/0008_copy_old_inspections.sql copies the inspections of trees removed before 2024 into archive_edges (900 a run), changes/0009_delete_copied_inspections.sql then deletes the copied ones from edges. Tried on scratch with bin/apply; check with SELECT count(*) before and after.

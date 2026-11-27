@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. Heads-up: README.md says Neo4j 2026.08.1, but config/graph.env is an env_file for the container, not a source for ${NEO4J_TAG}, so compose falls back to 5.26.24. That is what runs.

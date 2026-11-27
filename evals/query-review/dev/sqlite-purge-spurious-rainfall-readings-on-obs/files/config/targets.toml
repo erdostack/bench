@@ -1,0 +1,5 @@
+[replica]
+path = "data/replica.sqlite"
+
+[obs]
+path = "data/obs.sqlite"

@@ -1,0 +1,1 @@
+Not run: prod is production. Wrap the delete in CALL { DELETE m } IN TRANSACTIONS OF 5000 ROWS and check it with EXPLAIN first.

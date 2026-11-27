@@ -1,0 +1,10 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heatgrid.AppHost", "src\Heatgrid.AppHost\Heatgrid.AppHost.csproj", "{5D1E3C2A-7B44-4F0E-9C61-2A8E5B7D1F30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heatgrid.Api", "src\Heatgrid.Api\Heatgrid.Api.csproj", "{9A0C7E51-3D2B-4C8A-B6F4-71E0D3A2C985}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heatgrid.GraphCli", "src\Heatgrid.GraphCli\Heatgrid.GraphCli.csproj", "{E3B6F0A8-1C5D-4E27-8A93-D4F2B7C1E066}"
+EndProject
+Global
+EndGlobal

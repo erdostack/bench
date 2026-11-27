@@ -1,0 +1,5 @@
+[fleet]
+uri = "neo4j+s://fleet-db.wagongraph.internal:7687"
+
+[fleet-dev]
+uri = "neo4j://localhost:7687"

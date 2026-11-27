@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# bin/lq <file.cypher> [name=value ...]: run one saved lineage query read-only.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+file="${1:?usage: bin/lq <file.cypher> [name=value ...]}"
+shift
+params="$(IFS=,; echo "$*")"
+exec ./gradlew -q runQuery -Pfile="$file" -Pparams="$params"

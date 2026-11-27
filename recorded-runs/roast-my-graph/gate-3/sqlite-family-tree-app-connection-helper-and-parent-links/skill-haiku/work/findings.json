@@ -1,0 +1,20 @@
+[
+  {
+    "element": "parse",
+    "severity": "medium",
+    "problem": "parse only resets cur on INDI and FAM records. A later level-0 SUBM or REPO record leaves cur pointing at the last person, so its 1 NAME line overwrites that person's given and surname. Reproduced: a trailing '0 @U1@ SUBM' with '1 NAME Jane Submitter' renamed the last INDI 'Bob Lee' to 'Jane Submitter'. The shipped data has no GEDCOM file, so this needs a file with such a record after the last INDI.",
+    "fix": "Set cur = None on every level-0 record that is not INDI or FAM, and read NAME only when cur is an INDI. Add a parse test with a trailing SUBM record."
+  },
+  {
+    "element": "delete_person",
+    "severity": "low",
+    "problem": "The cascade relies only on PRAGMA foreign_keys = ON set in app/db.connect. The function does not delete parent_of rows itself. On a plain sqlite3 connection the same delete left 4 rows referring to the deleted person (tested in memory). No code in this repo opens such a connection, but the Flask front end is not in the repo.",
+    "fix": "In delete_person, delete the person's parent_of rows in the same transaction: DELETE FROM parent_of WHERE parent_id = ? OR child_id = ?. Keep the declared ON DELETE CASCADE."
+  },
+  {
+    "element": "load",
+    "severity": "low",
+    "problem": "load uses INSERT OR IGNORE on parent_of, so a GEDCOM self-link is dropped without a message (confirmed: rowcount 0). Links to xrefs missing from the file are dropped silently by the 'parent in ids and child in ids' check. Each run inserts every person again, so importing the same file twice doubles the tree; the README's 'once per file' rule is not enforced in code.",
+    "fix": "Report skipped links with counts. Use a plain INSERT for parent_of and report the IntegrityError. Record each imported file's name or content hash and refuse a repeat import."
+  }
+]

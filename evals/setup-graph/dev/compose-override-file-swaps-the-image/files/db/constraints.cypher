@@ -1,0 +1,3 @@
+CREATE CONSTRAINT species_name IF NOT EXISTS FOR (s:Species) REQUIRE s.name IS UNIQUE;
+CREATE CONSTRAINT species_level IF NOT EXISTS FOR (s:Species) REQUIRE s.trophic_level IS :: INTEGER;
+CREATE CONSTRAINT zone_name IF NOT EXISTS FOR (z:Zone) REQUIRE z.name IS UNIQUE;

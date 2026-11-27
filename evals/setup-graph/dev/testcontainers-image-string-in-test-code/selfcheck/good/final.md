@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. The README says Neo4j 5.x (5.26), but the database the repo actually starts, in the tests and in bin/q, is neo4j:2026.05.0-community from GraphFixture.java, so I recorded 2026.05.0 and noted the mismatch. What production runs is not in the repo.

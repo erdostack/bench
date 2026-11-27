@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. Careful: README and GraphFixture say neo4j:5.26.24, but the image substitutor in src/test/resources/testcontainers.properties swaps it for neo4j:2026.02.2-community, so the tests and bin/q really run 2026.02.2.

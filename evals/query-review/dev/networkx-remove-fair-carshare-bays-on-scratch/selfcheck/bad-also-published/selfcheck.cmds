@@ -1,0 +1,2 @@
+["bin/gx", "scratch", "-c", "G.remove_nodes_from([n for n in list(G) if n.startswith('TMP-')])"]
+["bin/gx", "published", "-c", "G.remove_nodes_from([n for n in list(G) if n.startswith('TMP-')])\nG.add_node('TMP-X')\nG.remove_node('TMP-X')\nG.add_node('B-9999')"]

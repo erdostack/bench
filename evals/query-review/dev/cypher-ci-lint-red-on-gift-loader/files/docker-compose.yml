@@ -1,0 +1,4 @@
+services:
+  neo4j:
+    image: neo4j:5.26.12
+    ports: ["7687:7687"]

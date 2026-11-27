@@ -1,0 +1,18 @@
+riskgate replicas, 24 hours ending 2026-11-10 00:00 UTC
+source: pg_stat_statements (summed over the four replicas) and server log
+
+statement                       calls       mean_exec_ms   max_exec_ms   cancelled (statement_timeout)
+------------------------------  ----------  -------------  ------------  -----------------------------
+ring_check  max_steps=4         2,310,400   59             400           96,880   (timeout 400 ms)
+ring_check  max_steps=6         18,200      41,300         120,000       6,916    (timeout 120 s)
+velocity_window                 2,311,050   3              44            0
+device_reputation               2,310,870   2              31            0
+sanctions_lookup                2,310,400   1              12            0
+
+ring_check max_steps=4, by steps actually needed before the frontier emptied or a hit was found
+  1 step     1,402,300 calls    mean   9 ms
+  2 steps      561,900 calls    mean  48 ms
+  3 steps      201,700 calls    mean 214 ms
+  4 steps      144,500 calls    mean 371 ms   (includes the cancelled calls)
+
+peak hour: 4,100 ring_check calls per minute, 71 running concurrently per replica at the peak

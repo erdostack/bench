@@ -1,0 +1,18 @@
+# Base definition of the stack.
+services:
+  graph:
+    image: neo4j:5.26.25-community
+    environment:
+      NEO4J_AUTH: neo4j/${TIDEPOOL_GRAPH_PASSWORD}
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - tidepool-data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:7474 || exit 1"]
+      interval: 5s
+      retries: 30
+
+volumes:
+  tidepool-data:

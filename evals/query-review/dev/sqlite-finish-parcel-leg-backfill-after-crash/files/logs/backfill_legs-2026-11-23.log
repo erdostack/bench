@@ -1,0 +1,23 @@
+2026-11-23T01:00:02Z scheduler: start backfill_legs (attempt 1)
+batch 1-400 committed
+batch 401-800 committed
+batch 801-1200 committed
+batch 1201-1600 committed
+batch 1601-2000 committed
+batch 2001-2400 committed
+batch 2401-2800 committed
+batch 2801-3200 committed
+batch 3201-3600 committed
+batch 3601-4000 committed
+batch 4001-4400 committed
+batch 4401-4800 committed
+batch 4801-5200 committed
+batch 5201-5600 committed
+batch 5601-6000 committed
+batch 6001-6400 committed
+batch 6401-6800 committed
+Traceback (most recent call last):
+  File "jobs/backfill_legs.py", line 37, in run
+    conn.execute("INSERT OR REPLACE INTO job_progress (job, last_parcel_id) VALUES ('backfill_legs', ?)", (hi,))
+sqlite3.OperationalError: database is locked
+2026-11-23T01:41:57Z scheduler: backfill_legs failed (attempt 1), retry at next slot

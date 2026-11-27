@@ -1,0 +1,5 @@
+[training]
+path = "data/training.sqlite"
+
+[register]
+path = "data/register.sqlite"

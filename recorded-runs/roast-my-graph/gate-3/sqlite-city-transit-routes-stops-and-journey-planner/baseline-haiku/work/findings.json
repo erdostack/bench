@@ -1,0 +1,44 @@
+[
+  {
+    "element": "routes_at_stop.sql",
+    "severity": "critical",
+    "problem": "The stop page matches stop_sequence with LIKE '%' || :stop_id || '%', which is a substring match, not a membership test. Stop 1 matches all 310 routes, because every route id in the stop lists contains a digit 1. The real count is 2 (routes 145 and 270). Across the copy, 46,432 LIKE rows come back against 11,187 real route-stop pairs. 999 of the 4,800 stop pages list at least one route that does not call there, and 98 stops with no real route at all show phantom routes. The leading wildcard also means the query scans the whole route table each time.",
+    "fix": "Replace the comma list with a route_stop table of (route_id, stop_id, seq), primary key (stop_id, route_id), and an index on route_id. Then routes_at_stop.sql becomes an indexed join on stop_id with no LIKE. Rebuild it from stop_sequence in the nightly job and check the row count against the sum of the list lengths (11,187 in this copy). Keep stop_sequence only if the planner needs the order, and then read it per route, not per search."
+  },
+  {
+    "element": "stop_sequence",
+    "severity": "high",
+    "problem": "The column packs a travel-ordered list of stop ids into one comma-separated TEXT value. Nothing can index or join it, which is why routes_at_stop.sql has to substring-match it. Nothing references the stop table either: the schema declares no foreign key, the copy has foreign_keys set to 0, and SQLite ignores foreign keys unless each connection enables them. The copy has no dangling ids today, but nothing stops a bad id from being written.",
+    "fix": "Move the ordering into the route_stop table with a seq column and a foreign key to stop(id). Keep the comma list only as an export format if other systems need it. Enable PRAGMA foreign_keys = ON on every connection, or check references in the nightly build."
+  },
+  {
+    "element": "one_change",
+    "severity": "medium",
+    "problem": "The planner calls routes_at for both ends and then stops_of inside the loop, so stops_of(r2) runs again for every r1 and each route's list is re-parsed on every call. Because routes_at returns LIKE false positives (about 9.7 candidates per stop, against 2.3 real), the planner pays for routes that are then dropped by the 'origin not in s1' check. A busy stop gets the full cost: stop 1 returns all 310 candidates. The function also never checks for a direct route, so it returns one-change plans even when a direct journey exists, and it keeps only the first change stop per route pair. The copy's timing (200 random pairs in 0.19 s) is fine at this size, but the cost grows with the square of the routes at each end.",
+    "fix": "Fetch both ends from route_stop in one query (routes through origin, routes through destination, with positions), so no candidate is parsed and then discarded. Cache each route's stop list for the request. Return direct routes separately, and decide with product whether to keep one change stop per route pair or all of them."
+  },
+  {
+    "element": "stops_of",
+    "severity": "low",
+    "problem": "stops_of unpacks cursor.fetchone() with (seq,) = ... and does not check for None. A route id that is missing from the route table raises TypeError inside the planner instead of returning an empty list.",
+    "fix": "Return an empty list when fetchone() is None, or have the caller handle a missing route. Once route_stop exists, this function goes away."
+  },
+  {
+    "element": "headway",
+    "severity": "low",
+    "problem": "minutes has no CHECK that it is positive, so zero or negative headways are accepted. The route_id foreign key is declared, but the copy has foreign_keys set to 0, so it is not enforced. Neither the planner nor the stop page reads this table.",
+    "fix": "Add CHECK (minutes > 0). Enable foreign keys on every connection. If the planner will not use headways soon, keep the table but leave it off the request path."
+  },
+  {
+    "element": "stop",
+    "severity": "low",
+    "problem": "lat and lon have no range checks, so out-of-range coordinates can be stored. Also, 478 of the 4,800 stops (about 10%) are served by no route in the copy. That may be intended, such as stops that are closed or being renamed, but it may also be a gap in the nightly rebuild, and the schema has no way to tell the two apart.",
+    "fix": "Add CHECK (lat BETWEEN -90 AND 90) and CHECK (lon BETWEEN -180 AND 180). Check the 478 unserved stops against the scheduling system, and add a status column if closed stops are kept on purpose."
+  },
+  {
+    "element": "routes_at_stop.sql",
+    "severity": "low",
+    "problem": "ORDER BY short_name sorts as text, so T1, T11, T12 and T2 come out in that order on the stop page. The sort is only cosmetic, but it is visible to users.",
+    "fix": "Sort on a natural key: a separate sort column, or ORDER BY length(short_name), short_name if every name has the same prefix pattern."
+  }
+]

@@ -1,0 +1,5 @@
+[hub]
+path = "/var/lib/harriers/hub.db"
+
+[copy]
+path = "var/hub-copy.db"

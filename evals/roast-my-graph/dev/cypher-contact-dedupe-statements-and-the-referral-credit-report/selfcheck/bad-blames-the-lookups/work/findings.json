@@ -1,0 +1,14 @@
+[
+  {
+    "element": "move_outgoing_introductions",
+    "severity": "high",
+    "problem": "MATCH (keep), (dup) is a cartesian product.",
+    "fix": "Combine into a single pattern."
+  },
+  {
+    "element": "remove_duplicate",
+    "severity": "medium",
+    "problem": "Plain DELETE fails if relationships remain.",
+    "fix": "Use DETACH DELETE."
+  }
+]

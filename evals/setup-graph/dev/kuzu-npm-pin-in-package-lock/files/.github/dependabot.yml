@@ -1,0 +1,10 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    ignore:
+      # kuzu: the upstream repository was archived in October 2025 and 0.11.3 is the final release,
+      # so there is nothing to bump to. Remove this entry if we move to the LadybugDB fork.
+      - dependency-name: kuzu

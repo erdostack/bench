@@ -1,0 +1,10 @@
+[package]
+name = "valvenet"
+version = "0.3.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+rusqlite = "0.31"
+csv = "1.3"
+anyhow = "1"

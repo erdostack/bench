@@ -1,0 +1,35 @@
+name: Eval self-check
+
+# Proves that every grader in evals/ passes its known-good output and fails its known-bad ones, and that the
+# recorded runs still earn the grades recorded with them. It runs no model and costs nothing. Started by hand:
+# this workflow has not been tried on a hosted runner yet, so it does not gate anything. A few graders replay
+# a job under a time budget and can fail their own grader-ran check on a slow or busy runner.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    name: Grader self-check
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+      - name: Install NetworkX
+        run: python -m pip install "networkx==3.7"
+      - name: Versions
+        run: python -c "import sqlite3, sys, networkx; print(sys.version); print('SQLite', sqlite3.sqlite_version); print('NetworkX', networkx.__version__)"
+      - name: Harness tests
+        run: python -m unittest discover -s evals/harness -p 'test_*.py'
+      - name: Grader self-check
+        run: python evals/harness/erdo_eval.py selftest
+      - name: Recorded runs earn their recorded grades
+        run: python evals/harness/erdo_eval.py regrade --runs recorded-runs

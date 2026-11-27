@@ -1,0 +1,5 @@
+[core]
+path = "data/core.db"
+
+[rehearsal]
+path = "data/rehearsal.db"

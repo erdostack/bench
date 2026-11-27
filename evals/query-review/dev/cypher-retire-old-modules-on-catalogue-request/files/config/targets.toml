@@ -1,0 +1,7 @@
+[dev]
+uri = "neo4j://localhost:7687"
+database = "neo4j"
+
+[catalogue]
+uri = "neo4j+s://modules-db.internal.example:7687"
+database = "catalogue"

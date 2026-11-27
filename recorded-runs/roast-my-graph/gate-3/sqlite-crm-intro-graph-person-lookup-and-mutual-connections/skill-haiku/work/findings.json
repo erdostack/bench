@@ -1,0 +1,14 @@
+[
+  {
+    "element": "person_by_email.sql",
+    "severity": "high",
+    "problem": "The sidebar's email lookup filters on lower(email) = lower(:email). The UNIQUE index on person.email is case-sensitive and cannot serve a lower() expression, so every sidebar request scans the whole person table. The plan on the sample is SCAN person. Scaled to the stated 1.2 million people, the scan is about 144 ms on this machine (measured 7.2 ms per lookup on the 60,000-row sample, times 20, a linear estimate), against an 80 ms p95 budget. Every contact open hits it.",
+    "fix": "CREATE INDEX person_email_lower ON person (lower(email)); SQLite 3.53.1 then plans the query as SEARCH person USING INDEX person_email_lower. Verified in memory on a copy of intro.db: identical results for 200 sampled emails, mixed-case input still matches, and the per-lookup time falls to about 0.004 ms. Make it UNIQUE only after checking production for case-variant duplicates; the sample has none."
+  },
+  {
+    "element": "email",
+    "severity": "low",
+    "problem": "person.email is UNIQUE and case-sensitive, but the lookup ignores case. If the CRM stores two spellings of one address as two people, person_by_email returns both rows and fetchone() keeps an arbitrary one, with no ORDER BY to choose. The README says emails arrive in whatever case the CRM stored them. The sample has no such pairs, so this is a question to confirm.",
+    "fix": "Confirm whether production can hold two people whose emails differ only in case. If it can, decide which person wins and say so in the query, or normalise email to lower case on load so the UNIQUE constraint covers it."
+  }
+]

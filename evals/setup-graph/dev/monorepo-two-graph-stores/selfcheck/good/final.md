@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md for the Neo4j store behind services/recs. Note there are two graph stores in this monorepo: services/lab has its own embedded Kuzu database, with a different Cypher dialect. I listed it under open questions; tell me if you want it as the default instead.

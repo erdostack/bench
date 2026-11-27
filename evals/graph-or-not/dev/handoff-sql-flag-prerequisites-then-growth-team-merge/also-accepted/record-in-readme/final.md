@@ -1,0 +1,1 @@
+Still stands: yes. We said we'd keep evaluating in the SDK as long as the snapshot is under 5 MB and p99 under 1 ms. It went from 1.2 MB to 3.8 MB and from 0.08 ms to 0.6 ms, so both are still inside. If it does cross, the move we agreed is server-side evaluation, not Neo4j.

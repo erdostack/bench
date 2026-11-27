@@ -1,0 +1,51 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      lbug:
+        specifier: '>=0.12.0'
+        version: 0.14.0
+    devDependencies:
+      prettier:
+        specifier: ^3.5.0
+        version: 3.5.3
+
+packages:
+
+  cmake-js@7.3.1:
+    resolution: {integrity: sha512-30QYPkFFZY1kICnBOfWpSrLcra+Qg5UZZd4H5YXAv6VFBYTl/+t8QxIL0Q9dif8V6VHSBsLYcjwTieaz0ZwPzw==}
+    engines: {node: '>= 14.15.0'}
+    hasBin: true
+
+  lbug@0.14.0:
+    resolution: {integrity: sha512-iuUlwQLT1qtMnXJI3CoFMABqgZNAeodTwsnJwf0vHtxrwdOZGLYKsWp4Q1NDlb+qVLaIN3Kk5atboBxMIXKslg==}
+    engines: {node: '>=18'}
+    hasBin: false
+
+  node-addon-api@8.3.1:
+    resolution: {integrity: sha512-9LVl+/o4eFfX1wueF/mtR2J6UeluIvBc8dfB72/PmUa9Tk87+bLKUrKOHqPLdTuV4mk27D9CPrNcilAkpXk5tw==}
+    engines: {node: ^18 || ^20 || >= 21}
+
+  prettier@3.5.3:
+    resolution: {integrity: sha512-s4hlRnjVGdlPwSvN8LRILcyZihW5Y35W+CH6krQRLEzzIavnw73FhNwrHiEL1uDkI71DzR7fgBp2kr04iUdynw==}
+    engines: {node: '>=14'}
+    hasBin: true
+
+snapshots:
+
+  cmake-js@7.3.1: {}
+
+  lbug@0.14.0:
+    dependencies:
+      cmake-js: 7.3.1
+      node-addon-api: 8.3.1
+
+  node-addon-api@8.3.1: {}
+
+  prettier@3.5.3: {}

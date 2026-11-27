@@ -1,0 +1,5 @@
+[prod]
+path = "data/prod.db"
+
+[dryrun]
+path = "data/dryrun.db"

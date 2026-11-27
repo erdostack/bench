@@ -1,0 +1,1 @@
+Fraud rings are a textbook graph workload: native graph engines use index-free adjacency, so multi-hop traversals stay fast where recursive CTEs degrade. Recommend a graph database. See docs/graph/DECISION.md.

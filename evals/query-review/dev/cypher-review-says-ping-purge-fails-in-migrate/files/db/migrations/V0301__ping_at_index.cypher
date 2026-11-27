@@ -1,0 +1,1 @@
+CREATE RANGE INDEX ping_at IF NOT EXISTS FOR (p:Ping) ON (p.at);

@@ -1,0 +1,1 @@
+I wrote the graph setup to docs/graph/CONTEXT.md. I could not check whether the upstream kuzu project is still maintained, since there is no network access here. The requirements pin kuzu==0.11.3 and nothing in the repo says whether that upstream is archived. If you want that checked, it needs someone with network access.

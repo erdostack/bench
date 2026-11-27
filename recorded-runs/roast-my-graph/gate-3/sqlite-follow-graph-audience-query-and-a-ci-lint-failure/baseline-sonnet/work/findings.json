@@ -1,0 +1,50 @@
+[
+  {
+    "element": "queries/extended_audience.sql",
+    "severity": "low",
+    "problem": "The recursive CTE 'audience' is flagged as unbounded, but it is safe. It uses UNION (not UNION ALL), so a row that is already in 'audience' is discarded and recursion stops once every reachable account has been seen. Mutual follows cannot loop. All 30 brand accounts run in 0.9 s on the 6,000-account sample and each returns 5999. Nothing explains this to the next reader, so the CTE looks like a bug.",
+    "fix": "Leave the query logic unchanged. Add a comment that UNION is the termination guard and must not become UNION ALL, and suppress or configure the lint rule for this file."
+  },
+  {
+    "element": "ci/sql-lint.txt",
+    "severity": "high",
+    "problem": "The suggested fix for RECURSIVE-CTE-UNBOUNDED (add a depth column and WHERE a.depth < 100) would make the query wrong and slow. A depth column makes every (id, depth) row distinct, so UNION no longer deduplicates accounts. On audience.db the fixed query returns 586,644 for brand 1 instead of 5,999, and takes about 7 s instead of 0.05 s. Applying it would cut the 02:00 job from about 1 s to several minutes on the sample, and the cost would grow far faster at 300,000 accounts and 4 million follows. The numbers written to audience_report.extended would be wrong.",
+    "fix": "Do not apply the suggested fix. Treat RECURSIVE-CTE-UNBOUNDED as a false positive for UNION-deduplicated recursion and suppress it for this query. If a guard is wanted anyway, use a visited-set approach that keeps UNION semantics, and check that the result still equals the current output."
+  },
+  {
+    "element": "extended",
+    "severity": "medium",
+    "problem": "The metric carries almost no information. Most follows are mutual (39,088 of 49,497 on the sample), so everything lands in one connected component. Every one of the 30 brand accounts gets extended = 5999, which is every other account in the sample. The report cannot tell brands apart.",
+    "fix": "Ask what the marketing report needs. Options: limit reach to 2 or 3 hops and report each hop count separately, report reach by hop distance, or count only followers who are not mutual. Compare the new numbers against 'direct' before shipping."
+  },
+  {
+    "element": "nightly_audience.py",
+    "severity": "low",
+    "problem": "main() defaults db_path to the relative path 'audience.db'. If the job is started from another working directory, sqlite3.connect silently creates an empty database file and the first query fails with 'no such table: account'. A stray empty audience.db is left behind.",
+    "fix": "Resolve the default path relative to the repo, as is already done for Q, or require the path as an argument and fail if the file does not exist."
+  },
+  {
+    "element": "audience_report",
+    "severity": "low",
+    "problem": "The job writes with 'INSERT OR REPLACE INTO audience_report VALUES (?, ?, ?, ?)' without a column list, so it depends on the column order in schema.sql. REPLACE also silently overwrites an earlier run on the same run_date, with no log. run_date comes from date.today() in the host's local time zone.",
+    "fix": "Name the columns in the INSERT. Use an explicit UTC date or a date passed in as a parameter. Decide whether a re-run on the same day should overwrite the earlier row, and document it."
+  },
+  {
+    "element": "follow",
+    "severity": "low",
+    "problem": "The REFERENCES clauses on follower_id and followee_id are not enforced, because SQLite foreign keys are off by default and the job never runs PRAGMA foreign_keys = ON. The sample has no orphan rows today, but nothing prevents them in production.",
+    "fix": "Run PRAGMA foreign_keys = ON on every connection that writes, and add a foreign_key_check step to the job."
+  },
+  {
+    "element": "queries/mutuals.sql",
+    "severity": "low",
+    "problem": "This query is not used by the job, the README or any test. Nothing checks that it still matches the schema.",
+    "fix": "Remove it, or mention it in the README and add a test."
+  },
+  {
+    "element": "README.md",
+    "severity": "low",
+    "problem": "The README defines the extended audience as everyone who can reach the brand 'through follows ... and so on' and says nothing about cycles, termination or how the query avoids looping. It also describes the sample size but not that the sample gives 5999 for every brand.",
+    "fix": "Add two lines to the README describing how the recursion terminates and what the sample returns, so the next lint run does not trigger the same debate."
+  }
+]

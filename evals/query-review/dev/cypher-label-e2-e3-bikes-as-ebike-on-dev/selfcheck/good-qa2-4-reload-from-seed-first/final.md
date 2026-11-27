@@ -1,0 +1,1 @@
+Done on dev: E2 and E3 bikes now carry EBike as well as Bike.

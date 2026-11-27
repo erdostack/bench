@@ -1,0 +1,5 @@
+[ci]
+uri = "neo4j+s://bg-core-1.build.internal:7687"
+
+[sandbox]
+uri = "neo4j://bg-sandbox.build.internal:7687"

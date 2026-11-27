@@ -1,0 +1,26 @@
+[
+  {
+    "element": "NOTES.md",
+    "severity": "medium",
+    "problem": "The note claims total_attendances double counts because the graph is undirected, and asks to halve total_attendances and mean_events. That is wrong: total_attendances sums degrees over the women side only, which counts each of the 89 edges exactly once (G.number_of_edges() == 89, and the sum over the events side is also 89). Halving would print 44.5 attendances and a mean of 2.47 events per woman, which is false.",
+    "fix": "Do not halve anything. Delete or correct the note so nobody applies the change before the handout is printed."
+  },
+  {
+    "element": "tests/test_attendance.py",
+    "severity": "low",
+    "problem": "The only test uses a 3-edge toy graph. It does not pin the real Davis figures (89 attendances, 4.94 mean), and there is no test for mean_events at all, so a wrong halving of either function would not be caught on the real data.",
+    "fix": "Add a test that load() gives total_attendances == 89 == G.number_of_edges() and mean_events ~= 4.944, plus a mean_events test on the toy graph."
+  },
+  {
+    "element": "mean_events",
+    "severity": "low",
+    "problem": "Raises ZeroDivisionError when women is empty. It also has no docstring saying it is the mean number of events per woman.",
+    "fix": "Return 0.0 (or raise a clear ValueError) for an empty women list and add a one-line docstring."
+  },
+  {
+    "element": "total_attendances",
+    "severity": "low",
+    "problem": "Correct only when the nodes passed as women are one side of a bipartite graph. If a caller passes nodes from both sides, or a graph with edges between women, the sum would double count. The docstring does not state this precondition, which is likely what led to the mistaken note.",
+    "fix": "Document the precondition in the docstring (women must be one side of a bipartite graph), and optionally return G.number_of_edges() after checking bipartiteness."
+  }
+]

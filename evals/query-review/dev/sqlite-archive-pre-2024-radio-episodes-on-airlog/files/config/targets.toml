@@ -1,0 +1,5 @@
+[airlog]
+path = "data/airlog.db"
+
+[rehearsal]
+path = "data/rehearsal.db"

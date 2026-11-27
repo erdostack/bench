@@ -1,0 +1,50 @@
+[
+  {
+    "element": "artifact_input",
+    "severity": "high",
+    "problem": "The index the linter suggests (CREATE INDEX ON artifact_input (input_digest), FK001) should not be added. The linter's reason is that every DELETE or key UPDATE on blob scans artifact_input, but blob_no_update_or_delete makes those impossible: blob rows are never updated or deleted, so the scan never happens. No query in queries/ filters artifact_input by input_digest (impact questions run in the warehouse), so nothing would read the index. On an 11 billion row table taking about 4 million inserts an hour, it would add a second wide btree (32 byte bytea keys, likely hundreds of GB) to maintain on every insert, slow the write path, and a plain CREATE INDEX in a migration would block inserts to artifact_input for hours (CONCURRENTLY would still take very long and load the primary).",
+    "fix": "Do not add the index. Record the decision in the repo (a comment on the foreign key in db/schema.sql and a suppression or allowlist entry for FK001 on artifact_input.input_digest) so the linter stops flagging it. Revisit only if a query that looks up artifact_input by input_digest is added to this database."
+  },
+  {
+    "element": "blob_no_update_or_delete",
+    "severity": "medium",
+    "problem": "Immutability of blob is enforced only by triggers, which the table owner or a superuser can drop or disable (ALTER TABLE ... DISABLE TRIGGER, or SET session_replication_role = replica). schema.sql and triggers.sql define no roles or grants, so the audit requirement 'blob rows are never changed or removed' depends on the service connecting with a restricted role that is not defined anywhere in db/. If the service runs as the owner, a bug or a hand-run fix can bypass it.",
+    "fix": "Add role setup to db/: a service role with INSERT and SELECT only on blob (and the other tables), no UPDATE/DELETE/TRUNCATE, and not the table owner. Keep the triggers as defence in depth."
+  },
+  {
+    "element": "blob_is_immutable",
+    "severity": "low",
+    "problem": "The same function is attached to the statement-level TRUNCATE trigger (blob_no_truncate) and uses OLD.digest in its message. OLD is not a row in a statement-level trigger, so the message cannot include a digest (it is null or can raise a confusing 'record old is not assigned' error depending on version). The TRUNCATE is still blocked, but the error text will not say why.",
+    "fix": "Use a separate function for the TRUNCATE trigger with a fixed message ('blob cannot be truncated'), or test TG_LEVEL and only reference OLD for row triggers."
+  },
+  {
+    "element": "queries/record_step.sql",
+    "severity": "medium",
+    "problem": "The step is three separate INSERT statements with the new artifact id passed back into the third as $5. Nothing in the file or schema says they must run in one transaction. If the connection drops or the process dies in between, there is an artifact row without inputs (a build page that shows an output with no provenance) or a blob row with no artifact. Also artifact has no unique constraint on (build_id, step), so a retried step inserts a second artifact row with a new id, and the ON CONFLICT DO NOTHING on artifact_input does not protect against that.",
+    "fix": "Require a single transaction around the three statements (or combine them into one CTE statement, INSERT ... RETURNING feeding the next insert), and add UNIQUE (build_id, step) to artifact (if a step can have one output) with ON CONFLICT handling so retries are idempotent."
+  },
+  {
+    "element": "queries/producer_of_blob.sql",
+    "severity": "medium",
+    "problem": "Returns every artifact that ever produced the digest, with no LIMIT or ordering. Content-addressed outputs repeat: identical bytes (an empty file, a common generated header, a reproducible library) can be produced by millions of builds, and this query is used by the build page. It will return a huge result set (and read from artifact_output for each one) for a popular digest.",
+    "fix": "Add ORDER BY a.id DESC LIMIT n (with keyset pagination if the page needs more), and make the build page say 'and N more'."
+  },
+  {
+    "element": "artifact_build",
+    "severity": "low",
+    "problem": "queries/artifacts_of_build.sql runs WHERE build_id = $1 ORDER BY id. The index is only on build_id, so each call needs a sort step per build; for large builds this is avoidable work on a 900 million row table.",
+    "fix": "Replace the index with (build_id, id) (artifact_build covers the foreign key check as well, since build_id is still the leading column)."
+  },
+  {
+    "element": "artifact_input",
+    "severity": "medium",
+    "problem": "The table is already 11 billion rows, grows by up to 4 million rows an hour at peak, and audit keeps everything indefinitely. It is a single unpartitioned heap with a 40 byte key repeated in the primary key index. Vacuum, index maintenance, backups and any future migration (including a plain CREATE INDEX) get slower and riskier every month, and there is no retention or partitioning plan in the repo.",
+    "fix": "Plan partitioning (for example by artifact_id range) before go-live, and consider storing a bigint surrogate id for blobs in artifact_input instead of the 32 byte digest. Document expected growth and capacity."
+  },
+  {
+    "element": "size",
+    "severity": "low",
+    "problem": "blob.size is bigint NOT NULL with no CHECK, while digest has a length CHECK. A negative or wrong size would be stored forever and cannot be corrected because the row is immutable.",
+    "fix": "Add CHECK (size >= 0) to blob.size before go-live, because it cannot be repaired afterwards."
+  }
+]

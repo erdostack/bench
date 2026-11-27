@@ -1,0 +1,8 @@
+[
+  {
+    "element": "Invoice.bill_to_name",
+    "severity": "medium",
+    "problem": "Denormalised customer attributes on Invoice (name, address, VAT number) duplicate Customer and risk update anomalies.",
+    "fix": "Consider normalising: keep the details on Customer only, or add a sync step when Customer changes."
+  }
+]

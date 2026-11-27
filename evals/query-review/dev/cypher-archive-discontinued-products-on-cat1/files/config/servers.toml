@@ -1,0 +1,3 @@
+[cat1]
+uri = "neo4j://cat1.merch.internal:7687"
+database = "catalogue"

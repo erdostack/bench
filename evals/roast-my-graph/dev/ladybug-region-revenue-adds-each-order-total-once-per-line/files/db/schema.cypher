@@ -1,0 +1,8 @@
+CREATE NODE TABLE Region(code STRING PRIMARY KEY, name STRING);
+CREATE NODE TABLE Shop(code STRING PRIMARY KEY, name STRING, kind STRING);
+CREATE NODE TABLE Product(sku STRING PRIMARY KEY, name STRING, category STRING);
+CREATE NODE TABLE CustomerOrder(id INT64 PRIMARY KEY, placed_on DATE, total_cents INT64);
+
+CREATE REL TABLE InRegion(FROM Shop TO Region, MANY_ONE);
+CREATE REL TABLE PlacedAt(FROM CustomerOrder TO Shop, MANY_ONE);
+CREATE REL TABLE Contains(FROM CustomerOrder TO Product, qty INT64, line_cents INT64);

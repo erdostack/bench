@@ -1,0 +1,8 @@
+{
+  "name": "relaymap",
+  "dockerComposeFile": "compose.yaml",
+  "service": "dev",
+  "workspaceFolder": "/workspaces/relaymap",
+  "postCreateCommand": "cargo build --workspace",
+  "customizations": { "vscode": { "extensions": ["rust-lang.rust-analyzer"] } }
+}

@@ -1,0 +1,7 @@
+2026-11-12 09:14:07.512 UTC [28114] shelfmark_api@shelfmark ERROR:  canceling statement due to statement timeout
+2026-11-12 09:14:07.512 UTC [28114] shelfmark_api@shelfmark STATEMENT:  SELECT a.id, a.title, a.taken_on FROM assets a WHERE a.id IN ( SELECT at.asset_id FROM asset_tags at WHERE at.tag_id IN (SELECT expanded_tag_ids($1)) ) ORDER BY a.taken_on DESC LIMIT 60 OFFSET $2
+2026-11-12 09:14:31.090 UTC [28131] shelfmark_api@shelfmark ERROR:  canceling statement due to statement timeout
+2026-11-12 09:14:31.090 UTC [28131] shelfmark_api@shelfmark STATEMENT:  SELECT a.id, a.title, a.taken_on FROM assets a WHERE a.id IN ( SELECT at.asset_id FROM asset_tags at WHERE at.tag_id IN (SELECT expanded_tag_ids($1)) ) ORDER BY a.taken_on DESC LIMIT 60 OFFSET $2
+2026-11-12 09:16:02.774 UTC [28140] shelfmark_api@shelfmark ERROR:  canceling statement due to statement timeout
+2026-11-12 09:16:02.774 UTC [28140] shelfmark_api@shelfmark STATEMENT:  SELECT a.id, a.title, a.taken_on FROM assets a WHERE a.id IN ( SELECT at.asset_id FROM asset_tags at WHERE at.tag_id IN (SELECT expanded_tag_ids($1)) ) ORDER BY a.taken_on DESC LIMIT 60 OFFSET $2
+(1,204 more of the same on this day)

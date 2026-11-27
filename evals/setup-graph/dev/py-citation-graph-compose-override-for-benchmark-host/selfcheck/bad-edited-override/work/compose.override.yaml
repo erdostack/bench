@@ -1,0 +1,4 @@
+# Benchmark host settings.
+services:
+  graph:
+    image: neo4j:2026.05.0-community

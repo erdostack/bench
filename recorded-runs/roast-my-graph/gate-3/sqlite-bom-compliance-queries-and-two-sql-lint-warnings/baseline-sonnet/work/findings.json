@@ -1,0 +1,44 @@
+[
+  {
+    "element": "lint/findings.txt",
+    "severity": "high",
+    "problem": "PERF012 (use UNION ALL instead of UNION) is a false positive for components_of and must not be applied. The UNION is what makes the declaration list each part once. Sub-assemblies are shared, so the same part is reached by many paths. Run on bom.db with UNION ALL, components_of for product 671 returns 3,604 rows instead of 564; the other products are about six times larger the same way. Customs and REACH declarations would list parts several times, and the recursion would expand every shared sub-assembly once per path instead of once, so run time grows with depth and sharing.",
+    "fix": "Keep UNION in components_of. Silence PERF012 for that query with the linter's suppression comment or config entry, and put the reason next to it (the dedup is intentional, the output is a set of distinct parts)."
+  },
+  {
+    "element": "lint/findings.txt",
+    "severity": "high",
+    "problem": "PERF020 (add a LIMIT) is a false positive for components_of and must not be applied. The result is a complete compliance declaration, which cannot be a partial list. On bom.db a product has 528 to 564 parts, and any LIMIT smaller than that silently omits parts, and with them their declared restricted substances, from the customs and REACH list, while the query still looks successful.",
+    "fix": "Do not add a LIMIT. Suppress PERF020 for components_of. The result is bounded by the size of one product (about 500 rows here), so there is no runaway-result risk to guard against."
+  },
+  {
+    "element": "components_of",
+    "severity": "low",
+    "problem": "The query is correct as written. UNION removes parts that are reached by more than one path, and it would also terminate if the data ever contained a cycle. The only gap is that an unknown :product, or a part whose kind is not 'product', returns an empty list that looks like a declaration with no parts.",
+    "fix": "Check the :product id before using the result (SELECT 1 FROM part WHERE id = :product AND kind = 'product') and treat no row as an error in the caller."
+  },
+  {
+    "element": "exploded_quantities",
+    "severity": "medium",
+    "problem": "UNION ALL is right here: quantities must be multiplied along every path, and a part that appears in three places must count three times. But the query enumerates every path from the product to every part. It has no cycle guard or depth limit, so it relies entirely on the PLM export being acyclic (README); one bad export makes it loop until the database is killed. It is also exponential in the amount of sharing, which is fine for bom.db (about 8 ms per product, longest chain 4 levels) but can grow sharply as assemblies nest deeper.",
+    "fix": "Add a depth column and a bound, for example WHERE l.depth < 20, so a cyclic export fails fast instead of hanging. If it ever gets slow, aggregate quantities level by level (sum qty per part per depth before expanding) instead of one row per path."
+  },
+  {
+    "element": "part.substances",
+    "severity": "medium",
+    "problem": "substances is one nullable TEXT column. NULL is used for 316 of 690 parts, so 'declares no restricted substances' and 'declaration missing' cannot be told apart. A compliance report built from it treats unknown as clean. A multi-valued declaration packed into one text column also cannot be searched with an index or checked for valid names.",
+    "fix": "Decide what NULL means (add a NOT NULL DEFAULT '' or a declared flag), or move the declarations to a part_substance(part_id, substance) table with a foreign key so each substance is one row and can be queried per substance."
+  },
+  {
+    "element": "uses",
+    "severity": "low",
+    "problem": "Nothing in the schema stops a component from having children or a product from being used inside another part, and SQLite does not enforce the REFERENCES clauses unless PRAGMA foreign_keys = ON is set per connection. The current data is clean: there are no such rows and no dangling parent or child ids. Acyclicity is guaranteed only by the PLM system, not by this database.",
+    "fix": "Turn foreign keys on in the loader and the app connection. Add a check in the load step (no cycles, no children of components, no products as children) so a bad export is rejected on import."
+  },
+  {
+    "element": "uses_child",
+    "severity": "low",
+    "problem": "No query in sql/queries.sql uses this index (both walk down from parent through the primary key). It is only useful for where-used lookups and costs a little on every load.",
+    "fix": "Keep it if where-used questions are planned ('which products contain part X', which compliance usually asks when a substance is banned), and add that query to sql/queries.sql. Otherwise drop it."
+  }
+]

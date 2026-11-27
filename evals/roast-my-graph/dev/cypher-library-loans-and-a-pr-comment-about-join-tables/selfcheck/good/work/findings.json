@@ -1,0 +1,8 @@
+[
+  {
+    "element": "overdue_loans",
+    "severity": "low",
+    "problem": "Reads every unreturned loan with a past due date; fine for a nightly letter run, not for a page.",
+    "fix": "Keep it in the nightly job."
+  }
+]

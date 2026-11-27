@@ -1,0 +1,11 @@
+services:
+  memgraph:
+    image: memgraph/memgraph:2.18.1
+    ports:
+      - "7687:7687"
+    command: ["--log-level=WARNING"]
+    volumes:
+      - mg-data:/var/lib/memgraph
+
+volumes:
+  mg-data: {}

@@ -1,0 +1,14 @@
+[
+  {
+    "element": "record_step.sql",
+    "severity": "low",
+    "problem": "Question to confirm: the file is three statements with $5 supplied by the caller, and it does not say they run in one transaction. Nothing makes a retry safe: artifact has no unique key on (build_id, step), and each run takes a fresh bigserial id. If the build farm retries a step after a timeout that followed a commit, the build page lists the step twice and producer_of_blob.sql returns two producers. A run that stops after the artifact insert leaves an artifact with no inputs.",
+    "fix": "Confirm how the build farm calls this file. Run the three statements in one transaction, with the artifact id taken from the RETURNING clause. Add a unique constraint on artifact (build_id, step) if one step produces exactly one artifact, and make the insert ON CONFLICT DO NOTHING RETURNING id with a fallback select, so a retry returns the same id."
+  },
+  {
+    "element": "artifact_input",
+    "severity": "low",
+    "problem": "Question to confirm: record_step.sql inserts only the output blob, but artifact_input.input_digest has a foreign key to blob.digest. Every input must already be a blob. The repo has no insert path for source files that are not build outputs, and none for build rows that artifact.build_id references. If the build farm's first step reads raw sources, its insert fails the foreign key at go-live.",
+    "fix": "Confirm where source blobs and build rows are recorded. If that happens outside this repo, document it in the README beside the write path. If it does not happen, add an ingest step that inserts the source blob and the build row in the same transaction as the first record_step."
+  }
+]

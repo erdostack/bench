@@ -1,0 +1,26 @@
+[
+  {
+    "element": "queries/subtree.sql",
+    "severity": "critical",
+    "problem": "WHERE path LIKE :prefix || '%' cannot use the index: SQLite only turns LIKE into an index range when the right side is a literal or bound parameter, not a concatenation (and LIKE is case-insensitive by default). EXPLAIN QUERY PLAN on drive.db shows 'SCAN node USING INDEX sqlite_autoindex_node_1', also with PRAGMA case_sensitive_like=1. Every folder view reads the whole path index: a 7-row folder takes ~47 ms on the 120k sample, so about 25x that (roughly 0.8-1.2 s, extrapolated) on 3 million production nodes, against a 100 ms budget.",
+    "fix": "Use a range on the existing unique path index: WHERE path > :prefix AND path < substr(:prefix, 1, length(:prefix) - 1) || '0' ORDER BY path (drop the path <> :prefix line). Verified on drive.db: plan becomes SEARCH node USING INDEX sqlite_autoindex_node_1 (path>? AND path<?), results identical to the LIKE version, 7-row folder 47 ms -> 0.1 ms, /web-8/ 53 ms -> 22 ms. No new index needed."
+  },
+  {
+    "element": "folder_view",
+    "severity": "medium",
+    "problem": "Question to confirm: folder_view returns fetchall() of every descendant at any depth. Even with the range fix, cost follows the row count: ~39,865 rows (/shared-4/q3-reports-20/legal-21/) take ~138 ms and 106,766 rows (/shared-4/) ~340 ms on the sample, so the largest folders cannot meet 100 ms by indexing alone. Whether the UI needs all rows at once is a product decision the README does not settle.",
+    "fix": "If the UI can page or virtualize, add LIMIT :n and key the next page with path > :after on the range query; measure the budget per page. Otherwise state the budget as applying to folders up to a stated size."
+  },
+  {
+    "element": "path",
+    "severity": "low",
+    "problem": "Question to confirm: path copies what parent_id and name say and queries/subtree.sql depends on it (a sound, UNIQUE copy for the stated read), but nothing in the files writes or rewrites it. Renaming or moving a folder must rewrite every descendant's path; a partial rewrite would make the folder view and breadcrumbs disagree. All 120,000 sample rows currently agree, so no damage is shown.",
+    "fix": "Make rename/move a single transaction that updates the folder and its descendants: UPDATE node SET path = :new || substr(path, length(:old) + 1) WHERE path > :old AND path < substr(:old, 1, length(:old) - 1) || '0'. Nothing to change if no such write path exists yet."
+  },
+  {
+    "element": "queries/breadcrumbs.sql",
+    "severity": "low",
+    "problem": "The recursive CTE has no depth or cycle guard and schema.sql does not prevent parent_id pointing at a descendant, so a loop would never finish. No loop exists in drive.db (max depth 53, every parent exists), no file moves folders, and each step is a primary key lookup, so it is safe as written; optional hardening.",
+    "fix": "Optional: add WHERE u.depth < 100 to the recursive step, or build the breadcrumb from the path string."
+  }
+]

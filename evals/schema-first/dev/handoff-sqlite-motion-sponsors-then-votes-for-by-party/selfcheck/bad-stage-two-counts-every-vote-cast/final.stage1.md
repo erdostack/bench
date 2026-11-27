@@ -1,0 +1,1 @@
+Added sql/busy_sponsors.sql. The export isn't committed and the repo had no description of it, so I put one in docs/graph/schema.md: all seven tables, with the party codes and the vote options (1 for, 2 against, 3 abstained).

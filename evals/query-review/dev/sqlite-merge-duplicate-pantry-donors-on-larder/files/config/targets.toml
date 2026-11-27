@@ -1,0 +1,5 @@
+[snapshot]
+path = "data/snapshot.sqlite"
+
+[larder]
+path = "data/larder.sqlite"

@@ -1,0 +1,1 @@
+Merged LAB-31 into LAB-07 in scratch (docs/environments.md: generated, nothing reads it): 179 cases re-pointed with their fees and dates, LAB-31 removed. Live untouched. Check: count(sent_to edges into LAB-07) is now 650 + 179 = 829.

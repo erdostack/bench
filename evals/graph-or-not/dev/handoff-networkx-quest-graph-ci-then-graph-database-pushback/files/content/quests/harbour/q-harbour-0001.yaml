@@ -1,0 +1,5 @@
+id: q-harbour-0001
+title: Salt in the Wound
+region: harbour
+requires: [q-intro-0003]
+unlocks_on: [completed]

@@ -1,0 +1,1 @@
+CREATE CONSTRAINT track_isrc IF NOT EXISTS FOR (t:Track) REQUIRE t.isrc IS UNIQUE;

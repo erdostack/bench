@@ -1,0 +1,14 @@
+[
+  {
+    "element": "load_subscribers",
+    "severity": "high",
+    "problem": "Non-idempotent upsert: the MERGE uses a composite match key and the Subscriber label has no node key, so entity resolution is not guaranteed and duplicate entities can be materialised.",
+    "fix": "Add a uniqueness constraint: CREATE CONSTRAINT subscriber_email_unique FOR (s:Subscriber) REQUIRE s.email IS UNIQUE. With a node key in place the MERGE becomes idempotent."
+  },
+  {
+    "element": "partOf",
+    "severity": "low",
+    "problem": "Naming convention drift.",
+    "fix": "Rename to PART_OF."
+  }
+]

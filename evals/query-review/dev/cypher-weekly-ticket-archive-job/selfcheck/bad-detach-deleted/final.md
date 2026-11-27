@@ -1,0 +1,1 @@
+Closed tickets older than a year are removed. Check with count().

@@ -1,0 +1,7 @@
+[collections]
+uri = "neo4j+s://collections-graph.museum.example.org:7687"
+database = "collections"
+
+[sandbox]
+uri = "neo4j://collections-sandbox.museum.example.org:7687"
+database = "collections"

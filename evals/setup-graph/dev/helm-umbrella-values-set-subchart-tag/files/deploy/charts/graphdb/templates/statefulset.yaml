@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Release.Name }}-graphdb
+spec:
+  serviceName: {{ .Release.Name }}-graphdb
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-graphdb
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-graphdb
+    spec:
+      containers:
+        - name: neo4j
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          env:
+            - name: NEO4J_AUTH
+              value: none

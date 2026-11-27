@@ -1,0 +1,2 @@
+CREATE NODE TABLE Stop(code STRING, name STRING, PRIMARY KEY (code));
+CREATE REL TABLE TRANSFER(FROM Stop TO Stop, from_line STRING, to_line STRING);

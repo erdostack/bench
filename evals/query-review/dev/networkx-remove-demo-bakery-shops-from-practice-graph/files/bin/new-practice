@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+"""new-practice: rebuild graphs/practice.graphml as a copy of the network plus the twelve DEMO- training shops,
+each delivered from a real depot. Anything changed in the practice graph since is lost."""
+import random
+from pathlib import Path
+
+import networkx as nx
+
+ROOT = Path(__file__).resolve().parent.parent
+G = nx.read_graphml(ROOT / "graphs" / "network.graphml")
+rng = random.Random(1123)
+depots = sorted(n for n, d in G.nodes(data=True) if d["kind"] == "depot")
+for i in range(1, 13):
+    shop = f"DEMO-{i:02d}"
+    G.add_node(shop, kind="shop", name=f"Training shop {i}", postcode=f"WX{rng.randint(1, 9)} {rng.randint(1, 9)}TR")
+    dep = rng.choice(depots)
+    G.add_edge(dep, shop, kind="delivers", round=f"T{rng.randint(1, 3)}", drop=rng.randint(1, 30))
+nx.write_graphml(G, ROOT / "graphs" / "practice.graphml")
+print("practice graph rebuilt: network plus 12 DEMO- shops")

@@ -1,0 +1,1 @@
+Added SKIP $page * 50 LIMIT 50. EXPLAIN looks fine.

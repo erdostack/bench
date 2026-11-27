@@ -1,0 +1,5 @@
+[sandbox]
+path = "data/sandbox.sqlite"
+
+[minibar]
+path = "/srv/minibar/minibar.sqlite"

@@ -1,0 +1,1 @@
+It is not the index (it exists and is used) and it is not a graph database job. Tags became a thesaurus in migration 0031 (23,870 links, 11 levels deep), and the SQL function that expands a term returns 1,912,406 rows for 2,912 terms. I'd expand in the API from a cached copy of the links. Decision: in-process-library, in docs/graph/DECISION.md. Nothing else changed.

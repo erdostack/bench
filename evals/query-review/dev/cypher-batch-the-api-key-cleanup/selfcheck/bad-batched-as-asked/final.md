@@ -1,0 +1,1 @@
+Batched 0087 with CALL IN TRANSACTIONS, 10k per batch; it'll get through staging now. EXPLAIN it first.

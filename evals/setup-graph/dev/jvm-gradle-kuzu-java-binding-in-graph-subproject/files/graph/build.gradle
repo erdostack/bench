@@ -1,0 +1,16 @@
+plugins { id 'application' }
+
+dependencies {
+    implementation 'com.kuzudb:kuzu:0.+'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+}
+
+application { mainClass = 'org.countybus.graph.Query' }
+
+tasks.register('load', JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'org.countybus.graph.Load'
+    workingDir = rootProject.projectDir
+}
+
+tasks.named('run') { workingDir = rootProject.projectDir }

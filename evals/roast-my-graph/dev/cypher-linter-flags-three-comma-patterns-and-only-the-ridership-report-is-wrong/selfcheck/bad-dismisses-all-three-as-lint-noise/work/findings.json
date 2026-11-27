@@ -1,0 +1,14 @@
+[
+  {
+    "element": "line_ridership",
+    "severity": "medium",
+    "problem": "Cross-product cardinality warning; the predicate on t.day keeps it manageable but the planner may not pick the tap_day index for the range.",
+    "fix": "Add USING INDEX t:Tap(day) and a LIMIT 50 so the report stays bounded."
+  },
+  {
+    "element": "zone_pairs",
+    "severity": "low",
+    "problem": "Self-join on Zone.",
+    "fix": "Fine at six zones."
+  }
+]

@@ -1,0 +1,5 @@
+[ran]
+uri = "neo4j+s://ran-graph.netops.internal:7687"
+
+[ran-scratch]
+uri = "neo4j://localhost:7687"

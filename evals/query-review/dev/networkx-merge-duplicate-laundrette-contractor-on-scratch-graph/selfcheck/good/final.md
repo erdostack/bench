@@ -1,0 +1,1 @@
+Merged on the scratch graph with bin/scratch: 43 machines moved from CT-PLE-2 to CT-PLE with their contract refs and dates; CT-PLE-2 removed (422 nodes now 421). CT-PLS is a different firm and CT-CSR2 looks like another duplicate; I left both alone.

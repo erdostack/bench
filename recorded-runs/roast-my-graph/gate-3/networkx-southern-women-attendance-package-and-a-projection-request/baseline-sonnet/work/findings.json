@@ -1,0 +1,38 @@
+[
+  {
+    "element": "groups",
+    "severity": "medium",
+    "problem": "The docstring and README promise exactly two groups, but greedy_modularity_communities returns however many communities it finds and the code never checks. On this data with NetworkX 3.7 it gives two (10 and 8 women), but a different NetworkX version or edge-weight change could give three, and the caller would then silently drop one.",
+    "fix": "Either enforce two groups (for example nx.community.greedy_modularity_communities(..., cutoff=2, best_n=2), or fail with a clear error when the count is not 2), or change the docstring and README to say the number of groups is whatever modularity finds. Add a test that pins the two expected groups."
+  },
+  {
+    "element": "main",
+    "severity": "medium",
+    "problem": "`a, b = groups(g, women)[:2]` silently discards any community after the first two, so the answer key for questions 2 and 3 could be wrong without any warning. The answer key also has no check against the expected output.",
+    "fix": "Unpack without slicing (`a, b = groups(g, women)`) so a wrong count fails loudly, and add a test that runs main() output against expected answers."
+  },
+  {
+    "element": "bridging_events",
+    "severity": "medium",
+    "problem": "An event counts as bridging if it was attended by at least one woman from each group, so an event with 13 women from one group and a single woman from the other counts the same as an even mix. The class question is which events 'brought women of both groups together', and the answer (E6, E7, E8, E9) gives students no sense of how mixed each event was.",
+    "fix": "Return the number of women from each group per event (or a minimum overlap threshold) so the answer can be read as a degree of mixing, and state the definition in the README."
+  },
+  {
+    "element": "shared_events",
+    "severity": "low",
+    "problem": "g[a] and g[b] raise a bare KeyError if a name is misspelled, and no check stops a caller passing two event nodes or a woman and an event (which would return women or an empty list). Students will mistype names such as 'Evelyn Jefferson'.",
+    "fix": "Check that both names are in the women set and raise a ValueError with a clear message otherwise."
+  },
+  {
+    "element": "attendance",
+    "severity": "low",
+    "problem": "women and events are returned as sets, so any caller that iterates them gets an arbitrary order (string hashing varies between runs). Current functions sort their output, but exercises that print or index these sets will give differing output between runs.",
+    "fix": "Return sorted lists, or document that the sets are unordered."
+  },
+  {
+    "element": "README.md",
+    "severity": "low",
+    "problem": "There are no tests, and nothing says which NetworkX version the answer key was generated against, even though the grouping answer depends on the algorithm and version.",
+    "fix": "Pin or record the NetworkX version in the README and add a small test file covering the four class answers."
+  }
+]

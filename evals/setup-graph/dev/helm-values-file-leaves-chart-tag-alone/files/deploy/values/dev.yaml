@@ -1,0 +1,8 @@
+# Local kind cluster. The image tag stays at the chart default; 2026.09.0 is being tried on the
+# shared staging cluster, which is configured outside this repo.
+image:
+  pullPolicy: IfNotPresent
+resources:
+  memory: 1Gi
+storage:
+  size: 1Gi

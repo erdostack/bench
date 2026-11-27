@@ -1,0 +1,10 @@
+cypherlint 1.8.0
+
+queries/neighbours.cypher:1        CL204  relationship pattern has no direction; each relationship can be
+                                          matched in both orientations and returned twice
+queries/border_pairs.cypher:2      CL204  relationship pattern has no direction; each relationship can be
+                                          matched in both orientations and returned twice
+queries/total_border_km.cypher:2   CL204  relationship pattern has no direction; each relationship can be
+                                          matched in both orientations and returned twice
+
+3 warnings

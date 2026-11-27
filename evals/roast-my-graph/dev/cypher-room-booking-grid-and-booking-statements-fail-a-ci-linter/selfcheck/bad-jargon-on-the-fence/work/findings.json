@@ -1,0 +1,8 @@
+[
+  {
+    "element": "free_grid",
+    "severity": "medium",
+    "problem": "Cartesian product anti-pattern; acceptable at current scale but a risk as buildings are added.",
+    "fix": "Consider pagination or a LIMIT once more buildings are on board."
+  }
+]

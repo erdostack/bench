@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. Referential integrity is enforced by the schema (PRAGMA foreign_keys = ON plus REFERENCES clauses), so recursive walks can join passages to stations without orphan checks.

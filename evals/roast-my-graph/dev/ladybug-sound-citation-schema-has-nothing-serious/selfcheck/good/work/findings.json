@@ -1,0 +1,14 @@
+[
+  {
+    "element": "Paper.venue",
+    "severity": "low",
+    "problem": "Venue is free text on each paper, so \"NeurIPS\" and \"Neural Information Processing Systems\" are two different venues as far as any query can tell.",
+    "fix": "Leave it until someone wants to browse by venue. If they do, add a Venue node table keyed by a normalised name and a PublishedIn relationship table from Paper to Venue."
+  },
+  {
+    "element": "Cites",
+    "severity": "low",
+    "problem": "Nothing stops the weekly import from recording the same citation twice, which would double-count it in \"cited together\" lists.",
+    "fix": "Have the import skip a (citing, cited) pair it has already written. Nothing to change in the table definition."
+  }
+]

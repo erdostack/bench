@@ -1,0 +1,6 @@
+default_target = "local"
+statement_timeout_s = 30
+history = ".gq_history"
+
+[targets.local]
+path = "var/ledger.db"

@@ -1,0 +1,72 @@
+version = 1
+revision = 2
+requires-python = ">=3.12"
+
+[[package]]
+name = "ferryboard"
+version = "0.7.1"
+source = { editable = "." }
+dependencies = [
+    { name = "neo4j" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "neo4j", specifier = ">=5.28,<7" },
+]
+
+[[package]]
+name = "iniconfig"
+version = "2.1.0"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/37/fd/7fa7af7da7a423902726567478a8e124169bbc639ce1a8f5078e9c37/iniconfig-2.1.0-py3-none-any.whl", hash = "sha256:37fd7fa7af7da7a423902726567478a8e124169bbc639ce1a8f5078e9c37be02", size = 249335 },
+]
+
+[[package]]
+name = "neo4j"
+version = "6.1.0"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f6/67/9ba226c8bdcf11412f4f7310b927c61a264f6252e3698cf3baafeb20/neo4j-6.1.0-py3-none-any.whl", hash = "sha256:f6679ba226c8bdcf11412f4f7310b927c61a264f6252e3698cf3baafeb20c090", size = 1029273 },
+]
+
+[[package]]
+name = "packaging"
+version = "25.0"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/06/c3/4efe99b0152c7b1aebc3a13fe745e5585954ff7cfc0e3a2492485023/packaging-25.0-py3-none-any.whl", hash = "sha256:06c34efe99b0152c7b1aebc3a13fe745e5585954ff7cfc0e3a2492485023b2f1", size = 47700 },
+]
+
+[[package]]
+name = "pluggy"
+version = "1.6.0"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/bd/39/faef924e881fca42caef9c0de9213a0daea7e9411b9a26ba65291bdc/pluggy-1.6.0-py3-none-any.whl", hash = "sha256:bd39faef924e881fca42caef9c0de9213a0daea7e9411b9a26ba65291bdcd583", size = 795071 },
+]
+
+[[package]]
+name = "pytest"
+version = "8.3.5"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/69/d4/ad0178edbc5923fc7a3014a023557c1568acd03a8b09c39beb388efc/pytest-8.3.5-py3-none-any.whl", hash = "sha256:69d4ad0178edbc5923fc7a3014a023557c1568acd03a8b09c39beb388efc9824", size = 453482 },
+]
+
+[[package]]
+name = "pytz"
+version = "2025.2"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d1/1a/41fb5bf3293e5d2c6f7a83601446efe04ecca181bcaac6261ed8cbd7/pytz-2025.2-py3-none-any.whl", hash = "sha256:d11a41fb5bf3293e5d2c6f7a83601446efe04ecca181bcaac6261ed8cbd7a621", size = 876484 },
+]
+
+[[package]]
+name = "ruff"
+version = "0.11.9"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e3/c6/764977e28dc578f296b57bd8b4982dd120c91f386ad7148bcf5d9d3d/ruff-0.11.9-py3-none-any.whl", hash = "sha256:e3c6764977e28dc578f296b57bd8b4982dd120c91f386ad7148bcf5d9d3da4c7", size = 952967 },
+]

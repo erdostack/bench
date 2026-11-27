@@ -1,0 +1,8 @@
+[
+  {
+    "element": "Meter.upstream_ids",
+    "severity": "high",
+    "problem": "Unindexed predicate: label scan on Meter for a list-membership test (the denormalised adjacency list anti-pattern), causing NodeByLabelScan + Filter.",
+    "fix": "CREATE INDEX meter_upstream FOR (m:Meter) ON (m.upstream_ids); same for Transformer."
+  }
+]

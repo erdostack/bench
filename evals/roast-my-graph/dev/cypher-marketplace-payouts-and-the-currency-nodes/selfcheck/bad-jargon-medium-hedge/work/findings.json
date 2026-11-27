@@ -1,0 +1,8 @@
+[
+  {
+    "element": "IN_CURRENCY",
+    "severity": "medium",
+    "problem": "Supernode risk: high-cardinality relationship to EUR violates the dense-node guideline.",
+    "fix": "Consider refactoring to a property; evaluate before Black Friday."
+  }
+]

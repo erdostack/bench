@@ -1,0 +1,1 @@
+region_revenue double counts: there is a fan-out from CustomerOrder to Contains, a classic row-multiplication anti-pattern. Rated high. Use sum(DISTINCT o.total_cents) so each order total is only counted once.

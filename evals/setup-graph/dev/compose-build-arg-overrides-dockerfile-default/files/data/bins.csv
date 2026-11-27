@@ -1,0 +1,9 @@
+code,aisle,zone
+A1,A,ambient
+A2,A,ambient
+A3,A,ambient
+B1,B,ambient
+B2,B,chilled
+B3,B,chilled
+C1,C,chilled
+C2,C,bulk

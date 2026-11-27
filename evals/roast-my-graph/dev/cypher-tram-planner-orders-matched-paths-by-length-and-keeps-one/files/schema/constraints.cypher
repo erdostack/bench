@@ -1,0 +1,3 @@
+CREATE CONSTRAINT stop_id IF NOT EXISTS FOR (s:Stop) REQUIRE s.id IS UNIQUE;
+CREATE INDEX stop_name IF NOT EXISTS FOR (s:Stop) ON (s.name);
+CREATE INDEX line_code IF NOT EXISTS FOR (l:Line) ON (l.code);

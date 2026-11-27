@@ -1,0 +1,1 @@
+Review of roadnet done. Verdict: critical issue found in staging_edge (three concurrent loaders share one staging table that each fully clears, so two regions of edge can be replaced with nothing before the 03:00 plan); one medium (validate does per-edge lookups). Wrote docs/graph/ROAST.md and findings.json in the repo root. Full detail and the fix are in those files.

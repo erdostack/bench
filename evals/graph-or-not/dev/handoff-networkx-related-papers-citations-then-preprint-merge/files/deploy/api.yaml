@@ -1,0 +1,5 @@
+service: api
+replicas: 4
+resources:
+  memory: 6Gi
+  cpu: "2"

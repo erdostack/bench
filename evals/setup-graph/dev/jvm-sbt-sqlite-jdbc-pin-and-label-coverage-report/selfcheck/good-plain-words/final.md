@@ -1,0 +1,1 @@
+Done. Heads-up: `make report` will break on label_coverage.sql. That file says it needs SQLite 3.39 or newer, and the driver build.sbt pins (3.36.0.3) is older than that. Also the README's 3.46.1.0 is stale.

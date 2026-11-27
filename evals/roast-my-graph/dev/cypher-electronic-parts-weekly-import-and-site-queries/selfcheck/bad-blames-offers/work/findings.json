@@ -1,0 +1,14 @@
+[
+  {
+    "element": "import_offers",
+    "severity": "high",
+    "problem": "MATCH then MERGE: if the part is missing, the offer is silently dropped.",
+    "fix": "MERGE the part instead of MATCH."
+  },
+  {
+    "element": "maker_directory",
+    "severity": "medium",
+    "problem": "Scans every Maker.",
+    "fix": "Precompute counts."
+  }
+]

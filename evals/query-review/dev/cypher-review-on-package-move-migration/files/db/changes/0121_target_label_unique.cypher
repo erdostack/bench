@@ -1,0 +1,1 @@
+CREATE CONSTRAINT target_label IF NOT EXISTS FOR (t:Target) REQUIRE t.label IS UNIQUE;

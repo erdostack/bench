@@ -1,0 +1,1 @@
+I know the tables are Member, Venue, Game and Match from the README, but not their columns or which one holds the time a match was played, and there's no club.db here. Could you paste the Match and Venue definitions?

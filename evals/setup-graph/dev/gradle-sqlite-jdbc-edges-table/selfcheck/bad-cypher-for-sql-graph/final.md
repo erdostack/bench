@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. Two things look off: the design note says sqlite-jdbc 3.45.1.0 but the lockfile has 3.50.3.0, and the foreign keys the README relies on are not enforced, because the connection never enables them; trails.db already contains links to junctions that do not exist.

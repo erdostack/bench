@@ -1,0 +1,31 @@
+name: graph-job
+on:
+  workflow_call:
+    inputs:
+      neo4j-image:
+        description: Neo4j image for the service container
+        type: string
+        default: neo4j:5.26.24-community
+
+jobs:
+  queries:
+    runs-on: ubuntu-latest
+    services:
+      neo4j:
+        image: ${{ inputs.neo4j-image }}
+        env:
+          NEO4J_AUTH: none
+        ports:
+          - 7687:7687
+        options: >-
+          --health-cmd "cypher-shell 'RETURN 1'"
+          --health-interval 10s --health-retries 12
+    env:
+      NEO4J_URI: bolt://localhost:7687
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - run: make load
+      - run: for f in queries/*.cypher; do make q F="$f"; done

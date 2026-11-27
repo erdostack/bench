@@ -1,0 +1,25 @@
+# Shared local infrastructure. Services that need something else bring their own compose file.
+name: tidepool
+
+services:
+  postgres:
+    image: postgres:17.7
+    environment:
+      POSTGRES_DB: accounts
+      POSTGRES_PASSWORD: "${TIDEPOOL_PG_PASSWORD:?set TIDEPOOL_PG_PASSWORD}"
+    ports: ["5432:5432"]
+    volumes: ["pg-data:/var/lib/postgresql/data"]
+
+  memgraph:
+    image: memgraph/memgraph:3.5.0
+    command: ["--log-level=WARNING", "--storage-snapshot-on-exit=true"]
+    ports: ["7688:7687"]
+    volumes: ["mg-data:/var/lib/memgraph"]
+
+  redis:
+    image: redis:7.4
+    ports: ["6379:6379"]
+
+volumes:
+  pg-data:
+  mg-data:

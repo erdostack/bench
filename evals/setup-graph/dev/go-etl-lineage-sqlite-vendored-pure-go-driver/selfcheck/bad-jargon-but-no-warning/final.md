@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. The queries use string_agg with ORDER BY (SQLite 3.44+ syntax) to build readable paths; the dialect is standard SQLite and the vendored 3.41.2 build is pure Go, so no cgo is needed.

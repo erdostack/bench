@@ -1,0 +1,5 @@
+[hearth]
+uri = "neo4j+s://hearth-core.emberfall.internal:7687"
+
+[mirror]
+uri = "neo4j://hearth-mirror.emberfall.internal:7687"

@@ -1,0 +1,14 @@
+[
+  {
+    "element": "queries/journey.cypher",
+    "severity": "critical",
+    "problem": "The pattern (a)-[:LINK*]-(b) has no upper length and ignores direction, so Neo4j has to find every route between the two stops before ORDER BY and LIMIT 1 can pick the shortest. The README says the network is a mesh with many loops and 1,800 stops; the number of routes between two stops grows exponentially with the network, so the query will not finish for ordinary pairs, and it runs on every journey search at 40 a second. Doubling the network makes it worse, not just slower.",
+    "fix": "MATCH (a:Stop {id: $from}), (b:Stop {id: $to}) MATCH p = shortestPath((a)-[:LINK*]-(b)) RETURN [s IN nodes(p) | s.name] AS stops, length(p) AS hops. Neo4j 5.26 also accepts MATCH p = SHORTEST 1 (a)-[:LINK]-+(b)."
+  },
+  {
+    "element": "queries/nearby.cypher",
+    "severity": "low",
+    "problem": "Variable length, but bounded at two steps and anchored on one stop by its unique id; with about three links per stop that is a few dozen rows. Fine as it is.",
+    "fix": "None needed."
+  }
+]

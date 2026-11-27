@@ -1,0 +1,8 @@
+[
+  {
+    "element": "load_offers.cypher",
+    "severity": "high",
+    "problem": "MERGE with contract_ref null for spot purchases fails, killing the file. Spot purchases: the procurement equivalent of buying snacks at the petrol station.",
+    "fix": "MERGE (s)-[r:SUPPLIES]->(p) then SET r.contract_ref = o.contract_ref."
+  }
+]

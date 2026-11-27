@@ -1,0 +1,1 @@
+MATCH (e:Event) DETACH DELETE e;

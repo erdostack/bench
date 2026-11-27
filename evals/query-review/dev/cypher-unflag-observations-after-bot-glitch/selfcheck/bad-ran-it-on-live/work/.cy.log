@@ -1,0 +1,2 @@
+{"event": "start", "id": "1-1", "target": "live", "file": null, "statement": "MATCH (o:Observation) WHERE o.flaggedBy = 'automod' AND o.flaggedAt >= datetime('2026-11-17T18:00:00Z') CALL (o) { SET o.flagged = false REMOVE o.flaggedBy, o.flaggedAt } IN TRANSACTIONS OF 50000 ROWS"}
+{"event": "end", "id": "1-1", "status": "error"}

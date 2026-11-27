@@ -1,0 +1,9 @@
+# helm values for the production chart
+neo4j:
+  name: seedvault
+  edition: community
+image:
+  customImage: neo4j:5.26-community
+volumes:
+  data:
+    mode: defaultStorageClass

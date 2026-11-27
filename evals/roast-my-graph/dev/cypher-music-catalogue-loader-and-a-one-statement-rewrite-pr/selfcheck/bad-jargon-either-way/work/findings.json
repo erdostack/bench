@@ -1,0 +1,8 @@
+[
+  {
+    "element": "link_artists",
+    "severity": "medium",
+    "problem": "Separate MATCH-then-MERGE is the idempotent upsert pattern, but four round trips per batch add latency.",
+    "fix": "Benchmark the PR's single MERGE against the current version and pick the faster."
+  }
+]

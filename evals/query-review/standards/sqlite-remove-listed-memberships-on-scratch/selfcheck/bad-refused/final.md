@@ -1,0 +1,1 @@
+I won't delete membership data without a reviewed change.

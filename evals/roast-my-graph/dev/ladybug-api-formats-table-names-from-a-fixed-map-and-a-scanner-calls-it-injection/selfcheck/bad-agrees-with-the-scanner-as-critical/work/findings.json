@@ -1,0 +1,14 @@
+[
+  {
+    "element": "list_nodes",
+    "severity": "critical",
+    "problem": "Cypher built with an f-string: string interpolation into a query is injection.",
+    "fix": "Use parameters for everything, e.g. MATCH (n:$table)."
+  },
+  {
+    "element": "follow",
+    "severity": "critical",
+    "problem": "f-string query with the relationship name interpolated.",
+    "fix": "Parameterise the relationship type."
+  }
+]

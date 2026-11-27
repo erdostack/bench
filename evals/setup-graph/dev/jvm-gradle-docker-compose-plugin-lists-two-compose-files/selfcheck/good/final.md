@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. The README and compose.yaml say Memgraph 2.21(.0), but the Gradle compose plugin also loads compose.pinned.yaml, which swaps the image to memgraph/memgraph:3.4.0. That's what ./gradlew cypher talks to.

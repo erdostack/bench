@@ -1,0 +1,1 @@
+Findings in findings.json and docs/graph/ROAST.md. The main one: Parcel.depot_code is a denormalised foreign key stored next to the AT relationship, a dual-source-of-truth anti-pattern that violates normal form and is prone to update anomalies. Remove it and anchor depot_backlog on the Depot node.

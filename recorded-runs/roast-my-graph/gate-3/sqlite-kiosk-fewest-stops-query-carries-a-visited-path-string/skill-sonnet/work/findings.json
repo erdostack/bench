@@ -1,0 +1,14 @@
+[
+  {
+    "element": "queries/fewest_stops.sql",
+    "severity": "critical",
+    "problem": "When the kiosk asks \"How many stops to X?\" (README) on the 144-stop, 420-link grid network, the recursive CTE `walk` keeps a `path` string and only refuses to revisit a stop within one path, so it enumerates every simple path from :from_stop, not the shortest. Run read-only on tram.db with :from_stop=1, a capped copy of `walk` reached 2,000,000 rows without finishing, and the full query was interrupted after 20 s even for a neighbouring stop (:to_stop = an adjacent stop). ORDER BY hops LIMIT 1 only applies after all paths exist. This is the slow kiosk.",
+    "fix": "Search by stop, not by path: keep one row per (stop, hops), stop expanding at the target and bound the depth by the number of stops. Valid on SQLite 3.53.1 (checked): WITH RECURSIVE walk(stop, hops) AS (SELECT :from_stop, 0 UNION SELECT l.to_stop, walk.hops + 1 FROM walk JOIN link l ON l.from_stop = walk.stop WHERE walk.stop <> :to_stop AND walk.hops < 143) SELECT MIN(hops) AS hops FROM walk WHERE stop = :to_stop; This finished in about 30 ms for the farthest pair (22 hops) and matched a Python breadth-first search for all 143 targets from three start stops. If the kiosk must show the route, return it with a second query or in the application; do not carry the path string in the recursion."
+  },
+  {
+    "element": "link_to",
+    "severity": "low",
+    "problem": "No query in queries/ looks up link by to_stop (fewest_stops.sql, stops_within.sql and line_stops.sql all filter on from_stop or line), so the index is never used and is rebuilt on every nightly refresh for nothing.",
+    "fix": "Drop it: DROP INDEX link_to; Keep it only if a reverse lookup (links into a stop) is added."
+  }
+]

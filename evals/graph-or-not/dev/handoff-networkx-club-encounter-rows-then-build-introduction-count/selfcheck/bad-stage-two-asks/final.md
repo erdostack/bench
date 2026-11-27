@@ -1,0 +1,1 @@
+Before I write it: does every tie count, or only ties where the members met in several contexts? encounter has one row per context and I don't want to guess what makes a tie vouch for an introduction.

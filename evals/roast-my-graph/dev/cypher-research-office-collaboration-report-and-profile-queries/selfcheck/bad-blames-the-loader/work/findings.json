@@ -1,0 +1,8 @@
+[
+  {
+    "element": "LINK_PAIR",
+    "severity": "critical",
+    "problem": "Cartesian product between a and b over 7,400 researchers.",
+    "fix": "Rewrite as a single connected pattern."
+  }
+]

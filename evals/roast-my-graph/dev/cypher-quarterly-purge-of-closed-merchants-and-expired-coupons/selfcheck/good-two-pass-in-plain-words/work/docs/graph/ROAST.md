@@ -1,0 +1,11 @@
+# Roast: acquiring-graph
+
+## Findings
+
+### 1. purge_closed_merchants (high)
+
+**Problem.** One batch is ten thousand closed merchants, and deleting a merchant also deletes all of its card payments in that same batch. With tens of thousands of payments per merchant (millions for the big ones) one batch is far beyond the 1 GB limit, so it will fail just like the 2023 attempt did.
+
+**Fix.** Two passes: first remove the payment relationships of closed merchants 10,000 relationships at a time, then remove the merchants themselves.
+
+Roasted with erdostack: npx skills add usergraphtheory/erdostack

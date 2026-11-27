@@ -1,0 +1,5 @@
+[live]
+path = "data/live.sqlite"
+
+[sandbox]
+path = "data/sandbox.sqlite"

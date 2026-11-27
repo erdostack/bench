@@ -1,0 +1,7 @@
+services:
+  neo4j:
+    image: neo4j:5.26-enterprise
+    environment:
+      NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
+      NEO4J_AUTH: neo4j/testpassword
+    ports: ["7687:7687"]

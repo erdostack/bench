@@ -1,0 +1,8 @@
+[
+  {
+    "element": "HotelAmenity",
+    "severity": "medium",
+    "problem": "Intermediate node table (reified edge) adds a hop to amenity traversals.",
+    "fix": "Keep the table for flexibility but give it a composite primary key of hotel and amenity code to speed up lookups."
+  }
+]

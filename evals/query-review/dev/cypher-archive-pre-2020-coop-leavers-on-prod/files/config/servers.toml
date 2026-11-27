@@ -1,0 +1,5 @@
+[prod]
+uri = "neo4j+s://register.meadowside-coop.internal:7687"
+
+[copy]
+uri = "neo4j://register-copy.meadowside-coop.internal:7687"

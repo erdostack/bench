@@ -1,0 +1,7 @@
+[fm1]
+uri = "neo4j+s://fm1.estates.hospital.internal:7687"
+database = "ppm"
+
+[fm-scratch]
+uri = "neo4j://fm-scratch.estates.hospital.internal:7687"
+database = "ppm"

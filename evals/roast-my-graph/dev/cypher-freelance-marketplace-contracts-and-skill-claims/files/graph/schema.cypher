@@ -1,0 +1,5 @@
+CREATE CONSTRAINT freelancer_id IF NOT EXISTS FOR (f:Freelancer) REQUIRE f.id IS UNIQUE;
+CREATE CONSTRAINT client_id IF NOT EXISTS FOR (c:Client) REQUIRE c.id IS UNIQUE;
+CREATE CONSTRAINT contract_id IF NOT EXISTS FOR (k:Contract) REQUIRE k.id IS UNIQUE;
+CREATE CONSTRAINT skill_name IF NOT EXISTS FOR (s:Skill) REQUIRE s.name IS UNIQUE;
+CREATE INDEX skillclaim_level IF NOT EXISTS FOR (c:SkillClaim) ON (c.level);

@@ -1,0 +1,20 @@
+[
+  {
+    "element": "Credit",
+    "severity": "critical",
+    "problem": "Join table kept as a node: Credit only exists to connect a Person to a Production, turning every filmography lookup into a two-hop traversal across 19 million pointless nodes.",
+    "fix": "Replace Credit with a direct relationship (p:Person)-[:CREDITED_ON {role, billing_order}]->(prod:Production) and delete the Credit label."
+  },
+  {
+    "element": "(:Person)-[:HOLDS]->(:Credit)",
+    "severity": "high",
+    "problem": "HOLDS and ON are plumbing for the join node.",
+    "fix": "Remove both once Credit is a relationship."
+  },
+  {
+    "element": "RELATED",
+    "severity": "medium",
+    "problem": "Generic relationship type with a kind property.",
+    "fix": "Split into specific relationship types such as SPOUSE_OF, REPRESENTED_BY and COLLABORATES_WITH."
+  }
+]

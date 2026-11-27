@@ -1,0 +1,1 @@
+CREATE CONSTRAINT object_id IF NOT EXISTS FOR (o:Object) REQUIRE o.objectId IS UNIQUE;

@@ -1,0 +1,14 @@
+[
+  {
+    "element": "hand_over_shift",
+    "severity": "high",
+    "problem": "Cartesian product between from and to: Neo4j warns about this and it can blow up memory.",
+    "fix": "Split into two MATCH clauses."
+  },
+  {
+    "element": "open_incidents",
+    "severity": "medium",
+    "problem": "Filters closed_at after the expansion.",
+    "fix": "Add an index on closed_at."
+  }
+]

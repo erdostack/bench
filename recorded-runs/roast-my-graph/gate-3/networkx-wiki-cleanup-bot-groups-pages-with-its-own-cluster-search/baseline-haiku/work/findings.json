@@ -1,0 +1,38 @@
+[
+  {
+    "element": "clusters",
+    "severity": "critical",
+    "problem": "clusters() walks G.neighbors(p), which on a DiGraph returns only outgoing links, although the README says clusters are joined in either direction. A page that is only linked to (most content pages have no links of their own) is cut off from its index page whenever it is visited first in sorted order, so it becomes a one-page cluster and is archived. Against data/ the directed walk archives 53 pages, and the weakly connected walk archives 37. The 16 extra pages are all linked from pages in the 380-page main cluster; for example Astast is linked from Briuv.",
+    "fix": "Group pages with nx.weakly_connected_components(G), or walk G.to_undirected() in clusters(). Keep the sort so the output stays deterministic."
+  },
+  {
+    "element": "wikiprune/__main__.py",
+    "severity": "high",
+    "problem": "The script writes whatever archive_list returns straight to out/archive.txt, and the bot moves every listed page on Sunday at 23:00. There is no sanity check. A truncated or empty links.csv, or a pages.csv with a changed header, produces a list that can cover most of the wiki and nothing stops it.",
+    "fix": "Before writing, refuse to continue when the list is larger than a set share of pages (for example 20 percent) or when pages.csv or links.csv has fewer rows than expected. Also print the list size and the first few titles so the run log shows what will move."
+  },
+  {
+    "element": "archive_list",
+    "severity": "medium",
+    "problem": "The archive decision rests only on link structure. The README says a cluster under three pages is 'not reachable from anything else people use', but nothing in the code checks search, category or traffic data. The 31 pages with no links at all are archived on that basis alone.",
+    "fix": "Add a second input (last-viewed date or search hits) and skip any page that has recent use, or at least document the assumption and have a person check the list before the first real run."
+  },
+  {
+    "element": "tests/test_clusters.py",
+    "severity": "medium",
+    "problem": "test_two_islands passes only because 'a' is the first title in sorted order, so the walk starts at the page with outgoing links. The test does not catch the directed-neighbour bug. Also, a plain 'python3 -m unittest' runs zero tests because tests/ is not a package; the suite only runs with 'python3 -m unittest discover -s tests'.",
+    "fix": "Add a test where the linked-to page sorts first (for example an index page 'idx' linking to 'content', with 'content' having no links). Make tests a package or add a test command to the README."
+  },
+  {
+    "element": "wikiprune/__main__.py",
+    "severity": "medium",
+    "problem": "Path('out/archive.txt') is relative to the current working directory, not the repo. Run from another directory, the list is written somewhere the bot does not read, or a stale file is left in place. The write is also not atomic, so the bot can read a half-written file.",
+    "fix": "Resolve the output path from the package location, and write to a temporary file that is renamed into place once complete."
+  },
+  {
+    "element": "load",
+    "severity": "low",
+    "problem": "add_edges_from creates a node for every link endpoint, so a link to a title missing from pages.csv (a typo or a deleted page) becomes a page that can be written to the archive list. Titles are also matched exactly, so a stray space or case difference splits a real cluster in two. The current data has no such rows, but the code does not guard against them.",
+    "fix": "Warn on, or drop, links whose endpoints are not in pages.csv, and strip and normalise titles on load."
+  }
+]

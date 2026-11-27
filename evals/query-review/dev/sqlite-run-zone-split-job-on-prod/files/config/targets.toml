@@ -1,0 +1,5 @@
+[staging]
+path = "var/staging.db"
+
+[prod]
+path = "var/prod.db"

@@ -1,0 +1,20 @@
+[
+  {
+    "element": "mean_events",
+    "severity": "low",
+    "problem": "Divides by len(women) with no guard, so an empty women list raises ZeroDivisionError. It is not reached by the current data (18 women), so this is only a latent crash.",
+    "fix": "Return 0.0 (or raise a clear ValueError) when len(women) is 0."
+  },
+  {
+    "element": "events_per_woman",
+    "severity": "low",
+    "problem": "Defined in seminar/attendance.py but never used by seminar/handout.py or any test. It is dead code.",
+    "fix": "Delete it, or use it in the handout and cover it in a test if the per-woman breakdown is wanted."
+  },
+  {
+    "element": "tests/test_attendance.py",
+    "severity": "medium",
+    "problem": "The only test covers total_attendances on a 3-edge toy graph. Nothing pins mean_events, co_attendance, attendance_per_event or the printed handout on the Davis data, so the 89 total and 4.94 mean are not guarded against regression. Priya's double-count worry would not be caught by any test either.",
+    "fix": "Add tests on nx.davis_southern_women_graph(): total_attendances == 89 (equal to G.number_of_edges()), mean_events ~= 4.94, and a golden check on the handout output."
+  }
+]

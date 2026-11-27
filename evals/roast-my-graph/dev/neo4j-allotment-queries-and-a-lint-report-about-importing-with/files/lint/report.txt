@@ -1,0 +1,6 @@
+cypher-lint 2.4.0 (rules: platform-default)
+app/queries.py:5   SITE_SUMMARY            CY-DEP-017 HIGH  importing WITH in CALL subquery is deprecated; use CALL (p) { ... }
+app/queries.py:20  APPLICANT_OVERVIEW      CY-DEP-017 HIGH  importing WITH in CALL subquery is deprecated; use CALL (a) { ... }
+app/queries.py:36  WAITING_LIST_POSITION   CY-DEP-017 HIGH  importing WITH in CALL subquery is deprecated; use CALL (w) { ... }
+app/queries.py:50  FREE_PLOTS_BY_SITE      CY-DEP-017 HIGH  importing WITH in CALL subquery is deprecated; use CALL (s) { ... }
+4 findings (4 high)

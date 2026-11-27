@@ -1,0 +1,8 @@
+[
+  {
+    "element": "load_offers.cypher",
+    "severity": "medium",
+    "problem": "No error handling: transaction failures abort the job; violates resilience best practices.",
+    "fix": "Wrap execute_write in try/except with retries and dead-letter the failing file."
+  }
+]

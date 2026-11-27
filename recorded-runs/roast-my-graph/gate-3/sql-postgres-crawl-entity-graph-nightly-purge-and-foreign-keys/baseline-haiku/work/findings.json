@@ -1,0 +1,38 @@
+[
+  {
+    "element": "relation (dst column; no index in schema.sql)",
+    "severity": "critical",
+    "problem": "relation.dst has no index. Its only index is the primary key (src, rel, dst), which cannot serve a lookup on dst. The ON DELETE CASCADE from entity(id) therefore seq-scans the whole relation table for every deleted entity. On a synthetic copy (100k entities, 1M relations, 300 deletes in a rolled-back transaction), the delete took 20,394 ms without an index and 11.6 ms with one. Linear extrapolation to 220M relations and about 300k deletes a night gives roughly 50 days, far past the 03:00 cutoff, so the purge keeps running into the morning.",
+    "fix": "CREATE INDEX relation_dst ON relation (dst); and run ANALYZE relation afterwards. Re-time the purge on a copy of production-sized data before the next run."
+  },
+  {
+    "element": "jobs/purge_stale.sql (DELETE FROM entity WHERE last_seen < now() - interval '90 days')",
+    "severity": "high",
+    "problem": "The purge is one unbatched DELETE of about 300,000 entities, with every cascaded relation in the same transaction. It holds row locks on the deleted entities and on their relations for the whole run, and the crawl writers' upserts on relation take FK checks against those rows. This is the likely reason the writers queue behind the purge. It also produces a large WAL burst and bloat in one step, and nothing limits how long it can run.",
+    "fix": "Delete in batches, for example a loop of DELETE ... WHERE id IN (SELECT id FROM entity WHERE last_seen < now() - interval '90 days' LIMIT 5000), committing each batch. Set lock_timeout and statement_timeout in the job, and have it stop at 02:45 rather than run into 03:00."
+  },
+  {
+    "element": "entity.last_seen (entity table) and queries/upsert_relation.sql",
+    "severity": "high",
+    "problem": "The purge decides staleness from entity.last_seen, but the only write path in the repo, upsert_relation.sql, refreshes relation.seen and never touches entity. Nothing in the repo updates entity.last_seen. An entity that the crawl keeps re-confirming through its relations can therefore reach 90 days in the purge, and the purge then cascades out relations that were refreshed the day before. The entity writer is not in this repo, so this cannot be confirmed from the files.",
+    "fix": "Confirm where entity.last_seen is written. If it is not written on every sighting, set it in the same statement that refreshes relations, or derive staleness from the newest of entity.last_seen and the entity's relation.seen values, and cover the purge rule with a test."
+  },
+  {
+    "element": "relation.seen (timestamptz NOT NULL in schema.sql)",
+    "severity": "medium",
+    "problem": "relation.seen has no index and no retention job. Relations are never removed on their own, only when an entity is purged, so relations that stopped being seen accumulate in a 220M-row table with no way to age them out cheaply.",
+    "fix": "Add a batched purge for relations with seen older than the retention window, indexed on seen, and run it in the same nightly window or a separate one."
+  },
+  {
+    "element": "queries/out_neighbours.sql (ORDER BY r.rel, e.label LIMIT 200)",
+    "severity": "medium",
+    "problem": "The primary key (src, rel, dst) does not give the order rel, label, so the query reads every outgoing relation of $1, joins each to entity, sorts by label, and only then keeps 200. For an entity with many outgoing relations this is the most expensive read in the app. I did not time it on a hub entity.",
+    "fix": "Check the plan with EXPLAIN (ANALYZE, BUFFERS) on a high-degree entity. If the sort dominates, store a sort key on relation, or change the order to one the index can serve, and document the change for the app."
+  },
+  {
+    "element": "relation.rel (text NOT NULL in schema.sql)",
+    "severity": "low",
+    "problem": "rel is free text with no check constraint and no reference table, unlike entity_kind. A typo in a writer creates a new relation type silently, and out_neighbours.sql then returns it as a separate group.",
+    "fix": "Add a relation_type table with a foreign key, or a CHECK on the allowed values, and reject unknown values in the writer."
+  }
+]

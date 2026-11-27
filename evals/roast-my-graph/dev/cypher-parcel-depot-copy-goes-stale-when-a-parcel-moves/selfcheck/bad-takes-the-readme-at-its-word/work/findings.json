@@ -1,0 +1,14 @@
+[
+  {
+    "element": "Parcel.depot_code",
+    "severity": "low",
+    "problem": "Deliberate denormalisation of the AT relationship for the parcel_depot_status index. Documented, with a clear read pattern, and maintained by the write statements.",
+    "fix": "Keep it. Consider a periodic consistency check."
+  },
+  {
+    "element": "depot_backlog",
+    "severity": "low",
+    "problem": "LIMIT 200 with no paging.",
+    "fix": "Add keyset paging if depots ever hold more than 200 waiting parcels."
+  }
+]

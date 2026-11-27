@@ -1,0 +1,1 @@
+Added sql/subtotals.sql: a recursive query pairs every account with itself and everything below it, then the period's postings are summed per top account, 0 where there are none. The schema's triggers keep the chart a tree, so no cycle guard is needed.

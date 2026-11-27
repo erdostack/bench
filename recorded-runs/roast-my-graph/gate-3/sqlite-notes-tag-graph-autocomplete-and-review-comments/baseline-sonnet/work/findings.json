@@ -1,0 +1,32 @@
+[
+  {
+    "element": "tag_parent",
+    "severity": "medium",
+    "problem": "The only guard against loops is CHECK (child_id <> parent_id), which stops a tag being its own parent but not longer cycles. tags.db already contains one: tags 11 -> 12 -> 13 -> 11 (acme-acme-books50, acme-acme-books56, acme-acme-books58). Every tag in that cycle is its own ancestor, and tag_ancestors.sql lists the other two as each other's ancestors. Any code that walks the hierarchy without UNION (a descendants walk, a path builder, a tree renderer) can loop.",
+    "fix": "Reject a tag_parent insert when parent_id already has child_id among its ancestors (a trigger or a check in the app that runs the ancestors query first), and delete or repair the 11/12/13 cycle in the existing data."
+  },
+  {
+    "element": "tag_ancestors.sql",
+    "severity": "low",
+    "problem": "Reviewer comment 2: this query cannot loop. UNION (not UNION ALL) discards ids already in the walk, so each tag enters the recursion once and the walk ends even on the 11/12/13 cycle (checked on tags.db). It also stays linear with several parents per tag. The problems are that the comment still says nothing about cycles in the data, and that for a tag inside a cycle the filter up.id <> :tag_id hides that tag being its own ancestor.",
+    "fix": "No depth limit is needed. Keep UNION and add a comment that this is what bounds the walk. If cycles are made impossible (see tag_parent), the comment can say so."
+  },
+  {
+    "element": "tag_note",
+    "severity": "medium",
+    "problem": "INSERT OR IGNORE INTO note_tag only ignores uniqueness and similar conflicts, not foreign key violations. SQLite does not enforce REFERENCES, or run ON DELETE CASCADE, unless each connection runs PRAGMA foreign_keys = ON (tags.db reports foreign_keys = 0 on a new connection), and nothing in app/ sets it. A call with a note_id that does not exist inserts an orphan note_tag row, and deleting a note or tag leaves note_tag and tag_parent rows behind. The sample currently has no orphans.",
+    "fix": "Run PRAGMA foreign_keys = ON when the connection is opened (and say so in the README), and let the foreign key error from tag_note surface rather than hiding it behind OR IGNORE."
+  },
+  {
+    "element": "notes_with_tag.sql",
+    "severity": "low",
+    "problem": "ORDER BY n.updated DESC LIMIT 50 uses a temp b-tree (checked with EXPLAIN QUERY PLAN), so it reads and sorts every note carrying the tag before returning 50. The sample's largest tag has 12 notes, so this is invisible here. With 9 million note_tag rows over 80,000 tags a popular tag could have far more, and the sort scales with that tag's note count.",
+    "fix": "If popular tags exist, copy updated into note_tag and index (tag_id, updated DESC, note_id), or keep a (tag_id, updated) index maintained on write. Otherwise leave it and measure on production data."
+  },
+  {
+    "element": "updated",
+    "severity": "low",
+    "problem": "Reviewer comment 3: TEXT is fine in SQLite, which has no date type, and every note.updated value in tags.db is a 10-character ISO date, which sorts correctly. The actual weak spot is the day granularity and the lack of a format check: notes updated on the same day tie in ORDER BY n.updated DESC, so the 50 returned can change between runs, and nothing stops a differently formatted value being written.",
+    "fix": "Add a tiebreaker (ORDER BY n.updated DESC, n.id DESC) and a CHECK (updated GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]*'), or store a full ISO timestamp."
+  }
+]

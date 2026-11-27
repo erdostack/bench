@@ -1,0 +1,15 @@
+{
+  "name": "@townmap/atlas",
+  "version": "0.6.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build-graph": "node bin/build-graph.mjs",
+    "lq": "node bin/lq.mjs",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@ladybugdb/core": "^0.22.0",
+    "@townmap/shared": "*"
+  }
+}

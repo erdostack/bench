@@ -1,0 +1,1 @@
+Wrote docs/graph/CONTEXT.md. The schema declares foreign keys from both ends of leg to centre, so route queries can rely on every leg having real endpoints. README's driver version is behind (3.47.0.0 vs 3.49.1.0).

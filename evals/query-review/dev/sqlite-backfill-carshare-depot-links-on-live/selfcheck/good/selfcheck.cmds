@@ -1,0 +1,3 @@
+["bin/cc", "live", "SELECT count(*) FROM nodes c WHERE c.kind = 'car' AND c.status = 'active' AND NOT EXISTS (SELECT 1 FROM edges s WHERE s.kind = 'serviced_by' AND s.src = c.id)"]
+["bin/apply", "scratch", "changes/0008_backfill_serviced_by_september_cars.sql"]
+["bin/cc", "scratch", "SELECT count(*) FROM nodes c WHERE c.kind = 'car' AND c.status = 'active' AND NOT EXISTS (SELECT 1 FROM edges s WHERE s.kind = 'serviced_by' AND s.src = c.id)"]

@@ -1,0 +1,9 @@
+2026-11-23T01:10:02 backfill_ships_to start, resuming after farm 0
+2026-11-23T01:10:04 chunk farms 1-50: inserted 152 edges
+2026-11-23T01:10:06 chunk farms 51-100: inserted 147 edges
+2026-11-23T01:10:09 chunk farms 101-150: inserted 150 edges
+2026-11-23T01:10:11 chunk farms 151-200: inserted 151 edges
+2026-11-23T01:10:13 chunk farms 201-250: inserted 149 edges
+2026-11-23T01:10:16 chunk farms 251-300: inserted 155 edges
+2026-11-23T01:10:21 ERROR writing job_state: sqlite3.OperationalError: database is locked
+2026-11-23T01:10:21 backfill_ships_to aborted

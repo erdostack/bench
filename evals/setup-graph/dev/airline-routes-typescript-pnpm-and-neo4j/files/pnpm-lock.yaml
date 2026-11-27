@@ -1,0 +1,71 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      neo4j-driver:
+        specifier: ^5.12.0
+        version: 5.27.0
+    devDependencies:
+      tsx:
+        specifier: ^4.19.0
+        version: 4.19.1
+      typescript:
+        specifier: ^5.6.0
+        version: 5.6.3
+
+packages:
+
+  neo4j-driver-bolt-connection@5.27.0:
+    resolution: {integrity: sha512-zDzvm8T6fPJzTDjJprbtoIsjPsEtmTJ1gk6rlHROQn4V79jgjiIyFBnHWgSnJNkhJ8CmDsSHZ946thDm5aSM4A==}
+
+  neo4j-driver-core@5.27.0:
+    resolution: {integrity: sha512-FlqKiv48P5jp5YiJrXKw9YsMPWHv6XEpTgaqmwY3JdM9RaUcGXYdfo5OqvNBcnu+FyAs9VylJfpG/dkv/Ak+sg==}
+
+  neo4j-driver@5.27.0:
+    resolution: {integrity: sha512-j+rsCbnLkcwm6ZHkFhPaVoWKyJ85x3caRhuXGHNrobWlQZK5HruuEZ8hfKj/tqDvNKPGxqMN9Ci5uTeefb9ZnA==}
+
+  rxjs@7.8.1:
+    resolution: {integrity: sha512-qIlA6LdmVS4oGujRwO1cKHJ0dBFofv5pnLsXqssph+bDQgBQWw/amtyNcNhFi2CFHXFbzmd+bFTc/MUVG4v5Zg==}
+
+  tslib@2.8.0:
+    resolution: {integrity: sha512-+XpD5vzqKczJFPHDHXAKXdATPBluU/YG4hiqrAhfw8yb+ppRoEgND+tfUSbjyd8YG5mXlC8Xi4gYjjO9tBvVjA==}
+
+  tsx@4.19.1:
+    resolution: {integrity: sha512-vrO8cavzAtExt4N78NZdLOwxpe3uiRBbZ91YIzR8lUtoev1QxNbAk0S8Wee5QQzgrs012tDHYCbZXbOCqzOYGw==}
+    engines: {node: '>=18.0.0'}
+    hasBin: true
+
+  typescript@5.6.3:
+    resolution: {integrity: sha512-EiEmB6EOhofmPgPREzuQrAGke74BAqr/KITto6Fimqtzep3p6V25YmwE2QNpGLo5r2nbuSA2BeEwiftFp+Audw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
+snapshots:
+
+  neo4j-driver-bolt-connection@5.27.0:
+    dependencies:
+      neo4j-driver-core: 5.27.0
+
+  neo4j-driver-core@5.27.0: {}
+
+  neo4j-driver@5.27.0:
+    dependencies:
+      neo4j-driver-bolt-connection: 5.27.0
+      neo4j-driver-core: 5.27.0
+      rxjs: 7.8.1
+
+  rxjs@7.8.1:
+    dependencies:
+      tslib: 2.8.0
+
+  tslib@2.8.0: {}
+
+  tsx@4.19.1: {}
+
+  typescript@5.6.3: {}

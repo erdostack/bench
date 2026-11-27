@@ -1,0 +1,7 @@
+[crewlink]
+uri = "https://crewlink-graph.collections.internal:7473"
+database = "rounds"
+
+[rehearse]
+uri = "https://rehearse-graph.collections.internal:7473"
+database = "rounds"

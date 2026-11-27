@@ -1,0 +1,32 @@
+[
+  {
+    "element": "suggest",
+    "severity": "critical",
+    "problem": "The loop walks every neighbour of the user, including interest nodes (kind 'interest'). The kind check on the candidate m happens only after the walk, so the cost of a call is the sum of degrees of the user's neighbours. A user who likes 'music' (about 1.3 million users in prod) and 'cooking' (about 700,000) makes roughly 2 million dict lookups per request. On the sample data the worst user costs about 3 ms; scaled to prod that is on the order of a second, well over the 100 ms budget in the README.",
+    "fix": "Only expand over edges with kind == 'friend' on both hops (`if G.edges[user, n]['kind'] != 'friend': continue`, and the same check on n to m). The friends-only version measured about 13x faster on the sample, and its cost no longer depends on interest hub size."
+  },
+  {
+    "element": "suggest",
+    "severity": "high",
+    "problem": "The score counts shared interest nodes as if they were shared friends, so the ranking reflects interests more than friendships. On the sample data, the top 10 suggestions for u00496 each had at most 2 mutual friends, and 1,193 of 2,541 candidates tie at score 1. Counter.most_common breaks ties by discovery order, which depends on CSV row order, so the list looks random.",
+    "fix": "Rank by mutual-friend count alone, then break ties with a stable key (for example shared-interest count, then user id). Show interest-based matches as a separate signal, not mixed into the same score."
+  },
+  {
+    "element": "suggest",
+    "severity": "medium",
+    "problem": "G[user] raises KeyError for a user who is not in the graph, for example a new sign-up before the next load. The home-page request would fail rather than return an empty list.",
+    "fix": "Return [] when user not in G, or check membership before indexing."
+  },
+  {
+    "element": "load",
+    "severity": "medium",
+    "problem": "The default paths 'data/friendships.csv' and 'data/interests.csv' are relative to the process's current directory. An API started from any other directory fails with FileNotFoundError at start-up, or in the worst case loads the wrong files if another 'data/' folder is present.",
+    "fix": "Resolve the default paths from the module location (for example Path(__file__).parent.parent / 'data') or take them from configuration, and fail fast with a clear message if they are missing."
+  },
+  {
+    "element": "tests/test_suggest.py",
+    "severity": "low",
+    "problem": "The tests use a 4-node path graph with no interest nodes, so nothing checks that interest hubs are skipped, that ties are ordered deterministically, or that the call stays within the 100 ms budget on a realistic graph.",
+    "fix": "Add a test with a shared hub interest and assert that it does not change the result. Add a test that the ranking is deterministic across runs, and a timing test on a generated graph of realistic hub size."
+  }
+]

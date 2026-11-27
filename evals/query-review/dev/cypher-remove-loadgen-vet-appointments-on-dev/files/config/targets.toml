@@ -1,0 +1,7 @@
+[clinicgraph]
+uri = "https://clinicgraph.harrowby-vets.example:7473"
+database = "booking"
+
+[dev]
+uri = "http://localhost:7474"
+database = "neo4j"

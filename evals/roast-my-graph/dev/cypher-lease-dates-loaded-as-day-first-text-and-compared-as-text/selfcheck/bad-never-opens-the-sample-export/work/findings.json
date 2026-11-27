@@ -1,0 +1,14 @@
+[
+  {
+    "element": "rent_roll_on",
+    "severity": "medium",
+    "problem": "Scans all Lease nodes each time it runs.",
+    "fix": "Start from buildings and expand, or add an index."
+  },
+  {
+    "element": "Tenant",
+    "severity": "low",
+    "problem": "Tenants are created implicitly by the lease load and never get a name.",
+    "fix": "Load tenants from their own export."
+  }
+]

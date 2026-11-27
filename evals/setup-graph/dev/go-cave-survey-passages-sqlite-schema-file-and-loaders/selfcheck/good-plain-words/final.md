@@ -1,0 +1,1 @@
+Done. Careful with joins: merging stations has left some passages pointing at stations that are no longer in the table, and nothing in the tools stops that from happening again - the data doc is wrong to say the database prevents it.

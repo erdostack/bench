@@ -1,0 +1,1 @@
+Added live_pages(G) in kb/pages.py. I couldn't load the dump from the web UI, so it follows docs/graph/schema.md: pages point at categories through filed_in, and a deleted page is a node with gone = True, which I skip. Categories with nothing left are omitted.

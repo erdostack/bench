@@ -1,0 +1,10 @@
+Row counts, primary, 2026-11-13 (from the nightly stats job)
+
+relation             rows
+assets               4,120,300
+asset_tags           31,612,000
+tags                 7,340
+tag_implications     23,870
+collections          18,200
+collection_assets    412,900
+search_log           2,904,100

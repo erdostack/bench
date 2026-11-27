@@ -1,0 +1,3 @@
+CREATE CONSTRAINT branch_code IF NOT EXISTS FOR (b:Branch) REQUIRE b.code IS UNIQUE;
+CREATE CONSTRAINT edition_isbn IF NOT EXISTS FOR (e:Edition) REQUIRE e.isbn IS UNIQUE;
+CREATE INDEX copy_status IF NOT EXISTS FOR (c:Copy) ON (c.status);

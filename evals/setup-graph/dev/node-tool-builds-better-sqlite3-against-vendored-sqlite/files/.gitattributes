@@ -1,0 +1,2 @@
+deps/sqlite3/*.c filter=lfs diff=lfs merge=lfs -text
+deps/sqlite3/*.h filter=lfs diff=lfs merge=lfs -text

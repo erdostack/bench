@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# bin/q <file.cypher>: start a seeded throwaway database and run one saved query against it, read-only.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+file="${1:?usage: bin/q <file.cypher>}"
+exec ./mvnw -q test -Dsurefire.excludes= -Dtest=AdHocQuery -Dquery.file="$file" -Dsurefire.failIfNoSpecifiedTests=false

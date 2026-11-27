@@ -1,0 +1,12 @@
+services:
+  graph:
+    image: neo4j:${NEO4J_TAG:-5.26.24-community}
+    env_file: ../../.env
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - graph-data:/data
+
+volumes:
+  graph-data:

@@ -1,0 +1,12 @@
+services:
+  recs-graph:
+    image: neo4j:5.26.23-community
+    environment:
+      NEO4J_AUTH: neo4j/${RECS_GRAPH_PASSWORD}
+    ports:
+      - "7687:7687"
+    volumes:
+      - recs-data:/data
+
+volumes:
+  recs-data:

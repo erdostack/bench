@@ -1,0 +1,7 @@
+[depot]
+uri = "neo4j+s://fleetwatch-1.transport.county.example:7687"
+database = "neo4j"
+
+[replay]
+uri = "neo4j://fleetwatch-replay.transport.county.example:7687"
+database = "neo4j"

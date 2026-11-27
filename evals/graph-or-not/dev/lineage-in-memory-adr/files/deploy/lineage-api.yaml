@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lineage-api
+spec:
+  replicas: 6
+  template:
+    spec:
+      nodeSelector:
+        pool: standard-16        # 16 GB nodes. The only larger pool is highmem-64 (64 GB nodes).
+      containers:
+        - name: lineage-api
+          image: registry.internal/trailmark/lineage-api:2026.11.2
+          resources:
+            requests:
+              memory: 2Gi
+            limits:
+              memory: 4Gi

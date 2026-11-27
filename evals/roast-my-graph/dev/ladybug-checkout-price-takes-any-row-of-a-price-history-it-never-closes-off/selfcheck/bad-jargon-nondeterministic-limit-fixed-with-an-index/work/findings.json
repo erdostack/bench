@@ -1,0 +1,8 @@
+[
+  {
+    "element": "price_at_checkout",
+    "severity": "high",
+    "problem": "Non-deterministic LIMIT 1 and a range predicate on valid_from with no index: slow and unstable under August load.",
+    "fix": "Index PricedOn.valid_from, and cache the result per (school, sku) for an hour."
+  }
+]

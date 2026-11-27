@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# bin/cypher <file.cypher>: run a saved query read-only through org.seedbank.tools.RunQuery.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+exec ./mvnw -q compile exec:java -Dexec.mainClass=org.seedbank.tools.RunQuery -Dexec.args="${1:?usage: bin/cypher <file.cypher>}"

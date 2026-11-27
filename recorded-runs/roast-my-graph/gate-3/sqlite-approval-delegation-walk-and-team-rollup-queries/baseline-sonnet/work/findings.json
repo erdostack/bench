@@ -1,0 +1,50 @@
+[
+  {
+    "element": "queries/acting_for.sql",
+    "severity": "critical",
+    "problem": "The recursive CTE never terminates for any user who is part of, or downstream of, a mutual delegation. The comment claims UNION stops loops, but the recursive row carries handoffs + 1, so every trip around a cycle produces a new distinct (user_id, handoffs) row and UNION never sees a repeat. The README says most delegations come in pairs, and 242 of the 324 delegation rows in approvals.db have a mirror row. Reproduced on approvals.db: user 1 (who has a mutual pair) never finishes and had to be interrupted, while the same query with a depth cap returns at once. This is what makes the inbox time out for some people only.",
+    "fix": "Stop the recursion from revisiting users. Carry a visited path and skip a user already on it: add path TEXT to the CTE (',' || :user_id || ',' || from_user || ',' for the anchor, a.path || d.from_user || ',' in the recursive step), add AND instr(a.path, ',' || d.from_user || ',') = 0 to the recursive WHERE, and use UNION ALL. Keep MIN(handoffs) in the outer SELECT. Tested on approvals.db: all 400 users finish in about 15 ms in total, with at most 8 results per user. Also add a hard depth cap (handoffs < 10) as a safety net, and correct the comment."
+  },
+  {
+    "element": "UNION",
+    "severity": "high",
+    "problem": "Statement-level cause behind the acting_for.sql hang: UNION deduplicates on the whole row (user_id, handoffs). Because handoffs is part of the row, dedup cannot detect revisited users. Anyone who copies this pattern for another hierarchy will repeat the bug.",
+    "fix": "Deduplicate or guard on the node (user_id or the path), not on a column that grows with depth. See the acting_for.sql fix."
+  },
+  {
+    "element": "queries/inbox.sql",
+    "severity": "medium",
+    "problem": "The query lists only claims where approver_id = :user_id, that is, claims the user approves as themselves, as its comment says. Claims routed to people who delegated to this user are not included, and acting_for.sql is not used by it. The README says the inbox runs acting_for.sql on every page load, so the delegated part of the inbox is probably built in the app from acting_for results. If so, it is a per-load loop of recursion plus lookups. If not, delegated claims never appear.",
+    "fix": "Confirm where delegated claims are assembled. Prefer one query: take the acting set from the fixed acting_for CTE plus :user_id itself and join claim ON approver_id IN (that set) AND status = 'pending' using the claim_approver index, so the recursion runs once per page load."
+  },
+  {
+    "element": "delegation.valid_until",
+    "severity": "medium",
+    "problem": "valid_until is free TEXT with no CHECK. The comparison valid_until >= date('now') only works when every value is an ISO yyyy-mm-dd string; any other format compares wrongly as text and the delegation silently stays valid or expires early. The demo data holds 2099-12-31 for every row, so no delegation in the demo ever expires and the date filter is never exercised. There is also no valid_from, so a delegation cannot be scheduled in advance.",
+    "fix": "Add CHECK (valid_until GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]') (or CHECK (date(valid_until) = valid_until)). Add test data with expired and future-dated delegations. Add valid_from if scheduling is needed."
+  },
+  {
+    "element": "delegation",
+    "severity": "low",
+    "problem": "CHECK (from_user <> to_user) blocks self-delegation only. Nothing in the schema limits chain depth or stops cycles, so correctness of chains relies entirely on acting_for.sql. Foreign keys are declared, but SQLite enforces them only when PRAGMA foreign_keys = ON is set on every connection.",
+    "fix": "Set PRAGMA foreign_keys = ON in the app's connection setup. Treat cycles as valid data (mutual cover is intended) and handle them in the query, with a depth cap."
+  },
+  {
+    "element": "team",
+    "severity": "low",
+    "problem": "team.parent_id has no index. team_rollup.sql joins team t ON t.parent_id = s.id on every recursive step, and the query plan shows SQLite building an AUTOMATIC COVERING INDEX on team(parent_id) on every run. It is cheap with 40 teams but grows with the org tree.",
+    "fix": "CREATE INDEX team_parent ON team(parent_id);"
+  },
+  {
+    "element": "queries/team_rollup.sql",
+    "severity": "low",
+    "problem": "This query is correct. UNION ALL is safe here because CHECK (parent_id IS NULL OR parent_id < id) on team makes cycles impossible. It depends on that CHECK, though: if the constraint is dropped or rows are loaded without it, it loops. Nothing documents the dependency.",
+    "fix": "Add a comment in team_rollup.sql that UNION ALL relies on team's parent_id < id CHECK. Optionally add a depth cap."
+  },
+  {
+    "element": "claim",
+    "severity": "low",
+    "problem": "claim has no CHECK on amount_cents (zero and negative amounts are allowed) and nothing prevents approver_id = owner_id (a person approving their own claim). The demo data has no such rows, but the schema allows them. claim_approver (approver_id, status) is the right index for inbox.sql.",
+    "fix": "Add CHECK (amount_cents > 0) and CHECK (approver_id <> owner_id), or enforce these rules in the app and document that."
+  }
+]

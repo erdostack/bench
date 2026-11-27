@@ -1,0 +1,5 @@
+[scratch]
+uri = "bolt://localhost:7687"
+
+[live]
+uri = "neo4j+s://equip-pool.trust.internal:7687"

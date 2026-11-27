@@ -1,0 +1,1 @@
+CREATE CONSTRAINT building_code IF NOT EXISTS FOR (b:Building) REQUIRE b.code IS UNIQUE;

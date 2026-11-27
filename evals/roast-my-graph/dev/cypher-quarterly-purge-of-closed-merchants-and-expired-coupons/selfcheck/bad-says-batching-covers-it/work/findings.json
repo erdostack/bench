@@ -1,0 +1,14 @@
+[
+  {
+    "element": "purge_expired_coupons",
+    "severity": "high",
+    "problem": "4 million coupons in one go is a lot; this purge will be the one that hurts.",
+    "fix": "Use a smaller batch size."
+  },
+  {
+    "element": "merchant_daily_volume",
+    "severity": "medium",
+    "problem": "No index on PAID.at.",
+    "fix": "Add a relationship index on PAID(at)."
+  }
+]

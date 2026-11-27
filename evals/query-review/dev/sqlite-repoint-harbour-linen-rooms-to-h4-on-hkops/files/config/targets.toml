@@ -1,0 +1,5 @@
+[copy]
+path = "data/copy.sqlite"
+
+[hkops]
+path = "data/hkops.sqlite"

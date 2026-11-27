@@ -1,0 +1,5 @@
+[scratch]
+path = "var/scratch.db"
+
+[stalls]
+path = "/srv/freshtrace/stalls.db"

@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencyLocking {
+    lockAllConfigurations()
+}
+
+dependencies {
+    implementation 'org.xerial:sqlite-jdbc:3.+'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.12.2'
+}
+
+tasks.register('runSql', JavaExec) {
+    description = 'Run one .sql file against data/trails.db: ./gradlew runSql -Pfile=<path>'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'org.ridgeway.RunSql'
+    args(providers.gradleProperty('file').getOrElse(''))
+}
+
+test {
+    useJUnitPlatform()
+}

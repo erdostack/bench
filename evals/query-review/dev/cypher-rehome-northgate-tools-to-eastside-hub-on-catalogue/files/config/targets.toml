@@ -1,0 +1,3 @@
+[catalogue]
+uri = "neo4j+s://catalogue.brookfield-tools.example:7687"
+database = "tools"

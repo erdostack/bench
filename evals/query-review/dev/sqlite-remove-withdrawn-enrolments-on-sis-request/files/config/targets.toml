@@ -1,0 +1,5 @@
+[sis]
+path = "data/sis.db"
+
+[sis-train]
+path = "data/sis-train.db"

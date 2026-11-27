@@ -1,0 +1,7 @@
+[navgraph]
+uri = "https://navgraph.senn-ashby.example:7473"
+database = "navigation"
+
+[sandbox]
+uri = "http://localhost:7474"
+database = "neo4j"

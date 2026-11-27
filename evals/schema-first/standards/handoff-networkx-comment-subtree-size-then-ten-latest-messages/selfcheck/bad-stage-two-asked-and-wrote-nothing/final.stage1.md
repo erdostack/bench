@@ -1,0 +1,1 @@
+Added removal_count.

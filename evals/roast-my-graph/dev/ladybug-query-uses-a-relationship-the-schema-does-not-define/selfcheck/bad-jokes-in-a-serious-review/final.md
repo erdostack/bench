@@ -1,0 +1,1 @@
+docs/graph/ROAST.md and findings.json are written. genre_top asks for a Reviewed relationship that the schema has never heard of; change it to Rated and it works. The rest are fine. You're welcome, release managers.

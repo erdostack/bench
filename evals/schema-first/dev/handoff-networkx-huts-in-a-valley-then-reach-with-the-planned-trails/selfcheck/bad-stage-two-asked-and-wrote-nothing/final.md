@@ -1,0 +1,1 @@
+I haven't written reach(): I can't see the export, so I don't know what the trail length attribute is called or whether the codes in plans/new_trails.csv match the graph's node keys. Can you share one hut and one trail record?

@@ -1,0 +1,25 @@
+[
+  {
+    "slug": "pancakes",
+    "uses": [
+      "buttermilk",
+      "egg",
+      "butter"
+    ]
+  },
+  {
+    "slug": "scones",
+    "uses": [
+      "butter",
+      "buttermilk"
+    ]
+  },
+  {
+    "slug": "coffee-cake",
+    "uses": [
+      "sour cream",
+      "egg",
+      "butter"
+    ]
+  }
+]

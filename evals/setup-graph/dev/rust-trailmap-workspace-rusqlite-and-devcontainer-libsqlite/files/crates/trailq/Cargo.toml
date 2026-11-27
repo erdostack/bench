@@ -1,0 +1,8 @@
+[package]
+name = "trailq"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+trailstore = { path = "../trailstore" }
+anyhow = { workspace = true }

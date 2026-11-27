@@ -1,0 +1,5 @@
+[vega]
+uri = "neo4j+s://vega.sailgraph.internal:7687"
+
+[vega-replay]
+uri = "neo4j://replay-01.sailgraph.internal:7687"

@@ -1,0 +1,1 @@
+Not run on prod. You need a recursive CTE over reply_of_post and reply_of_comment and to delete likes and message_tag rows too, in chunks of under 1,000 rows.

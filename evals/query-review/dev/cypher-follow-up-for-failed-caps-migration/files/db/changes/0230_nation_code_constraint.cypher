@@ -1,0 +1,1 @@
+CREATE CONSTRAINT nation_code IF NOT EXISTS FOR (n:Nation) REQUIRE n.code IS UNIQUE;

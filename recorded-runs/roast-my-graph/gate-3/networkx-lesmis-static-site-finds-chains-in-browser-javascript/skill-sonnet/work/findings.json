@@ -1,0 +1,3 @@
+[
+  {"element": "shortestChain", "severity": "low", "problem": "The existence check uses `from in graph.adj`, which is also true for inherited object properties. If a visitor types `constructor`, `toString` or `__proto__` as the first name, the BFS runs on graph.adj[name], which is not iterable, and throws a TypeError, so the submit handler fails and the page shows nothing. Verified by running it. As the second name the same words just return null. No wrong chain is ever returned.", "fix": "Check own properties only: `if (!Object.hasOwn(graph.adj, from) || !Object.hasOwn(graph.adj, to)) return null;`"}
+]

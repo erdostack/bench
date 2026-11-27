@@ -1,0 +1,14 @@
+[
+  {
+    "element": "free_grid",
+    "severity": "high",
+    "problem": "Cartesian product of Room and Slot; grows with every room added.",
+    "fix": "Add LIMIT 100 and paginate."
+  },
+  {
+    "element": "book_cell",
+    "severity": "high",
+    "problem": "Three-way cartesian product.",
+    "fix": "Split into separate MATCH steps."
+  }
+]

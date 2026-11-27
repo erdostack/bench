@@ -1,0 +1,4 @@
+#!/bin/sh
+# Route questions against the trail graph, e.g. bin/route H07 H09 3
+cd "$(dirname "$0")/.." || exit 1
+exec ./mvnw -q -pl planner -am compile exec:java -Dexec.args="$*"

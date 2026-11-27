@@ -1,0 +1,9 @@
+[staging]
+uri = "neo4j://graph.staging.eventgraph.example:7687"
+user = "data-team"
+database = "neo4j"
+
+[prod]
+uri = "neo4j://graph.prod.eventgraph.example:7687"
+user = "data-team"
+database = "neo4j"

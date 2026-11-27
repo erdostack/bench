@@ -1,0 +1,68 @@
+[
+  {
+    "element": "routes_at_stop.sql",
+    "severity": "critical",
+    "problem": "WHERE stop_sequence LIKE '%' || :stop_id || '%' is a substring match, so stop 12 also matches 112, 120, 1205 and so on. In the current transit.db, 999 of the 4,800 stops return the wrong set of routes, with 35,245 spurious route rows in total. Stop 6 returns all 310 routes although no route calls there, and stop 1 returns 310 routes against 2 real ones. The stop page shows routes that do not serve the stop, and the planner pulls them in as well.",
+    "fix": "Stop matching on text. Add a table route_stop (route_id, stop_id, seq, PRIMARY KEY (route_id, seq)) with an index on (stop_id, route_id), and select with a join on stop_id equality. Short term, match on delimiters: WHERE ',' || stop_sequence || ',' LIKE '%,' || :stop_id || ',%'."
+  },
+  {
+    "element": "stop_sequence",
+    "severity": "critical",
+    "problem": "The ordered list of stops is a comma-separated string in route, which breaks first normal form. Nothing enforces that the ids exist in stop, so there is no foreign key, and you cannot index by stop. The only way to ask which routes call at a stop is a full scan of route (EXPLAIN QUERY PLAN shows SCAN route) with a substring test, and every consumer has to parse the string itself.",
+    "fix": "Replace the column with a route_stop table (route_id REFERENCES route(id), seq INTEGER, stop_id REFERENCES stop(id), PRIMARY KEY (route_id, seq)) plus CREATE INDEX route_stop_by_stop ON route_stop (stop_id, route_id, seq). Generate it in the nightly rebuild and drop stop_sequence once the callers have moved."
+  },
+  {
+    "element": "route",
+    "severity": "high",
+    "problem": "The table holds a route's identity and its whole stop list. Any question about stops goes through route and a text column, and there is no way to join stop and route at all. A stop's name, location and routes cannot be queried together.",
+    "fix": "Keep route as identity only (id, short_name, mode) and put the stop membership in route_stop, as described for stop_sequence."
+  },
+  {
+    "element": "one_change",
+    "severity": "high",
+    "problem": "Because routes_at() uses the substring query, r1 and r2 candidates include many routes that do not serve the origin or destination (the origin case is caught later by the if origin not in s1 check, the destination case is not). It then calls stops_of for every r1 and again for every r2 inside the r1 loop, so each destination route is fetched and split once per origin route (an N times M pattern of queries). The inner test stop in before_dest is a linear search of a list. Only the first shared stop is kept per route pair (break), so alternative change stops are dropped.",
+    "fix": "Fetch each route's stops once into a dict, build a set for the origin-side stops and the destination-side stops, and intersect. With route_stop this is one self-join: route_stop a JOIN route_stop b ON a.stop_id = b.stop_id AND a.route_id <> b.route_id AND a.seq > o.seq AND b.seq < d.seq, filtered on the origin and destination stops, in one query. Decide whether to keep all change stops or just one and document it."
+  },
+  {
+    "element": "routes_at",
+    "severity": "high",
+    "problem": "Returns whatever routes_at_stop.sql returns, so it inherits the false matches. one_change filters out the wrong origin routes only by re-checking the parsed list, and has no such check for the destination routes, which silently waste a stops_of call each.",
+    "fix": "Fix the query (or use route_stop) so the function returns only routes that really call at the stop, and remove the compensating check in one_change."
+  },
+  {
+    "element": "stop_page",
+    "severity": "high",
+    "problem": "Runs routes_at_stop.sql directly, so the stop page lists routes that do not call at the stop. For stop 6 it would show all 310 routes. Users get wrong information and a page that is as large as the whole network.",
+    "fix": "Same fix as routes_at_stop.sql. Add a test that checks the stop page for a small stop id (1 to 9) against a known list."
+  },
+  {
+    "element": "stops_of",
+    "severity": "medium",
+    "problem": "Does a SELECT per call and parses the comma-separated text with int(s) on every call, with no cache. fetchone() returns None for an unknown route_id, and the tuple unpacking then raises a TypeError instead of a clear error. It is called repeatedly for the same route from one_change.",
+    "fix": "Read from route_stop ordered by seq, cache per route for the lifetime of a planning request, and raise a clear error (or return an empty list) for an unknown route."
+  },
+  {
+    "element": "stops_of_route.sql",
+    "severity": "medium",
+    "problem": "Returns a single text blob that the caller has to split, so ordering and membership live in application code and there is no way to ask for stops after a given position in the database.",
+    "fix": "SELECT stop_id, seq FROM route_stop WHERE route_id = :route_id ORDER BY seq."
+  },
+  {
+    "element": "headway",
+    "severity": "low",
+    "problem": "Nothing in app/ or db/ reads this table, so it is neither used by the planner nor by the stop page. Every one of the 310 routes has all three day types, so the data is in the database for a journey planner that never uses it. It has no check that minutes is positive.",
+    "fix": "Use it (wait time estimates in one_change and on the stop page) or drop it from the nightly rebuild. Add CHECK (minutes > 0)."
+  },
+  {
+    "element": "stop",
+    "severity": "low",
+    "problem": "478 of the 4,800 stops appear on no route, and nothing in the schema says whether that is expected (unused stops, closed stops, or a broken import). The stop page for these returns false matches rather than an empty list.",
+    "fix": "After moving to route_stop, check in the nightly rebuild that each stop is served or flagged as inactive, and fail the build when ids in a route are not in stop."
+  },
+  {
+    "element": "short_name",
+    "severity": "low",
+    "problem": "UNIQUE on short_name is fine, but the stop page query orders by short_name as text, so routes sort as T1, T10, T11 ... T18, T2 rather than in a natural order.",
+    "fix": "Add a sort key column, or sort in the application with a natural ordering. Keep the UNIQUE constraint."
+  }
+]

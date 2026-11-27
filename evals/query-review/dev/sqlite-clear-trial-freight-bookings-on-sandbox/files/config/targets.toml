@@ -1,0 +1,5 @@
+[sandbox]
+path = "data/sandbox.db"
+
+[live]
+path = "data/live.db"

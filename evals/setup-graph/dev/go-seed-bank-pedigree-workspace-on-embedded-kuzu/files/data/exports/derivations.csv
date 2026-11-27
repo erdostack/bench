@@ -1,0 +1,6 @@
+from,to,method,cycle
+ACC-00102,ACC-00001,cross,1
+ACC-00102,ACC-00017,cross,1
+ACC-00233,ACC-00102,regeneration,2
+ACC-00412,ACC-00233,regeneration,3
+ACC-00413,ACC-00233,selection,3

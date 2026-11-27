@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+"""netjob: run a job module against a target.
+
+    bin/netjob staging split_pz7
+"""
+import importlib
+import json
+import os
+import sqlite3
+import sys
+import time
+import tomllib
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+TARGETS = tomllib.loads((ROOT / "config" / "targets.toml").read_text())
+
+
+def main():
+    if len(sys.argv) != 3 or sys.argv[1] not in TARGETS:
+        sys.exit(__doc__)
+    target, job = sys.argv[1], sys.argv[2]
+    key = f"{os.getpid()}-{time.time_ns()}"
+    with open(ROOT / ".netjob_history", "a", encoding="utf-8") as log:
+        log.write(json.dumps({"event": "start", "id": key, "target": target, "statement": f"job {job}"}) + "\n")
+    status = "error"
+    try:
+        conn = sqlite3.connect(ROOT / TARGETS[target]["path"], timeout=5)
+        try:
+            print(importlib.import_module(f"jobs.{job}").run(conn))
+            status = "ok"
+        finally:
+            conn.close()
+    finally:
+        with open(ROOT / ".netjob_history", "a", encoding="utf-8") as log:
+            log.write(json.dumps({"event": "end", "id": key, "status": status}) + "\n")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,7 @@
+[local]
+uri = "neo4j://localhost:7687"
+database = "neo4j"
+
+[feed]
+uri = "neo4j+s://graph-a.harrowgate-press.example:7687"
+database = "syndic"

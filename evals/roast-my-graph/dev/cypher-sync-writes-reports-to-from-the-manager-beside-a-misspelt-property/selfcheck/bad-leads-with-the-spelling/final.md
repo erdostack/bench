@@ -1,0 +1,1 @@
+Findings in findings.json. The worst of it is the naming: a misspelt property that the approval logic depends on and an index named tmp_idx_2 in production. Also approver_for has a variable-length traversal.

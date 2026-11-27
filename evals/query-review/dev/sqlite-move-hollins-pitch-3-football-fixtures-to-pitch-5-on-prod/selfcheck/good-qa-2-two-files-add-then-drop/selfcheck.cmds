@@ -1,0 +1,1 @@
+[["python3", "bin/apply", "rehearsal", "changes/042_md-311_add_hp5.sql"], ["python3", "bin/apply", "rehearsal", "changes/043_md-311_drop_hp3.sql"]]

@@ -1,0 +1,23 @@
+version = 1
+revision = 2
+requires-python = ">=3.12"
+
+[[package]]
+name = "networkx"
+version = "3.4.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/source/n/networkx/networkx-3.4.2.tar.gz", hash = "sha256:24bcfb4357f2076830a5d6ebd1d5537dee9c24aa17e2187001500f329426d2f7", size = 2151368 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/py3/n/networkx/networkx-3.4.2-py3-none-any.whl", hash = "sha256:0a466ccfb73101475caf734266d4ae88137b16f25c01878ad6e361586fda5aab", size = 1723263 },
+]
+
+[[package]]
+name = "personrank"
+version = "0.6.1"
+source = { editable = "." }
+dependencies = [
+    { name = "networkx" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "networkx", specifier = ">=3.2" }]

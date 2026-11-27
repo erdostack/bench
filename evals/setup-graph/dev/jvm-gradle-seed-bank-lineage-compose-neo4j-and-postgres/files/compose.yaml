@@ -1,0 +1,23 @@
+services:
+  records:
+    image: postgres:16.4
+    environment:
+      POSTGRES_USER: seedvault
+      POSTGRES_PASSWORD: ${RECORDS_PASSWORD:-dev}
+      POSTGRES_DB: records
+    ports:
+      - "5432:5432"
+
+  lineage:
+    image: neo4j:2026.03.1-community
+    environment:
+      NEO4J_AUTH: none
+      NEO4J_db_query_default__language: CYPHER_25
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - lineage:/data
+
+volumes:
+  lineage:

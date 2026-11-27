@@ -1,0 +1,5 @@
+I added `reports/unstaffed_units.sql`. It takes `:as_of` and returns `id` and `name` for each unit that is open on that date and has no person directly assigned to it on that date. Results are ordered by name, like `assignments_by_unit.sql`.
+
+A unit counts as open when `opened_on <= :as_of` and `closed_on` is NULL or `closed_on >= :as_of`. A unit is staffed only when an assignment to it has `start_date <= :as_of` and `end_date` NULL or `end_date >= :as_of`. Assignments to units below it are ignored, so a parent with only subunit staff is listed.
+
+I ran it in SQLite against sample data built from `db/schema.sql` on four dates. It excluded units that were not yet open, units closed before the date, and units with a current direct assignment. It included a unit closed on the exact date, a unit whose only assignment had ended the day before, and a unit whose only assignment starts later. I did not run it through `orgunits/run.py` against `var/unitbook.db`, because that database is not in the work directory.
