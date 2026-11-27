@@ -22,10 +22,12 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.13"
-      - name: Install NetworkX
-        run: python -m pip install "networkx==3.7"
+      # NetworkX computes PageRank with SciPy, which needs NumPy, and the cases that rank with PageRank call it.
+      # These are the versions on the machine the recorded runs were made on.
+      - name: Install NetworkX, NumPy and SciPy
+        run: python -m pip install "networkx==3.7" "numpy==2.5.3" "scipy==1.18.1"
       - name: Versions
-        run: python -c "import sqlite3, sys, networkx; print(sys.version); print('SQLite', sqlite3.sqlite_version); print('NetworkX', networkx.__version__)"
+        run: python -c "import sqlite3, sys, networkx, numpy, scipy; print(sys.version); print('SQLite', sqlite3.sqlite_version); print('NetworkX', networkx.__version__); print('NumPy', numpy.__version__); print('SciPy', scipy.__version__)"
       - name: Harness tests
         run: python -m unittest discover -s evals/harness -p 'test_*.py'
       - name: Grader self-check
